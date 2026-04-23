@@ -118,6 +118,7 @@
                 <div class="flex items-center gap-3">
                     <span class="text-sm font-label tracking-label text-primary-ink uppercase">Gombro</span>
                     <span class="text-[11px] font-label tracking-label text-primary-ink/60">Beta</span>
+                    <button onclick="openFbModal()" class="text-[11px] font-label tracking-label text-primary-ink/40 hover:text-primary-ink/70 transition-colors" style="background:none;border:none;cursor:pointer;padding:0;letter-spacing:0.08em;text-transform:uppercase">Contame tu experiencia</button>
                 </div>
                 <h1 class="text-6xl sm:text-7xl font-serif leading-none">GOMBRO</h1>
                 <p id="hero-sub" class="text-2xl sm:text-3xl text-primary-ink/80">Inventive writing, nothing else.</p>
@@ -303,6 +304,27 @@
                 <p class="text-sm text-primary-ink/60">Windows only. 60-day free trial, no credit card required.</p>
             </div>
         </section>
+
+        <!-- Feedback modal -->
+        <div id="fb-modal" role="dialog" aria-modal="true" aria-labelledby="fb-modal-title" onclick="closeFbModalOutside(event)" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(31,42,34,0.55);align-items:center;justify-content:center;">
+            <div style="background:#fbf9f4;border:1px solid rgba(31,42,34,0.15);padding:40px 44px;max-width:460px;width:100%;">
+                <p class="text-[11px] font-label tracking-label uppercase text-primary-ink/50">Feedback</p>
+                <p id="fb-modal-title" class="text-xl mt-2 mb-4">Contame tu experiencia con Gombro</p>
+                <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFbSubmit(event)">
+                    <div class="flex gap-2 mb-4">
+                        <label style="cursor:pointer"><input type="radio" name="tipo" value="bug" required style="margin-right:4px">Bug</label>
+                        <label style="cursor:pointer"><input type="radio" name="tipo" value="idea" style="margin-right:4px">Idea</label>
+                        <label style="cursor:pointer"><input type="radio" name="tipo" value="experiencia" style="margin-right:4px">Experiencia</label>
+                    </div>
+                    <textarea name="mensaje" rows="4" placeholder="Escribí acá..." required style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;resize:vertical;outline:none;margin-bottom:12px;"></textarea>
+                    <input type="email" name="email" placeholder="tu@email.com (opcional)" style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;outline:none;margin-bottom:20px;" />
+                    <input type="hidden" name="_subject" value="Feedback Gombro" />
+                    <button type="submit" class="btn" style="width:100%">Enviar</button>
+                </form>
+                <p id="fb-modal-msg" style="font-size:0.8rem;color:#334537;margin-top:12px;min-height:1.2em;"></p>
+                <button onclick="closeFbModal()" class="text-[11px] font-label tracking-label uppercase text-primary-ink/40 mt-4" style="background:none;border:none;cursor:pointer;padding:0">Cancelar</button>
+            </div>
+        </div>
 
         <!-- Download modal -->
         <div id="dl-modal" role="dialog" aria-modal="true" aria-labelledby="dl-modal-title" onclick="closeDlModalOutside(event)">
@@ -498,6 +520,42 @@
         const linkYouTube = document.querySelector('[data-i18n="link-youtube"]');
         const linkGithubPersonal = document.querySelector('[data-i18n="link-github-personal"]');
         const linkEmail = document.querySelector('[data-i18n="link-email"]');
+
+        // Feedback modal
+        function openFbModal() {
+            const m = document.getElementById('fb-modal');
+            m.style.display = 'flex';
+            m.querySelector('textarea').focus();
+        }
+        function closeFbModal() {
+            document.getElementById('fb-modal').style.display = 'none';
+            document.getElementById('fb-modal-msg').textContent = '';
+            document.getElementById('fb-form').reset();
+        }
+        function closeFbModalOutside(e) {
+            if (e.target === document.getElementById('fb-modal')) closeFbModal();
+        }
+        async function handleFbSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const msg = document.getElementById('fb-modal-msg');
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true; btn.textContent = '...';
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { Accept: 'application/json' }
+                });
+                if (res.ok) {
+                    msg.textContent = 'Gracias. Lo leo.';
+                    form.reset(); btn.textContent = 'Enviado';
+                } else { throw new Error(); }
+            } catch {
+                msg.textContent = 'Algo falló. Intentá de nuevo.';
+                btn.disabled = false; btn.textContent = 'Enviar';
+            }
+        }
 
         // Download modal
         function openDlModal() {
