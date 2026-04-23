@@ -118,7 +118,7 @@
                 <div class="flex items-center gap-3">
                     <span class="text-sm font-label tracking-label text-primary-ink uppercase">Gombro</span>
                     <span class="text-[11px] font-label tracking-label text-primary-ink/60">Beta</span>
-                    <button onclick="openFbModal()" class="text-[11px] font-label tracking-label text-primary-ink/40 hover:text-primary-ink/70 transition-colors" style="background:none;border:none;cursor:pointer;padding:0;letter-spacing:0.08em;text-transform:uppercase">Contame tu experiencia</button>
+                    <button id="fb-trigger" onclick="openFbModal()" class="text-[11px] font-label tracking-label text-primary-ink/40 hover:text-primary-ink/70 transition-colors" style="background:none;border:none;cursor:pointer;padding:0;letter-spacing:0.08em;text-transform:uppercase">Tell me your experience</button>
                 </div>
                 <h1 class="text-6xl sm:text-7xl font-serif leading-none">GOMBRO</h1>
                 <p id="hero-sub" class="text-2xl sm:text-3xl text-primary-ink/80">Inventive writing, nothing else.</p>
@@ -298,20 +298,20 @@
         <div id="fb-modal" role="dialog" aria-modal="true" aria-labelledby="fb-modal-title" onclick="closeFbModalOutside(event)" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(31,42,34,0.55);align-items:center;justify-content:center;">
             <div style="background:#fbf9f4;border:1px solid rgba(31,42,34,0.15);padding:40px 44px;max-width:460px;width:100%;">
                 <p class="text-[11px] font-label tracking-label uppercase text-primary-ink/50">Feedback</p>
-                <p id="fb-modal-title" class="text-xl mt-2 mb-4">Contame tu experiencia con Gombro</p>
+                <p id="fb-modal-title" class="text-xl mt-2 mb-4">Tell me your experience with Gombro</p>
                 <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFbSubmit(event)">
                     <div class="flex gap-2 mb-4">
                         <label style="cursor:pointer"><input type="radio" name="tipo" value="bug" required style="margin-right:4px">Bug</label>
                         <label style="cursor:pointer"><input type="radio" name="tipo" value="idea" style="margin-right:4px">Idea</label>
-                        <label style="cursor:pointer"><input type="radio" name="tipo" value="experiencia" style="margin-right:4px">Experiencia</label>
+                        <label id="fb-label-exp" style="cursor:pointer"><input type="radio" name="tipo" value="experience" style="margin-right:4px">Experience</label>
                     </div>
-                    <textarea name="mensaje" rows="4" placeholder="Escribí acá..." required style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;resize:vertical;outline:none;margin-bottom:12px;"></textarea>
-                    <input type="email" name="email" placeholder="tu@email.com (opcional)" style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;outline:none;margin-bottom:20px;" />
+                    <textarea id="fb-textarea" name="mensaje" rows="4" placeholder="Write here..." required style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;resize:vertical;outline:none;margin-bottom:12px;"></textarea>
+                    <input id="fb-email-input" type="email" name="email" placeholder="your@email.com (optional)" style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;outline:none;margin-bottom:20px;" />
                     <input type="hidden" name="_subject" value="Feedback Gombro" />
-                    <button type="submit" class="btn" style="width:100%">Enviar</button>
+                    <button id="fb-submit" type="submit" class="btn" style="width:100%">Send</button>
                 </form>
                 <p id="fb-modal-msg" style="font-size:0.8rem;color:#334537;margin-top:12px;min-height:1.2em;"></p>
-                <button onclick="closeFbModal()" class="text-[11px] font-label tracking-label uppercase text-primary-ink/40 mt-4" style="background:none;border:none;cursor:pointer;padding:0">Cancelar</button>
+                <button id="fb-cancel" onclick="closeFbModal()" class="text-[11px] font-label tracking-label uppercase text-primary-ink/40 mt-4" style="background:none;border:none;cursor:pointer;padding:0">Cancel</button>
             </div>
         </div>
 
@@ -391,6 +391,17 @@
                     { label: "Daily Diary", gombro: "One session per day, Ctrl+D, literary date.", word: "No.", scrivener: "No." },
                     { label: "Schrödinger Mode", gombro: "Track undecided text — strikethroughs & open variants.", word: "No.", scrivener: "No." }
                 ],
+                feedback: {
+                    trigger: "Tell me your experience",
+                    title: "Tell me your experience with Gombro",
+                    expLabel: "Experience",
+                    placeholder: "Write here...",
+                    emailPlaceholder: "your@email.com (optional)",
+                    submit: "Send",
+                    cancel: "Cancel",
+                    ok: "Thanks. I'll read it.",
+                    err: "Something went wrong. Try again."
+                },
                 links: {
                     instagram: "[IG] Instagram",
                     youtube: "[YT] YouTube",
@@ -435,6 +446,17 @@
                     { label: "Diario diario", gombro: "Una sesión por día, Ctrl+D, fecha literaria.", word: "No.", scrivener: "No." },
                     { label: "Modo Schrödinger", gombro: "Texto indeciso — tachados y variantes abiertas.", word: "No.", scrivener: "No." }
                 ],
+                feedback: {
+                    trigger: "Contame tu experiencia",
+                    title: "Contame tu experiencia con Gombro",
+                    expLabel: "Experiencia",
+                    placeholder: "Escribí acá...",
+                    emailPlaceholder: "tu@email.com (opcional)",
+                    submit: "Enviar",
+                    cancel: "Cancelar",
+                    ok: "Gracias. Lo leo.",
+                    err: "Algo falló. Intentá de nuevo."
+                },
                 links: {
                     instagram: "[IG] Instagram",
                     youtube: "[YT] YouTube",
@@ -479,6 +501,17 @@
                     { label: "Dziennik dzienny", gombro: "Jedna sesja dziennie, Ctrl+D, literacka data.", word: "Nie.", scrivener: "Nie." },
                     { label: "Tryb Schrödingera", gombro: "Niezdecydowany tekst — skreślenia i otwarte warianty.", word: "Nie.", scrivener: "Nie." }
                 ],
+                feedback: {
+                    trigger: "Opowiedz mi o swoim doświadczeniu",
+                    title: "Opowiedz mi o swoim doświadczeniu z Gombro",
+                    expLabel: "Doświadczenie",
+                    placeholder: "Napisz tutaj...",
+                    emailPlaceholder: "twoj@email.com (opcjonalnie)",
+                    submit: "Wyślij",
+                    cancel: "Anuluj",
+                    ok: "Dzięki. Przeczytam.",
+                    err: "Coś poszło nie tak. Spróbuj ponownie."
+                },
                 links: {
                     instagram: "[IG] Instagram",
                     youtube: "[YT] YouTube",
@@ -534,13 +567,17 @@
                     body: new FormData(form),
                     headers: { Accept: 'application/json' }
                 });
+                const lang = document.documentElement.lang || 'en';
+                const fb = copy[lang] ? copy[lang].feedback : copy.en.feedback;
                 if (res.ok) {
-                    msg.textContent = 'Gracias. Lo leo.';
-                    form.reset(); btn.textContent = 'Enviado';
+                    msg.textContent = fb.ok;
+                    form.reset(); btn.textContent = '✓';
                 } else { throw new Error(); }
             } catch {
-                msg.textContent = 'Algo falló. Intentá de nuevo.';
-                btn.disabled = false; btn.textContent = 'Enviar';
+                const lang = document.documentElement.lang || 'en';
+                const fb = copy[lang] ? copy[lang].feedback : copy.en.feedback;
+                msg.textContent = fb.err;
+                btn.disabled = false; btn.textContent = (copy[lang] || copy.en).feedback.submit;
             }
         }
 
@@ -617,6 +654,13 @@
                 linkYouTube.textContent = t.links.youtube;
                 linkGithubPersonal.textContent = t.links.githubPersonal;
                 linkEmail.textContent = t.links.email;
+                document.getElementById('fb-trigger').textContent = t.feedback.trigger;
+                document.getElementById('fb-modal-title').textContent = t.feedback.title;
+                document.getElementById('fb-label-exp').childNodes[1].textContent = t.feedback.expLabel;
+                document.getElementById('fb-textarea').placeholder = t.feedback.placeholder;
+                document.getElementById('fb-email-input').placeholder = t.feedback.emailPlaceholder;
+                document.getElementById('fb-submit').textContent = t.feedback.submit;
+                document.getElementById('fb-cancel').textContent = t.feedback.cancel;
             });
         });
     </script>
