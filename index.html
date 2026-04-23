@@ -293,17 +293,6 @@
             </div>
         </section>
 
-        <section class="section-shell">
-            <div class="space-y-4">
-                <p class="text-sm font-label tracking-label uppercase text-primary-ink/60">Descarga</p>
-                <p class="text-2xl leading-relaxed">Esta es una beta. La prueba diaria define el producto.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#" class="btn">Buy now — $500 lifetime</a>
-                    <button id="cta-download-lower" class="btn btn-secondary" onclick="openDlModal()">Download Windows — 60-day free trial</button>
-                </div>
-                <p class="text-sm text-primary-ink/60">Windows only. 60-day free trial, no credit card required.</p>
-            </div>
-        </section>
 
         <!-- Feedback modal -->
         <div id="fb-modal" role="dialog" aria-modal="true" aria-labelledby="fb-modal-title" onclick="closeFbModalOutside(event)" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(31,42,34,0.55);align-items:center;justify-content:center;">
@@ -346,7 +335,6 @@
         <footer class="pt-12 border-t border-transparent">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 text-sm text-primary-ink/80">
                 <div class="flex items-start gap-4">
-                    <img src="portrait-hat.webp" alt="Gombro illustration" class="w-24 h-24 sm:w-28 sm:h-28 object-cover bg-surface-low p-2" loading="lazy" />
                     <div class="space-y-1">
                         <p class="font-label tracking-label uppercase text-primary-ink">Gombro</p>
                         <p class="text-primary-ink/60">Built for writers, not for content.</p>
@@ -505,7 +493,6 @@
         const heroBody = document.getElementById('hero-body');
         const antiScope = document.getElementById('anti-scope');
         const ctaDownload = document.getElementById('cta-download');
-        const ctaDownloadLower = document.getElementById('cta-download-lower');
         const featuresTitle = document.getElementById('features-title');
         const featureItems = document.querySelectorAll('[data-feature]');
         const bioTitles = document.querySelectorAll('[data-i18n="bio-title"]');
@@ -609,7 +596,6 @@
                 heroBody.textContent = t.heroBody;
                 antiScope.textContent = `“${t.antiScope}”`;
                 ctaDownload.textContent = t.ctaDownload;
-                ctaDownloadLower.textContent = t.ctaDownload;
                 featuresTitle.textContent = t.featuresTitle;
                 featureItems.forEach(item => {
                     const idx = Number(item.getAttribute('data-feature'));
