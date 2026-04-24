@@ -4,8 +4,47 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gombro — Inventive writing</title>
-    <meta name="description" content="Gombro is a focused writing tool for fiction, poetry, and literary non-fiction. No AI, no clutter—just inventive writing." />
-    <meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, DOCX export, autosave" />
+    <meta name="description" content="Gombro — writing as invention. For fiction, poetry and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered. Built by Raul Lilloy." />
+    <meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, alternative to Scrivener, alternative to Ulysses, alternative to Word, inventive writing, literary editor, Raul Lilloy, Incubook, cut-up, Borgian algebra, paragraph editor" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rlilloy.github.io/Gombroweb/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gombro — Writing as invention" />
+    <meta property="og:description" content="A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered. Alternative to Scrivener, Ulysses, Word for literary writers." />
+    <meta property="og:url" content="https://rlilloy.github.io/Gombroweb/" />
+    <meta property="og:image" content="https://rlilloy.github.io/Gombroweb/media/1500x900.jpg" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gombro — Writing as invention" />
+    <meta name="twitter:description" content="Alternative to Scrivener, Ulysses and Word for fiction, poetry and literary non-fiction. No AI. Paragraph-centered." />
+    <meta name="twitter:image" content="https://rlilloy.github.io/Gombroweb/media/1500x900.jpg" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Gombro",
+      "operatingSystem": "Windows",
+      "applicationCategory": "WritingApp",
+      "description": "A writing environment for fiction, poetry, and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered.",
+      "author": {
+        "@type": "Person",
+        "name": "Raul Lilloy",
+        "url": "https://incubook.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "500",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -149,6 +188,7 @@
                     <div class="absolute top-4 right-4 text-[11px] font-label tracking-label text-primary-ink/50">Loops</div>
                 </div>
             </div>
+            </div>
         </section>
 
         <section class="section-shell">
@@ -167,7 +207,8 @@
 
         <section class="section-shell">
             <p id="comparison-title" class="text-sm font-label tracking-label uppercase text-primary-ink/60 mb-6">Gombro vs</p>
-            <div class="grid grid-cols-[1.3fr,0.9fr,0.9fr,0.9fr] gap-x-6 gap-y-4 text-base">
+            <div class="overflow-x-auto -mx-4 px-4">
+            <div class="grid grid-cols-[1.3fr,0.9fr,0.9fr,0.9fr] gap-x-6 gap-y-4 text-base min-w-[600px]">
                 <div id="comp-head-feature" class="font-label tracking-label text-primary-ink/70">Feature</div>
                 <div id="comp-head-gombro" class="font-label tracking-label text-primary-ink/70">Gombro</div>
                 <div id="comp-head-word" class="font-label tracking-label text-primary-ink/70">Ulysses</div>
@@ -353,7 +394,7 @@
                 }
             },
             es: {
-                heroSub: "Escritura inventiva, nada más.",
+                heroSub: "La escritura como invención",
                 heroBody: "Un entorno de escritura para ficción, poesía y no ficción literaria. No para textos académicos ni autoayuda.",
                 antiScope: "Gombro no está hecho para textos académicos ni autoayuda. Está hecho para escribir de forma inventiva.",
                 ctaDownload: "Descargar Windows",
@@ -408,7 +449,7 @@
                 }
             },
             pl: {
-                heroSub: "Pismo wynalazcze, nic więcej.",
+                heroSub: "Pisanie jako wynalazek",
                 heroBody: "Środowisko pisania dla prozy, poezji i literatury faktu. Nie do tekstów akademickich ani poradników.",
                 antiScope: "Gombro nie jest do tekstów akademickich ani poradników. Jest do twórczego pisania.",
                 ctaDownload: "Pobierz Windows",
