@@ -329,6 +329,10 @@
                 <form id="dl-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleDlSubmit(event)">
                     <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
                     <input type="hidden" name="_subject" value="Descarga" />
+                    <label style="display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',monospace;font-size:0.85rem;color:#1f2a22;margin-bottom:16px;cursor:pointer;">
+                        <input type="checkbox" name="updates" value="yes" checked style="width:16px;height:16px;cursor:pointer;" />
+                        I want to receive Gombro updates
+                    </label>
                     <button type="submit" class="btn" style="width:100%">Download now</button>
                 </form>
                 <p id="dl-modal-msg"></p>
