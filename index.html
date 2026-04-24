@@ -44,6 +44,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .copy{font-size:.88rem;opacity:.65;text-align:center;line-height:1.7}
 .price{font-size:.72rem;letter-spacing:.1em;opacity:.35;text-align:center;margin:-2px 0}
 .footnote{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.2;text-align:center}
+.lang-bar{width:420px;max-width:88vw;display:flex;justify-content:flex-end;gap:12px;padding-bottom:4px}
+.lang-btn{background:none;border:none;font-family:'Space Grotesk',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#FCF5E5;opacity:.3;cursor:crosshair;padding:0}
+.lang-btn.active{opacity:1}
 #dl-modal,#fb-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
 #dl-modal.open,#fb-modal.open{display:flex}
 .modal-box{background:#000;border:2px solid #FCF5E5;padding:36px 40px;max-width:380px;width:90%}
@@ -67,16 +70,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 </head>
 <body>
 <div class="wrap">
+  <div class="lang-bar">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="pl">PL</button>
+  </div>
   <div class="logo">GOMBRO</div>
-  <p class="tagline">Writing as invention</p>
+  <p class="tagline" id="tagline">Writing as invention</p>
   <div class="video-wrap">
     <img src="media/gombro.gif" alt="Gombro editor demo" />
   </div>
-  <p class="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
+  <p class="copy" id="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
   <div class="buttons">
-    <button class="btn" onclick="openDl()">Download &mdash; Windows &mdash; 60-day free trial</button>
-    <p class="price">USD 500 &mdash; lifetime license</p>
-    <button class="btn btn-outline" onclick="openFb()">&#x1F41A; Bugs &amp; Suggestions</button>
+    <button class="btn" id="btn-dl" onclick="openDl()">Download &mdash; Windows &mdash; 60-day free trial</button>
+    <p class="price" id="price-txt">USD 500 &mdash; lifetime license</p>
+    <button class="btn btn-outline" id="btn-fb" onclick="openFb()">&#x1F41A; Bugs &amp; Suggestions</button>
     <a class="reddit" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener">r/Gombro</a>
   </div>
   <p class="footnote">No AI &nbsp;&middot;&nbsp; Local only &nbsp;&middot;&nbsp; No cloud</p>
@@ -118,6 +126,69 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 </div>
 
 <script>
+const i18n = {
+  en: {
+    tagline: 'Writing as invention',
+    copy: 'No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.',
+    dl: 'Download — Windows — 60-day free trial',
+    price: 'USD 500 — lifetime license',
+    fb: '🐚 Bugs & Suggestions',
+    dlLabel: 'Free trial · Windows',
+    dlTitle: 'Download Gombro',
+    dlSub: '60-day free trial. No credit card.',
+    dlCheck: 'Receive Gombro updates',
+    dlBtn: 'Download now',
+    fbLabel: 'Feedback',
+    fbTitle: 'Bugs & Suggestions',
+    cancel: 'Cancel',
+    thanks: 'Thanks. I will read it.',
+    err: 'Something went wrong. Try again.'
+  },
+  es: {
+    tagline: 'La escritura como invención',
+    copy: 'Sin IA. Sin nube. Centrado en el párrafo.<br/>Para ficción, poesía, no ficción literaria.',
+    dl: 'Descargar — Windows — 60 días gratis',
+    price: 'USD 500 — licencia de por vida',
+    fb: '🐚 Bugs y sugerencias',
+    dlLabel: 'Prueba gratuita · Windows',
+    dlTitle: 'Descargar Gombro',
+    dlSub: '60 días gratis. Sin tarjeta.',
+    dlCheck: 'Recibir actualizaciones de Gombro',
+    dlBtn: 'Descargar ahora',
+    fbLabel: 'Feedback',
+    fbTitle: 'Bugs y sugerencias',
+    cancel: 'Cancelar',
+    thanks: 'Gracias. Lo leo.',
+    err: 'Algo falló. Intentá de nuevo.'
+  },
+  pl: {
+    tagline: 'Pisanie jako wynalazek',
+    copy: 'Bez AI. Bez chmury. Skupiony na akapicie.<br/>Do prozy, poezji i literatury faktu.',
+    dl: 'Pobierz — Windows — 60 dni za darmo',
+    price: 'USD 500 — licencja dożotywotnia',
+    fb: '🐚 Błędy i sugestie',
+    dlLabel: 'Wersja próbna · Windows',
+    dlTitle: 'Pobierz Gombro',
+    dlSub: '60 dni za darmo. Bez karty.',
+    dlCheck: 'Otrzymuj aktualizacje Gombro',
+    dlBtn: 'Pobierz teraz',
+    fbLabel: 'Feedback',
+    fbTitle: 'Błędy i sugestie',
+    cancel: 'Anuluj',
+    thanks: 'Dzięki. Przeczytam.',
+    err: 'Coś poszło nie tak. Spróbuj ponownie.'
+  }
+};
+function setLang(lang) {
+  const t = i18n[lang];
+  document.getElementById('tagline').textContent = t.tagline;
+  document.getElementById('copy').innerHTML = t.copy;
+  document.getElementById('btn-dl').innerHTML = t.dl;
+  document.getElementById('price-txt').innerHTML = t.price;
+  document.getElementById('btn-fb').innerHTML = t.fb;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 function openDl(){document.getElementById('dl-modal').classList.add('open');document.querySelector('#dl-modal input[type=email]').focus();}
 function closeDl(){document.getElementById('dl-modal').classList.remove('open');document.getElementById('dl-msg').textContent='';document.getElementById('dl-form').reset();}
 function closeDlOut(e){if(e.target===document.getElementById('dl-modal'))closeDl();}
