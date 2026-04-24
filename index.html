@@ -33,7 +33,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .logo{font-family:'Press Start 2P',monospace;font-size:clamp(1.1rem,3.5vw,2rem);color:#FCF5E5;text-shadow:3px 3px #8B0000;letter-spacing:.04em;text-align:center}
 .tagline{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;opacity:.4;text-align:center}
 .video-wrap{width:420px;max-width:88vw;border:1px solid rgba(252,245,229,.15)}
-video{width:100%;display:block}
+.video-wrap img{width:100%;display:block}
 .buttons{display:flex;flex-direction:column;align-items:center;gap:10px;width:420px;max-width:88vw}
 .btn{display:flex;align-items:center;justify-content:center;width:100%;padding:11px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:#8B0000;color:#FCF5E5;border:none;cursor:crosshair;transition:none}
 .btn:hover{background:#6a0000;color:#FCF5E5}
@@ -70,9 +70,7 @@ video{width:100%;display:block}
   <div class="logo">GOMBRO</div>
   <p class="tagline">Writing as invention</p>
   <div class="video-wrap">
-    <video autoplay loop muted playsinline>
-      <source src="media/gombro.mp4" type="video/mp4" />
-    </video>
+    <img src="media/gombro.gif" alt="Gombro editor demo" />
   </div>
   <p class="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
   <div class="buttons">
