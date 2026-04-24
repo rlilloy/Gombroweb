@@ -1,665 +1,144 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gombro — Inventive writing</title>
-    <meta name="description" content="Gombro — writing as invention. For fiction, poetry and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered. Built by Raul Lilloy." />
-    <meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, alternative to Scrivener, alternative to Ulysses, alternative to Word, inventive writing, literary editor, Raul Lilloy, Incubook, cut-up, cutup, Borgian algebra, paragraph editor, creative writing, escritura creativa, escribir un libro, editor de texto, Borges, Joyce, Burroughs, William Burroughs, Jorge Luis Borges, James Joyce, escritura literaria, literary writing, write a novel, novel writing software, distraction-free writing, focused writing tool, pisanie kreatywne, edytor tekstu, pisanie powieści, literatura, oprogramowanie do pisania, narzędzie dla pisarzy, escritura inventiva, herramienta de escritura, poesía, ficción literaria, no ficción, dadaísmo, surrealismo, dadaism, surrealism, escritura experimental, experimental writing, Gombrowicz, Witold Gombrowicz, Ferdydurke" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://gombro.com/" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Gombro — Writing as invention" />
-    <meta property="og:description" content="A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered. Alternative to Scrivener, Ulysses, Word for literary writers." />
-    <meta property="og:url" content="https://gombro.com/" />
-    <meta property="og:image" content="https://gombro.com/media/1500x900.jpg" />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gombro — Writing as invention" />
-    <meta name="twitter:description" content="Alternative to Scrivener, Ulysses and Word for fiction, poetry and literary non-fiction. No AI. Paragraph-centered." />
-    <meta name="twitter:image" content="https://gombro.com/media/1500x900.jpg" />
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Gombro",
-      "operatingSystem": "Windows",
-      "applicationCategory": "WritingApp",
-      "description": "A writing environment for fiction, poetry, and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered.",
-      "author": {
-        "@type": "Person",
-        "name": "Raul Lilloy",
-        "url": "https://incubook.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "500",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        surface: "#fbf9f4",
-                        "surface-low": "#f5f3ee",
-                        "surface-high": "#eae8e3",
-                        primary: "#334537",
-                        "primary-ink": "#1f2a22",
-                        "primary-container": "#4a5d4e",
-                        tertiary: "#553a3e",
-                        outline: "rgba(31, 42, 34, 0.15)"
-                    },
-                    fontFamily: {
-                        serif: ["Noto Serif", "serif"],
-                        mono: ["Space Grotesk", "monospace"],
-                        label: ["Space Grotesk", "monospace"]
-                    },
-                    letterSpacing: {
-                        label: "0.08em"
-                    }
-                }
-            }
-        };
-    </script>
-    <style>
-        :root {
-            color-scheme: light;
-        }
-        * { border-radius: 0 !important; }
-        body {
-            background: #fbf9f4;
-            color: #1f2a22;
-            min-height: 100vh;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 22px;
-            font-family: "Space Grotesk", monospace;
-            font-size: 0.85rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            border: none;
-            background: #334537;
-            color: #ffffff;
-            transition: background 150ms ease, color 150ms ease;
-        }
-        .btn:hover { background: #4a5d4e; }
-        .btn-secondary {
-            background: transparent;
-            color: #1f2a22;
-            border: 1px solid rgba(31, 42, 34, 0.15);
-        }
-        .btn-secondary:hover { color: #334537; border-color: #334537; }
-        .ghost-chip {
-            padding: 8px 12px;
-            font-family: "Space Grotesk", monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #1f2a22;
-            background: #f5f3ee;
-            cursor: pointer;
-        }
-        .ghost-chip[aria-pressed="true"] { background: #eae8e3; }
-        .section-shell { padding: 64px 0; }
-        .no-line { box-shadow: inset 0 0 0 0 transparent; }
-        /* GIF demo */
-        .demo-gif { max-width: 680px; margin: 0 auto; display: block; }
-        /* Download modal */
-        #dl-modal {
-            display: none;
-            position: fixed; inset: 0; z-index: 100;
-            background: rgba(31,42,34,0.55);
-            align-items: center; justify-content: center;
-        }
-        #dl-modal.open { display: flex; }
-        #dl-modal-box {
-            background: #fbf9f4;
-            border: 1px solid rgba(31,42,34,0.15);
-            padding: 40px 44px;
-            max-width: 420px; width: 100%;
-        }
-        #dl-modal input[type="email"] {
-            width: 100%;
-            padding: 12px 14px;
-            font-family: "Space Grotesk", monospace;
-            font-size: 0.9rem;
-            border: 1px solid rgba(31,42,34,0.2);
-            background: #f5f3ee;
-            color: #1f2a22;
-            margin: 16px 0 20px;
-            outline: none;
-        }
-        #dl-modal input[type="email"]:focus { border-color: #334537; }
-        #dl-modal-msg { font-size: 0.8rem; color: #334537; margin-top: 12px; min-height: 1.2em; }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRK0R3NZ80"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ZRK0R3NZ80');
-    </script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gombro — Inventive writing</title>
+<meta name="description" content="Gombro — writing as invention. For fiction, poetry and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered. Built by Raul Lilloy." />
+<meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, alternative to Scrivener, alternative to Ulysses, alternative to Word, inventive writing, literary editor, Raul Lilloy, Incubook, cut-up, cutup, Borgian algebra, paragraph editor, creative writing, escritura creativa, escribir un libro, editor de texto, Borges, Joyce, Burroughs, William Burroughs, Jorge Luis Borges, James Joyce, escritura literaria, literary writing, write a novel, novel writing software, distraction-free writing, focused writing tool, pisanie kreatywne, edytor tekstu, pisanie powiesci, literatura, oprogramowanie do pisania, narzedzie dla pisarzy, escritura inventiva, herramienta de escritura, poesia, ficcion literaria, no ficcion, dadaismo, surrealismo, dadaism, surrealism, escritura experimental, experimental writing, Gombrowicz, Witold Gombrowicz, Ferdydurke" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gombro.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Gombro — Writing as invention" />
+<meta property="og:description" content="A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered. Alternative to Scrivener, Ulysses, Word for literary writers." />
+<meta property="og:url" content="https://gombro.com/" />
+<meta property="og:image" content="https://gombro.com/media/1500x900.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Gombro — Writing as invention" />
+<meta name="twitter:description" content="Alternative to Scrivener, Ulysses and Word for fiction, poetry and literary non-fiction. No AI. Paragraph-centered." />
+<meta name="twitter:image" content="https://gombro.com/media/1500x900.jpg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Gombro","operatingSystem":"Windows","applicationCategory":"WritingApp","description":"A writing environment for fiction, poetry, and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered.","author":{"@type":"Person","name":"Raul Lilloy","url":"https://incubook.com"},"offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
+body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',monospace;cursor:crosshair}
+@media(max-width:600px){body{padding:40px 0}}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:#8B0000;color:#fff}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#8B0000}::-webkit-scrollbar-track{background:transparent}
+.wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:32px 24px}
+.logo{font-family:'Press Start 2P',monospace;font-size:clamp(1.1rem,3.5vw,2rem);color:#FCF5E5;text-shadow:3px 3px #8B0000;letter-spacing:.04em;text-align:center}
+.tagline{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;opacity:.4;text-align:center}
+.video-wrap{width:420px;max-width:88vw;border:1px solid rgba(252,245,229,.15)}
+video{width:100%;display:block}
+.buttons{display:flex;flex-direction:column;align-items:center;gap:10px;width:420px;max-width:88vw}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:11px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:#8B0000;color:#FCF5E5;border:none;cursor:crosshair;transition:none}
+.btn:hover{background:#6a0000;color:#FCF5E5}
+.btn-outline{background:transparent;color:#FCF5E5;border:1px solid rgba(252,245,229,.45)}
+.btn-outline:hover{border-color:#FCF5E5}
+.reddit{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.32;text-decoration:none;color:#FCF5E5}
+.reddit:hover{opacity:.65}
+.copy{font-size:.88rem;opacity:.65;text-align:center;line-height:1.7}
+.price{font-size:.72rem;letter-spacing:.1em;opacity:.35;text-align:center;margin:-2px 0}
+.footnote{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.2;text-align:center}
+#dl-modal,#fb-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
+#dl-modal.open,#fb-modal.open{display:flex}
+.modal-box{background:#000;border:2px solid #FCF5E5;padding:36px 40px;max-width:380px;width:90%}
+.ml{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-bottom:10px}
+.mt{font-size:1.1rem;margin-bottom:14px}
+.ms{font-size:.78rem;opacity:.5;margin-bottom:16px}
+.modal-box input[type=email],.modal-box textarea{width:100%;padding:11px 14px;font-family:'Space Grotesk',monospace;font-size:.86rem;border:1px solid rgba(252,245,229,.3);background:#131313;color:#FCF5E5;outline:none;cursor:text;margin-bottom:10px}
+.modal-box textarea{resize:vertical;min-height:110px}
+.modal-box input[type=email]:focus,.modal-box textarea:focus{border-color:#FCF5E5}
+.chk{display:flex;align-items:center;gap:8px;font-size:.8rem;margin-bottom:16px;cursor:crosshair;opacity:.65}
+.modal-box input[type=checkbox]{accent-color:#8B0000;cursor:crosshair}
+.radios{display:flex;gap:16px;margin-bottom:12px;font-size:.82rem}
+.radios label{cursor:crosshair}
+.radios input{margin-right:4px;accent-color:#8B0000}
+.modal-box .btn{width:100%;margin-top:2px}
+.modal-msg{font-size:.75rem;color:#8B0000;margin-top:10px;min-height:1.1em}
+.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:#FCF5E5;cursor:crosshair;padding:0}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRK0R3NZ80"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRK0R3NZ80');</script>
 </head>
-<body class="font-serif selection:bg-primary selection:text-white">
-    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pb-24">
-        <header class="flex flex-col sm:flex-row items-start justify-between pt-12 pb-10 gap-8">
-            <div class="space-y-2">
-                <div class="flex items-center gap-3">
-                    <span class="text-sm font-label tracking-label text-primary-ink uppercase">Gombro</span>
-                    <span class="text-[11px] font-label tracking-label text-primary-ink/60">Beta</span>
-                </div>
-                <h1 class="leading-none" style="font-family: 'Press Start 2P', monospace; color: #706840; font-size: clamp(2.5rem, 8vw, 5rem); text-shadow: 3px 3px #3a3520;">GOMBRO</h1>
-                <p id="hero-sub" class="text-2xl sm:text-3xl text-primary-ink/80">Writing as invention</p>
-                <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
-                    <a href="https://www.paypal.com/ncp/payment/6HVZFP3EZ53R4" target="_blank" rel="noopener" class="btn">Buy now — USD 500 lifetime</a>
-                    <button onclick="openDlModal()" class="btn btn-secondary">Download Windows — 60-day free trial</button>
-                </div>
-            </div>
-            <div class="flex flex-col items-start sm:items-end gap-4">
-                <div class="flex items-center gap-3">
-                    <button id="fb-trigger" onclick="openFbModal()" class="btn" style="font-size:0.72rem;padding:9px 14px;background:#706840;">🐚 Tell me what you think of Gombro</button>
-                    <div class="flex gap-2" role="group" aria-label="Language switcher">
-                        <button class="ghost-chip" aria-pressed="true" data-lang="en">EN</button>
-                        <button class="ghost-chip" aria-pressed="false" data-lang="es">ES</button>
-                        <button class="ghost-chip" aria-pressed="false" data-lang="pl">PL</button>
-                    </div>
-                </div>
-                <video autoplay loop muted playsinline class="w-40 h-40 sm:w-56 sm:h-56 object-cover bg-surface-low p-2"><source src="media/gombroweb_small.mp4" type="video/mp4"></video>
-            </div>
-        </header>
+<body>
+<div class="wrap">
+  <div class="logo">GOMBRO</div>
+  <p class="tagline">Writing as invention</p>
+  <div class="video-wrap">
+    <video autoplay loop muted playsinline>
+      <source src="media/gombro.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <p class="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
+  <div class="buttons">
+    <button class="btn" onclick="openDl()">Download &mdash; Windows &mdash; 60-day free trial</button>
+    <p class="price">USD 500 &mdash; lifetime license</p>
+    <button class="btn btn-outline" onclick="openFb()">&#x1F41A; Bugs &amp; Suggestions</button>
+    <a class="reddit" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener">r/Gombro</a>
+  </div>
+  <p class="footnote">No AI &nbsp;&middot;&nbsp; Local only &nbsp;&middot;&nbsp; No cloud</p>
+</div>
 
+<div id="dl-modal" onclick="closeDlOut(event)">
+  <div class="modal-box">
+    <p class="ml">Free trial &middot; Windows</p>
+    <p class="mt">Download Gombro</p>
+    <p class="ms">60-day free trial. No credit card.</p>
+    <form id="dl-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleDl(event)">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+      <input type="hidden" name="_subject" value="Descarga" />
+      <label class="chk"><input type="checkbox" name="updates" value="yes" checked />Receive Gombro updates</label>
+      <button type="submit" class="btn" id="dl-submit">Download now</button>
+    </form>
+    <p class="modal-msg" id="dl-msg"></p>
+    <button class="cancel" onclick="closeDl()">Cancel</button>
+  </div>
+</div>
 
+<div id="fb-modal" onclick="closeFbOut(event)">
+  <div class="modal-box">
+    <p class="ml">Feedback</p>
+    <p class="mt">Bugs &amp; Suggestions</p>
+    <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFb(event)">
+      <div class="radios">
+        <label><input type="radio" name="tipo" value="bug" required />Bug</label>
+        <label><input type="radio" name="tipo" value="suggestion" />Suggestion</label>
+      </div>
+      <textarea name="mensaje" placeholder="Write here..." required></textarea>
+      <input type="email" name="email" placeholder="your@email.com (optional)" />
+      <input type="hidden" name="_subject" value="Feedback Gombro" />
+      <button type="submit" class="btn" id="fb-submit">Send</button>
+    </form>
+    <p class="modal-msg" id="fb-msg"></p>
+    <button class="cancel" onclick="closeFb()">Cancel</button>
+  </div>
+</div>
 
-        <section class="section-shell">
-            <div class="space-y-6">
-                <p class="text-sm font-label tracking-label uppercase text-primary-ink/60">Silent demo</p>
-                <div class="relative w-full bg-surface-low">
-                    <img class="demo-gif" src="media/gombro.gif" alt="Gombro demo" loading="lazy" />
-                    <div class="absolute top-4 right-4 text-[11px] font-label tracking-label text-primary-ink/50">Loops</div>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <section class="section-shell">
-            <div class="space-y-6">
-                <p id="features-title" class="text-sm font-label tracking-label uppercase text-primary-ink/60">Key features</p>
-                <img src="media/keyfeatnod.png" alt="Key features" style="max-width:100%;display:block;" loading="lazy" />
-            </div>
-        </section>
-
-        <section class="section-shell">
-            <div class="flex flex-wrap gap-4">
-                <a href="https://www.paypal.com/ncp/payment/6HVZFP3EZ53R4" target="_blank" rel="noopener" class="btn">Buy now — USD 500 lifetime</a>
-                <button onclick="openDlModal()" class="btn btn-secondary">Download Windows — 60-day free trial</button>
-            </div>
-        </section>
-
-        <section class="section-shell">
-            <p id="comparison-title" class="text-sm font-label tracking-label uppercase text-primary-ink/60 mb-6">Gombro vs</p>
-            <div class="overflow-x-auto -mx-4 px-4">
-            <div class="grid grid-cols-[1.3fr,0.9fr,0.9fr,0.9fr] gap-x-6 gap-y-4 text-base min-w-[600px]">
-                <div id="comp-head-feature" class="font-label tracking-label text-primary-ink/70">Feature</div>
-                <div id="comp-head-gombro" class="font-label tracking-label text-primary-ink/70">Gombro</div>
-                <div id="comp-head-word" class="font-label tracking-label text-primary-ink/70">Ulysses</div>
-                <div id="comp-head-scrivener" class="font-label tracking-label text-primary-ink/70">Scrivener</div>
-
-                <div class="py-2" data-comp-row="0" data-comp-col="label">Search</div>
-                <div class="py-2 bg-surface-low" data-comp-row="0" data-comp-col="gombro">Full-text; paragraph &amp; sentence view.</div>
-                <div class="py-2" data-comp-row="0" data-comp-col="word">Global find only.</div>
-                <div class="py-2" data-comp-row="0" data-comp-col="scrivener">Inspector search; no sentence mode.</div>
-
-                <div class="py-2" data-comp-row="1" data-comp-col="label">Collections</div>
-                <div class="py-2 bg-surface-low" data-comp-row="1" data-comp-col="gombro">Saved searches, one-click re-run.</div>
-                <div class="py-2" data-comp-row="1" data-comp-col="word">No collections.</div>
-                <div class="py-2" data-comp-row="1" data-comp-col="scrivener">Keywords only; no dynamic search.</div>
-
-                <div class="py-2" data-comp-row="2" data-comp-col="label">Cut-up / Shuffle</div>
-                <div class="py-2 bg-surface-low" data-comp-row="2" data-comp-col="gombro">Built-in Baraja + paragraph history.</div>
-                <div class="py-2" data-comp-row="2" data-comp-col="word">No.</div>
-                <div class="py-2" data-comp-row="2" data-comp-col="scrivener">No.</div>
-
-                <div class="py-2" data-comp-row="3" data-comp-col="label">Version history</div>
-                <div class="py-2 bg-surface-low" data-comp-row="3" data-comp-col="gombro">Per-paragraph, automatic, restorable.</div>
-                <div class="py-2" data-comp-row="3" data-comp-col="word">Track Changes only.</div>
-                <div class="py-2" data-comp-row="3" data-comp-col="scrivener">Snapshots; manual.</div>
-
-                <div class="py-2" data-comp-row="4" data-comp-col="label">Borgian Algebra</div>
-                <div class="py-2 bg-surface-low" data-comp-row="4" data-comp-col="gombro">Inline variant branching.</div>
-                <div class="py-2" data-comp-row="4" data-comp-col="word">No.</div>
-                <div class="py-2" data-comp-row="4" data-comp-col="scrivener">No.</div>
-
-                <div class="py-2" data-comp-row="5" data-comp-col="label">Export</div>
-                <div class="py-2 bg-surface-low" data-comp-row="5" data-comp-col="gombro">.docx and .md from explorer view.</div>
-                <div class="py-2" data-comp-row="5" data-comp-col="word">Save-as only.</div>
-                <div class="py-2" data-comp-row="5" data-comp-col="scrivener">Multi-step compile.</div>
-
-                <div class="py-2" data-comp-row="6" data-comp-col="label">Sentence Mode</div>
-                <div class="py-2 bg-surface-low" data-comp-row="6" data-comp-col="gombro">One sentence at a time — the rest hidden.</div>
-                <div class="py-2" data-comp-row="6" data-comp-col="word">No.</div>
-                <div class="py-2" data-comp-row="6" data-comp-col="scrivener">No.</div>
-
-                <div class="py-2" data-comp-row="7" data-comp-col="label">Daily Diary</div>
-                <div class="py-2 bg-surface-low" data-comp-row="7" data-comp-col="gombro">One session per day, Ctrl+D, literary date.</div>
-                <div class="py-2" data-comp-row="7" data-comp-col="word">No.</div>
-                <div class="py-2" data-comp-row="7" data-comp-col="scrivener">No.</div>
-
-                <div class="py-2" data-comp-row="8" data-comp-col="label">Schrödinger Mode</div>
-                <div class="py-2 bg-surface-low" data-comp-row="8" data-comp-col="gombro">Track undecided text — strikethroughs &amp; open variants.</div>
-                <div class="py-2" data-comp-row="8" data-comp-col="word">No.</div>
-                <div class="py-2" data-comp-row="8" data-comp-col="scrivener">No.</div>
-            </div>
-        </section>
-
-        <section class="section-shell">
-            <div class="grid grid-cols-1 md:grid-cols-[1.05fr,0.95fr] items-center gap-10">
-                <div class="space-y-3">
-                    <p data-i18n="bio-title" class="text-sm font-label tracking-label uppercase text-primary-ink/60">About Raul Lilloy</p>
-                    <p data-i18n="bio-body" class="text-lg leading-relaxed text-primary-ink/80">
-                        I wrote Kolón. I keep writing — I prefer writing to publishing. Since 2015 I run Incubook.com, a writing school. Gombro is the editor that fits me: no AI, local only, paragraph-centered, dark screen, sentence isolation, literary diary — inspired by Borges's manuscripts of El Aleph.
-                    </p>
-                </div>
-                <div class="flex justify-start md:justify-end">
-                    <img src="media/ChatGPT Image 4 abr 2026, 09_00_13 p.m..png" alt="Raul Lilloy" class="w-56 h-56 sm:w-64 sm:h-64 object-cover bg-surface-low p-2" loading="lazy" />
-                </div>
-            </div>
-        </section>
-
-
-
-        <section class="section-shell">
-            <p class="text-sm font-label tracking-label uppercase text-primary-ink/60 mb-6">Unverified testimonies</p>
-            <div class="space-y-4 text-lg leading-relaxed">
-                <p>“If I had known it, I would have rewritten Don Quixote.” — Miguel de Cervantes</p>
-                <p>“With Gombro, Waiting for Godot would have ended.” — Samuel Beckett</p>
-                <p>“Dadaism would have been something else with Gombro.” — Jacques Vaché</p>
-                <p>“I wrote half of Ferdydurke using Gombro.” — Witold Gombrowicz</p>
-                <p>“Beatriz Viterbo wrote her deceptions using Gombro.” — Jorge Luis Borges</p>
-                <p>“I would have written Finnegans Wake in 15 months instead of 15 years.” — James Joyce</p>
-            </div>
-        </section>
-
-
-        <!-- Feedback modal -->
-        <div id="fb-modal" role="dialog" aria-modal="true" aria-labelledby="fb-modal-title" onclick="closeFbModalOutside(event)" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(31,42,34,0.55);align-items:center;justify-content:center;">
-            <div style="background:#fbf9f4;border:1px solid rgba(31,42,34,0.15);padding:40px 44px;max-width:460px;width:100%;">
-                <p class="text-[11px] font-label tracking-label uppercase text-primary-ink/50">Feedback</p>
-                <p id="fb-modal-title" class="text-xl mt-2 mb-4">Tell me what you think of Gombro</p>
-                <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFbSubmit(event)">
-                    <div class="flex gap-2 mb-4">
-                        <label style="cursor:pointer"><input type="radio" name="tipo" value="bug" required style="margin-right:4px">Bug</label>
-                        <label style="cursor:pointer"><input type="radio" name="tipo" value="idea" style="margin-right:4px">Idea</label>
-                        <label id="fb-label-exp" style="cursor:pointer"><input type="radio" name="tipo" value="experience" style="margin-right:4px">Experience</label>
-                    </div>
-                    <textarea id="fb-textarea" name="mensaje" rows="4" placeholder="Write here..." required style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;resize:vertical;outline:none;margin-bottom:12px;"></textarea>
-                    <input id="fb-email-input" type="email" name="email" placeholder="your@email.com (optional)" style="width:100%;padding:12px 14px;font-family:'Space Grotesk',monospace;font-size:0.9rem;border:1px solid rgba(31,42,34,0.2);background:#f5f3ee;color:#1f2a22;outline:none;margin-bottom:20px;" />
-                    <input type="hidden" name="_subject" value="Feedback Gombro" />
-                    <button id="fb-submit" type="submit" class="btn" style="width:100%">Send</button>
-                </form>
-                <p id="fb-modal-msg" style="font-size:0.8rem;color:#334537;margin-top:12px;min-height:1.2em;"></p>
-                <button id="fb-cancel" onclick="closeFbModal()" class="text-[11px] font-label tracking-label uppercase text-primary-ink/40 mt-4" style="background:none;border:none;cursor:pointer;padding:0">Cancel</button>
-            </div>
-        </div>
-
-        <!-- Download modal -->
-        <div id="dl-modal" role="dialog" aria-modal="true" aria-labelledby="dl-modal-title" onclick="closeDlModalOutside(event)">
-            <div id="dl-modal-box">
-                <p class="text-[11px] font-label tracking-label uppercase text-primary-ink/50">Free trial · Windows</p>
-                <p id="dl-modal-title" class="text-xl mt-2 mb-1">Download Gombro</p>
-                <p class="text-sm text-primary-ink/60">60-day free trial. No credit card. The download starts immediately.</p>
-                <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io) -->
-                <form id="dl-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleDlSubmit(event)">
-                    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
-                    <input type="hidden" name="_subject" value="Descarga" />
-                    <label style="display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',monospace;font-size:0.85rem;color:#1f2a22;margin-bottom:16px;cursor:pointer;">
-                        <input type="checkbox" name="updates" value="yes" checked style="width:16px;height:16px;cursor:pointer;" />
-                        I want to receive Gombro updates
-                    </label>
-                    <button type="submit" class="btn" style="width:100%">Download now</button>
-                </form>
-                <p id="dl-modal-msg"></p>
-                <button onclick="closeDlModal()" class="text-[11px] font-label tracking-label uppercase text-primary-ink/40 mt-4" style="background:none;border:none;cursor:pointer;padding:0">Cancel</button>
-            </div>
-        </div>
-
-        <footer class="pt-12 border-t border-transparent">
-            <div class="flex flex-col items-center gap-8 text-sm text-primary-ink/80">
-                <img src="70207500_2387824741544600_1882390501190008832_n.jpg" alt="Raul Lilloy" style="max-width:480px;width:100%;display:block;" loading="lazy" />
-                <a href="https://incubook.com" target="_blank" rel="noopener" class="font-label tracking-label uppercase text-primary-ink/70 hover:text-primary-ink transition-colors" id="incubook-link">Incubook.com — Literary Workshop / Taller literario / Warsztaty literackie</a>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        const copy = {
-            en: {
-                heroSub: "Writing as invention",
-                heroBody: "Editor centrado en la ocurrencia del párrafo y su reinvención.",
-                antiScope: "Gombro is not made for academic texts or self-help. It is made for inventive writing.",
-                ctaDownload: "Download Windows",
-                featuresTitle: "Key features",
-                features: [
-                    "Borgian Algebra — write with open variants inline. No other writing tool does this.",
-                    "Cut-up (Baraja) — shuffle paragraphs with chance. Undo anytime.",
-                    "Projects → Sessions → Paragraphs → Versions. A structure built for literary writing.",
-                    "Full-text search by paragraph and sentence.",
-                    "Saved collections — one click to re-run any search.",
-                    "Per-paragraph version history — every draft recoverable.",
-                    "Sentence isolation mode — one sentence at a time.",
-                    "Session post-it notes — anchored to each session (F4).",
-                    "Graph view — map paragraph relationships visually.",
-                    "Hashtags — tag paragraphs, find them instantly.",
-                    "Command-driven interface. No toolbars, no menus.",
-                    "Import .docx, .md, .txt — each section becomes a session.",
-                    "Export to .docx or .md from the explorer.",
-                    "Zen mode — full screen, no chrome."
-                ],
-                bioTitle: "About Raul Lilloy",
-                bioBody: "I wrote Kolón. I keep writing — I prefer writing to publishing. Since 2015 I run Incubook.com, a writing school. Gombro is the editor that fits me: no AI, local only, paragraph-centered, dark screen, sentence isolation, literary diary — inspired by Borges's manuscripts of El Aleph.",
-                comparisonTitle: "Gombro vs",
-                comparisonHeaders: { feature: "Feature", gombro: "Gombro", word: "Ulysses", scrivener: "Scrivener" },
-                comparisonRows: [
-                    { label: "Search", gombro: "Full-text; paragraph & sentence view.", word: "Full-text search; no paragraph or sentence view.", scrivener: "Inspector search; no sentence mode." },
-                    { label: "Collections", gombro: "Saved searches, one-click re-run.", word: "No saved search collections.", scrivener: "Keywords only; no dynamic search." },
-                    { label: "Cut-up / Shuffle", gombro: "Built-in Baraja + paragraph history.", word: "No.", scrivener: "No." },
-                    { label: "Version history", gombro: "Per-paragraph, automatic, restorable.", word: "No paragraph history.", scrivener: "Snapshots; manual." },
-                    { label: "Borgian Algebra", gombro: "Inline variant branching.", word: "No.", scrivener: "No." },
-                    { label: "Export", gombro: ".docx and .md from explorer view.", word: "Export via share sheet only.", scrivener: "Multi-step compile." },
-                    { label: "Sentence Mode", gombro: "One sentence at a time — the rest hidden.", word: "No.", scrivener: "No." },
-                    { label: "Daily Diary", gombro: "One session per day, Ctrl+D, literary date.", word: "No.", scrivener: "No." },
-                    { label: "Schrödinger Mode", gombro: "Track undecided text — strikethroughs & open variants.", word: "No.", scrivener: "No." }
-                ],
-                feedback: {
-                    trigger: "Tell me what you think of Gombro",
-                    title: "Tell me what you think of Gombro",
-                    expLabel: "Experience",
-                    placeholder: "Write here...",
-                    emailPlaceholder: "your@email.com (optional)",
-                    submit: "Send",
-                    cancel: "Cancel",
-                    ok: "Thanks. I'll read it.",
-                    err: "Something went wrong. Try again."
-                },
-                links: {
-                    instagram: "[IG] Instagram",
-                    youtube: "[YT] YouTube",
-                    githubPersonal: "[GH*] Personal",
-                    email: "[Mail] Email"
-                }
-            },
-            es: {
-                heroSub: "La escritura como invención",
-                heroBody: "Un entorno de escritura para ficción, poesía y no ficción literaria. No para textos académicos ni autoayuda.",
-                antiScope: "Gombro no está hecho para textos académicos ni autoayuda. Está hecho para escribir de forma inventiva.",
-                ctaDownload: "Descargar Windows",
-                featuresTitle: "Características clave",
-                features: [
-                    "Álgebra Borgiana — escribí con variantes abiertas inline. Ningún otro editor hace esto.",
-                    "Cut-up (Baraja) — mezclá párrafos con el azar. Deshacé cuando quieras.",
-                    "Proyectos → Sesiones → Párrafos → Versiones. Una estructura para la escritura literaria.",
-                    "Búsqueda en texto completo por párrafo y frase.",
-                    "Colecciones guardadas — un clic para relanzar cualquier búsqueda.",
-                    "Historial de versiones por párrafo — cada borrador recuperable.",
-                    "Modo de aislamiento de frases — una frase a la vez.",
-                    "Post-it de sesión — anclado a cada sesión (F4).",
-                    "Vista de grafo — mapeá relaciones entre párrafos visualmente.",
-                    "Hashtags — etiquetá párrafos, encontralos al instante.",
-                    "Interfaz de comandos. Sin barras de herramientas, sin menús.",
-                    "Importar .docx, .md, .txt — cada sección se convierte en sesión.",
-                    "Exportación a .docx o .md desde el explorador.",
-                    "Modo zen — pantalla completa, sin distracciones."
-                ],
-                bioTitle: "Sobre Raul Lilloy",
-                bioBody: "Escribo, escribí Kolón, sigo escribiendo (me gusta más escribir que publicar). Tengo una academia de escritura desde 2015, Incubook.com. Gombro es el editor que se ajusta a mis deseos: sin IA, solo en mi PC, centrado en el párrafo, pantalla negra, aislamiento de frases, diario literario — inspirado en los manuscritos de El Aleph de Borges.",
-                comparisonTitle: "Gombro vs",
-                comparisonHeaders: { feature: "Característica", gombro: "Gombro", word: "Ulysses", scrivener: "Scrivener" },
-                comparisonRows: [
-                    { label: "Búsqueda", gombro: "Texto completo; vista por párrafo y frase.", word: "Buscar global solamente.", scrivener: "Inspector; sin modo de frase." },
-                    { label: "Colecciones", gombro: "Búsquedas guardadas, un clic para relanzar.", word: "Sin colecciones.", scrivener: "Solo palabras clave; sin búsqueda dinámica." },
-                    { label: "Cut-up / Barajar", gombro: "Baraja integrada + historial de párrafos.", word: "No.", scrivener: "No." },
-                    { label: "Historial de versiones", gombro: "Por párrafo, automático, restaurable.", word: "Solo control de cambios.", scrivener: "Snapshots; manual." },
-                    { label: "Álgebra Borgiana", gombro: "Variantes inline en el texto.", word: "No.", scrivener: "No." },
-                    { label: "Exportación", gombro: ".docx y .md desde el explorador.", word: "Guardar como cada vez.", scrivener: "Compilación en varios pasos." },
-                    { label: "Modo frase", gombro: "Una frase a la vez — el resto, oculto.", word: "No.", scrivener: "No." },
-                    { label: "Diario diario", gombro: "Una sesión por día, Ctrl+D, fecha literaria.", word: "No.", scrivener: "No." },
-                    { label: "Modo Schrödinger", gombro: "Texto indeciso — tachados y variantes abiertas.", word: "No.", scrivener: "No." }
-                ],
-                feedback: {
-                    trigger: "Decime qué te está pareciendo Gombro",
-                    title: "Decime qué te está pareciendo Gombro",
-                    expLabel: "Experiencia",
-                    placeholder: "Escribí acá...",
-                    emailPlaceholder: "tu@email.com (opcional)",
-                    submit: "Enviar",
-                    cancel: "Cancelar",
-                    ok: "Gracias. Lo leo.",
-                    err: "Algo falló. Intentá de nuevo."
-                },
-                links: {
-                    instagram: "[IG] Instagram",
-                    youtube: "[YT] YouTube",
-                    githubPersonal: "[GH*] Personal",
-                    email: "[Mail] Correo"
-                }
-            },
-            pl: {
-                heroSub: "Pisanie jako wynalazek",
-                heroBody: "Środowisko pisania dla prozy, poezji i literatury faktu. Nie do tekstów akademickich ani poradników.",
-                antiScope: "Gombro nie jest do tekstów akademickich ani poradników. Jest do twórczego pisania.",
-                ctaDownload: "Pobierz Windows",
-                featuresTitle: "Kluczowe funkcje",
-                features: [
-                    "Algebra Borgiańska — pisz z otwartymi wariantami inline. Żadne inne narzędzie tego nie robi.",
-                    "Cut-up (Baraja) — mieszaj akapity z przypadkiem. Cofnij kiedy chcesz.",
-                    "Projekty → Sesje → Akapity → Wersje. Struktura stworzona dla pisania literackiego.",
-                    "Wyszukiwanie pełnotekstowe według akapitu i zdania.",
-                    "Zapisane kolekcje — jedno kliknięcie, by uruchomić ponownie.",
-                    "Historia wersji akapitu — każdy szkic do odzyskania.",
-                    "Tryb izolacji zdań — jedno zdanie na raz.",
-                    "Post-it sesji — przypisany do każdej sesji (F4).",
-                    "Widok grafu — mapuj relacje między akapitami wizualnie.",
-                    "Hashtagi — oznaczaj akapity, znajdź je natychmiast.",
-                    "Interfejs poleceń. Bez pasków narzędzi, bez menu.",
-                    "Import .docx, .md, .txt — każda sekcja staje się sesją.",
-                    "Eksport do .docx lub .md z eksploratora.",
-                    "Tryb zen — pełny ekran, zero rozproszenia."
-                ],
-                bioTitle: "O Raulu Lilloy",
-                bioBody: "Napisałem Kolón. Piszę dalej — wolę pisać niż publikować. Prowadzę szkołę pisania Incubook.com od 2015. Gombro to edytor dopasowany do moich potrzeb: bez AI, lokalnie, skupiony na akapicie, ciemny ekran, izolacja zdań, dziennik literacki — zainspirowany rękopisami Borgesa.",
-                comparisonTitle: "Gombro vs",
-                comparisonHeaders: { feature: "Funkcja", gombro: "Gombro", word: "Ulysses", scrivener: "Scrivener" },
-                comparisonRows: [
-                    { label: "Wyszukiwanie", gombro: "Pełnotekstowe; widok akapitu i zdania.", word: "Tylko globalne wyszukiwanie.", scrivener: "Inspektor; bez trybu zdań." },
-                    { label: "Kolekcje", gombro: "Zapisane wyszukiwania, jedno kliknięcie.", word: "Brak kolekcji.", scrivener: "Tylko słowa kluczowe; bez dynamicznego wyszukiwania." },
-                    { label: "Cut-up / Mieszanie", gombro: "Wbudowana Baraja + historia akapitów.", word: "Nie.", scrivener: "Nie." },
-                    { label: "Historia wersji", gombro: "Na akapit, automatyczna, przywracalna.", word: "Tylko śledzenie zmian.", scrivener: "Migawki; ręcznie." },
-                    { label: "Algebra Borgiańska", gombro: "Warianty inline w tekście.", word: "Nie.", scrivener: "Nie." },
-                    { label: "Eksport", gombro: ".docx i .md z eksploratora.", word: "Zapisz jako za każdym razem.", scrivener: "Compile w wielu krokach." },
-                    { label: "Tryb zdań", gombro: "Jedno zdanie na raz — reszta ukryta.", word: "Nie.", scrivener: "Nie." },
-                    { label: "Dziennik dzienny", gombro: "Jedna sesja dziennie, Ctrl+D, literacka data.", word: "Nie.", scrivener: "Nie." },
-                    { label: "Tryb Schrödingera", gombro: "Niezdecydowany tekst — skreślenia i otwarte warianty.", word: "Nie.", scrivener: "Nie." }
-                ],
-                feedback: {
-                    trigger: "Co myślisz o Gombro?",
-                    title: "Co myślisz o Gombro?",
-                    expLabel: "Doświadczenie",
-                    placeholder: "Napisz tutaj...",
-                    emailPlaceholder: "twoj@email.com (opcjonalnie)",
-                    submit: "Wyślij",
-                    cancel: "Anuluj",
-                    ok: "Dzięki. Przeczytam.",
-                    err: "Coś poszło nie tak. Spróbuj ponownie."
-                },
-                links: {
-                    instagram: "[IG] Instagram",
-                    youtube: "[YT] YouTube",
-                    githubPersonal: "[GH*] Personalne",
-                    email: "[Mail] Email"
-                }
-            }
-        };
-
-        const langButtons = document.querySelectorAll('[data-lang]');
-        const heroSub = document.getElementById('hero-sub');
-        const heroBody = document.getElementById('hero-body');
-        const antiScope = document.getElementById('anti-scope');
-        const ctaDownload = document.getElementById('cta-download');
-        const featuresTitle = document.getElementById('features-title');
-        const featureItems = document.querySelectorAll('[data-feature]');
-        const bioTitles = document.querySelectorAll('[data-i18n="bio-title"]');
-        const bioBodies = document.querySelectorAll('[data-i18n="bio-body"]');
-        const compTitle = document.getElementById('comparison-title');
-        const compHeadFeature = document.getElementById('comp-head-feature');
-        const compHeadGombro = document.getElementById('comp-head-gombro');
-        const compHeadWord = document.getElementById('comp-head-word');
-        const compHeadScrivener = document.getElementById('comp-head-scrivener');
-        const compCells = document.querySelectorAll('[data-comp-row][data-comp-col]');
-        const linkInstagram = document.querySelector('[data-i18n="link-instagram"]');
-        const linkYouTube = document.querySelector('[data-i18n="link-youtube"]');
-        const linkGithubPersonal = document.querySelector('[data-i18n="link-github-personal"]');
-        const linkEmail = document.querySelector('[data-i18n="link-email"]');
-
-        // Feedback modal
-        function openFbModal() {
-            const m = document.getElementById('fb-modal');
-            m.style.display = 'flex';
-            m.querySelector('textarea').focus();
-        }
-        function closeFbModal() {
-            document.getElementById('fb-modal').style.display = 'none';
-            document.getElementById('fb-modal-msg').textContent = '';
-            document.getElementById('fb-form').reset();
-        }
-        function closeFbModalOutside(e) {
-            if (e.target === document.getElementById('fb-modal')) closeFbModal();
-        }
-        async function handleFbSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const msg = document.getElementById('fb-modal-msg');
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true; btn.textContent = '...';
-            try {
-                const res = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { Accept: 'application/json' }
-                });
-                const lang = document.documentElement.lang || 'en';
-                const fb = copy[lang] ? copy[lang].feedback : copy.en.feedback;
-                if (res.ok) {
-                    msg.textContent = fb.ok;
-                    form.reset(); btn.textContent = '✓';
-                } else { throw new Error(); }
-            } catch {
-                const lang = document.documentElement.lang || 'en';
-                const fb = copy[lang] ? copy[lang].feedback : copy.en.feedback;
-                msg.textContent = fb.err;
-                btn.disabled = false; btn.textContent = (copy[lang] || copy.en).feedback.submit;
-            }
-        }
-
-        // Download modal
-        function openDlModal() {
-            document.getElementById('dl-modal').classList.add('open');
-            document.querySelector('#dl-modal input[type="email"]').focus();
-        }
-        function closeDlModal() {
-            document.getElementById('dl-modal').classList.remove('open');
-            document.getElementById('dl-modal-msg').textContent = '';
-            document.getElementById('dl-form').reset();
-        }
-        function closeDlModalOutside(e) {
-            if (e.target === document.getElementById('dl-modal')) closeDlModal();
-        }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDlModal(); });
-
-        async function handleDlSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const msg = document.getElementById('dl-modal-msg');
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true;
-            btn.textContent = '...';
-            try {
-                const res = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { Accept: 'application/json' }
-                });
-                if (res.ok) {
-                    window.open('https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing', '_blank');
-                    msg.textContent = 'Starting download...';
-                    form.reset();
-                    btn.textContent = '✓';
-                } else {
-                    throw new Error();
-                }
-            } catch {
-                msg.textContent = 'Something went wrong. Try again.';
-                btn.disabled = false;
-                btn.textContent = 'Send download link';
-            }
-        }
-
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.getAttribute('data-lang');
-                langButtons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-                document.documentElement.lang = lang;
-                const t = copy[lang];
-                heroSub.textContent = t.heroSub;
-                heroBody.textContent = t.heroBody;
-                antiScope.textContent = `“${t.antiScope}”`;
-                ctaDownload.textContent = t.ctaDownload;
-                featuresTitle.textContent = t.featuresTitle;
-                featureItems.forEach(item => {
-                    const idx = Number(item.getAttribute('data-feature'));
-                    item.textContent = t.features[idx];
-                });
-                bioTitles.forEach(el => el.textContent = t.bioTitle);
-                bioBodies.forEach(el => el.textContent = t.bioBody);
-                compTitle.textContent = t.comparisonTitle;
-                compHeadFeature.textContent = t.comparisonHeaders.feature;
-                compHeadGombro.textContent = t.comparisonHeaders.gombro;
-                compHeadWord.textContent = t.comparisonHeaders.word;
-                compHeadScrivener.textContent = t.comparisonHeaders.scrivener;
-                compCells.forEach(cell => {
-                    const row = Number(cell.getAttribute('data-comp-row'));
-                    const col = cell.getAttribute('data-comp-col');
-                    cell.textContent = t.comparisonRows[row][col];
-                });
-                linkInstagram.textContent = t.links.instagram;
-                linkYouTube.textContent = t.links.youtube;
-                linkGithubPersonal.textContent = t.links.githubPersonal;
-                linkEmail.textContent = t.links.email;
-                document.getElementById('fb-trigger').textContent = t.feedback.trigger;
-                document.getElementById('fb-modal-title').textContent = t.feedback.title;
-                document.getElementById('fb-label-exp').childNodes[1].textContent = t.feedback.expLabel;
-                document.getElementById('fb-textarea').placeholder = t.feedback.placeholder;
-                document.getElementById('fb-email-input').placeholder = t.feedback.emailPlaceholder;
-                document.getElementById('fb-submit').textContent = t.feedback.submit;
-                document.getElementById('fb-cancel').textContent = t.feedback.cancel;
-            });
-        });
-    </script>
+<script>
+function openDl(){document.getElementById('dl-modal').classList.add('open');document.querySelector('#dl-modal input[type=email]').focus();}
+function closeDl(){document.getElementById('dl-modal').classList.remove('open');document.getElementById('dl-msg').textContent='';document.getElementById('dl-form').reset();}
+function closeDlOut(e){if(e.target===document.getElementById('dl-modal'))closeDl();}
+function openFb(){document.getElementById('fb-modal').classList.add('open');}
+function closeFb(){document.getElementById('fb-modal').classList.remove('open');document.getElementById('fb-msg').textContent='';document.getElementById('fb-form').reset();}
+function closeFbOut(e){if(e.target===document.getElementById('fb-modal'))closeFb();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDl();closeFb();}});
+async function handleDl(e){
+  e.preventDefault();const form=e.target;const msg=document.getElementById('dl-msg');const btn=document.getElementById('dl-submit');
+  btn.disabled=true;btn.textContent='...';
+  try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+  if(res.ok){window.open('https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing','_blank');msg.textContent='Starting download...';form.reset();btn.textContent='✓';}
+  else{throw new Error();}}catch{msg.textContent='Something went wrong. Try again.';btn.disabled=false;btn.textContent='Download now';}}
+async function handleFb(e){
+  e.preventDefault();const form=e.target;const msg=document.getElementById('fb-msg');const btn=document.getElementById('fb-submit');
+  btn.disabled=true;btn.textContent='...';
+  try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+  if(res.ok){msg.textContent='Thanks. I will read it.';form.reset();btn.textContent='✓';}
+  else{throw new Error();}}catch{msg.textContent='Something went wrong. Try again.';btn.disabled=false;btn.textContent='Send';}}
+</script>
 </body>
 </html>
