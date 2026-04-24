@@ -6,7 +6,7 @@
     <title>Gombro — Inventive writing</title>
     <meta name="description" content="Gombro is a focused writing tool for fiction, poetry, and literary non-fiction. No AI, no clutter—just inventive writing." />
     <meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, DOCX export, autosave" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -113,60 +113,33 @@
 </head>
 <body class="font-serif selection:bg-primary selection:text-white">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pb-24">
-        <header class="flex items-start justify-between pt-12 pb-10">
+        <header class="flex flex-col sm:flex-row items-start justify-between pt-12 pb-10 gap-8">
             <div class="space-y-2">
                 <div class="flex items-center gap-3">
                     <span class="text-sm font-label tracking-label text-primary-ink uppercase">Gombro</span>
                     <span class="text-[11px] font-label tracking-label text-primary-ink/60">Beta</span>
                 </div>
-                <h1 class="text-6xl sm:text-7xl font-serif leading-none">GOMBRO</h1>
-                <p id="hero-sub" class="text-2xl sm:text-3xl text-primary-ink/80">Inventive writing, nothing else.</p>
-                <p id="hero-body" class="max-w-xl text-base sm:text-lg text-primary-ink/70 leading-relaxed">
-                    A writing environment for fiction, poetry, and literary non-fiction. Not for academic texts or self-help.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-6">
-                    <a href="#" class="btn">Buy now — $500 lifetime</a>
-                    <button id="cta-download" class="btn btn-secondary" onclick="openDlModal()">Download Windows — 60-day free trial</button>
+                <h1 class="leading-none" style="font-family: 'Press Start 2P', monospace; color: #706840; font-size: clamp(2.5rem, 8vw, 5rem); text-shadow: 3px 3px #3a3520;">GOMBRO</h1>
+                <p id="hero-sub" class="text-2xl sm:text-3xl text-primary-ink/80">Writing as invention</p>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
+                    <a href="https://www.paypal.com/ncp/payment/6HVZFP3EZ53R4" target="_blank" rel="noopener" class="btn">Buy now — USD 500 lifetime</a>
+                    <a href="https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-secondary">Download Windows — 60-day free trial</a>
                 </div>
             </div>
-            <div class="hidden sm:flex flex-col items-center justify-start pt-1">
-                <button id="fb-trigger" onclick="openFbModal()" class="text-[11px] font-label tracking-label text-primary-ink/40 hover:text-primary-ink/70 transition-colors" style="background:none;border:none;cursor:pointer;padding:0;letter-spacing:0.08em;text-transform:uppercase">🐚 Tell me — Gombro</button>
-            </div>
-            <div class="flex flex-col items-end gap-3">
-                <div class="flex gap-2" role="group" aria-label="Language switcher">
-                    <button class="ghost-chip" aria-pressed="true" data-lang="en">EN</button>
-                    <button class="ghost-chip" aria-pressed="false" data-lang="es">ES</button>
-                    <button class="ghost-chip" aria-pressed="false" data-lang="pl">PL</button>
+            <div class="flex flex-col items-start sm:items-end gap-4">
+                <div class="flex items-center gap-3">
+                    <button id="fb-trigger" onclick="openFbModal()" class="btn" style="font-size:0.72rem;padding:9px 14px;background:#706840;">🐚 Tell me what you think of Gombro</button>
+                    <div class="flex gap-2" role="group" aria-label="Language switcher">
+                        <button class="ghost-chip" aria-pressed="true" data-lang="en">EN</button>
+                        <button class="ghost-chip" aria-pressed="false" data-lang="es">ES</button>
+                        <button class="ghost-chip" aria-pressed="false" data-lang="pl">PL</button>
+                    </div>
                 </div>
-                <span class="text-[11px] font-label tracking-label text-primary-ink/50">Cloudflare static · No analytics</span>
-                <img src="media/1500x900.jpg" alt="Raul Lilloy" class="w-48 h-48 sm:w-56 sm:h-56 object-cover bg-surface-low p-2" loading="lazy" />
+                <video autoplay loop muted playsinline class="w-40 h-40 sm:w-56 sm:h-56 object-cover bg-surface-low p-2"><source src="media/gombroweb_small.mp4" type="video/mp4"></video>
             </div>
         </header>
 
-        <section class="section-shell">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-4">
-                    <p class="text-sm font-label tracking-label uppercase text-primary-ink/60">Scope</p>
-                    <p id="anti-scope" class="text-2xl leading-relaxed">
-                        “Gombro is not made for academic texts or self-help. It is made for inventive writing.”
-                    </p>
-                    <div class="space-y-2 text-base text-primary-ink/70">
-                        <p>No AI suggestions. No rewriting. No grammar correction. No optimization. No noise.</p>
-                        <p class="font-label text-[11px] tracking-label uppercase text-primary-ink/60">You write. That is enough.</p>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="text-sm font-label tracking-label uppercase text-primary-ink/60">Modes</p>
-                    <ul class="space-y-4 text-lg leading-relaxed">
-                        <li>Sentence-based writing; <span class="font-label text-[12px] tracking-label">'.'</span> settles, <span class="font-label text-[12px] tracking-label">Enter</span> breathes.</li>
-                        <li>Paragraph-first editing with atomic autosave.</li>
-                        <li>Bilingual toggle (EN / ES / PL) without reload.</li>
-                        <li>Focused search by paragraph and sentence.</li>
-                        <li>DOCX export per project, clean folders.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+
 
         <section class="section-shell">
             <div class="space-y-6">
@@ -181,22 +154,14 @@
         <section class="section-shell">
             <div class="space-y-6">
                 <p id="features-title" class="text-sm font-label tracking-label uppercase text-primary-ink/60">Key features</p>
-                <ul class="space-y-3 text-lg leading-relaxed">
-                    <li data-feature="0">Borgian Algebra — write with open variants inline. No other writing tool does this.</li>
-                    <li data-feature="1">Cut-up (Baraja) — shuffle paragraphs with chance. Undo anytime.</li>
-                    <li data-feature="2">Projects → Sessions → Paragraphs → Versions. A structure built for literary writing.</li>
-                    <li data-feature="3">Full-text search by paragraph and sentence.</li>
-                    <li data-feature="4">Saved collections — one click to re-run any search.</li>
-                    <li data-feature="5">Per-paragraph version history — every draft recoverable.</li>
-                    <li data-feature="6">Sentence isolation mode — one sentence at a time.</li>
-                    <li data-feature="7">Session post-it notes — anchored to each session (F4).</li>
-                    <li data-feature="8">Graph view — map paragraph relationships visually.</li>
-                    <li data-feature="9">Hashtags — tag paragraphs, find them instantly.</li>
-                    <li data-feature="10">Command-driven interface. No toolbars, no menus.</li>
-                    <li data-feature="11">Import .docx, .md, .txt — each section becomes a session.</li>
-                    <li data-feature="12">Export to .docx or .md from the explorer.</li>
-                    <li data-feature="13">Zen mode — full screen, no chrome.</li>
-                </ul>
+                <img src="media/keyfeatnod.png" alt="Key features" style="max-width:100%;display:block;" loading="lazy" />
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="flex flex-wrap gap-4">
+                <a href="https://www.paypal.com/ncp/payment/6HVZFP3EZ53R4" target="_blank" rel="noopener" class="btn">Buy now — USD 500 lifetime</a>
+                <a href="https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-secondary">Download Windows — 60-day free trial</a>
             </div>
         </section>
 
@@ -205,7 +170,7 @@
             <div class="grid grid-cols-[1.3fr,0.9fr,0.9fr,0.9fr] gap-x-6 gap-y-4 text-base">
                 <div id="comp-head-feature" class="font-label tracking-label text-primary-ink/70">Feature</div>
                 <div id="comp-head-gombro" class="font-label tracking-label text-primary-ink/70">Gombro</div>
-                <div id="comp-head-word" class="font-label tracking-label text-primary-ink/70">Word</div>
+                <div id="comp-head-word" class="font-label tracking-label text-primary-ink/70">Ulysses</div>
                 <div id="comp-head-scrivener" class="font-label tracking-label text-primary-ink/70">Scrivener</div>
 
                 <div class="py-2" data-comp-row="0" data-comp-col="label">Search</div>
@@ -260,7 +225,7 @@
                 <div class="space-y-3">
                     <p data-i18n="bio-title" class="text-sm font-label tracking-label uppercase text-primary-ink/60">About Raul Lilloy</p>
                     <p data-i18n="bio-body" class="text-lg leading-relaxed text-primary-ink/80">
-                        Editor who built Gombro for himself. Writes and teaches writing at incubook.com. Author of the novel Kolón.
+                        I wrote Kolón. I keep writing — I prefer writing to publishing. Since 2015 I run Incubook.com, a writing school. Gombro is the editor that fits me: no AI, local only, paragraph-centered, dark screen, sentence isolation, literary diary — inspired by Borges's manuscripts of El Aleph.
                     </p>
                 </div>
                 <div class="flex justify-start md:justify-end">
@@ -269,19 +234,7 @@
             </div>
         </section>
 
-        <section class="section-shell">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-4">
-                    <p class="text-sm font-label tracking-label uppercase text-primary-ink/60">Not for everyone</p>
-                    <p class="text-2xl leading-relaxed">Not for academic texts. Not for self-help. Not for structured argument.</p>
-                    <p class="text-base text-primary-ink/70">For writing that does not obey.</p>
-                </div>
-                <div class="space-y-4">
-                    <p class="text-sm font-label tracking-label uppercase text-primary-ink/60">Philosophy</p>
-                    <p class="text-2xl leading-relaxed">“Writing resists improvement. It exists between form and its deformation.”</p>
-                </div>
-            </div>
-        </section>
+
 
         <section class="section-shell">
             <p class="text-sm font-label tracking-label uppercase text-primary-ink/60 mb-6">Unverified testimonies</p>
@@ -300,7 +253,7 @@
         <div id="fb-modal" role="dialog" aria-modal="true" aria-labelledby="fb-modal-title" onclick="closeFbModalOutside(event)" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(31,42,34,0.55);align-items:center;justify-content:center;">
             <div style="background:#fbf9f4;border:1px solid rgba(31,42,34,0.15);padding:40px 44px;max-width:460px;width:100%;">
                 <p class="text-[11px] font-label tracking-label uppercase text-primary-ink/50">Feedback</p>
-                <p id="fb-modal-title" class="text-xl mt-2 mb-4">Tell me your experience with Gombro</p>
+                <p id="fb-modal-title" class="text-xl mt-2 mb-4">Tell me what you think of Gombro</p>
                 <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFbSubmit(event)">
                     <div class="flex gap-2 mb-4">
                         <label style="cursor:pointer"><input type="radio" name="tipo" value="bug" required style="margin-right:4px">Bug</label>
@@ -335,21 +288,9 @@
         </div>
 
         <footer class="pt-12 border-t border-transparent">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 text-sm text-primary-ink/80">
-                <div class="flex items-start gap-4">
-                    <div class="space-y-1">
-                        <p class="font-label tracking-label uppercase text-primary-ink">Gombro</p>
-                        <p class="text-primary-ink/60">Built for writers, not for content.</p>
-                        <p data-i18n="bio-title" class="text-[12px] font-label tracking-label uppercase text-primary-ink/70">About Raul Lilloy</p>
-                        <p data-i18n="bio-body" class="text-primary-ink/70 max-w-xl">Editor who built Gombro for himself. Writes and teaches writing at incubook.com. Author of the novel Kolón.</p>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-4 font-label tracking-label text-[12px] uppercase">
-                    <a class="underline" href="https://instagram.com/incubookai" target="_blank" rel="noopener" data-i18n="link-instagram">[IG] Instagram</a>
-                    <a class="underline" href="https://www.youtube.com/@IncubookAI" target="_blank" rel="noopener" data-i18n="link-youtube">[YT] YouTube</a>
-                    <a class="underline" href="https://github.com/rlilloy/rlilloy.github.io" target="_blank" rel="noopener" data-i18n="link-github-personal">[GH*] Personal</a>
-                    <a class="underline" href="mailto:rlilloy@gmail.com" target="_blank" rel="noopener" data-i18n="link-email">[Mail] Email</a>
-                </div>
+            <div class="flex flex-col items-center gap-8 text-sm text-primary-ink/80">
+                <img src="70207500_2387824741544600_1882390501190008832_n.jpg" alt="Raul Lilloy" style="max-width:480px;width:100%;display:block;" loading="lazy" />
+                <a href="https://incubook.com" target="_blank" rel="noopener" class="font-label tracking-label uppercase text-primary-ink/70 hover:text-primary-ink transition-colors" id="incubook-link">Incubook.com — Literary Workshop / Taller literario / Warsztaty literackie</a>
             </div>
         </footer>
     </div>
@@ -357,8 +298,8 @@
     <script>
         const copy = {
             en: {
-                heroSub: "Inventive writing, nothing else.",
-                heroBody: "A writing environment for fiction, poetry, and literary non-fiction. Not for academic texts or self-help.",
+                heroSub: "Writing as invention",
+                heroBody: "Editor centrado en la ocurrencia del párrafo y su reinvención.",
                 antiScope: "Gombro is not made for academic texts or self-help. It is made for inventive writing.",
                 ctaDownload: "Download Windows",
                 featuresTitle: "Key features",
@@ -379,23 +320,23 @@
                     "Zen mode — full screen, no chrome."
                 ],
                 bioTitle: "About Raul Lilloy",
-                bioBody: "Editor who built Gombro for himself. Writes and teaches writing at incubook.com. Author of the novel Kolón.",
+                bioBody: "I wrote Kolón. I keep writing — I prefer writing to publishing. Since 2015 I run Incubook.com, a writing school. Gombro is the editor that fits me: no AI, local only, paragraph-centered, dark screen, sentence isolation, literary diary — inspired by Borges's manuscripts of El Aleph.",
                 comparisonTitle: "Gombro vs",
-                comparisonHeaders: { feature: "Feature", gombro: "Gombro", word: "Word", scrivener: "Scrivener" },
+                comparisonHeaders: { feature: "Feature", gombro: "Gombro", word: "Ulysses", scrivener: "Scrivener" },
                 comparisonRows: [
-                    { label: "Search", gombro: "Full-text; paragraph & sentence view.", word: "Global find only.", scrivener: "Inspector search; no sentence mode." },
-                    { label: "Collections", gombro: "Saved searches, one-click re-run.", word: "No collections.", scrivener: "Keywords only; no dynamic search." },
+                    { label: "Search", gombro: "Full-text; paragraph & sentence view.", word: "Full-text search; no paragraph or sentence view.", scrivener: "Inspector search; no sentence mode." },
+                    { label: "Collections", gombro: "Saved searches, one-click re-run.", word: "No saved search collections.", scrivener: "Keywords only; no dynamic search." },
                     { label: "Cut-up / Shuffle", gombro: "Built-in Baraja + paragraph history.", word: "No.", scrivener: "No." },
-                    { label: "Version history", gombro: "Per-paragraph, automatic, restorable.", word: "Track Changes only.", scrivener: "Snapshots; manual." },
+                    { label: "Version history", gombro: "Per-paragraph, automatic, restorable.", word: "No paragraph history.", scrivener: "Snapshots; manual." },
                     { label: "Borgian Algebra", gombro: "Inline variant branching.", word: "No.", scrivener: "No." },
-                    { label: "Export", gombro: ".docx and .md from explorer view.", word: "Save-as only.", scrivener: "Multi-step compile." },
+                    { label: "Export", gombro: ".docx and .md from explorer view.", word: "Export via share sheet only.", scrivener: "Multi-step compile." },
                     { label: "Sentence Mode", gombro: "One sentence at a time — the rest hidden.", word: "No.", scrivener: "No." },
                     { label: "Daily Diary", gombro: "One session per day, Ctrl+D, literary date.", word: "No.", scrivener: "No." },
                     { label: "Schrödinger Mode", gombro: "Track undecided text — strikethroughs & open variants.", word: "No.", scrivener: "No." }
                 ],
                 feedback: {
-                    trigger: "Tell me — Gombro",
-                    title: "Tell me your experience with Gombro",
+                    trigger: "Tell me what you think of Gombro",
+                    title: "Tell me what you think of Gombro",
                     expLabel: "Experience",
                     placeholder: "Write here...",
                     emailPlaceholder: "your@email.com (optional)",
@@ -434,9 +375,9 @@
                     "Modo zen — pantalla completa, sin distracciones."
                 ],
                 bioTitle: "Sobre Raul Lilloy",
-                bioBody: "Editor que hizo Gombro para sí mismo. Escribe y enseña a escribir en incubook.com. Autor de la novela Kolón.",
+                bioBody: "Escribo, escribí Kolón, sigo escribiendo (me gusta más escribir que publicar). Tengo una academia de escritura desde 2015, Incubook.com. Gombro es el editor que se ajusta a mis deseos: sin IA, solo en mi PC, centrado en el párrafo, pantalla negra, aislamiento de frases, diario literario — inspirado en los manuscritos de El Aleph de Borges.",
                 comparisonTitle: "Gombro vs",
-                comparisonHeaders: { feature: "Característica", gombro: "Gombro", word: "Word", scrivener: "Scrivener" },
+                comparisonHeaders: { feature: "Característica", gombro: "Gombro", word: "Ulysses", scrivener: "Scrivener" },
                 comparisonRows: [
                     { label: "Búsqueda", gombro: "Texto completo; vista por párrafo y frase.", word: "Buscar global solamente.", scrivener: "Inspector; sin modo de frase." },
                     { label: "Colecciones", gombro: "Búsquedas guardadas, un clic para relanzar.", word: "Sin colecciones.", scrivener: "Solo palabras clave; sin búsqueda dinámica." },
@@ -449,8 +390,8 @@
                     { label: "Modo Schrödinger", gombro: "Texto indeciso — tachados y variantes abiertas.", word: "No.", scrivener: "No." }
                 ],
                 feedback: {
-                    trigger: "Contame tu experiencia con Gombro",
-                    title: "Contame tu experiencia con Gombro",
+                    trigger: "Decime qué te está pareciendo Gombro",
+                    title: "Decime qué te está pareciendo Gombro",
                     expLabel: "Experiencia",
                     placeholder: "Escribí acá...",
                     emailPlaceholder: "tu@email.com (opcional)",
@@ -489,9 +430,9 @@
                     "Tryb zen — pełny ekran, zero rozproszenia."
                 ],
                 bioTitle: "O Raulu Lilloy",
-                bioBody: "Redaktor, który stworzył Gombro dla siebie. Pisze i uczy pisania na incubook.com. Autor powieści Kolón.",
+                bioBody: "Napisałem Kolón. Piszę dalej — wolę pisać niż publikować. Prowadzę szkołę pisania Incubook.com od 2015. Gombro to edytor dopasowany do moich potrzeb: bez AI, lokalnie, skupiony na akapicie, ciemny ekran, izolacja zdań, dziennik literacki — zainspirowany rękopisami Borgesa.",
                 comparisonTitle: "Gombro vs",
-                comparisonHeaders: { feature: "Funkcja", gombro: "Gombro", word: "Word", scrivener: "Scrivener" },
+                comparisonHeaders: { feature: "Funkcja", gombro: "Gombro", word: "Ulysses", scrivener: "Scrivener" },
                 comparisonRows: [
                     { label: "Wyszukiwanie", gombro: "Pełnotekstowe; widok akapitu i zdania.", word: "Tylko globalne wyszukiwanie.", scrivener: "Inspektor; bez trybu zdań." },
                     { label: "Kolekcje", gombro: "Zapisane wyszukiwania, jedno kliknięcie.", word: "Brak kolekcji.", scrivener: "Tylko słowa kluczowe; bez dynamicznego wyszukiwania." },
@@ -504,8 +445,8 @@
                     { label: "Tryb Schrödingera", gombro: "Niezdecydowany tekst — skreślenia i otwarte warianty.", word: "Nie.", scrivener: "Nie." }
                 ],
                 feedback: {
-                    trigger: "Opowiedz mi o swoim doświadczeniu z Gombro",
-                    title: "Opowiedz mi o swoim doświadczeniu z Gombro",
+                    trigger: "Co myślisz o Gombro?",
+                    title: "Co myślisz o Gombro?",
                     expLabel: "Doświadczenie",
                     placeholder: "Napisz tutaj...",
                     emailPlaceholder: "twoj@email.com (opcjonalnie)",
