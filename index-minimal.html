@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gombro — Inventive writing</title>
+<meta name="description" content="Gombro — writing as invention. For fiction, poetry and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered. Built by Raul Lilloy." />
+<meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, alternative to Scrivener, alternative to Ulysses, alternative to Word, inventive writing, literary editor, Raul Lilloy, Incubook, cut-up, cutup, Borgian algebra, paragraph editor, creative writing, escritura creativa, escribir un libro, editor de texto, Borges, Joyce, Burroughs, William Burroughs, Jorge Luis Borges, James Joyce, escritura literaria, literary writing, write a novel, novel writing software, distraction-free writing, focused writing tool, pisanie kreatywne, edytor tekstu, pisanie powiesci, literatura, oprogramowanie do pisania, narzedzie dla pisarzy, escritura inventiva, herramienta de escritura, poesia, ficcion literaria, no ficcion, dadaismo, surrealismo, dadaism, surrealism, escritura experimental, experimental writing, Gombrowicz, Witold Gombrowicz, Ferdydurke" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gombro.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Gombro — Writing as invention" />
+<meta property="og:description" content="A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered. Alternative to Scrivener, Ulysses, Word for literary writers." />
+<meta property="og:url" content="https://gombro.com/" />
+<meta property="og:image" content="https://gombro.com/media/1500x900.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Gombro — Writing as invention" />
+<meta name="twitter:description" content="Alternative to Scrivener, Ulysses and Word for fiction, poetry and literary non-fiction. No AI. Paragraph-centered." />
+<meta name="twitter:image" content="https://gombro.com/media/1500x900.jpg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Gombro","operatingSystem":"Windows","applicationCategory":"WritingApp","description":"A writing environment for fiction, poetry, and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered.","author":{"@type":"Person","name":"Raul Lilloy","url":"https://incubook.com"},"offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
+body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',monospace;cursor:crosshair}
+@media(max-width:600px){body{padding:40px 0}}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:#8B0000;color:#fff}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#8B0000}::-webkit-scrollbar-track{background:transparent}
+.wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:32px 24px}
+.logo{font-family:'Press Start 2P',monospace;font-size:clamp(1.1rem,3.5vw,2rem);color:#FCF5E5;text-shadow:3px 3px #8B0000;letter-spacing:.04em;text-align:center}
+.tagline{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;opacity:.4;text-align:center}
+.video-wrap{width:420px;max-width:88vw;border:1px solid rgba(252,245,229,.15)}
+video{width:100%;display:block}
+.buttons{display:flex;flex-direction:column;align-items:center;gap:10px;width:420px;max-width:88vw}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:11px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:#8B0000;color:#FCF5E5;border:none;cursor:crosshair;transition:none}
+.btn:hover{background:#6a0000;color:#FCF5E5}
+.btn-outline{background:transparent;color:#FCF5E5;border:1px solid rgba(252,245,229,.45)}
+.btn-outline:hover{border-color:#FCF5E5}
+.reddit{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.32;text-decoration:none;color:#FCF5E5}
+.reddit:hover{opacity:.65}
+.copy{font-size:.88rem;opacity:.65;text-align:center;line-height:1.7}
+.price{font-size:.72rem;letter-spacing:.1em;opacity:.35;text-align:center;margin:-2px 0}
+.footnote{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.2;text-align:center}
+#dl-modal,#fb-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
+#dl-modal.open,#fb-modal.open{display:flex}
+.modal-box{background:#000;border:2px solid #FCF5E5;padding:36px 40px;max-width:380px;width:90%}
+.ml{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-bottom:10px}
+.mt{font-size:1.1rem;margin-bottom:14px}
+.ms{font-size:.78rem;opacity:.5;margin-bottom:16px}
+.modal-box input[type=email],.modal-box textarea{width:100%;padding:11px 14px;font-family:'Space Grotesk',monospace;font-size:.86rem;border:1px solid rgba(252,245,229,.3);background:#131313;color:#FCF5E5;outline:none;cursor:text;margin-bottom:10px}
+.modal-box textarea{resize:vertical;min-height:110px}
+.modal-box input[type=email]:focus,.modal-box textarea:focus{border-color:#FCF5E5}
+.chk{display:flex;align-items:center;gap:8px;font-size:.8rem;margin-bottom:16px;cursor:crosshair;opacity:.65}
+.modal-box input[type=checkbox]{accent-color:#8B0000;cursor:crosshair}
+.radios{display:flex;gap:16px;margin-bottom:12px;font-size:.82rem}
+.radios label{cursor:crosshair}
+.radios input{margin-right:4px;accent-color:#8B0000}
+.modal-box .btn{width:100%;margin-top:2px}
+.modal-msg{font-size:.75rem;color:#8B0000;margin-top:10px;min-height:1.1em}
+.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:#FCF5E5;cursor:crosshair;padding:0}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRK0R3NZ80"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRK0R3NZ80');</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">GOMBRO</div>
+  <p class="tagline">Writing as invention</p>
+  <div class="video-wrap">
+    <video autoplay loop muted playsinline>
+      <source src="media/gombro.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <p class="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
+  <div class="buttons">
+    <button class="btn" onclick="openDl()">Download &mdash; Windows &mdash; 60-day free trial</button>
+    <p class="price">USD 500 &mdash; lifetime license</p>
+    <button class="btn btn-outline" onclick="openFb()">&#x1F41A; Bugs &amp; Suggestions</button>
+    <a class="reddit" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener">r/Gombro</a>
+  </div>
+  <p class="footnote">No AI &nbsp;&middot;&nbsp; Local only &nbsp;&middot;&nbsp; No cloud</p>
+</div>
+
+<div id="dl-modal" onclick="closeDlOut(event)">
+  <div class="modal-box">
+    <p class="ml">Free trial &middot; Windows</p>
+    <p class="mt">Download Gombro</p>
+    <p class="ms">60-day free trial. No credit card.</p>
+    <form id="dl-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleDl(event)">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+      <input type="hidden" name="_subject" value="Descarga" />
+      <label class="chk"><input type="checkbox" name="updates" value="yes" checked />Receive Gombro updates</label>
+      <button type="submit" class="btn" id="dl-submit">Download now</button>
+    </form>
+    <p class="modal-msg" id="dl-msg"></p>
+    <button class="cancel" onclick="closeDl()">Cancel</button>
+  </div>
+</div>
+
+<div id="fb-modal" onclick="closeFbOut(event)">
+  <div class="modal-box">
+    <p class="ml">Feedback</p>
+    <p class="mt">Bugs &amp; Suggestions</p>
+    <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFb(event)">
+      <div class="radios">
+        <label><input type="radio" name="tipo" value="bug" required />Bug</label>
+        <label><input type="radio" name="tipo" value="suggestion" />Suggestion</label>
+      </div>
+      <textarea name="mensaje" placeholder="Write here..." required></textarea>
+      <input type="email" name="email" placeholder="your@email.com (optional)" />
+      <input type="hidden" name="_subject" value="Feedback Gombro" />
+      <button type="submit" class="btn" id="fb-submit">Send</button>
+    </form>
+    <p class="modal-msg" id="fb-msg"></p>
+    <button class="cancel" onclick="closeFb()">Cancel</button>
+  </div>
+</div>
+
+<script>
+function openDl(){document.getElementById('dl-modal').classList.add('open');document.querySelector('#dl-modal input[type=email]').focus();}
+function closeDl(){document.getElementById('dl-modal').classList.remove('open');document.getElementById('dl-msg').textContent='';document.getElementById('dl-form').reset();}
+function closeDlOut(e){if(e.target===document.getElementById('dl-modal'))closeDl();}
+function openFb(){document.getElementById('fb-modal').classList.add('open');}
+function closeFb(){document.getElementById('fb-modal').classList.remove('open');document.getElementById('fb-msg').textContent='';document.getElementById('fb-form').reset();}
+function closeFbOut(e){if(e.target===document.getElementById('fb-modal'))closeFb();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDl();closeFb();}});
+async function handleDl(e){
+  e.preventDefault();const form=e.target;const msg=document.getElementById('dl-msg');const btn=document.getElementById('dl-submit');
+  btn.disabled=true;btn.textContent='...';
+  try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+  if(res.ok){window.open('https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing','_blank');msg.textContent='Starting download...';form.reset();btn.textContent='✓';}
+  else{throw new Error();}}catch{msg.textContent='Something went wrong. Try again.';btn.disabled=false;btn.textContent='Download now';}}
+async function handleFb(e){
+  e.preventDefault();const form=e.target;const msg=document.getElementById('fb-msg');const btn=document.getElementById('fb-submit');
+  btn.disabled=true;btn.textContent='...';
+  try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+  if(res.ok){msg.textContent='Thanks. I will read it.';form.reset();btn.textContent='✓';}
+  else{throw new Error();}}catch{msg.textContent='Something went wrong. Try again.';btn.disabled=false;btn.textContent='Send';}}
+</script>
+</body>
+</html>
