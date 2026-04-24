@@ -170,7 +170,7 @@
                 <p id="hero-sub" class="text-2xl sm:text-3xl text-primary-ink/80">Writing as invention</p>
                 <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
                     <a href="https://www.paypal.com/ncp/payment/6HVZFP3EZ53R4" target="_blank" rel="noopener" class="btn">Buy now — USD 500 lifetime</a>
-                    <a href="https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-secondary">Download Windows — 60-day free trial</a>
+                    <button onclick="openDlModal()" class="btn btn-secondary">Download Windows — 60-day free trial</button>
                 </div>
             </div>
             <div class="flex flex-col items-start sm:items-end gap-4">
@@ -209,7 +209,7 @@
         <section class="section-shell">
             <div class="flex flex-wrap gap-4">
                 <a href="https://www.paypal.com/ncp/payment/6HVZFP3EZ53R4" target="_blank" rel="noopener" class="btn">Buy now — USD 500 lifetime</a>
-                <a href="https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-secondary">Download Windows — 60-day free trial</a>
+                <button onclick="openDlModal()" class="btn btn-secondary">Download Windows — 60-day free trial</button>
             </div>
         </section>
 
@@ -323,13 +323,13 @@
         <div id="dl-modal" role="dialog" aria-modal="true" aria-labelledby="dl-modal-title" onclick="closeDlModalOutside(event)">
             <div id="dl-modal-box">
                 <p class="text-[11px] font-label tracking-label uppercase text-primary-ink/50">Free trial · Windows</p>
-                <p id="dl-modal-title" class="text-xl mt-2 mb-1">Enter your email to download</p>
-                <p class="text-sm text-primary-ink/60">60-day free trial. No credit card required.</p>
+                <p id="dl-modal-title" class="text-xl mt-2 mb-1">Download Gombro</p>
+                <p class="text-sm text-primary-ink/60">60-day free trial. No credit card. The download starts immediately.</p>
                 <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io) -->
                 <form id="dl-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleDlSubmit(event)">
                     <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
                     <input type="hidden" name="_subject" value="Descarga" />
-                    <button type="submit" class="btn" style="width:100%">Send download link</button>
+                    <button type="submit" class="btn" style="width:100%">Download now</button>
                 </form>
                 <p id="dl-modal-msg"></p>
                 <button onclick="closeDlModal()" class="text-[11px] font-label tracking-label uppercase text-primary-ink/40 mt-4" style="background:none;border:none;cursor:pointer;padding:0">Cancel</button>
@@ -602,14 +602,15 @@
                     headers: { Accept: 'application/json' }
                 });
                 if (res.ok) {
-                    msg.textContent = 'Done. Check your inbox for the download link.';
+                    window.open('https://drive.google.com/file/d/1OVSlU_xvMRK3gzjAu7VKn6TdYsYr4xv-/view?usp=sharing', '_blank');
+                    msg.textContent = 'Starting download...';
                     form.reset();
-                    btn.textContent = 'Sent';
+                    btn.textContent = '✓';
                 } else {
                     throw new Error();
                 }
             } catch {
-                msg.textContent = 'Something went wrong. Try again or email rlilloy@gmail.com.';
+                msg.textContent = 'Something went wrong. Try again.';
                 btn.disabled = false;
                 btn.textContent = 'Send download link';
             }
