@@ -40,6 +40,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .btn-outline{background:transparent;color:#FCF5E5;border:1px solid rgba(252,245,229,.45)}
 .btn-outline:hover{border-color:#FCF5E5}
 .reddit{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.32;text-decoration:none;color:#FCF5E5}
+.linux-note{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;color:#FCF5E5;margin:-4px 0 4px}
 .reddit:hover{opacity:.65}
 .copy{font-size:.88rem;opacity:.65;text-align:center;line-height:1.7}
 .price{font-size:.72rem;letter-spacing:.1em;opacity:.35;text-align:center;margin:-2px 0}
@@ -83,6 +84,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   <p class="copy" id="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
   <div class="buttons">
     <button class="btn" id="btn-dl" onclick="openDl()">Download &mdash; Windows &mdash; 60-day free trial</button>
+    <a class="btn btn-outline" id="btn-linux" href="/downloads/Gombro.AppImage" download>Download &mdash; Linux &mdash; Free Beta</a>
+    <p class="linux-note">AppImage &middot; x86_64</p>
     <p class="price" id="price-txt">USD 500 &mdash; lifetime license</p>
     <button class="btn btn-outline" id="btn-fb" onclick="openFb()">&#x1F41A; Bugs &amp; Suggestions</button>
     <a class="reddit" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener">r/Gombro</a>
@@ -131,6 +134,7 @@ const i18n = {
     tagline: 'Writing as invention',
     copy: 'No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.',
     dl: 'Download — Windows — Beta — 60-day free trial',
+    dlLinux: 'Download — Linux — Free Beta',
     price: 'USD 500 — lifetime license',
     fb: '🐚 Bugs & Suggestions',
     dlLabel: 'Free trial · Windows · Beta',
@@ -148,6 +152,7 @@ const i18n = {
     tagline: 'La escritura como invención',
     copy: 'Sin IA. Sin nube. Centrado en el párrafo.<br/>Para ficción, poesía, no ficción literaria.',
     dl: 'Descargar — Windows — Beta — 60 días gratis',
+    dlLinux: 'Descargar — Linux — Beta gratuita',
     price: 'USD 500 — licencia de por vida',
     fb: '🐚 Bugs y sugerencias',
     dlLabel: 'Prueba gratuita · Windows · Beta',
@@ -165,6 +170,7 @@ const i18n = {
     tagline: 'Pisanie jako wynalazek',
     copy: 'Bez AI. Bez chmury. Skupiony na akapicie.<br/>Do prozy, poezji i literatury faktu.',
     dl: 'Pobierz — Windows — Beta — 60 dni za darmo',
+    dlLinux: 'Pobierz — Linux — Bezpłatna beta',
     price: 'USD 500 — licencja dożotywotnia',
     fb: '🐚 Błędy i sugestie',
     dlLabel: 'Wersja próbna · Windows · Beta',
@@ -184,6 +190,7 @@ function setLang(lang) {
   document.getElementById('tagline').textContent = t.tagline;
   document.getElementById('copy').innerHTML = t.copy;
   document.getElementById('btn-dl').innerHTML = t.dl;
+  document.getElementById('btn-linux').innerHTML = t.dlLinux;
   document.getElementById('price-txt').innerHTML = t.price;
   document.getElementById('btn-fb').innerHTML = t.fb;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
