@@ -24,7 +24,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
 <style>
 *{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
-body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',monospace;cursor:crosshair}
+body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',monospace;cursor:pointer}
 @media(max-width:600px){body{padding:40px 0}}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 ::selection{background:#8B0000;color:#fff}
@@ -35,7 +35,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .video-wrap{width:420px;max-width:88vw;border:1px solid rgba(252,245,229,.15)}
 .video-wrap img{width:100%;display:block}
 .buttons{display:flex;flex-direction:column;align-items:center;gap:10px;width:420px;max-width:88vw}
-.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:11px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:#8B0000;color:#FCF5E5;border:none;cursor:crosshair;transition:none}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:11px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:#8B0000;color:#FCF5E5;border:none;cursor:pointer;transition:none}
 .btn:hover{background:#6a0000;color:#FCF5E5}
 .btn-outline{background:transparent;color:#FCF5E5;border:1px solid rgba(252,245,229,.45)}
 .btn-outline:hover{border-color:#FCF5E5}
@@ -46,7 +46,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .price{font-size:.72rem;letter-spacing:.1em;opacity:.35;text-align:center;margin:-2px 0}
 .footnote{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.2;text-align:center}
 .lang-bar{width:420px;max-width:88vw;display:flex;justify-content:flex-end;gap:12px;padding-bottom:4px}
-.lang-btn{background:none;border:none;font-family:'Space Grotesk',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#FCF5E5;opacity:.3;cursor:crosshair;padding:0}
+.lang-btn{background:none;border:none;font-family:'Space Grotesk',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#FCF5E5;opacity:.3;cursor:pointer;padding:0}
 .lang-btn.active{opacity:1}
 #dl-modal,#fb-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
 #dl-modal.open,#fb-modal.open{display:flex}
@@ -57,14 +57,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .modal-box input[type=email],.modal-box textarea{width:100%;padding:11px 14px;font-family:'Space Grotesk',monospace;font-size:.86rem;border:1px solid rgba(252,245,229,.3);background:#131313;color:#FCF5E5;outline:none;cursor:text;margin-bottom:10px}
 .modal-box textarea{resize:vertical;min-height:110px}
 .modal-box input[type=email]:focus,.modal-box textarea:focus{border-color:#FCF5E5}
-.chk{display:flex;align-items:center;gap:8px;font-size:.8rem;margin-bottom:16px;cursor:crosshair;opacity:.65}
-.modal-box input[type=checkbox]{accent-color:#8B0000;cursor:crosshair}
+.chk{display:flex;align-items:center;gap:8px;font-size:.8rem;margin-bottom:16px;cursor:pointer;opacity:.65}
+.modal-box input[type=checkbox]{accent-color:#8B0000;cursor:pointer}
 .radios{display:flex;gap:16px;margin-bottom:12px;font-size:.82rem}
-.radios label{cursor:crosshair}
+.radios label{cursor:pointer}
 .radios input{margin-right:4px;accent-color:#8B0000}
 .modal-box .btn{width:100%;margin-top:2px}
 .modal-msg{font-size:.75rem;color:#8B0000;margin-top:10px;min-height:1.1em}
-.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:#FCF5E5;cursor:crosshair;padding:0}
+.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:#FCF5E5;cursor:pointer;padding:0}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRK0R3NZ80"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRK0R3NZ80');</script>
