@@ -5,118 +5,280 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gombro — Inventive writing</title>
 <meta name="description" content="Gombro — writing as invention. For fiction, poetry and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered. Built by Raul Lilloy." />
-<meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, alternative to Scrivener, alternative to Ulysses, alternative to Word, inventive writing, literary editor, Raul Lilloy, Incubook, cut-up, cutup, Borgian algebra, paragraph editor, creative writing, escritura creativa, escribir un libro, editor de texto, Borges, Joyce, Burroughs, William Burroughs, Jorge Luis Borges, James Joyce, escritura literaria, literary writing, write a novel, novel writing software, distraction-free writing, focused writing tool, pisanie kreatywne, edytor tekstu, pisanie powiesci, literatura, oprogramowanie do pisania, narzedzie dla pisarzy, escritura inventiva, herramienta de escritura, poesia, ficcion literaria, no ficcion, dadaismo, surrealismo, dadaism, surrealism, escritura experimental, experimental writing, Gombrowicz, Witold Gombrowicz, Ferdydurke" />
+<meta name="keywords" content="Gombro, writing app, fiction writing, poetry writing, literary non-fiction, alternative to Scrivener, alternative to Ulysses, alternative to Word, inventive writing, literary editor, Raul Lilloy, Incubook, cut-up, Borgian algebra, paragraph editor, creative writing, escritura creativa, Borges, Joyce, Burroughs" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://gombro.com/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Gombro — Writing as invention" />
-<meta property="og:description" content="A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered. Alternative to Scrivener, Ulysses, Word for literary writers." />
+<meta property="og:description" content="A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered." />
 <meta property="og:url" content="https://gombro.com/" />
 <meta property="og:image" content="https://gombro.com/media/1500x900.jpg" />
-<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Gombro — Writing as invention" />
-<meta name="twitter:description" content="Alternative to Scrivener, Ulysses and Word for fiction, poetry and literary non-fiction. No AI. Paragraph-centered." />
+<meta name="twitter:description" content="Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered." />
 <meta name="twitter:image" content="https://gombro.com/media/1500x900.jpg" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Gombro","operatingSystem":"Windows","applicationCategory":"WritingApp","description":"A writing environment for fiction, poetry, and literary non-fiction. Alternative to Scrivener, Ulysses and Word. No AI. Paragraph-centered.","author":{"@type":"Person","name":"Raul Lilloy","url":"https://incubook.com"},"offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Gombro","operatingSystem":"Windows, Linux","applicationCategory":"WritingApp","description":"A writing environment for fiction, poetry, and literary non-fiction. No AI. Paragraph-centered.","author":{"@type":"Person","name":"Raul Lilloy","url":"https://incubook.com"},"offers":{"@type":"Offer","price":"500","priceCurrency":"USD"}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
 <style>
-*{margin:0;padding:0;box-sizing:border-box;border-radius:0!important}
-body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',monospace;cursor:pointer}
-@media(max-width:600px){body{padding:40px 0}}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#8B0000;--cream:#FCF5E5;--dim:rgba(252,245,229,.4);--border:rgba(252,245,229,.15)}
+body{background:#000;color:var(--cream);min-height:100vh;font-family:'Space Grotesk',monospace}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-::selection{background:#8B0000;color:#fff}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#8B0000}::-webkit-scrollbar-track{background:transparent}
-.wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:32px 24px}
-.logo{font-family:'Press Start 2P',monospace;font-size:clamp(1.1rem,3.5vw,2rem);color:#FCF5E5;text-shadow:3px 3px #8B0000;letter-spacing:.04em;text-align:center}
-.tagline{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;opacity:.4;text-align:center}
-.video-wrap{width:420px;max-width:88vw;border:1px solid rgba(252,245,229,.15)}
-.video-wrap img{width:100%;display:block}
-.buttons{display:flex;flex-direction:column;align-items:center;gap:10px;width:420px;max-width:88vw}
-.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:11px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:#8B0000;color:#FCF5E5;border:none;cursor:pointer;transition:none}
-.btn:hover{background:#6a0000;color:#FCF5E5}
-.btn-outline{background:transparent;color:#FCF5E5;border:1px solid rgba(252,245,229,.45)}
-.btn-outline:hover{border-color:#FCF5E5}
-.reddit{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.32;text-decoration:none;color:#FCF5E5}
-.linux-note{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;color:#FCF5E5;margin:-4px 0 4px}
-.reddit:hover{opacity:.65}
-.copy{font-size:.88rem;opacity:.65;text-align:center;line-height:1.7}
+::selection{background:var(--red);color:#fff}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--red)}::-webkit-scrollbar-track{background:transparent}
+
+/* Layout */
+.page{max-width:860px;margin:0 auto;padding:0 24px}
+section{padding:64px 0;border-top:1px solid var(--border)}
+section:first-of-type{border-top:none}
+
+/* Hero */
+.hero{display:flex;flex-direction:column;align-items:center;gap:20px;padding:48px 0 40px;text-align:center}
+.lang-bar{display:flex;justify-content:flex-end;gap:12px;padding:16px 0 0}
+.lang-btn{background:none;border:none;font-family:'Space Grotesk',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:.3;cursor:pointer;padding:0}
+.lang-btn.active{opacity:1}
+.logo{font-family:'Press Start 2P',monospace;font-size:clamp(1.2rem,4vw,2.2rem);color:var(--cream);text-shadow:3px 3px var(--red);letter-spacing:.04em}
+.tagline{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;opacity:.4}
+.demo-wrap{width:100%;max-width:500px;border:1px solid var(--border)}
+.demo-wrap img{width:100%;display:block}
+.copy{font-size:.95rem;opacity:.65;line-height:1.75;max-width:480px}
+.buttons{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:480px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;padding:12px 24px;font-family:'Space Grotesk',monospace;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;background:var(--red);color:var(--cream);border:none;cursor:pointer;text-decoration:none}
+.btn:hover{background:#6a0000}
+.btn-outline{background:transparent;border:1px solid rgba(252,245,229,.45)}
+.btn-outline:hover{border-color:var(--cream)}
+.btn-community{background:transparent;border:1px solid rgba(252,245,229,.25);color:var(--cream);opacity:.7}
+.btn-community:hover{opacity:1;border-color:rgba(252,245,229,.6)}
+.linux-note{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin:-4px 0 4px;text-align:center}
 .price{font-size:.72rem;letter-spacing:.1em;opacity:.35;text-align:center;margin:-2px 0}
 .footnote{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.2;text-align:center}
-.lang-bar{width:420px;max-width:88vw;display:flex;justify-content:flex-end;gap:12px;padding-bottom:4px}
-.lang-btn{background:none;border:none;font-family:'Space Grotesk',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#FCF5E5;opacity:.3;cursor:pointer;padding:0}
-.lang-btn.active{opacity:1}
+
+/* Section titles */
+.sec-label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.4;margin-bottom:28px}
+
+/* Features map */
+.features-map{width:100%;border:1px solid var(--border)}
+.features-map img{width:100%;display:block}
+
+/* Comparison */
+.comp-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.comp-table th{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.5;font-weight:500}
+.comp-table th.gombro-col{color:var(--cream);opacity:.9}
+.comp-table td{padding:10px 12px;border-bottom:1px solid rgba(252,245,229,.06);vertical-align:top;line-height:1.5;opacity:.7}
+.comp-table td.gombro-col{opacity:1;background:rgba(139,0,0,.08)}
+.comp-table td.feature-col{opacity:.5;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase}
+.comp-wrap{overflow-x:auto}
+
+/* Author */
+.author-grid{display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start}
+.author-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border:1px solid var(--border);filter:grayscale(20%)}
+.author-name{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.author-bio{font-size:.88rem;opacity:.65;line-height:1.75}
+.author-quote{margin-top:16px;font-size:.82rem;opacity:.4;font-style:italic;line-height:1.6;border-left:2px solid var(--red);padding-left:12px}
+
+/* Footer */
+footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.footer-link{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.35;text-decoration:none;color:var(--cream)}
+.footer-link:hover{opacity:.7}
+
+/* Modals */
 #dl-modal,#fb-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
 #dl-modal.open,#fb-modal.open{display:flex}
-.modal-box{background:#000;border:2px solid #FCF5E5;padding:36px 40px;max-width:380px;width:90%}
+.modal-box{background:#000;border:2px solid var(--cream);padding:36px 40px;max-width:380px;width:90%}
 .ml{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-bottom:10px}
 .mt{font-size:1.1rem;margin-bottom:14px}
 .ms{font-size:.78rem;opacity:.5;margin-bottom:16px}
-.modal-box input[type=email],.modal-box textarea{width:100%;padding:11px 14px;font-family:'Space Grotesk',monospace;font-size:.86rem;border:1px solid rgba(252,245,229,.3);background:#131313;color:#FCF5E5;outline:none;cursor:text;margin-bottom:10px}
+.modal-box input[type=email],.modal-box textarea{width:100%;padding:11px 14px;font-family:'Space Grotesk',monospace;font-size:.86rem;border:1px solid rgba(252,245,229,.3);background:#131313;color:var(--cream);outline:none;cursor:text;margin-bottom:10px}
 .modal-box textarea{resize:vertical;min-height:110px}
-.modal-box input[type=email]:focus,.modal-box textarea:focus{border-color:#FCF5E5}
+.modal-box input[type=email]:focus,.modal-box textarea:focus{border-color:var(--cream)}
 .chk{display:flex;align-items:center;gap:8px;font-size:.8rem;margin-bottom:16px;cursor:pointer;opacity:.65}
-.modal-box input[type=checkbox]{accent-color:#8B0000;cursor:pointer}
+.modal-box input[type=checkbox]{accent-color:var(--red);cursor:pointer}
 .radios{display:flex;gap:16px;margin-bottom:12px;font-size:.82rem}
 .radios label{cursor:pointer}
-.radios input{margin-right:4px;accent-color:#8B0000}
+.radios input{margin-right:4px;accent-color:var(--red)}
 .modal-box .btn{width:100%;margin-top:2px}
-.modal-msg{font-size:.75rem;color:#8B0000;margin-top:10px;min-height:1.1em}
-.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:#FCF5E5;cursor:pointer;padding:0}
+.modal-msg{font-size:.75rem;color:var(--red);margin-top:10px;min-height:1.1em}
+.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:var(--cream);cursor:pointer;padding:0}
+
+/* Testimonies */
+.testimonies{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:32px}
+.testimony{display:flex;flex-direction:column;gap:10px}
+.testimony-photo{width:80px;height:80px;object-fit:cover;object-position:top;filter:grayscale(100%) contrast(1.1);border:1px solid var(--border);opacity:.75}
+.testimony-quote{font-size:.85rem;line-height:1.7;opacity:.65;font-style:italic}
+.testimony-author{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.35}
+
+/* Responsive */
+@media(max-width:600px){
+  .author-grid{grid-template-columns:1fr}
+  .author-photo{max-width:200px}
+  .comp-table{font-size:.75rem}
+  .modal-box{padding:24px 20px}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRK0R3NZ80"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRK0R3NZ80');</script>
 </head>
 <body>
-<div class="wrap">
+<div class="page">
+
+  <!-- LANG BAR -->
   <div class="lang-bar">
     <button class="lang-btn active" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="es">ES</button>
     <button class="lang-btn" data-lang="pl">PL</button>
   </div>
-  <div class="logo">GOMBRO</div>
-  <p class="tagline" id="tagline">Writing as invention</p>
-  <div class="video-wrap">
-    <img src="media/gombro.gif" alt="Gombro editor demo" />
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="logo">GOMBRO</div>
+    <p class="tagline" id="tagline">Writing as invention</p>
+    <div class="demo-wrap">
+      <img src="media/gombro.gif" alt="Gombro editor demo" />
+    </div>
+    <p class="copy" id="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
+    <div class="buttons">
+      <button class="btn" id="btn-dl" onclick="openDl()">Download — Windows — 60-day free trial</button>
+      <a class="btn btn-outline" id="btn-linux" href="/downloads/Gombro.AppImage" download>Download — Linux — Free Beta</a>
+      <p class="linux-note">AppImage · x86_64</p>
+      <p class="price" id="price-txt">USD 500 — lifetime license</p>
+      <button class="btn btn-outline" id="btn-fb" onclick="openFb()">🐚 Bugs &amp; Suggestions</button>
+      <a class="btn btn-community" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener" id="btn-community">Community — r/Gombro</a>
+    </div>
+    <p class="footnote">No AI &nbsp;·&nbsp; Local only &nbsp;·&nbsp; No cloud</p>
   </div>
-  <p class="copy" id="copy">No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.</p>
-  <div class="buttons">
-    <button class="btn" id="btn-dl" onclick="openDl()">Download &mdash; Windows &mdash; 60-day free trial</button>
-    <a class="btn btn-outline" id="btn-linux" href="/downloads/Gombro.AppImage" download>Download &mdash; Linux &mdash; Free Beta</a>
-    <p class="linux-note">AppImage &middot; x86_64</p>
-    <p class="price" id="price-txt">USD 500 &mdash; lifetime license</p>
-    <button class="btn btn-outline" id="btn-fb" onclick="openFb()">&#x1F41A; Bugs &amp; Suggestions</button>
-    <a class="reddit" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener">r/Gombro</a>
-  </div>
-  <p class="footnote">No AI &nbsp;&middot;&nbsp; Local only &nbsp;&middot;&nbsp; No cloud</p>
+
+  <!-- FEATURES MAP -->
+  <section>
+    <p class="sec-label" id="features-label">Feature map</p>
+    <div class="features-map">
+      <img id="features-map-img" src="media/features-map.png" alt="Gombro feature map" />
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section>
+    <p class="sec-label" id="comp-label">Gombro vs</p>
+    <div class="comp-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th id="comp-feature">Feature</th>
+            <th class="gombro-col">Gombro</th>
+            <th id="comp-ulysses">Ulysses</th>
+            <th id="comp-scrivener">Scrivener</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feature-col" id="cr-search">Search</td><td class="gombro-col" id="cr-search-g">Full-text; paragraph &amp; sentence view.</td><td id="cr-search-u">Global find only.</td><td id="cr-search-s">Inspector search; no sentence mode.</td></tr>
+          <tr><td class="feature-col" id="cr-coll">Collections</td><td class="gombro-col" id="cr-coll-g">Saved searches, one-click re-run.</td><td id="cr-coll-u">No collections.</td><td id="cr-coll-s">Keywords only; no dynamic search.</td></tr>
+          <tr><td class="feature-col" id="cr-cutup">Cut-up / Shuffle</td><td class="gombro-col" id="cr-cutup-g">Built-in Baraja + paragraph history.</td><td id="cr-cutup-u">No.</td><td id="cr-cutup-s">No.</td></tr>
+          <tr><td class="feature-col" id="cr-versions">Version history</td><td class="gombro-col" id="cr-versions-g">Per-paragraph, automatic, restorable.</td><td id="cr-versions-u">No.</td><td id="cr-versions-s">Snapshots; manual.</td></tr>
+          <tr><td class="feature-col" id="cr-borgian">Borgian Algebra</td><td class="gombro-col" id="cr-borgian-g">Inline variant branching.</td><td id="cr-borgian-u">No.</td><td id="cr-borgian-s">No.</td></tr>
+          <tr><td class="feature-col" id="cr-export">Export</td><td class="gombro-col" id="cr-export-g">.docx and .md from explorer view.</td><td id="cr-export-u">Multi-step export.</td><td id="cr-export-s">Multi-step compile.</td></tr>
+          <tr><td class="feature-col" id="cr-sentence">Sentence Mode</td><td class="gombro-col" id="cr-sentence-g">One sentence at a time — the rest hidden.</td><td id="cr-sentence-u">No.</td><td id="cr-sentence-s">No.</td></tr>
+          <tr><td class="feature-col" id="cr-diary">Daily Diary</td><td class="gombro-col" id="cr-diary-g">One session per day, Ctrl+D, literary date.</td><td id="cr-diary-u">No.</td><td id="cr-diary-s">No.</td></tr>
+          <tr><td class="feature-col" id="cr-schrodinger">Schrödinger Mode</td><td class="gombro-col" id="cr-schrodinger-g">Track undecided text — strikethroughs &amp; open variants.</td><td id="cr-schrodinger-u">No.</td><td id="cr-schrodinger-s">No.</td></tr>
+          <tr><td class="feature-col" id="cr-sync">Sync / Notes bridge</td><td class="gombro-col" id="cr-sync-g">Via Obsidian (local, free). No cloud, no subscription.</td><td id="cr-sync-u">Paid subscription required.</td><td id="cr-sync-s">Paid add-on.</td></tr>
+          <tr><td class="feature-col" id="cr-ai">AI</td><td class="gombro-col" id="cr-ai-g">None. Intentionally.</td><td id="cr-ai-u">Built-in.</td><td id="cr-ai-s">No.</td></tr>
+          <tr><td class="feature-col" id="cr-cloud">Cloud</td><td class="gombro-col" id="cr-cloud-g">None. Local only.</td><td id="cr-cloud-u">iCloud sync.</td><td id="cr-cloud-s">Optional.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section>
+    <p class="sec-label" id="author-label">About the author</p>
+    <div class="author-grid">
+      <img class="author-photo" src="DSC_0197.jpg" alt="Raúl Lilloy" />
+      <div>
+        <p class="author-name">Raúl Lilloy</p>
+        <p class="author-bio" id="author-bio">Raúl Lilloy is a writer and literary workshop director. He runs Incubook, a creative writing school with students across Latin America and Europe. He built Gombro because no existing tool matched the way he actually writes — not linearly, not predictably, not safely.</p>
+        <p class="author-quote" id="author-quote">"Writing is... I don't know. That's why I write."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section>
+    <p class="sec-label">Unverified testimonies</p>
+    <div class="testimonies">
+
+      <div class="testimony">
+        <img class="testimony-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Don_Quijote_and_Sancho_Panza_%281863%29_by_Gustave_Dor%C3%A9.jpg/400px-Don_Quijote_and_Sancho_Panza_%281863%29_by_Gustave_Dor%C3%A9.jpg" alt="Miguel de Cervantes" onerror="this.style.display='none'" />
+        <blockquote class="testimony-quote">"If I had known it, I would have rewritten Don Quixote."</blockquote>
+        <p class="testimony-author">— Miguel de Cervantes</p>
+      </div>
+
+      <div class="testimony">
+        <img class="testimony-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Samuel_Beckett%2C_Pic_1.jpg/400px-Samuel_Beckett%2C_Pic_1.jpg" alt="Samuel Beckett" onerror="this.style.display='none'" />
+        <blockquote class="testimony-quote">"With Gombro, Waiting for Godot would have ended."</blockquote>
+        <p class="testimony-author">— Samuel Beckett</p>
+      </div>
+
+      <div class="testimony">
+        <img class="testimony-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Jacques_Vach%C3%A9.jpg/400px-Jacques_Vach%C3%A9.jpg" alt="Jacques Vaché" onerror="this.style.display='none'" />
+        <blockquote class="testimony-quote">"Dadaism would have been something else with Gombro."</blockquote>
+        <p class="testimony-author">— Jacques Vaché</p>
+      </div>
+
+      <div class="testimony">
+        <img class="testimony-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Witold_Gombrowicz.jpg/400px-Witold_Gombrowicz.jpg" alt="Witold Gombrowicz" onerror="this.style.display='none'" />
+        <blockquote class="testimony-quote">"I wrote half of Ferdydurke using Gombro."</blockquote>
+        <p class="testimony-author">— Witold Gombrowicz</p>
+      </div>
+
+      <div class="testimony">
+        <img class="testimony-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Jorge_Luis_Borges_1951%2C_by_Grete_Stern.jpg/400px-Jorge_Luis_Borges_1951%2C_by_Grete_Stern.jpg" alt="Jorge Luis Borges" onerror="this.style.display='none'" />
+        <blockquote class="testimony-quote">"Beatriz Viterbo wrote her deceptions using Gombro."</blockquote>
+        <p class="testimony-author">— Jorge Luis Borges</p>
+      </div>
+
+      <div class="testimony">
+        <img class="testimony-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/James_Joyce_by_Alex_Ehrenzweig%2C_1915_cropped.jpg/400px-James_Joyce_by_Alex_Ehrenzweig%2C_1915_cropped.jpg" alt="James Joyce" onerror="this.style.display='none'" />
+        <blockquote class="testimony-quote">"I would have written Finnegans Wake in 15 months instead of 15 years."</blockquote>
+        <p class="testimony-author">— James Joyce</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-link" href="https://incubook.com" target="_blank" rel="noopener" id="footer-incubook">Incubook.com — Literary Workshop / Taller literario / Warsztaty literackie</a>
+    <a class="footer-link" href="https://www.reddit.com/r/Gombro/" target="_blank" rel="noopener">r/Gombro — Community</a>
+    <p class="footer-link" style="cursor:default">v0.0.7 — No AI · Local only · No cloud</p>
+  </footer>
+
 </div>
 
+<!-- MODALS -->
 <div id="dl-modal" onclick="closeDlOut(event)">
   <div class="modal-box">
-    <p class="ml">Free trial &middot; Windows</p>
-    <p class="mt">Download Gombro</p>
-    <p class="ms">60-day free trial. No credit card.</p>
+    <p class="ml" id="dl-label">Free trial · Windows</p>
+    <p class="mt" id="dl-title">Download Gombro</p>
+    <p class="ms" id="dl-sub">60-day free trial. No credit card.</p>
     <form id="dl-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleDl(event)">
       <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" />
       <input type="hidden" name="_subject" value="Descarga" />
-      <label class="chk"><input type="checkbox" name="updates" value="yes" checked />Receive Gombro updates</label>
+      <label class="chk"><input type="checkbox" name="updates" value="yes" checked /><span id="dl-check">Receive Gombro updates</span></label>
       <button type="submit" class="btn" id="dl-submit">Download now</button>
     </form>
     <p class="modal-msg" id="dl-msg"></p>
-    <button class="cancel" onclick="closeDl()">Cancel</button>
+    <button class="cancel" id="dl-cancel" onclick="closeDl()">Cancel</button>
   </div>
 </div>
 
 <div id="fb-modal" onclick="closeFbOut(event)">
   <div class="modal-box">
-    <p class="ml">Feedback</p>
-    <p class="mt">Bugs &amp; Suggestions</p>
+    <p class="ml" id="fb-label">Feedback</p>
+    <p class="mt" id="fb-title">Bugs &amp; Suggestions</p>
     <form id="fb-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleFb(event)">
       <div class="radios">
-        <label><input type="radio" name="tipo" value="bug" required />Bug</label>
-        <label><input type="radio" name="tipo" value="suggestion" />Suggestion</label>
+        <label><input type="radio" name="tipo" value="bug" required /><span id="fb-bug">Bug</span></label>
+        <label><input type="radio" name="tipo" value="suggestion" /><span id="fb-sug">Suggestion</span></label>
       </div>
       <textarea name="mensaje" placeholder="Write here..." required></textarea>
       <input type="email" name="email" placeholder="your@email.com (optional)" />
@@ -124,7 +286,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <button type="submit" class="btn" id="fb-submit">Send</button>
     </form>
     <p class="modal-msg" id="fb-msg"></p>
-    <button class="cancel" onclick="closeFb()">Cancel</button>
+    <button class="cancel" id="fb-cancel" onclick="closeFb()">Cancel</button>
   </div>
 </div>
 
@@ -133,69 +295,174 @@ const i18n = {
   en: {
     tagline: 'Writing as invention',
     copy: 'No AI. No cloud. Paragraph-centered.<br/>For fiction, poetry, literary non-fiction.',
-    dl: 'Download — Windows — Beta — 60-day free trial',
+    dl: 'Download — Windows — 60-day free trial',
     dlLinux: 'Download — Linux — Free Beta',
     price: 'USD 500 — lifetime license',
     fb: '🐚 Bugs & Suggestions',
-    dlLabel: 'Free trial · Windows · Beta',
+    community: 'Community — r/Gombro',
+    featuresLabel: 'Feature map',
+    compLabel: 'Gombro vs',
+    authorLabel: 'About the author',
+    authorBio: 'Raúl Lilloy is a writer and literary workshop director. He runs Incubook, a creative writing school with students across Latin America and Europe. He built Gombro because no existing tool matched the way he actually writes — not linearly, not predictably, not safely.',
+    authorQuote: '"Writing is... I don\'t know. That\'s why I write."',
+    dlLabel: 'Free trial · Windows',
     dlTitle: 'Download Gombro',
     dlSub: '60-day free trial. No credit card.',
     dlCheck: 'Receive Gombro updates',
     dlBtn: 'Download now',
     fbLabel: 'Feedback',
     fbTitle: 'Bugs & Suggestions',
+    fbBug: 'Bug',
+    fbSug: 'Suggestion',
     cancel: 'Cancel',
-    thanks: 'Thanks. I will read it.',
-    err: 'Something went wrong. Try again.'
+    compFeature: 'Feature',
+    compUlysses: 'Ulysses',
+    compScrivener: 'Scrivener',
+    footerIncubook: 'Incubook.com — Literary Workshop / Taller literario / Warsztaty literackie',
+    featuresMap: 'media/features-map.png',
+    comp: {
+      search:['Search','Full-text; paragraph & sentence view.','Global find only.','Inspector search; no sentence mode.'],
+      coll:['Collections','Saved searches, one-click re-run.','No collections.','Keywords only; no dynamic search.'],
+      cutup:['Cut-up / Shuffle','Built-in Baraja + paragraph history.','No.','No.'],
+      versions:['Version history','Per-paragraph, automatic, restorable.','No.','Snapshots; manual.'],
+      borgian:['Borgian Algebra','Inline variant branching.','No.','No.'],
+      export:['Export','.docx and .md from explorer view.','Multi-step export.','Multi-step compile.'],
+      sentence:['Sentence Mode','One sentence at a time — the rest hidden.','No.','No.'],
+      diary:['Daily Diary','One session per day, Ctrl+D, literary date.','No.','No.'],
+      schrodinger:['Schrödinger Mode','Track undecided text — strikethroughs & open variants.','No.','No.'],
+      sync:['Sync / Notes bridge','Via Obsidian (local, free). No cloud, no subscription.','Paid subscription required.','Paid add-on.'],
+      ai:['AI','None. Intentionally.','Built-in.','No.'],
+      cloud:['Cloud','None. Local only.','iCloud sync.','Optional.'],
+    },
   },
   es: {
     tagline: 'La escritura como invención',
     copy: 'Sin IA. Sin nube. Centrado en el párrafo.<br/>Para ficción, poesía, no ficción literaria.',
-    dl: 'Descargar — Windows — Beta — 60 días gratis',
+    dl: 'Descargar — Windows — 60 días gratis',
     dlLinux: 'Descargar — Linux — Beta gratuita',
     price: 'USD 500 — licencia de por vida',
     fb: '🐚 Bugs y sugerencias',
-    dlLabel: 'Prueba gratuita · Windows · Beta',
+    community: 'Comunidad — r/Gombro',
+    featuresLabel: 'Mapa de funciones',
+    compLabel: 'Gombro vs',
+    authorLabel: 'Sobre el autor',
+    authorBio: 'Raúl Lilloy es escritor y director de talleres literarios. Dirige Incubook, escuela de escritura creativa con estudiantes en América Latina y Europa. Construyó Gombro porque ninguna herramienta existente se ajustaba a su manera real de escribir — no lineal, no predecible, no segura.',
+    authorQuote: '"Escribir es... no sé. Por eso escribo."',
+    dlLabel: 'Prueba gratuita · Windows',
     dlTitle: 'Descargar Gombro',
     dlSub: '60 días gratis. Sin tarjeta.',
     dlCheck: 'Recibir actualizaciones de Gombro',
     dlBtn: 'Descargar ahora',
     fbLabel: 'Feedback',
     fbTitle: 'Bugs y sugerencias',
+    fbBug: 'Bug',
+    fbSug: 'Sugerencia',
     cancel: 'Cancelar',
-    thanks: 'Gracias. Lo leo.',
-    err: 'Algo falló. Intentá de nuevo.'
+    compFeature: 'Función',
+    compUlysses: 'Ulysses',
+    compScrivener: 'Scrivener',
+    footerIncubook: 'Incubook.com — Taller literario / Literary Workshop / Warsztaty literackie',
+    featuresMap: 'media/feature-map-espa.png',
+    comp: {
+      search:['Búsqueda','Texto completo; vista por párrafo y frase.','Solo búsqueda global.','Búsqueda en inspector; sin modo frase.'],
+      coll:['Colecciones','Búsquedas guardadas, un clic para re-ejecutar.','Sin colecciones.','Solo palabras clave; sin búsqueda dinámica.'],
+      cutup:['Cut-up / Baraja','Baraja integrada + historial de párrafos.','No.','No.'],
+      versions:['Historial de versiones','Por párrafo, automático, restaurable.','No.','Snapshots; manual.'],
+      borgian:['Álgebra Borgiana','Variantes en línea.','No.','No.'],
+      export:['Exportar','.docx y .md desde el explorador.','Exportación en varios pasos.','Compilación en varios pasos.'],
+      sentence:['Modo frase','Una frase a la vez — el resto oculto.','No.','No.'],
+      diary:['Diario diario','Una sesión por día, Ctrl+D, fecha literaria.','No.','No.'],
+      schrodinger:['Modo Schrödinger','Rastrea texto indeciso — tachaduras y variantes abiertas.','No.','No.'],
+      sync:['Sync / Puente de notas','Vía Obsidian (local, gratis). Sin nube, sin suscripción.','Suscripción paga requerida.','Complemento pago.'],
+      ai:['IA','Ninguna. Intencionalmente.','Integrada.','No.'],
+      cloud:['Nube','Ninguna. Solo local.','Sync con iCloud.','Opcional.'],
+    },
   },
   pl: {
     tagline: 'Pisanie jako wynalazek',
     copy: 'Bez AI. Bez chmury. Skupiony na akapicie.<br/>Do prozy, poezji i literatury faktu.',
-    dl: 'Pobierz — Windows — Beta — 60 dni za darmo',
+    dl: 'Pobierz — Windows — 60 dni za darmo',
     dlLinux: 'Pobierz — Linux — Bezpłatna beta',
-    price: 'USD 500 — licencja dożotywotnia',
+    price: 'USD 500 — licencja dożywotnia',
     fb: '🐚 Błędy i sugestie',
-    dlLabel: 'Wersja próbna · Windows · Beta',
+    community: 'Społeczność — r/Gombro',
+    featuresLabel: 'Mapa funkcji',
+    compLabel: 'Gombro vs',
+    authorLabel: 'O autorze',
+    authorBio: 'Raúl Lilloy jest pisarzem i prowadzącym warsztaty literackie. Kieruje Incubook — szkołą pisania twórczego ze studentami w Ameryce Łacińskiej i Europie. Stworzył Gombro, bo żadne istniejące narzędzie nie pasowało do jego prawdziwego sposobu pisania.',
+    authorQuote: '"Pisanie to... nie wiem. Dlatego piszę."',
+    dlLabel: 'Wersja próbna · Windows',
     dlTitle: 'Pobierz Gombro',
     dlSub: '60 dni za darmo. Bez karty.',
     dlCheck: 'Otrzymuj aktualizacje Gombro',
     dlBtn: 'Pobierz teraz',
     fbLabel: 'Feedback',
     fbTitle: 'Błędy i sugestie',
+    fbBug: 'Błąd',
+    fbSug: 'Sugestia',
     cancel: 'Anuluj',
-    thanks: 'Dzięki. Przeczytam.',
-    err: 'Coś poszło nie tak. Spróbuj ponownie.'
+    compFeature: 'Funkcja',
+    compUlysses: 'Ulysses',
+    compScrivener: 'Scrivener',
+    footerIncubook: 'Incubook.com — Warsztaty literackie / Literary Workshop / Taller literario',
+    featuresMap: 'media/feat-map-pol.png',
+    comp: {
+      search:['Wyszukiwanie','Pełny tekst; widok akapitu i zdania.','Tylko globalne wyszukiwanie.','Wyszukiwarka inspektora; brak trybu zdań.'],
+      coll:['Kolekcje','Zapisane wyszukiwania, jedno kliknięcie.','Brak kolekcji.','Tylko słowa kluczowe; brak dynamicznego wyszukiwania.'],
+      cutup:['Cut-up / Tasowanie','Wbudowana Baraja + historia akapitów.','Nie.','Nie.'],
+      versions:['Historia wersji','Na akapit, automatyczna, przywracalna.','Nie.','Migawki; ręcznie.'],
+      borgian:['Algebra Borgesowska','Warianty inline.','Nie.','Nie.'],
+      export:['Eksport','.docx i .md z eksploratora.','Eksport wieloetapowy.','Kompilacja wieloetapowa.'],
+      sentence:['Tryb zdania','Jedno zdanie na raz — reszta ukryta.','Nie.','Nie.'],
+      diary:['Codzienny dziennik','Jedna sesja dziennie, Ctrl+D, data literacka.','Nie.','Nie.'],
+      schrodinger:['Tryb Schrödingera','Śledź niezdecydowany tekst — przekreślenia i warianty.','Nie.','Nie.'],
+      sync:['Sync / Mostek notatek','Przez Obsidian (lokalnie, bezpłatnie). Bez chmury, bez subskrypcji.','Wymagana płatna subskrypcja.','Płatny dodatek.'],
+      ai:['AI','Żadnej. Celowo.','Wbudowana.','Nie.'],
+      cloud:['Chmura','Żadnej. Tylko lokalnie.','Synchronizacja iCloud.','Opcjonalna.'],
+    },
   }
 };
+
 function setLang(lang) {
   const t = i18n[lang];
   document.getElementById('tagline').textContent = t.tagline;
   document.getElementById('copy').innerHTML = t.copy;
-  document.getElementById('btn-dl').innerHTML = t.dl;
-  document.getElementById('btn-linux').innerHTML = t.dlLinux;
-  document.getElementById('price-txt').innerHTML = t.price;
+  document.getElementById('btn-dl').textContent = t.dl;
+  document.getElementById('btn-linux').textContent = t.dlLinux;
+  document.getElementById('price-txt').textContent = t.price;
   document.getElementById('btn-fb').innerHTML = t.fb;
+  document.getElementById('btn-community').textContent = t.community;
+  document.getElementById('features-label').textContent = t.featuresLabel;
+  document.getElementById('comp-label').textContent = t.compLabel;
+  document.getElementById('author-label').textContent = t.authorLabel;
+  document.getElementById('author-bio').textContent = t.authorBio;
+  document.getElementById('author-quote').textContent = t.authorQuote;
+  document.getElementById('dl-label').textContent = t.dlLabel;
+  document.getElementById('dl-title').textContent = t.dlTitle;
+  document.getElementById('dl-sub').textContent = t.dlSub;
+  document.getElementById('dl-check').textContent = t.dlCheck;
+  document.getElementById('dl-submit').textContent = t.dlBtn;
+  document.getElementById('fb-label').textContent = t.fbLabel;
+  document.getElementById('fb-title').textContent = t.fbTitle;
+  document.getElementById('fb-bug').textContent = t.fbBug;
+  document.getElementById('fb-sug').textContent = t.fbSug;
+  document.getElementById('fb-cancel').textContent = t.cancel;
+  document.getElementById('dl-cancel').textContent = t.cancel;
+  document.getElementById('comp-feature').textContent = t.compFeature;
+  document.getElementById('footer-incubook').textContent = t.footerIncubook;
+  document.getElementById('features-map-img').src = t.featuresMap;
+  for(const[k,v] of Object.entries(t.comp)){
+    const el=id=>document.getElementById(id);
+    if(el('cr-'+k))el('cr-'+k).textContent=v[0];
+    if(el('cr-'+k+'-g'))el('cr-'+k+'-g').textContent=v[1];
+    if(el('cr-'+k+'-u'))el('cr-'+k+'-u').textContent=v[2];
+    if(el('cr-'+k+'-s'))el('cr-'+k+'-s').textContent=v[3];
+  }
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 }
+
 document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
 function openDl(){document.getElementById('dl-modal').classList.add('open');document.querySelector('#dl-modal input[type=email]').focus();}
 function closeDl(){document.getElementById('dl-modal').classList.remove('open');document.getElementById('dl-msg').textContent='';document.getElementById('dl-form').reset();}
 function closeDlOut(e){if(e.target===document.getElementById('dl-modal'))closeDl();}
@@ -203,12 +470,14 @@ function openFb(){document.getElementById('fb-modal').classList.add('open');}
 function closeFb(){document.getElementById('fb-modal').classList.remove('open');document.getElementById('fb-msg').textContent='';document.getElementById('fb-form').reset();}
 function closeFbOut(e){if(e.target===document.getElementById('fb-modal'))closeFb();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDl();closeFb();}});
+
 async function handleDl(e){
   e.preventDefault();const form=e.target;const msg=document.getElementById('dl-msg');const btn=document.getElementById('dl-submit');
   btn.disabled=true;btn.textContent='...';
   try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
   if(res.ok){window.open('/downloads/gombro-setup.exe','_blank');msg.textContent='Starting download...';form.reset();btn.textContent='✓';}
   else{throw new Error();}}catch{msg.textContent='Something went wrong. Try again.';btn.disabled=false;btn.textContent='Download now';}}
+
 async function handleFb(e){
   e.preventDefault();const form=e.target;const msg=document.getElementById('fb-msg');const btn=document.getElementById('fb-submit');
   btn.disabled=true;btn.textContent='...';
