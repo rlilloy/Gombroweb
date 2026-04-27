@@ -463,6 +463,9 @@ function setLang(lang) {
 
 document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+if(urlLang && i18n[urlLang]) setLang(urlLang);
+
 function openDl(){document.getElementById('dl-modal').classList.add('open');document.querySelector('#dl-modal input[type=email]').focus();}
 function closeDl(){document.getElementById('dl-modal').classList.remove('open');document.getElementById('dl-msg').textContent='';document.getElementById('dl-form').reset();}
 function closeDlOut(e){if(e.target===document.getElementById('dl-modal'))closeDl();}
