@@ -25,28 +25,12 @@ video {
   border-radius: 6px;
   display: block;
 }
-.marquee-wrap {
-  width: 100%;
-  overflow: hidden;
-  border-top: 1px solid rgba(224,212,176,0.2);
-  border-bottom: 1px solid rgba(224,212,176,0.2);
-  padding: 0.6rem 0;
-}
-.marquee-track {
-  display: flex;
-  white-space: nowrap;
-  animation: marquee 18s linear infinite;
-  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
-  letter-spacing: 0.06em;
-  color: #e0d4b0;
-}
-.marquee-track span { padding: 0 3rem; }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 .typewriter-wrap {
-  display: none;
+  text-align: center;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #tw {
   font-size: clamp(1rem, 3vw, 1.4rem);
@@ -68,19 +52,6 @@ video {
 </style>
 </head>
 <body>
-
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>We're building the editor of your dreams.</span>
-    <span>Pracujemy nad edytorem twoich marzeń.</span>
-    <span>Estamos trabajando en el editor de tus sueños.</span>
-    <span>We're pracujemy en el editor of twoich dreams sueños.</span>
-    <span>We're building the editor of your dreams.</span>
-    <span>Pracujemy nad edytorem twoich marzeń.</span>
-    <span>Estamos trabajando en el editor de tus sueños.</span>
-    <span>We're pracujemy en el editor of twoich dreams sueños.</span>
-  </div>
-</div>
 
 <div class="video-wrap">
   <video autoplay loop muted playsinline>
