@@ -66,13 +66,7 @@ body::before{
 #line-4-text{animation:typing 2s steps(25) forwards;animation-delay:16s}
 #line-4-wrapper{animation:fadeIn 0s forwards;animation-delay:16s}
 
-#cursor-1-container{animation:fadeOut 0s forwards;animation-delay:4.5s}
-.cursor-2{opacity:0;animation:blink 0.8s infinite;animation-delay:4.5s}
-#cursor-2-container{animation:typing 0s forwards,fadeOut 0s forwards;animation-delay:4.5s,8.5s}
-.cursor-3{opacity:0;animation:blink 0.8s infinite;animation-delay:8.5s}
-#cursor-3-container{animation:typing 0s forwards;animation-delay:8.5s}
-.cursor-4{opacity:0;animation:blink 0.8s infinite;animation-delay:16s}
-#cursor-4-container{animation:typing 0s forwards;animation-delay:16s}
+[id^="cursor-"]{display:none}
 
 /* ── CTA block (appended after animation) ── */
 #cta{
@@ -138,11 +132,11 @@ body::before{
 .btn:hover{background:#e0d4b0}
 .btn:disabled{opacity:.5;cursor:default}
 .cta-offer{
-  font-size:.6rem;
-  letter-spacing:.1em;
+  font-size:.8rem;
+  letter-spacing:.14em;
   text-transform:uppercase;
-  opacity:.28;
-  line-height:1.9;
+  opacity:.85;
+  line-height:2.2;
   text-align:center;
 }
 
@@ -208,7 +202,7 @@ main{
   <div style="display:flex;flex-direction:column;align-items:center;gap:3rem;margin-top:3rem">
     <div id="line-3-wrapper" style="position:relative;max-width:min(560px,88vw);text-align:center">
       <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.82rem,2.2vw,1rem);color:white;white-space:normal;letter-spacing:.04em;line-height:1.65">
-        <span id="line-3-text"></span><span id="cursor-3-container" style="display:inline-block"><span class="cursor cursor-3" style="opacity:1"></span></span>
+        <span id="line-3-text"></span><span id="cursor-3-container"><span class="cursor"></span></span>
       </h1>
     </div>
     <div id="line-4-wrapper" style="position:relative;width:fit-content;opacity:0">
@@ -249,6 +243,16 @@ main{
 </div>
 
 <script>
+/* Cursor 1: show at start, hide at 4.5s */
+const c1 = document.getElementById('cursor-1-container');
+c1.style.display = 'inline-block';
+setTimeout(() => { c1.style.display = 'none'; }, 4500);
+
+/* Cursor 2: show at 4.5s, hide at 8.5s */
+const c2 = document.getElementById('cursor-2-container');
+setTimeout(() => { c2.style.display = 'inline-block'; }, 4500);
+setTimeout(() => { c2.style.display = 'none'; }, 8500);
+
 /* Typewriter for line-3 (JS — supports wrapping on mobile) */
 const LINE3_TEXT = "Somewhere in La Mancha, in a place whose name I do not care to remember, a gentleman lived not long ago...";
 const line3El = document.getElementById('line-3-text');
@@ -258,14 +262,16 @@ function typeL3() {
   if (l3i < LINE3_TEXT.length) {
     line3El.textContent += LINE3_TEXT[l3i++];
     setTimeout(typeL3, 42);
+  } else {
+    cursor3.style.display = 'none';
   }
 }
 setTimeout(() => { cursor3.style.display = 'inline-block'; typeL3(); }, 8500);
 
-/* Show CTA */
+/* Show CTA after full animation cycle */
 setTimeout(() => {
   document.getElementById('cta').classList.add('visible');
-}, 10000);
+}, 19500);
 
 function openModal() {
   const v = document.getElementById('inline-email').value.trim();
