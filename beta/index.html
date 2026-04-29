@@ -16,6 +16,7 @@
 <meta name="twitter:title" content="Gombro — Beta Access" />
 <meta name="twitter:description" content="The madness of writing. Request early beta access." />
 <meta name="twitter:image" content="https://gombro.com/media/1500x900.jpg" />
+<script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -71,13 +72,13 @@ body::before{
 /* ── CTA block (appended after animation) ── */
 #cta{
   position:fixed;
-  bottom:0;left:0;right:0;
+  inset:0;
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
   gap:14px;
   padding:32px 24px 40px;
-  background:linear-gradient(to top,#000 70%,transparent);
   opacity:0;
   transition:opacity 1.4s ease;
   pointer-events:none;
@@ -140,6 +141,31 @@ body::before{
   text-align:center;
 }
 
+/* ── OS selector ── */
+.os-selector{
+  display:flex;
+  gap:32px;
+  margin-top:8px;
+}
+.os-btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  background:none;
+  border:none;
+  color:var(--cream);
+  opacity:.3;
+  cursor:pointer;
+  transition:opacity .2s;
+  font-family:'Space Grotesk',monospace;
+  font-size:.62rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.os-btn:hover{opacity:.6}
+.os-btn.selected{opacity:1}
+
 /* ── Modal ── */
 #beta-modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.9);align-items:center;justify-content:center}
 #beta-modal.open{display:flex}
@@ -164,26 +190,14 @@ body::before{
 
 @media(max-width:400px){.modal-box{padding:24px 20px}}
 
-.hidden{display:none}
-main{
-  width:100%;
-  max-width:600px;
-  padding:0 1.5rem;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  border:none;
-}
 </style>
 </head>
 <body class="selection:bg-white selection:text-black">
 
 <!-- ── Stitch animation ── -->
-<main class="master-loop">
+<main class="master-loop w-full flex flex-col items-center justify-center text-center px-4">
   <!-- Line 1 -->
-  <div id="line-1-wrapper" style="position:relative;width:fit-content">
+  <div class="relative w-fit" id="line-1-wrapper">
     <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.9rem,2.5vw,1.1rem);color:white;white-space:nowrap;letter-spacing:.04em">
       <span class="type-container" id="line-1-text">La Mancha of a place.</span>
       <span id="cursor-1-container"><span class="cursor"></span></span>
@@ -191,24 +205,24 @@ main{
     <div class="strike-line" id="line-1-strike"></div>
   </div>
   <!-- Line 2 -->
-  <div id="line-2-wrapper" style="position:relative;width:fit-content;margin-top:3rem">
+  <div class="relative w-fit mt-12" id="line-2-wrapper">
     <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.9rem,2.5vw,1.1rem);color:white;white-space:nowrap;letter-spacing:.04em">
       <span class="type-container" id="line-2-text">A place that stains.</span>
-      <span id="cursor-2-container" style="display:none"><span class="cursor cursor-2"></span></span>
+      <span id="cursor-2-container"><span class="cursor"></span></span>
     </h1>
     <div class="strike-line" id="line-2-strike"></div>
   </div>
   <!-- Line 3 + Line 4 -->
-  <div style="display:flex;flex-direction:column;align-items:center;gap:3rem;margin-top:3rem">
-    <div id="line-3-wrapper" style="position:relative;max-width:min(560px,88vw);text-align:center">
+  <div class="flex flex-col items-center mt-12" style="gap:3rem">
+    <div class="relative" id="line-3-wrapper" style="max-width:min(560px,88vw);text-align:center">
       <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.82rem,2.2vw,1rem);color:white;white-space:normal;letter-spacing:.04em;line-height:1.65">
         <span id="line-3-text"></span><span id="cursor-3-container"><span class="cursor"></span></span>
       </h1>
     </div>
-    <div id="line-4-wrapper" style="position:relative;width:fit-content;opacity:0">
+    <div class="relative w-fit opacity-0" id="line-4-wrapper">
       <p style="font-family:'Space Grotesk',monospace;font-size:.65rem;color:rgba(252,245,229,.5);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap">
         <span class="type-container" id="line-4-text">Gombro — the madness of writing.</span>
-        <span id="cursor-4-container" style="display:none"><span class="cursor cursor-4" style="opacity:1;height:1.1em;width:0.4em;background:rgba(252,245,229,.5)"></span></span>
+        <span id="cursor-4-container"><span class="cursor" style="height:1.1em;width:0.4em;background:rgba(252,245,229,.5)"></span></span>
       </p>
     </div>
   </div>
@@ -218,23 +232,49 @@ main{
 <div id="cta">
   <div class="cta-logo">GOMBRO</div>
   <p class="cta-tagline">The madness of writing.</p>
+  <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:-4px">Beta is open. Not for everyone.</p>
   <div class="cta-form">
     <input type="email" id="inline-email" placeholder="your@email.com" autocomplete="email"/>
-    <button class="btn" onclick="openModal()">Request Access</button>
+    <button class="btn" onclick="openModal()">Apply for Beta</button>
   </div>
-  <p class="cta-offer">2 months free &nbsp;·&nbsp; 50% off — forever<br/>No AI &nbsp;·&nbsp; Local only &nbsp;·&nbsp; No cloud</p>
+  <p class="cta-offer">Limited spots &nbsp;·&nbsp; 2 months free &nbsp;·&nbsp; 50% off forever<br/>No AI &nbsp;·&nbsp; Local only &nbsp;·&nbsp; No cloud</p>
+  <div class="os-selector">
+    <button class="os-btn" id="os-win" onclick="selectOS('Windows')" title="Windows">
+      <svg width="28" height="28" viewBox="0 0 88 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 12.4L36 7.2V43H0V12.4ZM40 6.6L88 0V43H40V6.6ZM0 47H36V82.8L0 77.6V47ZM40 47H88V88L40 81.4V47Z"/>
+      </svg>
+      <span>Windows</span>
+    </button>
+    <button class="os-btn" id="os-lin" onclick="selectOS('Linux')" title="Linux">
+      <svg width="26" height="28" viewBox="0 0 64 72" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 0C24 0 18 6 18 16c0 5 1.5 9.5 4 13-4 2-10 6-12 12-1 3-1 6 0 8 1 3 4 4 7 3l2-1c2 5 6 9 11 11v4c-4 1-8 3-10 6h30c-2-3-6-5-10-6v-4c5-2 9-6 11-11l2 1c3 1 6 0 7-3 1-2 1-5 0-8-2-6-8-10-12-12 2.5-3.5 4-8 4-13C46 6 40 0 32 0zm-6 42c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4zm12 0c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4z"/>
+      </svg>
+      <span>Linux</span>
+    </button>
+  </div>
 </div>
 
 <!-- ── Modal ── -->
 <div id="beta-modal" onclick="closeModalOut(event)">
   <div class="modal-box">
-    <p class="ml">Early beta</p>
-    <p class="mt">Request access</p>
-    <p class="ms">2 months free. Then 50% off — forever.<br/>No credit card.</p>
+    <p class="ml">Beta · By invitation</p>
+    <p class="mt">Apply for early access</p>
+    <p class="ms">We'll review your application and get back to you.</p>
     <form id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleBeta(event)">
       <input type="email" id="modal-email" name="email" placeholder="your@email.com" required autocomplete="email"/>
-      <input type="hidden" name="_subject" value="Gombro Beta Access Request"/>
-      <button type="submit" class="btn" id="beta-submit">Request Access</button>
+      <input type="hidden" name="_subject" value="Gombro Beta Application"/>
+      <input type="hidden" name="os" id="modal-os" value=""/>
+      <div style="display:flex;gap:12px;margin-bottom:10px">
+        <button type="button" class="os-btn" id="modal-os-win" onclick="selectOS('Windows')" style="flex:1;flex-direction:row;gap:8px;border:1px solid var(--border);padding:8px">
+          <svg width="16" height="16" viewBox="0 0 88 88" fill="currentColor"><path d="M0 12.4L36 7.2V43H0V12.4ZM40 6.6L88 0V43H40V6.6ZM0 47H36V82.8L0 77.6V47ZM40 47H88V88L40 81.4V47Z"/></svg>
+          <span>Windows</span>
+        </button>
+        <button type="button" class="os-btn" id="modal-os-lin" onclick="selectOS('Linux')" style="flex:1;flex-direction:row;gap:8px;border:1px solid var(--border);padding:8px">
+          <svg width="14" height="16" viewBox="0 0 64 72" fill="currentColor"><path d="M32 0C24 0 18 6 18 16c0 5 1.5 9.5 4 13-4 2-10 6-12 12-1 3-1 6 0 8 1 3 4 4 7 3l2-1c2 5 6 9 11 11v4c-4 1-8 3-10 6h30c-2-3-6-5-10-6v-4c5-2 9-6 11-11l2 1c3 1 6 0 7-3 1-2 1-5 0-8-2-6-8-10-12-12 2.5-3.5 4-8 4-13C46 6 40 0 32 0zm-6 42c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4zm12 0c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4z"/></svg>
+          <span>Linux</span>
+        </button>
+      </div>
+      <button type="submit" class="btn" id="beta-submit">Apply for Beta</button>
     </form>
     <p class="modal-msg" id="modal-msg"></p>
     <button class="cancel" onclick="closeModal()">Cancel</button>
@@ -243,6 +283,16 @@ main{
 </div>
 
 <script>
+/* OS selector */
+let selectedOS = '';
+function selectOS(os) {
+  selectedOS = os;
+  document.getElementById('os-win').classList.toggle('selected', os === 'Windows');
+  document.getElementById('os-lin').classList.toggle('selected', os === 'Linux');
+  document.getElementById('modal-os-win').classList.toggle('selected', os === 'Windows');
+  document.getElementById('modal-os-lin').classList.toggle('selected', os === 'Linux');
+}
+
 /* Cursor 1: show at start, hide at 4.5s */
 const c1 = document.getElementById('cursor-1-container');
 c1.style.display = 'inline-block';
@@ -270,12 +320,18 @@ setTimeout(() => { cursor3.style.display = 'inline-block'; typeL3(); }, 8500);
 
 /* Show CTA after full animation cycle */
 setTimeout(() => {
-  document.getElementById('cta').classList.add('visible');
+  document.querySelector('main').style.opacity = '0';
+  document.querySelector('main').style.transition = 'opacity 0.8s ease';
+  setTimeout(() => {
+    document.querySelector('main').style.display = 'none';
+    document.getElementById('cta').classList.add('visible');
+  }, 800);
 }, 19500);
 
 function openModal() {
   const v = document.getElementById('inline-email').value.trim();
   if (v) document.getElementById('modal-email').value = v;
+  document.getElementById('modal-os').value = selectedOS;
   document.getElementById('beta-modal').classList.add('open');
   document.getElementById('modal-email').focus();
 }
@@ -305,7 +361,7 @@ async function handleBeta(e) {
       headers: { Accept: 'application/json' }
     });
     if (res.ok) {
-      msg.textContent = "You're on the list.";
+      msg.textContent = "Application received. We'll be in touch.";
       msg.className = 'modal-msg ok';
       form.reset();
       btn.textContent = '✓';
