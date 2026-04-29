@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gombro — Manual</title>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --surface: #222;
+    --border: #333;
+    --text: #d4d4d4;
+    --muted: #888;
+    --accent: #7eb8d4;
+    --code-bg: #2a2a2a;
+    --max-width: 720px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.75;
+    padding: 2rem 1.5rem 6rem;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .header pre {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    color: var(--accent);
+    line-height: 1.2;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .header .tagline {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .toc h2 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+  }
+
+  .toc ol {
+    padding-left: 1.5rem;
+  }
+
+  .toc li {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+  }
+
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  /* Chapters */
+  h2 {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: var(--text);
+    margin: 3rem 0 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  h2:first-of-type {
+    border-top: none;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin: 2rem 0 0.75rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  p {
+    margin: 0.75rem 0;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Code blocks */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #b0c4b8;
+  }
+
+  code {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.1em 0.35em;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    color: #b0c4b8;
+  }
+
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: normal;
+  }
+
+  td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background: var(--surface);
+  }
+
+  /* Lists */
+  ul, ol {
+    padding-left: 1.5rem;
+    margin: 0.75rem 0;
+  }
+
+  li {
+    margin: 0.3rem 0;
+  }
+
+  /* Blockquote */
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* HR */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  strong {
+    color: #e0e0e0;
+    font-weight: bold;
+  }
+
+  em {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* Version badge */
+  .version {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.2rem 0.6rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* Nav */
+  .back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.4rem 0.8rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .back-top:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header" id="top">
+<pre>
+  ██████╗  ██████╗ ███╗   ███╗██████╗ ██████╗  ██████╗
+ ██╔════╝ ██╔═══██╗████╗ ████║██╔══██╗██╔══██╗██╔═══██╗
+ ██║  ███╗██║   ██║██╔████╔██║██████╔╝██████╔╝██║   ██║
+ ██║   ██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══██╗██║   ██║
+ ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝██║  ██║╚██████╔╝
+  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
+</pre>
+<div class="tagline">inventing words</div>
+<div class="version">v0.0.5-beta</div>
+</div>
+
+<nav class="toc">
+<h2>Table of Contents</h2>
+<ol>
+  <li><a href="#chapter-1">What is Gombro?</a></li>
+  <li><a href="#chapter-2">Getting Started</a></li>
+  <li><a href="#chapter-3">The Editor</a></li>
+  <li><a href="#chapter-4">The CmdBar</a></li>
+  <li><a href="#chapter-5">The Explorer</a></li>
+  <li><a href="#chapter-6">Search and Collections</a></li>
+  <li><a href="#chapter-7">Paragraph Versions</a></li>
+  <li><a href="#chapter-8">Project Notes</a></li>
+  <li><a href="#chapter-9">Baraja and Cut-up</a></li>
+  <li><a href="#chapter-10">Graph View</a></li>
+  <li><a href="#chapter-11">Hashtags</a></li>
+  <li><a href="#chapter-12">Import and Export</a></li>
+  <li><a href="#chapter-13b">Borgian Algebra</a></li>
+  <li><a href="#chapter-13c">The Diary</a></li>
+  <li><a href="#chapter-14">Recommended Workflow</a></li>
+  <li><a href="#chapter-15">Split Editor</a></li>
+  <li><a href="#chapter-16">The Garden of Forking Paths</a></li>
+  <li><a href="#chapter-17">Games</a></li>
+  <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
+  <li><a href="#author">About the Author</a></li>
+</ol>
+</nav>
+
+<h2 id="chapter-1">Chapter 1 — What is Gombro?</h2>
+
+<p>Gombro is a writing machine centered on one thing: the human invention of the word.</p>
+
+<p>Not the polished word. Not the optimized word. The <strong>word in motion</strong> — following the drift of thought, the accident of order, the surprise of what comes next when nothing is forced.</p>
+
+<p>There is no AI here. No autocomplete, no suggestions, no invisible hand steering your sentences toward the probable. Gombro is a tool entirely at the service of the writer's own flow.</p>
+
+<p>Every writing session in Gombro is a <strong>jazz improvisation</strong> — a session in the musical sense. You open the instrument, you play, you stop. What you left behind is a record of the session: raw, alive, retrievable.</p>
+
+<h3>The writers who would have used Gombro</h3>
+
+<p>Gombro is the word processor that Kafka would have used to fragment his diaries without resolving them. That Jacques Vaché would have used to cut up letters he never sent. That Gombrowicz would have used to shuffle chapters until the form itself became the argument. That Joyce would have used to draft Nighttown in disconnected bursts and recombine them at 3am. That Néstor Sánchez would have used to write <em>Siberia Blues</em> one splinter at a time. That Philip K. Dick would have used to write <em>The Man in the High Castle</em> or <em>VALIS</em> — novels where reality itself refuses to hold still.</p>
+
+<h3>What Gombro is not</h3>
+<ul>
+  <li>It is not a word processor for final formatting</li>
+  <li>It is not a project manager with folders, statuses, or deadlines</li>
+  <li>It does not connect to the cloud or any external service</li>
+  <li><strong>It contains no AI of any kind</strong></li>
+</ul>
+
+<h3>The two core concepts</h3>
+<table>
+  <tr><th>Concept</th><th>What it is</th></tr>
+  <tr><td><strong>Project</strong></td><td>A container for a body of work — a novel, a story cycle, a notebook</td></tr>
+  <tr><td><strong>Session</strong></td><td>A single improvisation inside a project — a scene, a fragment, a drift</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-2">Chapter 2 — Getting Started</h2>
+
+<h3>The interface at a glance</h3>
+<pre>
+┌────────────────────────────────────────────────────────────┐
+│  Gombro                                        [EN]  [?]   │
+├──────────────────────┬─────────────────────────────────────┤
+│                      │                                     │
+│  EXPLORER            │  EDITOR                             │
+│  ──────────          │  ─────────────────────────          │
+│  Sessions            │                                     │
+│                      │   Select a session to write.        │
+│  (empty)             │                                     │
+│                      │                                     │
+│  [+]  [↑]            │                                     │
+└──────────────────────┴─────────────────────────────────────┘
+</pre>
+
+<pre>
+  How it all connects:
+
+  ┌─────────────┐
+  │   PROJECT   │  ← your body of work (novel, cycle, notebook)
+  └──────┬──────┘
+         │  contains
+    ┌────┴────┬────────┬─────────┐
+    ▼         ▼        ▼         ▼
+ Session   Session  Session   Session
+    │         │
+    │  contains
+    ▼
+ Paragraph ── version ── version ── version
+    │
+    ├── hashtag
+    ├── baraja target
+    └── graph node
+</pre>
+
+<ul>
+  <li><strong>Top bar</strong> — language toggle <code>[EN]</code> and help button <code>[?]</code></li>
+  <li><strong>Explorer</strong> — left panel, lists your sessions</li>
+  <li><strong>Editor</strong> — center/right panel, where you write</li>
+  <li><strong>CmdBar</strong> — bottom panel, the command terminal. Open with <code>:</code> or <code>/</code>. Press <code>Ctrl+T</code> for the floating palette.</li>
+</ul>
+
+<h3>Step 1 — Create your first project</h3>
+<p>Press <code>:</code> to open the CmdBar, then type:</p>
+<pre>create project Don Quixote</pre>
+<p>Press <code>Enter</code>. The project is created and becomes active.</p>
+
+<h3>Step 2 — Create your first session</h3>
+<p>Press <code>Ctrl+N</code>, or open the CmdBar and type:</p>
+<pre>new Chapter One</pre>
+
+<h3>Step 3 — Start writing</h3>
+<p>Click on the Editor area and start typing. That's it.</p>
+
+<h3>Key things to know</h3>
+<table>
+  <tr><th>What</th><th>How</th></tr>
+  <tr><td>Open the CmdBar</td><td><code>:</code> or <code>/</code></td></tr>
+  <tr><td>Create a session</td><td><code>Ctrl+N</code> or <code>new &lt;name&gt;</code> in CmdBar</td></tr>
+  <tr><td>Open Help</td><td><code>[?]</code> button, <code>F1</code>, or <code>help</code> in CmdBar</td></tr>
+  <tr><td>Switch language</td><td><code>[EN]</code> chip in top bar or <code>lang es</code> in CmdBar</td></tr>
+  <tr><td>Close any modal</td><td><code>Esc</code></td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-3">Chapter 3 — The Editor</h2>
+
+<p>The Editor is where everything happens. It is intentionally bare — no toolbars, no formatting buttons, no rulers. Just the text and you.</p>
+
+<p>Each block of text separated by a blank line is a <strong>paragraph</strong> — the fundamental unit in Gombro. Paragraphs are stored, versioned, shuffled, and tagged individually.</p>
+
+<h3>Context menu</h3>
+<p>Right-click anywhere in the editor to open the context menu:</p>
+<pre>
+┌─────────────────────────┐
+│  Undo                   │
+│  ─────────────────────  │
+│  Select all             │
+│  Cut / Copy / Paste     │
+│  ─────────────────────  │
+│  Insert                 │
+│  Add variant            │
+│  ─────────────────────  │
+│  Reveal in Binder       │
+│  Shuffle (Baraja)       │
+│  Paragraph versions     │
+│  ─────────────────────  │
+│  🌿 Fork from here      │
+└─────────────────────────┘
+</pre>
+<p><strong>🌿 Fork from here</strong> — creates a Sendero (narrative fork) starting from the current paragraph. See Chapter 16.</p>
+
+<h3>Sentence Mode</h3>
+<p>Toggle with <code>sentence mode</code> in the CmdBar. Every <code>.</code> isolates the current sentence — one at a time, the rest disappears. Type, hit period, lock and continue.</p>
+
+<pre>
+  SENTENCE MODE — only one sentence visible at a time:
+
+  ┌─────────────────────────────────────────────────────┐
+  │  Chapter One             [sentence mode] [Select all]│
+  ├─────────────────────────────────────────────────────┤
+  │                                                     │
+  │  · · · · · · · · · · · · · · · · · · · · · · · ·   │  ← locked
+  │                                                     │
+  │  An occasional stew, beef more often than lamb,     │
+  │  hash most nights, eggs and abstinence on Saturdays.│  ← active
+  │                                                     │
+  │  · · · · · · · · · · · · · · · · · · · · · · · ·   │  ← locked
+  │                                                     │
+  └─────────────────────────────────────────────────────┘
+
+  Type → hit [.] → sentence locks → next one opens
+</pre>
+
+<h3>Layout — three panels</h3>
+<p>Gombro has three permanent zones:</p>
+<pre>
+  ┌────────┬───────────────────────────────────┐
+  │EXPLORER│            EDITOR                 │
+  │        │                                   │
+  │session1│  text...                          │
+  │session2│                                   │
+  │session3│                                   │
+  │        │                                   │
+  ├────────┴───────────────────────────────────┤
+  │  :/                                        │  ← CmdBar / terminal
+  └────────────────────────────────────────────┘
+</pre>
+<ul>
+  <li><strong>Explorer</strong> (left) — session list for the active project.</li>
+  <li><strong>Editor</strong> (center/right) — writing area.</li>
+  <li><strong>CmdBar</strong> (bottom) — command terminal. Open with <code>:</code> or <code>/</code>. Press <code>Ctrl+T</code> for the floating palette.</li>
+</ul>
+
+<h3>Zen Mode</h3>
+<p>Expands the editor to full screen. Toggle with <code>zen</code> in the CmdBar, or press <code>Esc</code> when idle.</p>
+
+<pre>
+  NORMAL                        ZEN
+  ──────────────────────        ────────────────────────────────────────
+  ┌────────┬───────────┐        ┌────────────────────────────────────────┐
+  │EXPLORER│  EDITOR   │   →    │                                        │
+  │        │           │        │        Somewhere in La Mancha,         │
+  │session1│  text...  │        │        in a place whose name I do      │
+  │session2│           │        │        not care to remember, a         │
+  │session3│           │        │        gentleman lived not long ago.   │
+  │        │           │        │                                        │
+  ├────────┴───────────┤        └────────────────────────────────────────┘
+  │  :/               │           no panels · no chrome · just the word
+  └───────────────────┘
+</pre>
+
+<h3>Keyboard reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Open CmdBar</td><td><code>:</code> or <code>/</code></td></tr>
+  <tr><td>Floating palette</td><td><code>Ctrl+T</code></td></tr>
+  <tr><td>Floating search</td><td><code>Ctrl+F</code></td></tr>
+  <tr><td>New session</td><td><code>Ctrl+N</code></td></tr>
+  <tr><td>Open today's diary session</td><td><code>Ctrl+D</code></td></tr>
+  <tr><td>Session post-it</td><td><code>F4</code></td></tr>
+  <tr><td>Help</td><td><code>F1</code></td></tr>
+  <tr><td>Select all text</td><td><code>[Select all]</code> button or right-click</td></tr>
+  <tr><td>Toggle Sentence Mode</td><td><code>sentence mode</code> in CmdBar</td></tr>
+  <tr><td>Toggle Zen Mode</td><td><code>zen</code> in CmdBar · <code>Esc</code> from idle</td></tr>
+  <tr><td>Close CmdBar / search / activate Zen</td><td><code>Esc</code> (cascading)</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-4">Chapter 4 — The CmdBar</h2>
+
+<p>Press <code>:</code> or <code>/</code> to open. Press <code>Esc</code> to close. Every command works in English and Spanish.</p>
+
+<h3>Writing</h3>
+<table>
+  <tr><th>Command</th><th>What it does</th></tr>
+  <tr><td><code>new &lt;name&gt;</code> · <code>nuevo &lt;nombre&gt;</code></td><td>Create a new session</td></tr>
+  <tr><td><code>sentence mode</code> · <code>modo frase</code></td><td>Toggle sentence mode</td></tr>
+  <tr><td><code>zen</code></td><td>Toggle zen mode</td></tr>
+</table>
+
+<h3>Projects</h3>
+<table>
+  <tr><th>Command</th><th>What it does</th></tr>
+  <tr><td><code>create project &lt;name&gt;</code></td><td>Create a new project</td></tr>
+  <tr><td><code>open</code> · <code>view projects</code></td><td>Show the project list</td></tr>
+</table>
+
+<h3>Search</h3>
+<table>
+  <tr><th>Command</th><th>What it does</th></tr>
+  <tr><td><code>search &lt;term&gt;</code></td><td>Search across all sessions</td></tr>
+  <tr><td><code>search &lt;term&gt; in phrases</code></td><td>Search showing individual sentences</td></tr>
+</table>
+
+<h3>Export</h3>
+<table>
+  <tr><th>Command</th><th>What it does</th></tr>
+  <tr><td><code>compile</code> · <code>compilar</code></td><td>Export all sessions to .docx</td></tr>
+  <tr><td><code>compile &lt;name&gt;</code></td><td>Export with custom filename</td></tr>
+</table>
+
+<h3>Interface</h3>
+<table>
+  <tr><th>Command</th><th>What it does</th></tr>
+  <tr><td><code>help</code> · <code>ayuda</code></td><td>Open the help modal</td></tr>
+  <tr><td><code>language</code> · <code>idioma</code></td><td>Switch interface language (English / Español)</td></tr>
+  <tr><td><code>games</code> · <code>juegos</code></td><td>Open the Rogue minigame</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-5">Chapter 5 — The Explorer</h2>
+
+<p>The Explorer is the left panel — your session list, your binder. Every session in the active project lives here.</p>
+
+<ul>
+  <li><code>[+]</code> — create a new session</li>
+  <li><code>[↑]</code> — import a file (.md, .docx, .txt)</li>
+  <li>The stats at the bottom show totals for the active project</li>
+</ul>
+
+<h3>Project stats</h3>
+<table>
+  <tr><th>Stat</th><th>What it measures</th></tr>
+  <tr><td><strong>Days</strong></td><td>How many days you've written in this project</td></tr>
+  <tr><td><strong>Words</strong></td><td>Total word count across all sessions</td></tr>
+  <tr><td><strong>Sentences</strong></td><td>Total sentence count</td></tr>
+  <tr><td><strong>Commas</strong></td><td>Proxy for sentence complexity and rhythm</td></tr>
+</table>
+
+<h3>Multi-select</h3>
+<p>You can select multiple sessions in the Explorer at once:</p>
+<table>
+  <tr><th>Gesture</th><th>What it does</th></tr>
+  <tr><td><code>Ctrl+click</code></td><td>Add or remove a session from the selection</td></tr>
+  <tr><td><code>Shift+click</code></td><td>Select the range from the last clicked session to this one</td></tr>
+  <tr><td><code>Delete</code></td><td>Delete all selected sessions at once</td></tr>
+</table>
+
+<h3>Session context menu</h3>
+<p>Right-click any session:</p>
+<pre>
+┌─────────────────────────┐
+│  Rename                 │
+│  Duplicate              │
+│  ───────────────────    │
+│  Shuffle (Abarajar)     │
+│  Undo shuffle           │
+│  ───────────────────    │
+│  Move up                │
+│  Move down              │
+│  ───────────────────    │
+│  Move to &lt;project&gt;      │
+│  ───────────────────    │
+│  Delete                 │
+└─────────────────────────┘
+</pre>
+
+<p><strong>Move up / Move down</strong> — reorder sessions within the project. The order persists. You can also <strong>drag and drop</strong> sessions directly in the list.</p>
+
+<h3>Explorer panel sections</h3>
+<p>Below the session list, the Explorer shows three optional sections:</p>
+<table>
+  <tr><th>Section</th><th>What it shows</th></tr>
+  <tr><td><strong>🌿 Senderos</strong></td><td>Narrative forks (see Chapter 16)</td></tr>
+  <tr><td><strong>Colecciones</strong></td><td>Saved searches (see Chapter 6)</td></tr>
+  <tr><td><strong>⚛ Schrödinger</strong></td><td>Paragraphs with unresolved quantum text or strikethroughs</td></tr>
+</table>
+<p>Right-click anywhere in the Explorer to show or hide each section individually.</p>
+
+<hr>
+
+<h2 id="chapter-6">Chapter 6 — Search and Collections</h2>
+
+<p>Search works across the full text of every paragraph in the active project.</p>
+
+<pre>search gentleman</pre>
+
+<p>Use phrase mode for sentence-level results:</p>
+<pre>search gentleman in phrases</pre>
+
+<h3>Collections</h3>
+<p>A Collection is a saved search. After any search, click <strong>+ Save as collection</strong>. Name it, save it, and it appears in the Explorer — one click to re-run.</p>
+
+<pre>
+  ┌──────────────────────┐
+  │  Sessions      [↑]   │
+  │  ────────────────    │
+  │  La Mancha           │
+  │  The Knight          │
+  │  Stew and Income     │
+  │  The Housekeeper     │
+  │  ────────────────    │
+  │  COLLECTIONS         │  ← saved searches, always one click away
+  │  ▸ The Gentleman arc │
+  │  ▸ Food & income     │
+  │  ▸ Names debate      │
+  └──────────────────────┘
+</pre>
+
+<hr>
+
+<h2 id="chapter-7">Chapter 7 — Paragraph Versions</h2>
+
+<p>Every time a paragraph changes, Gombro keeps a copy automatically. This is a per-paragraph history — not undo.</p>
+
+<p><strong>Access:</strong> right-click a paragraph → <em>Paragraph versions</em>, or hover a session in the Explorer → click the clock icon.</p>
+
+<pre>
+  VERSION TIMELINE — paragraph 1:
+
+  ┌──────────────────────────────────────────────────────┐
+  │  Versions · paragraph 1                    [Close]   │
+  ├──────────────────────────────────────────────────────┤
+  │                                                      │
+  │  ● CURRENT                                           │
+  │    Somewhere in La Mancha, in a place whose name     │
+  │    I do not care to remember...                      │
+  │                                                      │
+  │  ── Apr 17 · 11:42am ──────────────────────────────  │
+  │    Somewhere in La Mancha — a place I'd rather       │
+  │    not name — a gentleman lived not so long ago...   │
+  │                              [Restore this version]  │
+  │                                                      │
+  │  ── Apr 16 · 9:15pm ───────────────────────────────  │
+  │    In La Mancha, somewhere, a man lived.             │
+  │                              [Restore this version]  │
+  │                                                      │
+  │  ── Apr 15 · 3:30pm ───────────────────────────────  │
+  │    There was a man in La Mancha.                     │
+  │                              [Restore this version]  │
+  └──────────────────────────────────────────────────────┘
+
+  nothing is deleted — every draft is recoverable
+</pre>
+
+<p>Click <strong>Restore this version</strong> to go back. The current text becomes a new version — nothing is permanently lost.</p>
+
+<hr>
+
+<h2 id="chapter-8">Chapter 8 — Project Notes</h2>
+
+<p>Press <code>Ctrl+P</code> to open a scratchpad attached to the active project. Type freely — it saves automatically. Press <code>Esc</code> to close.</p>
+
+<p>The note does not appear in the Explorer, is not compiled, and has no versions. It's a side table next to your writing desk.</p>
+
+<hr>
+
+<h2 id="chapter-9">Chapter 9 — Baraja and Cut-up</h2>
+
+<p>Baraja takes a paragraph you've written and <strong>mixes it with a random paragraph from elsewhere in the project</strong>. This is the cut-up technique — automated collision, writer decides what stays.</p>
+
+<pre>
+  BEFORE BARAJA:
+
+  session "Chapter One"          session "The Knight"
+  ─────────────────────          ──────────────────────────
+  Somewhere in La Mancha,        Our gentleman was
+  in a place whose name          approximately fifty years
+  I do not care to remember,     old; his complexion was
+  a gentleman lived not          weathered, his flesh
+  long ago...                    scrawny, his face gaunt.
+
+                    ↓  right-click → Shuffle (Baraja)  ↓
+
+  AFTER BARAJA — the two collide:
+  ────────────────────────────────────────────────────────
+  Somewhere in La Mancha, his complexion was weathered,
+  his flesh scrawny — in a place whose name I do not
+  care to remember, a gentleman lived not long ago,
+  one of those who has a lance and ancient shield on
+  a shelf. A very early riser and a great lover of the hunt.
+  ────────────────────────────────────────────────────────
+  something new appeared. you didn't plan it.
+</pre>
+
+<p>Right-click any paragraph → <strong>Shuffle (Baraja)</strong>.</p>
+
+<p>If the result doesn't interest you: right-click the session in the Explorer → <strong>Undo shuffle</strong>.</p>
+
+<h3>When to use Baraja</h3>
+<ul>
+  <li>When a paragraph feels stuck</li>
+  <li>When you want unexpected connections between sessions</li>
+  <li>When the logical next sentence is the last thing you want to write</li>
+</ul>
+
+<blockquote>Baraja is not a random generator. It is a <strong>prompt from your own writing</strong> — everything it pulls comes from text you already wrote.</blockquote>
+
+<hr>
+
+<h2 id="chapter-10">Chapter 10 — Graph View</h2>
+
+<p>A visual map of your project. Paragraphs as nodes, connections you draw manually. In the Explorer, click the <strong>Graph</strong> tab.</p>
+
+<pre>
+  GRAPH VIEW — The Process · Objects & People:
+
+                   [Ch.1 · The Arrest]
+                    /       |        \
+              Josef K.   the door   the warders
+                /           |             \
+       [Ch.3 · Court]  [Ch.2 · K.]──[Ch.7 · Lawyer]
+            |    \          |               |
+         Josef K. the room  Leni         Josef K.
+            |        \      |               |
+    [Ch.5 · Flogger]  \ [Ch.4 · Leni]  [Ch.8 · Merchant]
+                       \    \               /
+                     the whip Leni────Josef K.
+                          \      \       /
+                        [Ch.9 · Priest]
+                               |
+                         [Ch.10 · Death]
+
+  click any node → opens paragraph in Editor
+  Ctrl+click multiple → opens all together
+</pre>
+
+<ul>
+  <li>Click <strong>+ New graph</strong> to create one (you can have multiple per project)</li>
+  <li>Add nodes from your sessions</li>
+  <li>Click one node then another to connect them</li>
+  <li>Click any node to open that paragraph in the Editor</li>
+  <li>Hold <code>Ctrl</code> and click multiple nodes to open them together</li>
+</ul>
+
+<hr>
+
+<h2 id="chapter-11">Chapter 11 — Hashtags</h2>
+
+<p>Labels you assign manually to individual paragraphs. Track recurring characters, objects, motifs — find all of them instantly.</p>
+
+<p>Right-click a paragraph → <strong># (hashtags panel)</strong>. Toggle tags on/off, create new ones.</p>
+
+<p>Search by tag the same way as any term:</p>
+<pre>search #housekeeper</pre>
+
+<hr>
+
+<h2 id="chapter-12">Chapter 12 — Import and Export</h2>
+
+<h3>Importing</h3>
+<p>Click <code>[↑]</code> in the Explorer header. Accepts <code>.txt</code>, <code>.md</code>, <code>.docx</code>. Each paragraph/section becomes a session in a new project.</p>
+
+<h3>Exporting</h3>
+<pre>compile
+compile Don Quixote — First Draft</pre>
+<p>All visible sessions, in Explorer order, exported as a single <code>.docx</code> file to <code>Documents/gombro/{projectName}/</code>.</p>
+
+<hr>
+
+<h2 id="chapter-13">Chapter 13 — Floor 13</h2>
+
+<blockquote>This chapter was intentionally left blank for superstitious reasons. If you are reading this, nothing bad has happened. Yet.</blockquote>
+
+<hr>
+
+<h2 id="chapter-13b">Chapter 13b — Borgian Algebra</h2>
+
+<p>Borgian Algebra is Gombro's system for writing with open alternatives — inspired by the way Borges corrected his manuscripts: not erasing, but <strong>branching</strong>.</p>
+
+<h3>Inserting a pending fragment</h3>
+<ol>
+  <li>Click anywhere to position the cursor (or select a word/phrase)</li>
+  <li>Right-click → <strong>Insert</strong></li>
+  <li>Type your text in the panel — multiple lines supported</li>
+  <li>Press <strong>ok</strong> (or <code>Ctrl+Enter</code>) to insert as a pending Borgian block</li>
+</ol>
+<p>If you close the panel without pressing ok, nothing is inserted. The block stays pending until you confirm it.</p>
+
+<pre>
+  INSERT FLOW:
+
+  cursor here ↓
+  ...a gentleman lived ▌ not long ago...
+
+      right-click → Insert
+      ┌─────────────────────────────────┐
+      │  in a place I'd rather forget,  │  ← type here
+      │                                 │
+      │                      [ok]       │
+      └─────────────────────────────────┘
+      press ok (or Ctrl+Enter)
+
+  result — pending block inserted inline:
+  ...a gentleman lived ╔═══════════════════════╗ not long ago...
+                       ║ in a place I'd rather ║
+                       ║ forget,               ║
+                       ╚═══════════════════════╝
+                         (pending — confirm or leave open)
+</pre>
+
+<h3>Creating a variant from a selection</h3>
+<ol>
+  <li>Select any word or phrase</li>
+  <li>Right-click → <strong>Add variant</strong></li>
+  <li>Type the alternative and press <code>Enter</code></li>
+</ol>
+<p>The selected text becomes the first option. Your new text becomes the second. Both appear as a visual block:</p>
+<pre>
+  SELECT → right-click → Add variant:
+
+  ...the dog was [dead]
+                   ↓
+  type alternative: "alive"
+                   ↓
+  ...the dog was ┌─────────────┐
+                 │ dead        │  ← original
+                 │ alive       │  ← new variant
+                 └─────────────┘  ...still barking
+
+  add more variants anytime → right-click block → Add variant
+</pre>
+
+<h3>Resolving a branch</h3>
+
+<pre>
+  RESOLVING — Borges style (crossed out, not erased):
+
+  right-click "dead" → Choose this:
+  ┌─────────────┐        ┌─────────────┐
+  │ dead        │   →    │ dead        │  ← chosen
+  │ alive       │        │ ~~alive~~   │  ← struck (still visible)
+  │ unconscious │        │ ~~unconscious~~ │
+  └─────────────┘        └─────────────┘
+
+  right-click → Confirm (collapse) → plain text: "dead"
+  the alternatives disappear only when YOU decide.
+</pre>
+
+<p>Right-click any row inside the block:</p>
+<table>
+  <tr><th>Action</th><th>Effect</th></tr>
+  <tr><td><strong>Choose this</strong></td><td>Strikes through all other options</td></tr>
+  <tr><td><strong>Strike this</strong></td><td>Marks this option as discarded</td></tr>
+  <tr><td><strong>Confirm (collapse)</strong></td><td>Collapses the block to plain text (if one option alive)</td></tr>
+</table>
+<p>Struck options remain <strong>visible</strong> — like Borges' crossed-out words. They don't disappear until you confirm.</p>
+
+<h3>Syntax</h3>
+<p>Internally stored as <code>{option1|option2|~~struck~~}</code>. You never see this while writing — the editor renders the visual block automatically.</p>
+
+<h3>The philosophy</h3>
+<blockquote>Borgian Algebra is a way of <strong>holding contradictions open</strong> — of writing a text that contains its own alternatives without forcing a resolution.<br><br>Borges wrote: <em>"Time forks perpetually toward innumerable futures."</em> Borgian Algebra is the word processor that believes him.</blockquote>
+
+<hr>
+
+<h2 id="chapter-13c">Chapter 13c — The Diary</h2>
+
+<p>The Diary is a special project that Gombro maintains separately from your writing projects. One session per day, named automatically with the date. Press <code>Ctrl+D</code> from anywhere to open it.</p>
+
+<pre>
+  EXPLORER — diary always last:
+
+  ┌──────────────────────────┐
+  │  ▸ PROJECT: Don Quixote  │
+  │    La Mancha             │
+  │    The Knight            │
+  │  ──────────────────────  │
+  │  ▸ PROJECT: DIARIO       │  ← always at the bottom
+  │    Wed, 22 April, 26     │  ← today (auto-created)
+  │    Tue, 21 April, 26     │
+  │    Mon, 20 April, 26     │
+  └──────────────────────────┘
+</pre>
+
+<h3>How it works</h3>
+<ul>
+  <li><code>Ctrl+D</code> from anywhere — opens today's session, creating it if it doesn't exist</li>
+  <li>Session names are literary dates: <em>Wed, 22 April, 26</em></li>
+  <li><code>Ctrl+N</code> is disabled in diary mode — one session per day, created automatically</li>
+  <li>At midnight, Gombro auto-switches to the next day's session</li>
+  <li>Available via slash menu: type <code>/</code> → <em>diary</em> or <em>diario</em></li>
+</ul>
+
+<pre>
+  FLOW:
+
+  Press Ctrl+D anywhere
+         ↓
+  Is today's session open?
+    ┌────┴─────┐
+    YES        NO
+    ↓          ↓
+  stay      auto-create
+  there    "Wed, 22 Apr, 26"
+              ↓
+          open in editor
+              ↓
+  write freely — saved automatically
+              ↓
+  midnight → tomorrow's session opens
+</pre>
+
+<blockquote>The diary is not a project — it is a habit. Gombro keeps it out of the way of your fiction, always at the bottom of the list, always one keystroke away.</blockquote>
+
+<hr>
+
+<h2 id="chapter-14">Chapter 14 — Recommended Workflow</h2>
+
+<p>From blank project to exported draft — a suggestion, not a rule.</p>
+
+<h3>Phase 1 — Open the instrument</h3>
+<pre>create project Don Quixote
+new La Mancha</pre>
+<p>Write until the session is done, then create another. Don't organize yet.</p>
+
+<h3>Phase 2 — Let chance work</h3>
+<p>Pick a paragraph that feels stuck. Right-click → Baraja. Keep what surprised you. Undo what didn't work. Use <strong>Sentence Mode</strong> when you want to slow down.</p>
+
+<h3>Phase 3 — Tag and map</h3>
+<p>Tag recurring elements. Open the Graph, build a visual map of connections.</p>
+
+<h3>Phase 4 — Search and collect</h3>
+<p>Search for elements to track. Save useful searches as Collections. Use Paragraph Versions to compare and restore.</p>
+
+<h3>Phase 5 — Export</h3>
+<p>Arrange sessions in the Explorer in the order you want. Then:</p>
+<pre>compile Don Quixote — First Draft</pre>
+<p>Open the <code>.docx</code> for final formatting and submission.</p>
+
+<hr>
+
+<h2 id="chapter-15">Chapter 15 — Split Editor</h2>
+
+<p>Gombro lets you split the editor into two independent panels — side by side (horizontal) or stacked (vertical). Each panel can show a different session simultaneously.</p>
+
+<pre>
+  HORIZONTAL SPLIT                    VERTICAL SPLIT
+  ┌────────┬──────────┬──────────┐    ┌────────┬────────────────────┐
+  │EXPLORER│ PANEL 1  │ PANEL 2  │    │EXPLORER│     PANEL 1        │
+  │        │          │          │    │        │                    │
+  │session1│ text...  │ text...  │    │session1│ text...            │
+  │session2│          │          │    │session2├────────────────────┤
+  │session3│  🔓       │   🔒     │    │session3│     PANEL 2        │
+  │        │          │          │    │        │ text...            │
+  └────────┴──────────┴──────────┘    └────────┴────────────────────┘
+</pre>
+
+<h3>How to split</h3>
+<p>The split buttons appear in the editor topbar when a session is open:</p>
+<table>
+  <tr><th>Button</th><th>Action</th></tr>
+  <tr><td><code>▣</code></td><td>Toggle horizontal split (left | right)</td></tr>
+  <tr><td><code>⬒</code></td><td>Toggle vertical split (top | bottom)</td></tr>
+</table>
+<p>When you split, both panels open the same session. Navigate to a different session to display it in the second panel.</p>
+
+<h3>Locking a panel</h3>
+<p>Each panel has its own <code>🔓</code> / <code>🔒</code> button in its header.</p>
+<ul>
+  <li><strong>🔓 Unlocked</strong> — clicking a session in the Explorer changes this panel.</li>
+  <li><strong>🔒 Locked</strong> — this panel stays fixed. Explorer clicks go to the other panel instead.</li>
+</ul>
+<p>Classic use: lock Panel 1 on your outline or reference session, leave Panel 2 unlocked for active writing.</p>
+
+<h3>Resizing panels</h3>
+<p>Hover over the divider between panels — it highlights. Click and drag to resize. Minimum size per panel: 15%. Closing the split resets to 50/50.</p>
+
+<hr>
+
+<h2 id="chapter-16">Chapter 16 — The Garden of Forking Paths</h2>
+
+<p>Named after Borges' story, <strong>Senderos</strong> (Paths) is Gombro's narrative fork system. From any paragraph, you can branch off a parallel universe of your text — without touching the original.</p>
+
+<pre>
+  ORIGINAL PROJECT (the mother path)
+  ────────────────────────────────────────────
+  [session 1] → [session 2] → [session 3*] → [session 4] → ...
+                                    │
+                              right-click →
+                              🌿 Fork from here
+                                    │
+                                    ▼
+                    SENDERO 1 (collection)
+                    ──────────────────────────────
+                    [session 1*] [session 2*] ← frozen
+                                    │
+                              [new session] → ...
+</pre>
+
+<h3>Creating a Sendero</h3>
+<ol>
+  <li>Write in any session until you reach a paragraph where you want to diverge.</li>
+  <li>Right-click on that paragraph → <strong>🌿 Fork from here</strong>.</li>
+  <li>A new Sendero appears in the Explorer under <strong>🌿 Senderos</strong>, named automatically: <em>"from: [first 5 words of the paragraph]"</em>.</li>
+</ol>
+
+<h3>What the Sendero inherits</h3>
+<p>The Sendero receives all sessions up to and including the fork paragraph — <strong>frozen</strong>. The original project continues unchanged and knows nothing about the fork.</p>
+
+<h3>Opening a Sendero</h3>
+<p>Click the Sendero name in the Explorer. The editor opens the origin session truncated at the fork paragraph — everything after that point does not exist in this path. A green banner at the top confirms you are inside a Sendero.</p>
+
+<h3>Writing inside a Sendero</h3>
+<p>Create new sessions normally — they belong exclusively to this Sendero. The original project is never affected.</p>
+
+<h3>Renaming and deleting</h3>
+<p>Right-click a Sendero in the Explorer to rename or delete it. Deleting a Sendero removes only its own sessions — the original project and its sessions are untouched.</p>
+
+<hr>
+
+<h2 id="chapter-17">Chapter 17 — Games</h2>
+
+<p>When you need a break from the blank page — or when creative resistance takes a concrete shape — Gombro includes a Rogue-style text dungeon.</p>
+
+<pre>
+  ┌─────────────────────────────────┐
+  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+  │  ░ . . . . @ . . # # # # # ░   │
+  │  ░ . . . . . . . # . . . # ░   │
+  │  ░ . . . . . . . # . . . # ░   │
+  │  ░ # # # # # # # # . . . # ░   │
+  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+  │                                 │
+  │  > go north                     │
+  └─────────────────────────────────┘
+</pre>
+
+<p>Open with <code>games</code> · <code>juegos</code> in the CmdBar. Navigate, explore, get lost. More games may be added in future versions.</p>
+
+<hr>
+
+<h2 id="shortcuts">Keyboard Shortcuts</h2>
+
+<table>
+  <tr><th>Shortcut</th><th>Action</th></tr>
+  <tr><td><code>:</code> or <code>/</code></td><td>Open CmdBar</td></tr>
+  <tr><td><code>Ctrl+T</code></td><td>Open floating command palette</td></tr>
+  <tr><td><code>Ctrl+F</code></td><td>Open floating search</td></tr>
+  <tr><td><code>Ctrl+N</code></td><td>New session (disabled in diary mode)</td></tr>
+  <tr><td><code>Ctrl+D</code></td><td>Open today's diary session</td></tr>
+  <tr><td><code>F4</code></td><td>Toggle post-it note for active session</td></tr>
+  <tr><td><code>F1</code></td><td>Open Help</td></tr>
+  <tr><td><code>Esc</code></td><td>Close CmdBar → close Search → toggle Zen</td></tr>
+  <tr><td><code>F2</code></td><td>Rename selected session in Explorer</td></tr>
+  <tr><td><code>Delete</code></td><td>Delete selected session (or all multi-selected)</td></tr>
+  <tr><td><code>↑ ↓</code></td><td>Navigate sessions in Explorer</td></tr>
+  <tr><td><code>Enter</code></td><td>Open selected session in Explorer</td></tr>
+  <tr><td><code>Ctrl+click</code></td><td>Multi-select sessions in Explorer</td></tr>
+  <tr><td><code>Shift+click</code></td><td>Select range of sessions in Explorer</td></tr>
+</table>
+
+<hr>
+
+<h2 id="author">About the Author</h2>
+
+<p><strong>Raúl Lilloy</strong> is the creator of Gombro. He believes writing should be an act of discovery, not production. He built the tool he wanted to use — no cloud, no AI, no agenda.</p>
+
+<pre>
+        .-------.
+       /  o   o  \
+      |     ^     |
+      |   \___/   |
+       \  -----  /
+        '-.___..-'
+       /|         |\
+      / |  RAÚL   | \
+     /  |  LILLOY |  \
+    /   '---------'   \
+        |  ☕  💻  |
+        |   Gombro  |
+        |  v0.0.5β  |
+        '~~~~~~~~~~~'
+
+  "Writing is... I don't know.
+   That's why I write."
+</pre>
+
+</div>
+
+<section id="index">
+<h2>Alphabetical Index</h2>
+<table class="index-table">
+  <thead><tr><th>Command / Action</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>: or /</code></td><td>Open command bar (commands, search, compile, new session…)</td></tr>
+    <tr><td><code>Ctrl+D</code></td><td>Open today's diary session (auto-created if it doesn't exist)</td></tr>
+    <tr><td><code>Ctrl+F</code></td><td>Open floating search bar</td></tr>
+    <tr><td><code>Ctrl+N</code></td><td>Create a new session (disabled in diary mode)</td></tr>
+    <tr><td><code>Ctrl+T</code></td><td>Open floating command palette</td></tr>
+    <tr><td><code>Ctrl+click nodes</code></td><td>Select multiple graph nodes — all paragraphs open in editor</td></tr>
+    <tr><td><code>Ctrl+click sessions</code></td><td>Multi-select sessions in Explorer — Delete removes all selected</td></tr>
+    <tr><td><code>diary / diario  ·  Ctrl+D</code></td><td>Open the diary project (always last in Explorer, one session per day)</td></tr>
+    <tr><td><code>compile [name]</code></td><td>Export visible sessions to .docx</td></tr>
+    <tr><td><code>create project &lt;name&gt;</code></td><td>Create a new project</td></tr>
+    <tr><td><code>Explorer → Graph tab → New graph</code></td><td>Paragraph graph: add nodes, connect them, click to open in editor</td></tr>
+    <tr><td><code>Explorer → paragraph row → clock icon</code></td><td>View and restore previous versions of a paragraph</td></tr>
+    <tr><td><code>Explorer → ✂ revelar naipe</code></td><td>After Baraja: reveals the source session in the session list</td></tr>
+    <tr><td><code>F1</code></td><td>Show help</td></tr>
+    <tr><td><code>F4</code></td><td>Toggle post-it note for the active session</td></tr>
+    <tr><td><code>Graph search bar</code></td><td>Type to highlight matching nodes; non-matching nodes dim out</td></tr>
+    <tr><td><code>help / ayuda</code></td><td>Show help (same as F1)</td></tr>
+    <tr><td><code>new [name]</code></td><td>Create a new session</td></tr>
+    <tr><td><code>open / view projects</code></td><td>Show project list</td></tr>
+    <tr><td><code>Right-click → Insert</code></td><td>Insert text as a pending Borgian widget. Confirm via right-click → Confirm.</td></tr>
+    <tr><td><code>Right-click paragraph → # (hashtags)</code></td><td>Add or remove project hashtags</td></tr>
+    <tr><td><code>Right-click paragraph → Baraja</code></td><td>Mix current paragraph with a random one from the project</td></tr>
+    <tr><td><code>Right-click paragraph → Add variant · /paths</code></td><td>Borgian Algebra: create variant branches inline. /paths lists all open branches.</td></tr>
+    <tr><td><code>Right-click paragraph → Reveal in Binder</code></td><td>Scroll to and highlight the active session in the Explorer</td></tr>
+    <tr><td><code>Right-click paragraph → Versions</code></td><td>View and restore previous versions of a paragraph</td></tr>
+    <tr><td><code>Right-click session → Move up / Move down</code></td><td>Reorder sessions within a project. Drag &amp; drop also works.</td></tr>
+    <tr><td><code>Right-click session → Undo shuffle</code></td><td>Restore session to its state before the last shuffle</td></tr>
+    <tr><td><code>search &lt;term&gt;  ·  Ctrl+F</code></td><td>Search across all sessions. Supports AND / OR / NOT operators.</td></tr>
+    <tr><td><code>search &lt;term&gt; in phrases</code></td><td>Search showing individual matching sentences</td></tr>
+    <tr><td><code>Search → + Save as collection</code></td><td>Save a search as a named collection — click it to re-run anytime</td></tr>
+    <tr><td><code>sentence mode</code></td><td>Toggle sentence mode</td></tr>
+    <tr><td><code>shuffle</code></td><td>Reorganize sentences in the active paragraph randomly</td></tr>
+    <tr><td><code>↑ (Explorer header)</code></td><td>Import .md / .docx / .txt — creates a new project from the file</td></tr>
+    <tr><td><code>zen</code></td><td>Distraction-free writing mode</td></tr>
+  </tbody>
+</table>
+</section>
+
+<style>
+.index-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 14px; }
+.index-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--border); color: var(--accent); font-family: monospace; font-weight: 600; }
+.index-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.index-table td:first-child { white-space: nowrap; width: 40%; }
+.index-table tr:last-child td { border-bottom: none; }
+</style>
+
+<a class="back-top" href="#top">↑ top</a>
+
+</body>
+</html>

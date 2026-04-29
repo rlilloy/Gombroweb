@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gombro — Manual</title>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --surface: #222;
+    --border: #333;
+    --text: #d4d4d4;
+    --muted: #888;
+    --accent: #7eb8d4;
+    --code-bg: #2a2a2a;
+    --max-width: 720px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.75;
+    padding: 2rem 1.5rem 6rem;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .header pre {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    color: var(--accent);
+    line-height: 1.2;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .header .tagline {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .toc h2 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+  }
+
+  .toc ol {
+    padding-left: 1.5rem;
+  }
+
+  .toc li {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+  }
+
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: var(--text);
+    margin: 3rem 0 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin: 2rem 0 0.75rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  p { margin: 0.75rem 0; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #b0c4b8;
+  }
+
+  code {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.1em 0.35em;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    color: #b0c4b8;
+  }
+
+  pre code { background: none; border: none; padding: 0; font-size: inherit; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: normal;
+  }
+
+  td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td { background: var(--surface); }
+
+  ul, ol { padding-left: 1.5rem; margin: 0.75rem 0; }
+  li { margin: 0.3rem 0; }
+
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  strong { color: #e0e0e0; font-weight: bold; }
+  em { color: var(--muted); font-style: italic; }
+
+  .version {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.2rem 0.6rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.4rem 0.8rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .back-top:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header" id="top">
+<pre>
+  ██████╗  ██████╗ ███╗   ███╗██████╗ ██████╗  ██████╗
+ ██╔════╝ ██╔═══██╗████╗ ████║██╔══██╗██╔══██╗██╔═══██╗
+ ██║  ███╗██║   ██║██╔████╔██║██████╔╝██████╔╝██║   ██║
+ ██║   ██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══██╗██║   ██║
+ ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝██║  ██║╚██████╔╝
+  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
+</pre>
+<div class="tagline">inventando palabras</div>
+<div class="version">v0.0.5-beta</div>
+</div>
+
+<nav class="toc">
+<h2>Índice</h2>
+<ol>
+  <li><a href="#capitulo-1">¿Qué es Gombro?</a></li>
+  <li><a href="#capitulo-2">Primeros pasos</a></li>
+  <li><a href="#capitulo-3">El Editor</a></li>
+  <li><a href="#capitulo-4">La CmdBar</a></li>
+  <li><a href="#capitulo-5">El Explorador</a></li>
+  <li><a href="#capitulo-6">Búsqueda y Colecciones</a></li>
+  <li><a href="#capitulo-7">Versiones de párrafo</a></li>
+  <li><a href="#capitulo-8">Notas del proyecto</a></li>
+  <li><a href="#capitulo-9">Baraja y cut-up</a></li>
+  <li><a href="#capitulo-10">Vista de Grafo</a></li>
+  <li><a href="#capitulo-11">Hashtags</a></li>
+  <li><a href="#capitulo-12">Importar y exportar</a></li>
+  <li><a href="#capitulo-13b">Álgebra Borgiana</a></li>
+  <li><a href="#capitulo-13c">El Diario</a></li>
+  <li><a href="#capitulo-14">Flujo de trabajo recomendado</a></li>
+  <li><a href="#capitulo-15">Editor dividido</a></li>
+  <li><a href="#capitulo-16">El jardín de los senderos</a></li>
+  <li><a href="#capitulo-17">Juegos</a></li>
+  <li><a href="#atajos">Atajos de teclado</a></li>
+  <li><a href="#autor">Sobre el autor</a></li>
+</ol>
+</nav>
+
+<h2 id="capitulo-1">Capítulo 1 — ¿Qué es Gombro?</h2>
+
+<p>Gombro es una máquina de escribir centrada en una sola cosa: la invención humana de la palabra.</p>
+
+<p>No la palabra pulida. No la palabra optimizada. La <strong>palabra en movimiento</strong> — siguiendo la deriva del pensamiento, el accidente del orden, la sorpresa de lo que viene después cuando nada se fuerza.</p>
+
+<p>No hay IA aquí. Sin autocompletado, sin sugerencias, sin mano invisible dirigiendo tus frases hacia lo probable. Gombro es una herramienta enteramente al servicio del flujo del escritor.</p>
+
+<p>Cada sesión de escritura en Gombro es una <strong>improvisación de jazz</strong> — una sesión en el sentido musical. Abrís el instrumento, tocás, parás. Lo que dejaste atrás es un registro de la sesión: crudo, vivo, recuperable.</p>
+
+<h3>Los escritores que habrían usado Gombro</h3>
+
+<p>Gombro es el procesador de texto que Kafka habría usado para fragmentar sus diarios sin resolverlos. Que Jacques Vaché habría usado para cortar cartas que nunca envió. Que Gombrowicz habría usado para barajar capítulos hasta que la forma misma se volviera el argumento. Que Joyce habría usado para redactar Nighttown en ráfagas desconectadas y recombinarlas a las 3am. Que Néstor Sánchez habría usado para escribir <em>Siberia Blues</em> una astilla a la vez. Que Philip K. Dick habría usado para escribir <em>El hombre en el castillo</em> o <em>VALIS</em> — novelas donde la realidad misma se niega a mantenerse quieta.</p>
+
+<h3>Lo que Gombro no es</h3>
+<ul>
+  <li>No es un procesador de texto para formateo final</li>
+  <li>No es un gestor de proyectos con carpetas, estados o plazos</li>
+  <li>No se conecta a la nube ni a ningún servicio externo</li>
+  <li><strong>No contiene ninguna IA de ningún tipo</strong></li>
+</ul>
+
+<h3>Los dos conceptos centrales</h3>
+<table>
+  <tr><th>Concepto</th><th>Qué es</th></tr>
+  <tr><td><strong>Proyecto</strong></td><td>Un contenedor para un cuerpo de trabajo — una novela, un ciclo de cuentos, un cuaderno</td></tr>
+  <tr><td><strong>Sesión</strong></td><td>Una improvisación dentro de un proyecto — una escena, un fragmento, una deriva</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-2">Capítulo 2 — Primeros pasos</h2>
+
+<h3>La interfaz de un vistazo</h3>
+<pre>
+┌────────────────────────────────────────────────────────────┐
+│  Gombro                                        [ES]  [?]   │
+├──────────────────────┬─────────────────────────────────────┤
+│                      │                                     │
+│  EXPLORADOR          │  EDITOR                             │
+│  ──────────          │  ─────────────────────────          │
+│  Sesiones            │                                     │
+│                      │   Seleccioná una sesión para        │
+│  (vacío)             │   empezar a escribir.               │
+│                      │                                     │
+│  [+]  [↑]            │                                     │
+└──────────────────────┴─────────────────────────────────────┘
+</pre>
+
+<pre>
+  Cómo se conecta todo:
+
+  ┌─────────────┐
+  │   PROYECTO  │  ← tu cuerpo de trabajo (novela, ciclo, cuaderno)
+  └──────┬──────┘
+         │  contiene
+    ┌────┴────┬────────┬─────────┐
+    ▼         ▼        ▼         ▼
+  Sesión   Sesión   Sesión    Sesión
+    │         │
+    │  contiene
+    ▼
+  Párrafo ── versión ── versión ── versión
+    │
+    ├── hashtag
+    ├── destino de baraja
+    └── nodo de grafo
+</pre>
+
+<h3>Paso 1 — Crear el primer proyecto</h3>
+<p>Presioná <code>:</code> para abrir la CmdBar y escribí:</p>
+<pre>crear proyecto Don Quijote</pre>
+<p>Presioná <code>Enter</code>. El proyecto se crea y queda activo.</p>
+
+<h3>Paso 2 — Crear la primera sesión</h3>
+<p>Presioná <code>Ctrl+N</code>, o abrí la CmdBar y escribí:</p>
+<pre>nuevo Capítulo Uno</pre>
+
+<h3>Paso 3 — Empezar a escribir</h3>
+<p>Hacé clic en el área del Editor y empezá a escribir. Eso es todo.</p>
+
+<h3>Cosas clave antes de seguir</h3>
+<table>
+  <tr><th>Qué</th><th>Cómo</th></tr>
+  <tr><td>Abrir la CmdBar</td><td><code>:</code> o <code>/</code></td></tr>
+  <tr><td>Crear una sesión</td><td><code>Ctrl+N</code> o <code>nuevo &lt;nombre&gt;</code> en la CmdBar</td></tr>
+  <tr><td>Abrir la ayuda</td><td>Botón <code>[?]</code>, <code>F1</code>, o <code>ayuda</code> en la CmdBar</td></tr>
+  <tr><td>Cambiar idioma</td><td>Chip <code>[ES]</code> en la barra superior o <code>lang en</code> en la CmdBar</td></tr>
+  <tr><td>Cerrar cualquier modal</td><td><code>Esc</code></td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-3">Capítulo 3 — El Editor</h2>
+
+<p>El Editor es donde todo sucede. Es intencionalmente austero — sin barras de herramientas, sin botones de formato, sin reglas. Solo el texto y vos.</p>
+
+<p>Cada bloque de texto separado por una línea en blanco es un <strong>párrafo</strong> — la unidad fundamental en Gombro. Los párrafos se guardan, versionan, barajan y etiquetan individualmente.</p>
+
+<h3>Menú contextual</h3>
+<p>Hacé clic derecho en cualquier parte del editor:</p>
+<pre>
+┌─────────────────────────┐
+│  Deshacer               │
+│  ─────────────────────  │
+│  Seleccionar todo       │
+│  Cortar / Copiar / Pegar│
+│  ─────────────────────  │
+│  Insertar               │
+│  Agregar variante       │
+│  ─────────────────────  │
+│  Mostrar en Binder      │
+│  Barajar (Baraja)       │
+│  Versiones de párrafo   │
+│  ─────────────────────  │
+│  🌿 Senderear desde aquí│
+└─────────────────────────┘
+</pre>
+<p><strong>🌿 Senderear desde aquí</strong> — crea un Sendero (bifurcación narrativa) a partir del párrafo actual. Ver Capítulo 16.</p>
+
+<h3>Modo frase</h3>
+<p>Activalo con <code>modo frase</code> en la CmdBar. Cada <code>.</code> aísla la frase actual — de a una, el resto desaparece. Escribís, ponés punto, se bloquea y se abre la siguiente.</p>
+
+<pre>
+  MODO FRASE — solo una frase visible a la vez:
+
+  ┌─────────────────────────────────────────────────────┐
+  │  Capítulo Uno            [modo frase] [Selec. todo]  │
+  ├─────────────────────────────────────────────────────┤
+  │                                                     │
+  │  · · · · · · · · · · · · · · · · · · · · · · · ·   │  ← bloqueada
+  │                                                     │
+  │  En un lugar de la Mancha, de cuyo nombre no        │
+  │  quiero acordarme, no ha mucho que vivía...         │  ← activa
+  │                                                     │
+  │  · · · · · · · · · · · · · · · · · · · · · · · ·   │  ← bloqueada
+  │                                                     │
+  └─────────────────────────────────────────────────────┘
+
+  escribís → punto [.] → se bloquea → se abre la siguiente
+</pre>
+
+<h3>Layout — tres paneles</h3>
+<p>Gombro tiene tres zonas permanentes:</p>
+<pre>
+  ┌────────┬───────────────────────────────────┐
+  │EXPLOR. │            EDITOR                 │
+  │        │                                   │
+  │sesión1 │  texto...                         │
+  │sesión2 │                                   │
+  │sesión3 │                                   │
+  │        │                                   │
+  ├────────┴───────────────────────────────────┤
+  │  :/                                        │  ← CmdBar / terminal
+  └────────────────────────────────────────────┘
+</pre>
+<ul>
+  <li><strong>Explorador</strong> (izquierda) — lista de sesiones del proyecto activo.</li>
+  <li><strong>Editor</strong> (centro/derecha) — área de escritura.</li>
+  <li><strong>CmdBar</strong> (abajo) — terminal de comandos. Abrila con <code>:</code> o <code>/</code>. Presioná <code>Ctrl+T</code> para la paleta flotante.</li>
+</ul>
+
+<h3>Modo zen</h3>
+<p>Expande el editor a pantalla completa. Activalo con <code>zen</code> en la CmdBar, o presionando <code>Esc</code> en reposo.</p>
+
+<pre>
+  NORMAL                        ZEN
+  ──────────────────────        ────────────────────────────────────────
+  ┌────────┬───────────┐        ┌────────────────────────────────────────┐
+  │EXPLOR. │  EDITOR   │   →    │                                        │
+  │        │           │        │        En un lugar de la Mancha,       │
+  │sesión1 │  texto... │        │        de cuyo nombre no quiero        │
+  │sesión2 │           │        │        acordarme, no ha mucho que      │
+  │sesión3 │           │        │        vivía un hidalgo...             │
+  │        │           │        │                                        │
+  ├────────┴───────────┤        └────────────────────────────────────────┘
+  │  :/               │           sin paneles · sin chrome · solo la palabra
+  └───────────────────┘
+</pre>
+
+<h3>Referencia de teclado</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Abrir CmdBar</td><td><code>:</code> o <code>/</code></td></tr>
+  <tr><td>Paleta flotante</td><td><code>Ctrl+T</code></td></tr>
+  <tr><td>Búsqueda flotante</td><td><code>Ctrl+F</code></td></tr>
+  <tr><td>Nueva sesión</td><td><code>Ctrl+N</code></td></tr>
+  <tr><td>Sesión del diario de hoy</td><td><code>Ctrl+D</code></td></tr>
+  <tr><td>Post-it de la sesión activa</td><td><code>F4</code></td></tr>
+  <tr><td>Ayuda</td><td><code>F1</code></td></tr>
+  <tr><td>Seleccionar todo</td><td>Botón <code>[Seleccionar todo]</code> o clic derecho</td></tr>
+  <tr><td>Activar Modo Frase</td><td><code>modo frase</code> en CmdBar</td></tr>
+  <tr><td>Activar Modo Zen</td><td><code>zen</code> en CmdBar · <code>Esc</code> en reposo</td></tr>
+  <tr><td>Cerrar CmdBar / búsqueda / activar Zen</td><td><code>Esc</code> (en cascada)</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-4">Capítulo 4 — La CmdBar</h2>
+
+<p>Presioná <code>:</code> o <code>/</code> para abrir. <code>Esc</code> para cerrar. Todos los comandos funcionan en inglés y en español.</p>
+
+<h3>Escritura</h3>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>nuevo &lt;nombre&gt;</code> · <code>new &lt;name&gt;</code></td><td>Crear una nueva sesión</td></tr>
+  <tr><td><code>modo frase</code> · <code>sentence mode</code></td><td>Activar/desactivar modo frase</td></tr>
+  <tr><td><code>zen</code></td><td>Activar/desactivar modo zen</td></tr>
+</table>
+
+<h3>Proyectos</h3>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>crear proyecto &lt;nombre&gt;</code></td><td>Crear un nuevo proyecto</td></tr>
+  <tr><td><code>abrir</code> · <code>ver proyectos</code></td><td>Ver la lista de proyectos</td></tr>
+</table>
+
+<h3>Búsqueda</h3>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>buscar &lt;término&gt;</code></td><td>Buscar en todas las sesiones</td></tr>
+  <tr><td><code>buscar &lt;término&gt; en frases</code></td><td>Búsqueda mostrando frases individuales</td></tr>
+</table>
+
+<h3>Exportar</h3>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>compilar</code> · <code>compile</code></td><td>Exportar todas las sesiones a .docx</td></tr>
+  <tr><td><code>compilar &lt;nombre&gt;</code></td><td>Exportar con nombre personalizado</td></tr>
+</table>
+
+<h3>Interfaz</h3>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>ayuda</code> · <code>help</code></td><td>Abrir el modal de ayuda</td></tr>
+  <tr><td><code>idioma</code> · <code>language</code></td><td>Cambiar idioma de la interfaz (English / Español)</td></tr>
+  <tr><td><code>juegos</code> · <code>games</code></td><td>Abrir el minijuego Rogue</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-5">Capítulo 5 — El Explorador</h2>
+
+<p>El Explorador es el panel izquierdo — tu lista de sesiones, tu binder. Cada sesión del proyecto activo vive aquí.</p>
+
+<ul>
+  <li><code>[+]</code> — crear una nueva sesión</li>
+  <li><code>[↑]</code> — importar un archivo (.md, .docx, .txt)</li>
+  <li>Las estadísticas al pie muestran totales del proyecto activo</li>
+</ul>
+
+<h3>Estadísticas del proyecto</h3>
+<table>
+  <tr><th>Estadística</th><th>Qué mide</th></tr>
+  <tr><td><strong>Días</strong></td><td>Cuántos días escribiste en este proyecto</td></tr>
+  <tr><td><strong>Palabras</strong></td><td>Total de palabras en todas las sesiones</td></tr>
+  <tr><td><strong>Oraciones</strong></td><td>Total de oraciones</td></tr>
+  <tr><td><strong>Comas</strong></td><td>Proxy de complejidad y ritmo de las frases</td></tr>
+</table>
+
+<h3>Selección múltiple</h3>
+<p>En el Explorador podés seleccionar varias sesiones a la vez:</p>
+<table>
+  <tr><th>Gesto</th><th>Qué hace</th></tr>
+  <tr><td><code>Ctrl+clic</code></td><td>Agrega o quita una sesión de la selección</td></tr>
+  <tr><td><code>Shift+clic</code></td><td>Selecciona el rango desde la última sesión clickeada hasta esta</td></tr>
+  <tr><td><code>Delete</code></td><td>Elimina todas las sesiones seleccionadas de una vez</td></tr>
+</table>
+
+<h3>Menú contextual de sesión</h3>
+<p>Clic derecho sobre cualquier sesión:</p>
+<pre>
+┌─────────────────────────┐
+│  Renombrar              │
+│  Duplicar               │
+│  ───────────────────    │
+│  Barajar (Abarajar)     │
+│  Deshacer barajada      │
+│  ───────────────────    │
+│  Subir                  │
+│  Bajar                  │
+│  ───────────────────    │
+│  Mover a &lt;proyecto&gt;     │
+│  ───────────────────    │
+│  Eliminar               │
+└─────────────────────────┘
+</pre>
+
+<p><strong>Subir / Bajar</strong> — reordenar sesiones dentro del proyecto. El orden persiste. También podés <strong>arrastrar y soltar</strong> sesiones directamente en la lista.</p>
+
+<h3>Secciones del panel Explorador</h3>
+<p>Debajo de la lista de sesiones, el Explorador muestra tres secciones opcionales:</p>
+<table>
+  <tr><th>Sección</th><th>Qué muestra</th></tr>
+  <tr><td><strong>🌿 Senderos</strong></td><td>Bifurcaciones narrativas (ver Capítulo 16)</td></tr>
+  <tr><td><strong>Colecciones</strong></td><td>Búsquedas guardadas (ver Capítulo 6)</td></tr>
+  <tr><td><strong>⚛ Schrödinger</strong></td><td>Párrafos con texto cuántico o tachaduras pendientes</td></tr>
+</table>
+<p>Hacé clic derecho en cualquier parte del Explorador para mostrar u ocultar cada sección individualmente.</p>
+
+<hr>
+
+<h2 id="capitulo-6">Capítulo 6 — Búsqueda y Colecciones</h2>
+
+<p>La búsqueda recorre el texto completo de cada párrafo en el proyecto activo.</p>
+
+<pre>buscar hidalgo</pre>
+
+<p>Usá el modo frase para resultados a nivel de oración:</p>
+<pre>buscar hidalgo en frases</pre>
+
+<h3>Colecciones</h3>
+<p>Una Colección es una búsqueda guardada. Después de cualquier búsqueda, hacé clic en <strong>+ Guardar como colección</strong>. Ponele nombre, guardala, y aparece en el Explorador — un clic para volver a ejecutarla.</p>
+
+<pre>
+  ┌──────────────────────┐
+  │  Sesiones      [↑]   │
+  │  ────────────────    │
+  │  La Mancha           │
+  │  El Caballero        │
+  │  Olla y Renta        │
+  │  El Ama              │
+  │  ────────────────    │
+  │  COLECCIONES         │  ← búsquedas guardadas, siempre a un clic
+  │  ▸ El arco del hidalgo│
+  │  ▸ Comida e ingresos  │
+  │  ▸ Debate de nombres  │
+  └──────────────────────┘
+</pre>
+
+<hr>
+
+<h2 id="capitulo-7">Capítulo 7 — Versiones de párrafo</h2>
+
+<p>Cada vez que un párrafo cambia, Gombro guarda una copia automáticamente. Es un historial por párrafo — no un deshacer.</p>
+
+<p><strong>Acceso:</strong> clic derecho en un párrafo → <em>Versiones de párrafo</em>, o posate sobre una sesión en el Explorador → clic en el ícono del reloj.</p>
+
+<pre>
+  LÍNEA DE TIEMPO — párrafo 1:
+
+  ┌──────────────────────────────────────────────────────┐
+  │  Versiones · párrafo 1                     [Cerrar]  │
+  ├──────────────────────────────────────────────────────┤
+  │                                                      │
+  │  ● ACTUAL                                            │
+  │    En un lugar de la Mancha, de cuyo nombre          │
+  │    no quiero acordarme...                            │
+  │                                                      │
+  │  ── 17 abr · 11:42am ──────────────────────────────  │
+  │    En un lugar de la Mancha — prefiero no nombrar    │
+  │    cuál — vivió no hace mucho un hidalgo...          │
+  │                              [Restaurar esta versión]│
+  │                                                      │
+  │  ── 16 abr · 9:15pm ───────────────────────────────  │
+  │    En la Mancha, en algún lugar, vivió un hombre.    │
+  │                              [Restaurar esta versión]│
+  │                                                      │
+  │  ── 15 abr · 3:30pm ───────────────────────────────  │
+  │    Había un hombre en la Mancha.                     │
+  │                              [Restaurar esta versión]│
+  └──────────────────────────────────────────────────────┘
+
+  nada se borra — cada borrador es recuperable
+</pre>
+
+<p>Hacé clic en <strong>Restaurar esta versión</strong> para volver atrás. El texto actual se convierte en una nueva versión — nada se pierde permanentemente.</p>
+
+<hr>
+
+<h2 id="capitulo-8">Capítulo 8 — Notas del proyecto</h2>
+
+<p>Presioná <code>Ctrl+P</code> para abrir un bloc de notas adjunto al proyecto activo. Escribí libremente — se guarda automáticamente. Presioná <code>Esc</code> para cerrar.</p>
+
+<p>La nota no aparece en el Explorador, no se compila al exportar, y no tiene versiones. Es una mesa auxiliar al lado de tu escritorio.</p>
+
+<hr>
+
+<h2 id="capitulo-9">Capítulo 9 — Baraja y cut-up</h2>
+
+<p>Baraja toma un párrafo que escribiste y lo <strong>mezcla con un párrafo aleatorio de otro lugar del proyecto</strong>. Esta es la técnica del cut-up — colisión automatizada, el escritor decide qué queda.</p>
+
+<pre>
+  ANTES DE BARAJAR:
+
+  sesión "Capítulo Uno"          sesión "El Caballero"
+  ──────────────────────         ───────────────────────────
+  En un lugar de la Mancha,      Frisaba la edad de nuestro
+  de cuyo nombre no quiero       hidalgo con los cincuenta
+  acordarme, no ha mucho         años; era de complexión
+  que vivía un hidalgo...        recia, seco de carnes,
+                                 enjuto de rostro.
+
+                 ↓  clic derecho → Barajar (Baraja)  ↓
+
+  DESPUÉS — los dos colisionan:
+  ────────────────────────────────────────────────────────
+  En un lugar de la Mancha, seco de carnes, enjuto de
+  rostro — de cuyo nombre no quiero acordarme, no ha
+  mucho que vivía un hidalgo de los de lanza en astillero,
+  adarga antigua. Frisaba los cincuenta años y madrugaba mucho.
+  ────────────────────────────────────────────────────────
+  algo nuevo apareció. no lo planeaste.
+</pre>
+
+<p>Clic derecho en cualquier párrafo → <strong>Barajar (Baraja)</strong>.</p>
+<p>Si el resultado no te interesa: clic derecho en la sesión → <strong>Deshacer barajada</strong>.</p>
+
+<h3>Cuándo usar Baraja</h3>
+<ul>
+  <li>Cuando un párrafo se siente atascado</li>
+  <li>Cuando querés conexiones inesperadas entre sesiones</li>
+  <li>Cuando la siguiente frase lógica es lo último que querés escribir</li>
+</ul>
+
+<blockquote>Baraja no es un generador aleatorio. Es un <strong>estímulo desde tu propia escritura</strong> — todo lo que extrae viene de texto que vos mismo escribiste.</blockquote>
+
+<hr>
+
+<h2 id="capitulo-10">Capítulo 10 — Vista de Grafo</h2>
+
+<p>Un mapa visual de tu proyecto. Párrafos como nodos, conexiones que dibujás a mano. En el Explorador, hacé clic en la pestaña <strong>Grafo</strong>.</p>
+
+<pre>
+  VISTA DE GRAFO — El Proceso · Objetos y personas:
+
+                   [Cap.1 · El Arresto]
+                    /       |        \
+              Josef K.   la puerta  los guardianes
+                /           |             \
+       [Cap.3 · Tribunal] [Cap.2 · K.]──[Cap.7 · Abogado]
+            |    \          |               |
+         Josef K. la sala  Leni          Josef K.
+            |        \      |               |
+    [Cap.5 · Flagelador] \ [Cap.4 · Leni]  [Cap.8 · Mercader]
+                          \    \               /
+                       el látigo Leni────Josef K.
+                              \      \       /
+                           [Cap.9 · Sacerdote]
+                                   |
+                            [Cap.10 · La Muerte]
+
+  clic en un nodo → abre el párrafo en el Editor
+  Ctrl+clic en varios → los abre todos juntos
+</pre>
+
+<ul>
+  <li>Hacé clic en <strong>+ Nuevo grafo</strong> para crear uno (podés tener varios por proyecto)</li>
+  <li>Agregá nodos desde tus sesiones</li>
+  <li>Clic en un nodo y luego en otro para conectarlos</li>
+  <li>Mantené <code>Ctrl</code> y hacé clic en varios nodos para abrirlos juntos</li>
+</ul>
+
+<hr>
+
+<h2 id="capitulo-11">Capítulo 11 — Hashtags</h2>
+
+<p>Etiquetas que asignás manualmente a párrafos individuales. Rastreá personajes, objetos, motivos recurrentes — encontralos todos al instante.</p>
+
+<p>Clic derecho en un párrafo → <strong># (panel de hashtags)</strong>. Activá o desactivá etiquetas, creá nuevas.</p>
+
+<p>Buscá por etiqueta igual que cualquier término:</p>
+<pre>buscar #ama</pre>
+
+<hr>
+
+<h2 id="capitulo-12">Capítulo 12 — Importar y exportar</h2>
+
+<h3>Importar</h3>
+<p>Hacé clic en <code>[↑]</code> en el encabezado del Explorador. Acepta <code>.txt</code>, <code>.md</code>, <code>.docx</code>. Cada párrafo/sección se convierte en una sesión en un nuevo proyecto.</p>
+
+<h3>Exportar</h3>
+<pre>compilar
+compilar Don Quijote — Primer Borrador</pre>
+<p>Todas las sesiones visibles, en el orden del Explorador, exportadas como un único archivo <code>.docx</code> en <code>Documents/gombro/{nombreProyecto}/</code>.</p>
+
+<hr>
+
+<h2 id="capitulo-13">Capítulo 13 — Piso 13</h2>
+
+<blockquote>Este capítulo fue dejado intencionalmente en blanco por razones supersticiosas. Si estás leyendo esto, aún no pasó nada malo. Todavía.</blockquote>
+
+<hr>
+
+<h2 id="capitulo-13b">Capítulo 13b — Álgebra Borgiana</h2>
+
+<p>El Álgebra Borgiana es el sistema de Gombro para escribir con alternativas abiertas — inspirado directamente en la forma en que Borges corregía sus manuscritos: no borrando, sino <strong>ramificando</strong>.</p>
+
+<p>En los borradores manuscritos de Borges se puede ver una palabra tachada con tres alternativas escritas al lado, unidas por una llave. No las resolvía de inmediato. Las dejaba coexistir en la página hasta que la correcta se volvía obvia — o hasta que la ambigüedad misma se convertía en el punto.</p>
+
+<h3>Insertar un fragmento pendiente</h3>
+<ol>
+  <li>Hacé clic para posicionar el cursor (o seleccioná una palabra/frase)</li>
+  <li>Clic derecho → <strong>Insertar</strong></li>
+  <li>Escribí tu texto en el panel — admite múltiples líneas</li>
+  <li>Presioná <strong>ok</strong> (o <code>Ctrl+Enter</code>) para insertar como bloque Borgiano pendiente</li>
+</ol>
+<p>Si cerrás el panel sin presionar ok, no se inserta nada. El bloque queda pendiente hasta que lo confirmés.</p>
+
+<pre>
+  FLUJO DE INSERCIÓN:
+
+  cursor aquí ↓
+  ...vivía un hidalgo ▌ de los de lanza...
+
+      clic derecho → Insertar
+      ┌─────────────────────────────────┐
+      │  de cuyo nombre prefiero        │  ← escribí acá
+      │  no acordarme,                  │
+      │                      [ok]       │
+      └─────────────────────────────────┘
+      presioná ok (o Ctrl+Enter)
+
+  resultado — bloque pendiente insertado:
+  ...vivía un hidalgo ╔═══════════════════════════╗ de los de lanza...
+                       ║ de cuyo nombre prefiero  ║
+                       ║ no acordarme,             ║
+                       ╚═══════════════════════════╝
+                         (pendiente — confirmalo o dejalo abierto)
+</pre>
+
+<h3>Crear una variante desde una selección</h3>
+<ol>
+  <li>Seleccioná cualquier palabra o frase</li>
+  <li>Clic derecho → <strong>Agregar variante</strong></li>
+  <li>Escribí la alternativa y presioná <code>Enter</code></li>
+</ol>
+<p>El texto seleccionado se convierte en la primera opción. Tu nuevo texto es la segunda. Ambos aparecen como un bloque visual:</p>
+
+<pre>
+  SELECCIONAR → clic derecho → Agregar variante:
+
+  ...el perro estaba [muerto]
+                       ↓
+  escribí la alternativa: "vivo"
+                       ↓
+  ...el perro estaba ┌─────────────┐
+                     │ muerto      │  ← original
+                     │ vivo        │  ← nueva variante
+                     └─────────────┘  ...ladrando todavía
+
+  agregá más variantes cuando quieras → clic derecho en bloque → Agregar variante
+</pre>
+
+<h3>Resolver una rama</h3>
+
+<pre>
+  RESOLUCIÓN — al estilo Borges (tachado, no borrado):
+
+  clic derecho en "muerto" → Elegir ésta:
+  ┌─────────────┐        ┌─────────────┐
+  │ muerto      │   →    │ muerto      │  ← elegida
+  │ vivo        │        │ ~~vivo~~    │  ← tachada (sigue visible)
+  │ inconsciente│        │ ~~inconsciente~~ │
+  └─────────────┘        └─────────────┘
+
+  clic derecho → Confirmar (colapsar) → texto plano: "muerto"
+  las alternativas desaparecen solo cuando VOS lo decidís.
+</pre>
+
+<p>Clic derecho en cualquier fila del bloque:</p>
+<table>
+  <tr><th>Acción</th><th>Efecto</th></tr>
+  <tr><td><strong>Elegir ésta</strong></td><td>Tacha todas las demás opciones</td></tr>
+  <tr><td><strong>Tachar ésta</strong></td><td>Marca esta opción como descartada</td></tr>
+  <tr><td><strong>Confirmar (colapsar)</strong></td><td>Colapsa el bloque a texto plano (si hay una sola opción viva)</td></tr>
+</table>
+
+<h3>Sintaxis</h3>
+<p>Internamente se guarda como <code>{opción1|opción2|~~tachada~~}</code>. Nunca lo ves mientras escribís — el editor renderiza el bloque visual automáticamente.</p>
+
+<h3>La filosofía</h3>
+<blockquote>El Álgebra Borgiana es una forma de <strong>mantener las contradicciones abiertas</strong> — de escribir un texto que contiene sus propias alternativas sin forzar una resolución.<br><br>Borges escribió: <em>"El tiempo se bifurca perpetuamente hacia innumerables futuros."</em> El Álgebra Borgiana es el procesador de texto que le cree.</blockquote>
+
+<hr>
+
+<h2 id="capitulo-13c">Capítulo 13c — El Diario</h2>
+
+<p>El Diario es un proyecto especial que Gombro mantiene separado de tus proyectos de escritura. Una sesión por día, con nombre automático según la fecha. Presioná <code>Ctrl+D</code> desde cualquier lugar para abrirlo.</p>
+
+<pre>
+  EXPLORADOR — el diario siempre al final:
+
+  ┌──────────────────────────┐
+  │  ▸ PROYECTO: Don Quixote │
+  │    La Mancha             │
+  │    El Caballero          │
+  │  ──────────────────────  │
+  │  ▸ PROYECTO: DIARIO      │  ← siempre al fondo
+  │    Mié, 22 abril, 26     │  ← hoy (creada automáticamente)
+  │    Mar, 21 abril, 26     │
+  │    Lun, 20 abril, 26     │
+  └──────────────────────────┘
+</pre>
+
+<h3>Cómo funciona</h3>
+<ul>
+  <li><code>Ctrl+D</code> desde cualquier lugar — abre la sesión de hoy, creándola si no existe</li>
+  <li>Los nombres de sesión son fechas literarias: <em>Mié, 22 abril, 26</em></li>
+  <li><code>Ctrl+N</code> está deshabilitado en modo diario — una sesión por día, creada automáticamente</li>
+  <li>A medianoche, Gombro cambia automáticamente a la sesión del día siguiente</li>
+  <li>También disponible desde el menú slash: escribí <code>/</code> → <em>diario</em> o <em>diary</em></li>
+</ul>
+
+<pre>
+  FLUJO:
+
+  Presionás Ctrl+D desde cualquier lugar
+         ↓
+  ¿Existe la sesión de hoy?
+    ┌────┴─────┐
+    SÍ         NO
+    ↓          ↓
+  quedás     se crea sola
+  ahí     "Mié, 22 abr, 26"
+              ↓
+          se abre en el editor
+              ↓
+  escribís libremente — se guarda solo
+              ↓
+  medianoche → se abre la sesión del día siguiente
+</pre>
+
+<blockquote>El diario no es un proyecto — es un hábito. Gombro lo mantiene fuera del camino de tu ficción, siempre al fondo de la lista, siempre a un atajo de distancia.</blockquote>
+
+<hr>
+
+<h2 id="capitulo-14">Capítulo 14 — Flujo de trabajo recomendado</h2>
+
+<p>De proyecto en blanco a borrador exportado — una sugerencia, no una regla.</p>
+
+<h3>Fase 1 — Abrir el instrumento</h3>
+<pre>crear proyecto Don Quijote
+nuevo La Mancha</pre>
+<p>Escribí hasta que la sesión esté lista, luego creá otra. No organices todavía.</p>
+
+<h3>Fase 2 — Dejar que el azar trabaje</h3>
+<p>Elegí un párrafo que se sienta atascado. Clic derecho → Barajar. Quedáte con lo que te sorprendió. Deshacé lo que no funcionó. Usá el <strong>Modo Frase</strong> para ir más despacio.</p>
+
+<h3>Fase 3 — Etiquetar y mapear</h3>
+<p>Etiquetá elementos recurrentes. Abrí el Grafo, construí un mapa visual de conexiones.</p>
+
+<h3>Fase 4 — Buscar y coleccionar</h3>
+<p>Buscá elementos para rastrear. Guardá las búsquedas más útiles como Colecciones. Usá las Versiones de Párrafo para comparar y restaurar.</p>
+
+<h3>Fase 5 — Exportar</h3>
+<p>Ordená las sesiones en el Explorador como querés que aparezcan en el documento. Luego:</p>
+<pre>compilar Don Quijote — Primer Borrador</pre>
+<p>Abrí el <code>.docx</code> para el formateo final y la entrega.</p>
+
+<hr>
+
+<h2 id="capitulo-15">Capítulo 15 — Editor dividido</h2>
+
+<p>Gombro permite dividir el editor en dos paneles independientes — lado a lado (horizontal) o apilados (vertical). Cada panel puede mostrar una sesión diferente al mismo tiempo.</p>
+
+<pre>
+  DIVISIÓN HORIZONTAL                 DIVISIÓN VERTICAL
+  ┌────────┬──────────┬──────────┐    ┌────────┬────────────────────┐
+  │EXPLOR. │ PANEL 1  │ PANEL 2  │    │EXPLOR. │     PANEL 1        │
+  │        │          │          │    │        │                    │
+  │sesión1 │ texto... │ texto... │    │sesión1 │ texto...           │
+  │sesión2 │          │          │    │sesión2 ├────────────────────┤
+  │sesión3 │   🔓      │    🔒    │    │sesión3 │     PANEL 2        │
+  │        │          │          │    │        │ texto...           │
+  └────────┴──────────┴──────────┘    └────────┴────────────────────┘
+</pre>
+
+<h3>Cómo dividir</h3>
+<p>Los botones de división aparecen en el topbar del editor cuando hay una sesión abierta:</p>
+<table>
+  <tr><th>Botón</th><th>Acción</th></tr>
+  <tr><td><code>▣</code></td><td>División horizontal (izquierda | derecha)</td></tr>
+  <tr><td><code>⬒</code></td><td>División vertical (arriba | abajo)</td></tr>
+</table>
+<p>Al dividir, ambos paneles muestran la misma sesión. Navegá a otra sesión en el Explorador para mostrarla en el segundo panel.</p>
+
+<h3>Fijar un panel</h3>
+<p>Cada panel tiene su propio botón <code>🔓</code> / <code>🔒</code> en su encabezado.</p>
+<ul>
+  <li><strong>🔓 Libre</strong> — al hacer clic en una sesión del Explorador, este panel cambia.</li>
+  <li><strong>🔒 Fijado</strong> — este panel permanece fijo. Los clics del Explorador van al otro panel.</li>
+</ul>
+<p>Uso clásico: fijás el Panel 1 en tu esquema o sesión de referencia, dejás el Panel 2 libre para escritura activa.</p>
+
+<h3>Redimensionar paneles</h3>
+<p>Pasá el mouse sobre el divisor entre paneles — se resalta. Hacé clic y arrastrá para redimensionar. Tamaño mínimo por panel: 15%. Al cerrar la división vuelve a 50/50.</p>
+
+<hr>
+
+<h2 id="capitulo-16">Capítulo 16 — El jardín de los senderos</h2>
+
+<p>Nombrado en homenaje al cuento de Borges, los <strong>Senderos</strong> son el sistema de bifurcación narrativa de Gombro. Desde cualquier párrafo podés crear un universo paralelo de tu texto — sin tocar el original.</p>
+
+<pre>
+  PROYECTO ORIGINAL (el camino de la madre)
+  ────────────────────────────────────────────────────────
+  [sesión 1] → [sesión 2] → [sesión 3*] → [sesión 4] → ...
+                                  │
+                          clic derecho →
+                          🌿 Senderear desde aquí
+                                  │
+                                  ▼
+                  SENDERO 1 (colección)
+                  ─────────────────────────────
+                  [sesión 1*] [sesión 2*] ← congeladas
+                                  │
+                          [nueva sesión] → ...
+</pre>
+
+<h3>Crear un Sendero</h3>
+<ol>
+  <li>Escribí en cualquier sesión hasta llegar al párrafo donde querés bifurcar.</li>
+  <li>Clic derecho sobre ese párrafo → <strong>🌿 Senderear desde aquí</strong>.</li>
+  <li>Aparece un Sendero nuevo en el Explorador bajo <strong>🌿 Senderos</strong>, con nombre automático: <em>"vengo de: [primeras 5 palabras del párrafo]"</em>.</li>
+</ol>
+
+<h3>Qué hereda el Sendero</h3>
+<p>El Sendero recibe todas las sesiones hasta el párrafo de bifurcación — <strong>congeladas</strong>. El proyecto original sigue sin cambios y no sabe nada del sendero.</p>
+
+<h3>Abrir un Sendero</h3>
+<p>Hacé clic en el nombre del Sendero en el Explorador. El editor abre la sesión de origen truncada en el párrafo de bifurcación — todo lo que viene después no existe en este sendero. Un banner verde en la parte superior confirma que estás dentro de un Sendero.</p>
+
+<h3>Escribir dentro de un Sendero</h3>
+<p>Creá nuevas sesiones normalmente — pertenecen exclusivamente a este Sendero. El proyecto original nunca se ve afectado.</p>
+
+<h3>Renombrar y eliminar</h3>
+<p>Clic derecho sobre un Sendero en el Explorador para renombrarlo o eliminarlo. Eliminar un Sendero borra solo sus sesiones propias — el proyecto original y sus sesiones quedan intactos.</p>
+
+<hr>
+
+<h2 id="capitulo-17">Capítulo 17 — Juegos</h2>
+
+<p>Cuando necesitás un descanso de la página en blanco — o cuando la resistencia creativa toma forma concreta — Gombro incluye un calabozo de texto estilo Rogue.</p>
+
+<pre>
+  ┌─────────────────────────────────┐
+  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+  │  ░ . . . . @ . . # # # # # ░   │
+  │  ░ . . . . . . . # . . . # ░   │
+  │  ░ # # # # # # # # . . . # ░   │
+  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+  │                                 │
+  │  > ir norte                     │
+  └─────────────────────────────────┘
+</pre>
+
+<p>Abrilo con <code>juegos</code> · <code>games</code> en la CmdBar. Navegá, explorá, perdete. En versiones futuras pueden agregarse más juegos.</p>
+
+<hr>
+
+<h2 id="atajos">Atajos de teclado</h2>
+
+<table>
+  <tr><th>Atajo</th><th>Acción</th></tr>
+  <tr><td><code>:</code> o <code>/</code></td><td>Abrir CmdBar</td></tr>
+  <tr><td><code>Ctrl+T</code></td><td>Abrir paleta de comandos flotante</td></tr>
+  <tr><td><code>Ctrl+F</code></td><td>Abrir búsqueda flotante</td></tr>
+  <tr><td><code>Ctrl+N</code></td><td>Nueva sesión (deshabilitado en modo diario)</td></tr>
+  <tr><td><code>Ctrl+D</code></td><td>Abrir la sesión del diario de hoy</td></tr>
+  <tr><td><code>F4</code></td><td>Alternar post-it de nota para la sesión activa</td></tr>
+  <tr><td><code>F1</code></td><td>Abrir ayuda</td></tr>
+  <tr><td><code>Esc</code></td><td>Cerrar CmdBar → cerrar búsqueda → activar Zen</td></tr>
+  <tr><td><code>F2</code></td><td>Renombrar sesión seleccionada en el Explorador</td></tr>
+  <tr><td><code>Delete</code></td><td>Eliminar sesión seleccionada (o todas las multi-seleccionadas)</td></tr>
+  <tr><td><code>↑ ↓</code></td><td>Navegar sesiones en el Explorador</td></tr>
+  <tr><td><code>Enter</code></td><td>Abrir sesión seleccionada en el Explorador</td></tr>
+  <tr><td><code>Ctrl+clic</code></td><td>Multi-seleccionar sesiones en el Explorador</td></tr>
+  <tr><td><code>Shift+clic</code></td><td>Seleccionar rango de sesiones en el Explorador</td></tr>
+</table>
+
+<hr>
+
+<h2 id="autor">Sobre el autor</h2>
+
+<p><strong>Raúl Lilloy</strong> es el creador de Gombro. Cree que escribir debe ser un acto de descubrimiento, no de producción. Construyó la herramienta que quería usar — sin nube, sin IA, sin agenda.</p>
+
+<pre>
+        .-------.
+       /  o   o  \
+      |     ^     |
+      |   \___/   |
+       \  -----  /
+        '-.___..-'
+       /|         |\
+      / |  RAÚL   | \
+     /  |  LILLOY |  \
+    /   '---------'   \
+        |  ☕  💻  |
+        |   Gombro  |
+        |  v0.0.5β  |
+        '~~~~~~~~~~~'
+
+  "Escribir es... no sé.
+   Por eso escribo."
+</pre>
+
+</div>
+
+<section id="indice">
+<h2>Índice Alfabético</h2>
+<table class="index-table">
+  <thead><tr><th>Comando / Acción</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>: o /</code></td><td>Abre la barra de comandos (comandos, búsqueda, compilar, nueva sesión…)</td></tr>
+    <tr><td><code>Ctrl+D</code></td><td>Abre la sesión del diario de hoy (se crea sola si no existe)</td></tr>
+    <tr><td><code>Ctrl+F</code></td><td>Abrir búsqueda flotante</td></tr>
+    <tr><td><code>Ctrl+N</code></td><td>Crear nueva sesión (deshabilitado en modo diario)</td></tr>
+    <tr><td><code>Ctrl+T</code></td><td>Abrir paleta de comandos flotante</td></tr>
+    <tr><td><code>Ctrl+clic en sesiones</code></td><td>Multi-seleccionar sesiones en el Explorador — Delete elimina todas las seleccionadas</td></tr>
+    <tr><td><code>diario / diary  ·  Ctrl+D</code></td><td>Abrir el proyecto diario (siempre al fondo del Explorador, una sesión por día)</td></tr>
+    <tr><td><code>Ctrl+clic en nodos</code></td><td>Selección múltiple de nodos del grafo — todos los párrafos se abren en el editor</td></tr>
+    <tr><td><code>compilar [nombre]</code></td><td>Exporta las sesiones visibles a .docx</td></tr>
+    <tr><td><code>crear proyecto &lt;nombre&gt;</code></td><td>Crear un nuevo proyecto</td></tr>
+    <tr><td><code>Explorer → pestaña Grafo → Nuevo grafo</code></td><td>Grafo de párrafos: agregá nodos, conectalos, hacé clic para abrir en el editor</td></tr>
+    <tr><td><code>Explorer → fila de párrafo → ícono reloj</code></td><td>Ver y restaurar versiones anteriores de un párrafo</td></tr>
+    <tr><td><code>Explorer → ✂ revelar naipe</code></td><td>Después del Baraja: revela la sesión origen en la lista</td></tr>
+    <tr><td><code>F1</code></td><td>Mostrar ayuda</td></tr>
+    <tr><td><code>F4</code></td><td>Abrir/cerrar post-it de nota de la sesión activa</td></tr>
+    <tr><td><code>Barra de búsqueda del grafo</code></td><td>Escribí para resaltar nodos coincidentes; los demás se atenúan</td></tr>
+    <tr><td><code>ayuda / help</code></td><td>Mostrar ayuda (igual que F1)</td></tr>
+    <tr><td><code>nuevo [nombre]</code></td><td>Crear una nueva sesión</td></tr>
+    <tr><td><code>abrir / ver proyectos</code></td><td>Mostrar lista de proyectos</td></tr>
+    <tr><td><code>Clic derecho → Insertar</code></td><td>Insertar texto como widget borgiano pendiente. Confirmar con clic derecho → Confirmar.</td></tr>
+    <tr><td><code>Clic derecho en párrafo → # (hashtags)</code></td><td>Agregar o quitar hashtags del proyecto</td></tr>
+    <tr><td><code>Clic derecho en párrafo → Baraja</code></td><td>Mezcla el párrafo actual con uno aleatorio del proyecto</td></tr>
+    <tr><td><code>Seleccionar texto → clic derecho → Agregar variante · /senderos</code></td><td>Álgebra Borgiana: crear ramas de variantes en línea. /senderos lista todas las ramas abiertas.</td></tr>
+    <tr><td><code>Clic derecho en párrafo → Revelar en Binder</code></td><td>Desplaza y resalta la sesión activa en el Explorer</td></tr>
+    <tr><td><code>Clic derecho en párrafo → Versiones</code></td><td>Ver y restaurar versiones anteriores de un párrafo</td></tr>
+    <tr><td><code>Clic derecho en sesión → Mover arriba / abajo</code></td><td>Reordenar sesiones. También funciona con arrastrar y soltar.</td></tr>
+    <tr><td><code>Clic derecho en sesión → Deshacer mezcla</code></td><td>Restaura la sesión al estado anterior al último shuffle</td></tr>
+    <tr><td><code>buscar &lt;termino&gt;  ·  Ctrl+F</code></td><td>Busca en todas las sesiones. Soporta operadores AND / OR / NOT.</td></tr>
+    <tr><td><code>buscar &lt;termino&gt; en frases</code></td><td>Búsqueda mostrando frases individuales que coinciden</td></tr>
+    <tr><td><code>Búsqueda → + Guardar como colección</code></td><td>Guarda una búsqueda como colección nombrada — hacé clic para re-ejecutarla</td></tr>
+    <tr><td><code>modo frase</code></td><td>Activar/desactivar modo frase</td></tr>
+    <tr><td><code>abarajar</code></td><td>Reorganiza aleatoriamente las frases del párrafo activo</td></tr>
+    <tr><td><code>↑ (cabecera del Explorer)</code></td><td>Importar .md / .docx / .txt — crea un nuevo proyecto desde el archivo</td></tr>
+    <tr><td><code>zen</code></td><td>Modo escritura sin distracciones</td></tr>
+  </tbody>
+</table>
+</section>
+
+<style>
+.index-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 14px; }
+.index-table th { text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--border); color: var(--accent); font-family: monospace; font-weight: 600; }
+.index-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.index-table td:first-child { white-space: nowrap; width: 40%; }
+.index-table tr:last-child td { border-bottom: none; }
+</style>
+
+<a class="back-top" href="#top">↑ arriba</a>
+
+</body>
+</html>
