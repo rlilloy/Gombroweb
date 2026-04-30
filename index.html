@@ -2,198 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Gombro -- Early Access</title>
+<title>Gombro — Anim v2</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',monospace;overflow-x:hidden}
-#anim{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;transition:opacity 1.2s ease;z-index:10}
-#anim.out{opacity:0;pointer-events:none}
+body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;overflow:hidden}
+
 .stage{display:flex;flex-direction:column;gap:20px;max-width:min(580px,90vw);padding:0 24px}
-.line{font-size:clamp(.85rem,2.2vw,1.05rem);letter-spacing:.02em;line-height:1.6;opacity:0;transition:opacity .7s ease;position:relative}
+
+.line{
+  font-size:clamp(.85rem,2.2vw,1.05rem);
+  letter-spacing:.02em;
+  line-height:1.6;
+  opacity:0;
+  transition:opacity .7s ease;
+  position:relative;
+}
 .line.show{opacity:1}
-.line.dim{opacity:.28;transition:opacity .5s ease}
-.line .strike{position:absolute;top:50%;left:0;width:0;height:1px;background:#FCF5E5;transition:width .8s ease}
+.line.dim{opacity:.3;transition:opacity .5s ease}
+
+/* strikethrough overlay */
+.line .strike{
+  position:absolute;
+  top:50%;left:0;
+  width:0;height:1px;
+  background:#FCF5E5;
+  transition:width .8s ease;
+}
 .line.struck .strike{width:100%}
+
 .cursor{display:inline-block;width:.5em;height:1em;background:#FCF5E5;vertical-align:middle;margin-left:2px;animation:blink .7s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
 .footer{margin-top:40px;display:flex;flex-direction:column;gap:14px}
-.msg{font-size:clamp(.7rem,1.8vw,.82rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(252,245,229,.45);opacity:0;transition:opacity 1s ease}
+.msg{
+  font-size:clamp(.7rem,1.8vw,.82rem);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(252,245,229,.45);
+  opacity:0;
+  transition:opacity 1s ease;
+}
 .msg.show{opacity:1}
-#cta{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:60px 24px;opacity:0;transition:opacity 1.2s ease}
-#cta.in{opacity:1}
-.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:48px}
-.logo{display:flex;gap:2px}
-.letter{font-size:clamp(2.8rem,8vw,4.5rem);font-weight:700;letter-spacing:.04em;transition:opacity .22s ease}
-.l-0{color:#FCF5E5}.l-1{color:#8B0000}.l-2{color:#a0856b}.l-3{color:#c9b8a8}.l-4{color:#6b2d2d}.l-5{color:#d4c5b0}
-.tagline{font-size:clamp(.75rem,2vw,.9rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(252,245,229,.45);height:1.6em;display:flex;align-items:center}
-.tword{transition:opacity .35s ease}
-.tword.fade{opacity:0}
-.divider{width:min(480px,88vw);height:1px;background:rgba(252,245,229,.1);margin:0 auto}
-.filter{font-size:clamp(.78rem,2vw,.9rem);letter-spacing:.06em;color:rgba(252,245,229,.55);text-align:center;line-height:1.8;margin:32px 0;max-width:min(480px,88vw)}
-.form{display:flex;flex-direction:column;gap:12px;width:min(480px,88vw)}
-.form input[type=email],.form textarea{width:100%;padding:12px 16px;font-family:'Courier New',monospace;font-size:.88rem;border:1px solid rgba(252,245,229,.2);background:#0a0a0a;color:#FCF5E5;outline:none;resize:none}
-.form input[type=email]:focus,.form textarea:focus{border-color:rgba(252,245,229,.5)}
-.form input::placeholder,.form textarea::placeholder{color:rgba(252,245,229,.2)}
-.form textarea{min-height:100px}
-.btn{width:100%;padding:13px 24px;font-family:'Courier New',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;background:#FCF5E5;color:#000;border:none;cursor:pointer}
-.btn:hover{background:#e0d4b0}
-.btn:disabled{opacity:.4;cursor:default}
-.trust{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.25;text-align:center;margin-top:4px}
-.form-msg{font-size:.75rem;color:#8B0000;min-height:1.1em;text-align:center}
-.form-msg.ok{color:rgba(252,245,229,.5)}
 </style>
 </head>
 <body>
-
-<div id="anim">
-  <div class="stage">
-    <div class="line" id="original"><span id="orig-text"></span><span class="strike"></span></div>
-    <div class="line" id="var2"><span id="v2-text"></span><span class="strike"></span></div>
-    <div class="line" id="var1"><span id="v1-text"></span><span class="cursor" id="cur"></span><span class="strike"></span></div>
-    <div class="footer">
-      <p class="msg" id="msg1">With Gombro you write every version.</p>
-      <p class="msg" id="msg2">And then you choose the best one.</p>
-    </div>
+<div class="stage" id="stage">
+  <!-- lines added top-to-bottom, displayed in reverse order visually via prepend -->
+  <div class="line" id="original">
+    <span id="orig-text"></span>
+    <span class="strike"></span>
   </div>
-</div>
-
-<div id="cta">
-  <div class="logo-wrap">
-    <div class="logo" id="logo">
-      <span class="letter l-0">G</span>
-      <span class="letter l-1">O</span>
-      <span class="letter l-2">M</span>
-      <span class="letter l-3">B</span>
-      <span class="letter l-4">R</span>
-      <span class="letter l-5">O</span>
-    </div>
-    <div class="tagline"><span class="tword" id="tword">WRITING</span></div>
+  <div class="line" id="var2">
+    <span id="v2-text"></span>
+    <span class="strike"></span>
   </div>
-
-  <div class="divider"></div>
-
-  <p class="filter">A writing editor for writing, rewriting and inventing.<br/><span style="opacity:.45;font-size:.85em;letter-spacing:.08em">Beta — early access</span></p>
-
-  <form class="form" id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST">
-    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email"/>
-    <input type="hidden" name="_subject" value="Gombro Early Access"/>
-    <button type="submit" class="btn" id="submit-btn">Request early access</button>
-    <p class="form-msg" id="form-msg"></p>
-  </form>
-
-  <p class="trust">Writing &nbsp;&middot;&nbsp; Rewriting &nbsp;&middot;&nbsp; Inventing</p>
+  <div class="line" id="var1">
+    <span id="v1-text"></span>
+    <span class="cursor" id="cur"></span>
+    <span class="strike"></span>
+  </div>
+  <div class="footer">
+    <p class="msg" id="msg1">With Gombro you write every version.</p>
+    <p class="msg" id="msg2">And then you choose the best one.</p>
+  </div>
 </div>
 
 <script>
-var VAR1 = "In a forgotten place, whose name slipped from memory long ago,";
-var VAR2 = "A place with no name worth keeping,";
-var ORIG = "Somewhere in La Mancha, in a place whose name I do not care to remember,";
-
-function $(id){ return document.getElementById(id); }
+const VAR1    = 'In a forgotten place, whose name slipped from memory long ago,';
+const VAR2    = 'A place with no name worth keeping,';
+const ORIG    = 'Somewhere in La Mancha, in a place whose name I do not care to remember,';
 
 function type(el, text, speed, cb) {
-  var i = 0;
-  var iv = setInterval(function(){
+  let i = 0;
+  const iv = setInterval(() => {
     el.textContent += text[i++];
-    if(i >= text.length){ clearInterval(iv); if(cb) cb(); }
+    if (i >= text.length) { clearInterval(iv); if (cb) cb(); }
   }, speed);
 }
 
-// Animation
-$("var1").classList.add("show");
-type($("v1-text"), VAR1, 36, function(){
-  $("cur").style.display = "none";
+const $ = id => document.getElementById(id);
 
-  setTimeout(function(){
-    $("var2").classList.add("show");
-    $("v2-text").textContent = VAR2;
+// F1 — VAR1 types in
+$('var1').classList.add('show');
+type($('v1-text'), VAR1, 36, () => {
+  $('cur').style.display = 'none';
 
-    setTimeout(function(){
-      $("original").classList.add("show");
-      $("orig-text").textContent = ORIG;
+  // F2 — VAR2 appears above
+  setTimeout(() => {
+    $('var2').classList.add('show');
+    $('v2-text').textContent = VAR2;
 
-      setTimeout(function(){
-        $("var2").classList.add("struck"); $("var2").classList.add("dim");
+    // F3 — ORIGINAL appears above
+    setTimeout(() => {
+      $('original').classList.add('show');
+      $('orig-text').textContent = ORIG;
 
-        setTimeout(function(){
-          $("var1").classList.add("struck"); $("var1").classList.add("dim");
+      // F4 — strike VAR2
+      setTimeout(() => {
+        $('var2').classList.add('struck');
+        $('var2').classList.add('dim');
 
-          setTimeout(function(){
-            $("var1").style.opacity = "0"; $("var1").style.transition = "opacity 1s ease";
-            $("var2").style.opacity = "0"; $("var2").style.transition = "opacity 1s ease";
+        // F5 — strike VAR1
+        setTimeout(() => {
+          $('var1').classList.add('struck');
+          $('var1').classList.add('dim');
 
-            setTimeout(function(){ $("msg1").classList.add("show"); }, 800);
-            setTimeout(function(){ $("msg2").classList.add("show"); }, 2600);
+          // F6 — fade out struck lines, ORIG stays
+          setTimeout(() => {
+            $('var1').style.transition = 'opacity 1s ease, max-height 1s ease';
+            $('var2').style.transition = 'opacity 1s ease, max-height 1s ease';
+            $('var1').style.opacity = '0';
+            $('var2').style.opacity = '0';
 
-            setTimeout(function(){
-              $("anim").classList.add("out");
-              setTimeout(function(){
-                $("anim").style.display = "none";
-                $("cta").classList.add("in");
-                startLogo();
-              }, 1200);
-            }, 4800);
+            // msg1
+            setTimeout(() => {
+              $('msg1').classList.add('show');
 
+              // msg2
+              setTimeout(() => {
+                $('msg2').classList.add('show');
+              }, 2000);
+
+            }, 800);
           }, 1500);
         }, 2000);
       }, 2000);
     }, 2200);
   }, 2200);
-});
-
-function startLogo(){
-  var BASE = ["G","O","M","B","R","O"];
-  var letters = Array.from($("logo").children);
-  var step = 0; var STEPS = 5; var frozen = false;
-
-  function anagram(){
-    var a = BASE.slice();
-    for(var i=a.length-1;i>0;i--){
-      var j=Math.floor(Math.random()*(i+1));
-      var t=a[i];a[i]=a[j];a[j]=t;
-    }
-    if(a.join("") === "GOMBRO") a.push(a.shift());
-    return a;
-  }
-
-  var iv = setInterval(function(){
-    if(frozen){ clearInterval(iv); return; }
-    step++;
-    letters.forEach(function(l){ l.style.opacity="0"; });
-    setTimeout(function(){
-      if(step >= STEPS){ BASE.forEach(function(ch,i){ letters[i].textContent=ch; }); frozen=true; }
-      else{ anagram().forEach(function(ch,i){ letters[i].textContent=ch; }); }
-      letters.forEach(function(l){ l.style.opacity="1"; });
-    }, 240);
-  }, 750);
-
-  var WORDS = ["WRITING","REWRITING","INVENTING"];
-  var wi = 0;
-  var tw = $("tword");
-  setInterval(function(){
-    tw.classList.add("fade");
-    setTimeout(function(){ wi=(wi+1)%WORDS.length; tw.textContent=WORDS[wi]; tw.classList.remove("fade"); }, 370);
-  }, 2200);
-}
-
-$("beta-form").addEventListener("submit", function(e){
-  e.preventDefault();
-  var form = e.target;
-  var msg = $("form-msg");
-  var btn = $("submit-btn");
-  btn.disabled = true; btn.textContent = "...";
-  fetch(form.action, {method:"POST", body:new FormData(form), headers:{Accept:"application/json"}})
-  .then(function(res){
-    if(res.ok){
-      msg.textContent = "Received. I will be in touch.";
-      msg.className = "form-msg ok";
-      form.reset(); btn.textContent = "done";
-    } else { throw new Error(); }
-  }).catch(function(){
-    msg.textContent = "Something went wrong. Try again.";
-    btn.disabled = false; btn.textContent = "Request early access";
-  });
 });
 </script>
 </body>
