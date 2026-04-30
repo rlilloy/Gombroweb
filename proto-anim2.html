@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Gombro — Anim v2</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#FCF5E5;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;overflow:hidden}
+
+.stage{display:flex;flex-direction:column;gap:20px;max-width:min(580px,90vw);padding:0 24px}
+
+.line{
+  font-size:clamp(.85rem,2.2vw,1.05rem);
+  letter-spacing:.02em;
+  line-height:1.6;
+  opacity:0;
+  transition:opacity .7s ease;
+  position:relative;
+}
+.line.show{opacity:1}
+.line.dim{opacity:.3;transition:opacity .5s ease}
+
+/* strikethrough overlay */
+.line .strike{
+  position:absolute;
+  top:50%;left:0;
+  width:0;height:1px;
+  background:#FCF5E5;
+  transition:width .8s ease;
+}
+.line.struck .strike{width:100%}
+
+.cursor{display:inline-block;width:.5em;height:1em;background:#FCF5E5;vertical-align:middle;margin-left:2px;animation:blink .7s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.footer{margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.msg{
+  font-size:clamp(.7rem,1.8vw,.82rem);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(252,245,229,.45);
+  opacity:0;
+  transition:opacity 1s ease;
+}
+.msg.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <!-- lines added top-to-bottom, displayed in reverse order visually via prepend -->
+  <div class="line" id="original">
+    <span id="orig-text"></span>
+    <span class="strike"></span>
+  </div>
+  <div class="line" id="var2">
+    <span id="v2-text"></span>
+    <span class="strike"></span>
+  </div>
+  <div class="line" id="var1">
+    <span id="v1-text"></span>
+    <span class="cursor" id="cur"></span>
+    <span class="strike"></span>
+  </div>
+  <div class="footer">
+    <p class="msg" id="msg1">With Gombro you write every version.</p>
+    <p class="msg" id="msg2">And then you choose the best one.</p>
+  </div>
+</div>
+
+<script>
+const VAR1    = 'In a forgotten place, whose name slipped from memory long ago,';
+const VAR2    = 'A place with no name worth keeping,';
+const ORIG    = 'Somewhere in La Mancha, in a place whose name I do not care to remember,';
+
+function type(el, text, speed, cb) {
+  let i = 0;
+  const iv = setInterval(() => {
+    el.textContent += text[i++];
+    if (i >= text.length) { clearInterval(iv); if (cb) cb(); }
+  }, speed);
+}
+
+const $ = id => document.getElementById(id);
+
+// F1 — VAR1 types in
+$('var1').classList.add('show');
+type($('v1-text'), VAR1, 36, () => {
+  $('cur').style.display = 'none';
+
+  // F2 — VAR2 appears above
+  setTimeout(() => {
+    $('var2').classList.add('show');
+    $('v2-text').textContent = VAR2;
+
+    // F3 — ORIGINAL appears above
+    setTimeout(() => {
+      $('original').classList.add('show');
+      $('orig-text').textContent = ORIG;
+
+      // F4 — strike VAR2
+      setTimeout(() => {
+        $('var2').classList.add('struck');
+        $('var2').classList.add('dim');
+
+        // F5 — strike VAR1
+        setTimeout(() => {
+          $('var1').classList.add('struck');
+          $('var1').classList.add('dim');
+
+          // F6 — fade out struck lines, ORIG stays
+          setTimeout(() => {
+            $('var1').style.transition = 'opacity 1s ease, max-height 1s ease';
+            $('var2').style.transition = 'opacity 1s ease, max-height 1s ease';
+            $('var1').style.opacity = '0';
+            $('var2').style.opacity = '0';
+
+            // msg1
+            setTimeout(() => {
+              $('msg1').classList.add('show');
+
+              // msg2
+              setTimeout(() => {
+                $('msg2').classList.add('show');
+              }, 2000);
+
+            }, 800);
+          }, 1500);
+        }, 2000);
+      }, 2000);
+    }, 2200);
+  }, 2200);
+});
+</script>
+</body>
+</html>
