@@ -2,376 +2,199 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Gombro — Beta Access</title>
-<meta name="description" content="Gombro — The madness of writing. Request early beta access. No AI. Local only." />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://gombro.com/beta" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Gombro — Beta Access" />
-<meta property="og:description" content="The madness of writing. Request early beta access. No AI. Local only. No cloud." />
-<meta property="og:url" content="https://gombro.com/beta" />
-<meta property="og:image" content="https://gombro.com/media/1500x900.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Gombro — Beta Access" />
-<meta name="twitter:description" content="The madness of writing. Request early beta access." />
-<meta name="twitter:image" content="https://gombro.com/media/1500x900.jpg" />
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gombro -- Early Access</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#8B0000;--cream:#FCF5E5;--border:rgba(252,245,229,.15)}
-
+body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',monospace;overflow-x:hidden}
+#anim{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;transition:opacity 1.2s ease;z-index:10}
+#anim.out{opacity:0;pointer-events:none}
+.stage{display:flex;flex-direction:column;gap:20px;max-width:min(580px,90vw);padding:0 24px}
+.line{font-size:clamp(.85rem,2.2vw,1.05rem);letter-spacing:.02em;line-height:1.6;opacity:0;transition:opacity .7s ease;position:relative}
+.line.show{opacity:1}
+.line.dim{opacity:.28;transition:opacity .5s ease}
+.line .strike{position:absolute;top:50%;left:0;width:0;height:1px;background:#FCF5E5;transition:width .8s ease}
+.line.struck .strike{width:100%}
+.cursor{display:inline-block;width:.5em;height:1em;background:#FCF5E5;vertical-align:middle;margin-left:2px;animation:blink .7s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes typing{from{width:0}to{width:100%}}
-@keyframes strikethrough{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes fadeOut{from{opacity:1}to{opacity:0}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes moveToCenter{0%{transform:translateY(0)}100%{transform:translateY(-60px)}}
-@keyframes sceneFade{0%{opacity:0}5%{opacity:1}90%{opacity:1}100%{opacity:0}}
-
-body{
-  background:#000;
-  color:var(--cream);
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:'Space Grotesk',monospace;
-  overflow:hidden;
-}
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;
-  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-::selection{background:var(--red);color:#fff}
-
-/* ── Stitch animation canvas ── */
-.cursor{display:inline-block;width:0.6em;height:1.1em;background-color:white;animation:blink 0.8s step-end infinite;vertical-align:middle;margin-left:4px}
-.type-container{display:inline-block;overflow:hidden;white-space:nowrap;width:0;vertical-align:bottom}
-.strike-line{position:absolute;top:55%;left:0;width:100%;height:2px;background-color:white;transform-origin:left;transform:scaleX(0)}
-
-/* 22s master loop */
-.master-loop{animation:sceneFade 22s ease-in-out infinite}
-
-#line-1-text{animation:typing 1.5s steps(20) forwards;animation-delay:1s}
-#line-1-strike{animation:strikethrough 0.8s ease-in-out forwards;animation-delay:3s}
-#line-1-wrapper{animation:fadeOut 0.6s forwards;animation-delay:13s}
-
-#line-2-text{animation:typing 1.5s steps(20) forwards;animation-delay:4.5s}
-#line-2-strike{animation:strikethrough 0.8s ease-in-out forwards;animation-delay:6.5s}
-#line-2-wrapper{animation:fadeOut 0.6s forwards;animation-delay:13s}
-
-#line-3-wrapper{animation:moveToCenter 1.5s cubic-bezier(0.4,0,0.2,1) forwards;animation-delay:14s}
-
-#line-4-text{animation:typing 2s steps(25) forwards;animation-delay:16s}
-#line-4-wrapper{animation:fadeIn 0s forwards;animation-delay:16s}
-
-[id^="cursor-"]{display:none}
-
-/* ── CTA block (appended after animation) ── */
-#cta{
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  padding:32px 24px 40px;
-  opacity:0;
-  transition:opacity 1.4s ease;
-  pointer-events:none;
-}
-#cta.visible{opacity:1;pointer-events:auto}
-
-.cta-logo{
-  font-family:'Press Start 2P',monospace;
-  font-size:clamp(1rem,3.5vw,1.6rem);
-  color:var(--cream);
-  text-shadow:3px 3px var(--red);
-  letter-spacing:.04em;
-}
-.cta-tagline{
-  font-size:.72rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  opacity:.4;
-}
-.cta-form{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  width:100%;
-  max-width:300px;
-}
-.cta-form input[type=email]{
-  width:100%;
-  padding:10px 14px;
-  font-family:'Space Grotesk',monospace;
-  font-size:.84rem;
-  border:1px solid var(--border);
-  background:#0a0a0a;
-  color:var(--cream);
-  outline:none;
-}
-.cta-form input[type=email]:focus{border-color:rgba(252,245,229,.5)}
-.cta-form input[type=email]::placeholder{color:rgba(252,245,229,.22)}
-.btn{
-  width:100%;
-  padding:11px 24px;
-  font-family:'Space Grotesk',monospace;
-  font-size:.7rem;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-  background:var(--cream);
-  color:#000;
-  border:none;
-  cursor:pointer;
-}
+.footer{margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.msg{font-size:clamp(.7rem,1.8vw,.82rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(252,245,229,.45);opacity:0;transition:opacity 1s ease}
+.msg.show{opacity:1}
+#cta{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:60px 24px;opacity:0;transition:opacity 1.2s ease}
+#cta.in{opacity:1}
+.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:48px}
+.logo{display:flex;gap:2px}
+.letter{font-size:clamp(2.8rem,8vw,4.5rem);font-weight:700;letter-spacing:.04em;transition:opacity .22s ease}
+.l-0{color:#FCF5E5}.l-1{color:#8B0000}.l-2{color:#a0856b}.l-3{color:#c9b8a8}.l-4{color:#6b2d2d}.l-5{color:#d4c5b0}
+.tagline{font-size:clamp(.75rem,2vw,.9rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(252,245,229,.45);height:1.6em;display:flex;align-items:center}
+.tword{transition:opacity .35s ease}
+.tword.fade{opacity:0}
+.divider{width:min(480px,88vw);height:1px;background:rgba(252,245,229,.1);margin:0 auto}
+.filter{font-size:clamp(.78rem,2vw,.9rem);letter-spacing:.06em;color:rgba(252,245,229,.55);text-align:center;line-height:1.8;margin:32px 0;max-width:min(480px,88vw)}
+.form{display:flex;flex-direction:column;gap:12px;width:min(480px,88vw)}
+.form input[type=email],.form textarea{width:100%;padding:12px 16px;font-family:'Courier New',monospace;font-size:.88rem;border:1px solid rgba(252,245,229,.2);background:#0a0a0a;color:#FCF5E5;outline:none;resize:none}
+.form input[type=email]:focus,.form textarea:focus{border-color:rgba(252,245,229,.5)}
+.form input::placeholder,.form textarea::placeholder{color:rgba(252,245,229,.2)}
+.form textarea{min-height:100px}
+.btn{width:100%;padding:13px 24px;font-family:'Courier New',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;background:#FCF5E5;color:#000;border:none;cursor:pointer}
 .btn:hover{background:#e0d4b0}
-.btn:disabled{opacity:.5;cursor:default}
-.cta-offer{
-  font-size:.8rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  opacity:.85;
-  line-height:2.2;
-  text-align:center;
-}
-
-/* ── OS selector ── */
-.os-selector{
-  display:flex;
-  gap:32px;
-  margin-top:8px;
-}
-.os-btn{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  background:none;
-  border:none;
-  color:var(--cream);
-  opacity:.3;
-  cursor:pointer;
-  transition:opacity .2s;
-  font-family:'Space Grotesk',monospace;
-  font-size:.62rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-.os-btn:hover{opacity:.6}
-.os-btn.selected{opacity:1}
-
-/* ── Modal ── */
-#beta-modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.9);align-items:center;justify-content:center}
-#beta-modal.open{display:flex}
-.modal-box{background:#000;border:2px solid var(--cream);padding:36px 40px;max-width:360px;width:90%}
-.ml{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-bottom:10px}
-.mt{font-size:1.1rem;margin-bottom:8px}
-.ms{font-size:.78rem;opacity:.5;margin-bottom:20px;line-height:1.6}
-.modal-box input[type=email]{
-  width:100%;padding:11px 14px;
-  font-family:'Space Grotesk',monospace;font-size:.86rem;
-  border:1px solid rgba(252,245,229,.3);background:#131313;
-  color:var(--cream);outline:none;margin-bottom:10px;
-}
-.modal-box input[type=email]:focus{border-color:var(--cream)}
-.modal-box input[type=email]::placeholder{color:rgba(252,245,229,.22)}
-.modal-box .btn{margin-top:2px}
-.modal-msg{font-size:.75rem;color:var(--red);margin-top:10px;min-height:1.1em}
-.modal-msg.ok{color:rgba(252,245,229,.6)}
-.cancel{display:block;margin-top:14px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.3;background:none;border:none;color:var(--cream);cursor:pointer;padding:0;width:100%;text-align:center}
-.cancel:hover{opacity:.6}
-.modal-offer{margin-top:16px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;opacity:.22;line-height:1.9;text-align:center}
-
-@media(max-width:400px){.modal-box{padding:24px 20px}}
-
+.btn:disabled{opacity:.4;cursor:default}
+.trust{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.25;text-align:center;margin-top:4px}
+.form-msg{font-size:.75rem;color:#8B0000;min-height:1.1em;text-align:center}
+.form-msg.ok{color:rgba(252,245,229,.5)}
 </style>
 </head>
-<body class="selection:bg-white selection:text-black">
+<body>
 
-<!-- ── Stitch animation ── -->
-<main class="master-loop w-full flex flex-col items-center justify-center text-center px-4">
-  <!-- Line 1 -->
-  <div class="relative w-fit" id="line-1-wrapper">
-    <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.9rem,2.5vw,1.1rem);color:white;white-space:nowrap;letter-spacing:.04em">
-      <span class="type-container" id="line-1-text">La Mancha of a place.</span>
-      <span id="cursor-1-container"><span class="cursor"></span></span>
-    </h1>
-    <div class="strike-line" id="line-1-strike"></div>
-  </div>
-  <!-- Line 2 -->
-  <div class="relative w-fit mt-12" id="line-2-wrapper">
-    <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.9rem,2.5vw,1.1rem);color:white;white-space:nowrap;letter-spacing:.04em">
-      <span class="type-container" id="line-2-text">A place that stains.</span>
-      <span id="cursor-2-container"><span class="cursor"></span></span>
-    </h1>
-    <div class="strike-line" id="line-2-strike"></div>
-  </div>
-  <!-- Line 3 + Line 4 -->
-  <div class="flex flex-col items-center mt-12" style="gap:3rem">
-    <div class="relative" id="line-3-wrapper" style="max-width:min(560px,88vw);text-align:center">
-      <h1 style="font-family:'Space Grotesk',monospace;font-size:clamp(.82rem,2.2vw,1rem);color:white;white-space:normal;letter-spacing:.04em;line-height:1.65">
-        <span id="line-3-text"></span><span id="cursor-3-container"><span class="cursor"></span></span>
-      </h1>
+<div id="anim">
+  <div class="stage">
+    <div class="line" id="original"><span id="orig-text"></span><span class="strike"></span></div>
+    <div class="line" id="var2"><span id="v2-text"></span><span class="strike"></span></div>
+    <div class="line" id="var1"><span id="v1-text"></span><span class="cursor" id="cur"></span><span class="strike"></span></div>
+    <div class="footer">
+      <p class="msg" id="msg1">With Gombro you write every version.</p>
+      <p class="msg" id="msg2">And then you choose the best one.</p>
     </div>
-    <div class="relative w-fit opacity-0" id="line-4-wrapper">
-      <p style="font-family:'Space Grotesk',monospace;font-size:.65rem;color:rgba(252,245,229,.5);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap">
-        <span class="type-container" id="line-4-text">Gombro — the madness of writing.</span>
-        <span id="cursor-4-container"><span class="cursor" style="height:1.1em;width:0.4em;background:rgba(252,245,229,.5)"></span></span>
-      </p>
-    </div>
-  </div>
-</main>
-
-<!-- ── CTA block ── -->
-<div id="cta">
-  <div class="cta-logo">GOMBRO</div>
-  <p class="cta-tagline">The madness of writing.</p>
-  <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:-4px">Beta is open. Not for everyone.</p>
-  <div class="cta-form">
-    <input type="email" id="inline-email" placeholder="your@email.com" autocomplete="email"/>
-    <button class="btn" onclick="openModal()">Apply for Beta</button>
-  </div>
-  <p class="cta-offer">Limited spots &nbsp;·&nbsp; 2 months free &nbsp;·&nbsp; 50% off forever<br/>No AI &nbsp;·&nbsp; Local only &nbsp;·&nbsp; No cloud</p>
-  <div class="os-selector">
-    <button class="os-btn" id="os-win" onclick="selectOS('Windows')" title="Windows">
-      <svg width="28" height="28" viewBox="0 0 88 88" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 12.4L36 7.2V43H0V12.4ZM40 6.6L88 0V43H40V6.6ZM0 47H36V82.8L0 77.6V47ZM40 47H88V88L40 81.4V47Z"/>
-      </svg>
-      <span>Windows</span>
-    </button>
-    <button class="os-btn" id="os-lin" onclick="selectOS('Linux')" title="Linux">
-      <svg width="26" height="28" viewBox="0 0 64 72" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 0C24 0 18 6 18 16c0 5 1.5 9.5 4 13-4 2-10 6-12 12-1 3-1 6 0 8 1 3 4 4 7 3l2-1c2 5 6 9 11 11v4c-4 1-8 3-10 6h30c-2-3-6-5-10-6v-4c5-2 9-6 11-11l2 1c3 1 6 0 7-3 1-2 1-5 0-8-2-6-8-10-12-12 2.5-3.5 4-8 4-13C46 6 40 0 32 0zm-6 42c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4zm12 0c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4z"/>
-      </svg>
-      <span>Linux</span>
-    </button>
   </div>
 </div>
 
-<!-- ── Modal ── -->
-<div id="beta-modal" onclick="closeModalOut(event)">
-  <div class="modal-box">
-    <p class="ml">Beta · By invitation</p>
-    <p class="mt">Apply for early access</p>
-    <p class="ms">We'll review your application and get back to you.</p>
-    <form id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST" onsubmit="handleBeta(event)">
-      <input type="email" id="modal-email" name="email" placeholder="your@email.com" required autocomplete="email"/>
-      <input type="hidden" name="_subject" value="Gombro Beta Application"/>
-      <input type="hidden" name="os" id="modal-os" value=""/>
-      <div style="display:flex;gap:12px;margin-bottom:10px">
-        <button type="button" class="os-btn" id="modal-os-win" onclick="selectOS('Windows')" style="flex:1;flex-direction:row;gap:8px;border:1px solid var(--border);padding:8px">
-          <svg width="16" height="16" viewBox="0 0 88 88" fill="currentColor"><path d="M0 12.4L36 7.2V43H0V12.4ZM40 6.6L88 0V43H40V6.6ZM0 47H36V82.8L0 77.6V47ZM40 47H88V88L40 81.4V47Z"/></svg>
-          <span>Windows</span>
-        </button>
-        <button type="button" class="os-btn" id="modal-os-lin" onclick="selectOS('Linux')" style="flex:1;flex-direction:row;gap:8px;border:1px solid var(--border);padding:8px">
-          <svg width="14" height="16" viewBox="0 0 64 72" fill="currentColor"><path d="M32 0C24 0 18 6 18 16c0 5 1.5 9.5 4 13-4 2-10 6-12 12-1 3-1 6 0 8 1 3 4 4 7 3l2-1c2 5 6 9 11 11v4c-4 1-8 3-10 6h30c-2-3-6-5-10-6v-4c5-2 9-6 11-11l2 1c3 1 6 0 7-3 1-2 1-5 0-8-2-6-8-10-12-12 2.5-3.5 4-8 4-13C46 6 40 0 32 0zm-6 42c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4zm12 0c-2 0-4-2-4-4s2-4 4-4 4 2 4 4-2 4-4 4z"/></svg>
-          <span>Linux</span>
-        </button>
-      </div>
-      <button type="submit" class="btn" id="beta-submit">Apply for Beta</button>
-    </form>
-    <p class="modal-msg" id="modal-msg"></p>
-    <button class="cancel" onclick="closeModal()">Cancel</button>
-    <p class="modal-offer">2 months free &nbsp;·&nbsp; 50% off — forever<br/>No AI &nbsp;·&nbsp; Local only &nbsp;·&nbsp; No cloud</p>
+<div id="cta">
+  <div class="logo-wrap">
+    <div class="logo" id="logo">
+      <span class="letter l-0">G</span>
+      <span class="letter l-1">O</span>
+      <span class="letter l-2">M</span>
+      <span class="letter l-3">B</span>
+      <span class="letter l-4">R</span>
+      <span class="letter l-5">O</span>
+    </div>
+    <div class="tagline"><span class="tword" id="tword">WRITING</span></div>
   </div>
+
+  <div class="divider"></div>
+
+  <p class="filter">A writing editor for writing, rewriting and inventing.<br/><span style="opacity:.45;font-size:.85em;letter-spacing:.08em">Beta — early access</span></p>
+
+  <form class="form" id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST">
+    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email"/>
+    <input type="hidden" name="_subject" value="Gombro Early Access"/>
+    <button type="submit" class="btn" id="submit-btn">Request early access</button>
+    <p class="form-msg" id="form-msg"></p>
+  </form>
+
+  <p class="trust">Writing &nbsp;&middot;&nbsp; Rewriting &nbsp;&middot;&nbsp; Inventing</p>
 </div>
 
 <script>
-/* OS selector */
-let selectedOS = '';
-function selectOS(os) {
-  selectedOS = os;
-  document.getElementById('os-win').classList.toggle('selected', os === 'Windows');
-  document.getElementById('os-lin').classList.toggle('selected', os === 'Linux');
-  document.getElementById('modal-os-win').classList.toggle('selected', os === 'Windows');
-  document.getElementById('modal-os-lin').classList.toggle('selected', os === 'Linux');
+var VAR1 = "In a forgotten place, whose name slipped from memory long ago,";
+var VAR2 = "A place with no name worth keeping,";
+var ORIG = "Somewhere in La Mancha, in a place whose name I do not care to remember,";
+
+function $(id){ return document.getElementById(id); }
+
+function type(el, text, speed, cb) {
+  var i = 0;
+  var iv = setInterval(function(){
+    el.textContent += text[i++];
+    if(i >= text.length){ clearInterval(iv); if(cb) cb(); }
+  }, speed);
 }
 
-/* Cursor 1: show at start, hide at 4.5s */
-const c1 = document.getElementById('cursor-1-container');
-c1.style.display = 'inline-block';
-setTimeout(() => { c1.style.display = 'none'; }, 4500);
+// Animation
+$("var1").classList.add("show");
+type($("v1-text"), VAR1, 36, function(){
+  $("cur").style.display = "none";
 
-/* Cursor 2: show at 4.5s, hide at 8.5s */
-const c2 = document.getElementById('cursor-2-container');
-setTimeout(() => { c2.style.display = 'inline-block'; }, 4500);
-setTimeout(() => { c2.style.display = 'none'; }, 8500);
+  setTimeout(function(){
+    $("var2").classList.add("show");
+    $("v2-text").textContent = VAR2;
 
-/* Typewriter for line-3 (JS — supports wrapping on mobile) */
-const LINE3_TEXT = "Somewhere in La Mancha, in a place whose name I do not care to remember, a gentleman lived not long ago...";
-const line3El = document.getElementById('line-3-text');
-const cursor3 = document.getElementById('cursor-3-container');
-let l3i = 0;
-function typeL3() {
-  if (l3i < LINE3_TEXT.length) {
-    line3El.textContent += LINE3_TEXT[l3i++];
-    setTimeout(typeL3, 42);
-  } else {
-    cursor3.style.display = 'none';
+    setTimeout(function(){
+      $("original").classList.add("show");
+      $("orig-text").textContent = ORIG;
+
+      setTimeout(function(){
+        $("var2").classList.add("struck"); $("var2").classList.add("dim");
+
+        setTimeout(function(){
+          $("var1").classList.add("struck"); $("var1").classList.add("dim");
+
+          setTimeout(function(){
+            $("var1").style.opacity = "0"; $("var1").style.transition = "opacity 1s ease";
+            $("var2").style.opacity = "0"; $("var2").style.transition = "opacity 1s ease";
+
+            setTimeout(function(){ $("msg1").classList.add("show"); }, 800);
+            setTimeout(function(){ $("msg2").classList.add("show"); }, 2600);
+
+            setTimeout(function(){
+              $("anim").classList.add("out");
+              setTimeout(function(){
+                $("anim").style.display = "none";
+                $("cta").classList.add("in");
+                startLogo();
+              }, 1200);
+            }, 4800);
+
+          }, 1500);
+        }, 2000);
+      }, 2000);
+    }, 2200);
+  }, 2200);
+});
+
+function startLogo(){
+  var BASE = ["G","O","M","B","R","O"];
+  var letters = Array.from($("logo").children);
+  var step = 0; var STEPS = 5; var frozen = false;
+
+  function anagram(){
+    var a = BASE.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var t=a[i];a[i]=a[j];a[j]=t;
+    }
+    if(a.join("") === "GOMBRO") a.push(a.shift());
+    return a;
   }
-}
-setTimeout(() => { cursor3.style.display = 'inline-block'; typeL3(); }, 8500);
 
-/* Show CTA after full animation cycle */
-setTimeout(() => {
-  document.querySelector('main').style.opacity = '0';
-  document.querySelector('main').style.transition = 'opacity 0.8s ease';
-  setTimeout(() => {
-    document.querySelector('main').style.display = 'none';
-    document.getElementById('cta').classList.add('visible');
-  }, 800);
-}, 19500);
+  var iv = setInterval(function(){
+    if(frozen){ clearInterval(iv); return; }
+    step++;
+    letters.forEach(function(l){ l.style.opacity="0"; });
+    setTimeout(function(){
+      if(step >= STEPS){ BASE.forEach(function(ch,i){ letters[i].textContent=ch; }); frozen=true; }
+      else{ anagram().forEach(function(ch,i){ letters[i].textContent=ch; }); }
+      letters.forEach(function(l){ l.style.opacity="1"; });
+    }, 240);
+  }, 750);
 
-function openModal() {
-  const v = document.getElementById('inline-email').value.trim();
-  if (v) document.getElementById('modal-email').value = v;
-  document.getElementById('modal-os').value = selectedOS;
-  document.getElementById('beta-modal').classList.add('open');
-  document.getElementById('modal-email').focus();
+  var WORDS = ["WRITING","REWRITING","INVENTING"];
+  var wi = 0;
+  var tw = $("tword");
+  setInterval(function(){
+    tw.classList.add("fade");
+    setTimeout(function(){ wi=(wi+1)%WORDS.length; tw.textContent=WORDS[wi]; tw.classList.remove("fade"); }, 370);
+  }, 2200);
 }
-function closeModal() {
-  document.getElementById('beta-modal').classList.remove('open');
-  const msg = document.getElementById('modal-msg');
-  msg.textContent = '';
-  msg.className = 'modal-msg';
-  document.getElementById('beta-form').reset();
-}
-function closeModalOut(e) {
-  if (e.target === document.getElementById('beta-modal')) closeModal();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-async function handleBeta(e) {
+$("beta-form").addEventListener("submit", function(e){
   e.preventDefault();
-  const form = e.target;
-  const msg = document.getElementById('modal-msg');
-  const btn = document.getElementById('beta-submit');
-  btn.disabled = true;
-  btn.textContent = '...';
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    });
-    if (res.ok) {
-      msg.textContent = "Application received. We'll be in touch.";
-      msg.className = 'modal-msg ok';
-      form.reset();
-      btn.textContent = '✓';
+  var form = e.target;
+  var msg = $("form-msg");
+  var btn = $("submit-btn");
+  btn.disabled = true; btn.textContent = "...";
+  fetch(form.action, {method:"POST", body:new FormData(form), headers:{Accept:"application/json"}})
+  .then(function(res){
+    if(res.ok){
+      msg.textContent = "Received. I will be in touch.";
+      msg.className = "form-msg ok";
+      form.reset(); btn.textContent = "done";
     } else { throw new Error(); }
-  } catch {
-    msg.textContent = 'Something went wrong. Try again.';
-    btn.disabled = false;
-    btn.textContent = 'Request Access';
-  }
-}
+  }).catch(function(){
+    msg.textContent = "Something went wrong. Try again.";
+    btn.disabled = false; btn.textContent = "Request early access";
+  });
+});
 </script>
 </body>
 </html>
