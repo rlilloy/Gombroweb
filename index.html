@@ -196,5 +196,103 @@ $("beta-form").addEventListener("submit", function(e){
   });
 });
 </script>
+
+<!-- GOMBRO CHAT WIDGET -->
+<style>
+#gchat-btn{position:fixed;bottom:24px;right:24px;width:48px;height:48px;background:#FCF5E5;color:#000;border:none;border-radius:50%;font-size:20px;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.6)}
+#gchat-btn:hover{background:#e0d4b0}
+#gchat-panel{position:fixed;bottom:84px;right:24px;width:300px;background:#0a0a0a;border:1px solid rgba(252,245,229,.15);display:none;flex-direction:column;z-index:9999;font-family:'Courier New',monospace;box-shadow:0 4px 24px rgba(0,0,0,.8)}
+#gchat-panel.open{display:flex}
+#gchat-header{padding:12px 16px;border-bottom:1px solid rgba(252,245,229,.1);display:flex;justify-content:space-between;align-items:center;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(252,245,229,.6)}
+#gchat-close{cursor:pointer;font-size:1.1rem;color:rgba(252,245,229,.4);line-height:1}
+#gchat-close:hover{color:#FCF5E5}
+#gchat-messages{height:280px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+#gchat-messages::-webkit-scrollbar{width:3px}
+#gchat-messages::-webkit-scrollbar-thumb{background:rgba(252,245,229,.15)}
+.gchat-msg{font-size:.78rem;line-height:1.6;max-width:88%}
+.gchat-msg.bot{color:#FCF5E5;align-self:flex-start}
+.gchat-msg.user{color:rgba(252,245,229,.5);align-self:flex-end;text-align:right}
+.gchat-msg.typing{color:rgba(252,245,229,.3);font-style:italic}
+#gchat-input-row{display:flex;border-top:1px solid rgba(252,245,229,.1)}
+#gchat-input{flex:1;background:transparent;border:none;padding:12px 16px;font-family:'Courier New',monospace;font-size:.78rem;color:#FCF5E5;outline:none}
+#gchat-input::placeholder{color:rgba(252,245,229,.2)}
+#gchat-send{background:transparent;border:none;border-left:1px solid rgba(252,245,229,.1);padding:0 16px;color:rgba(252,245,229,.5);cursor:pointer;font-size:1rem}
+#gchat-send:hover{color:#FCF5E5}
+</style>
+
+<button id="gchat-btn">💬</button>
+<div id="gchat-panel">
+  <div id="gchat-header">Gombro <span id="gchat-close">×</span></div>
+  <div id="gchat-messages"></div>
+  <div id="gchat-input-row">
+    <input id="gchat-input" placeholder="Ask about Gombro..." autocomplete="off"/>
+    <button id="gchat-send">→</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var WEBHOOK = 'https://n8n-production-937e.up.railway.app/webhook/gombro-chat';
+  var sid = localStorage.getItem('gchat_sid') || crypto.randomUUID();
+  localStorage.setItem('gchat_sid', sid);
+
+  var btn = document.getElementById('gchat-btn');
+  var panel = document.getElementById('gchat-panel');
+  var closeBtn = document.getElementById('gchat-close');
+  var messages = document.getElementById('gchat-messages');
+  var input = document.getElementById('gchat-input');
+  var send = document.getElementById('gchat-send');
+  var opened = false;
+
+  btn.addEventListener('click', function(){
+    panel.classList.toggle('open');
+    if(!opened){
+      opened = true;
+      addMsg('bot', 'Hi, I\'m Jaime. What do you want to know about Gombro?');
+    }
+    if(panel.classList.contains('open')) input.focus();
+  });
+
+  closeBtn.addEventListener('click', function(){ panel.classList.remove('open'); });
+
+  send.addEventListener('click', enviar);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') enviar(); });
+
+  function addMsg(type, text){
+    var div = document.createElement('div');
+    div.className = 'gchat-msg ' + type;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  function enviar(){
+    var msg = input.value.trim();
+    if(!msg) return;
+    input.value = '';
+    send.disabled = true;
+    addMsg('user', msg);
+    var typing = addMsg('typing', '...');
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ session_id: sid, mensaje: msg })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      typing.remove();
+      addMsg('bot', data.respuesta || 'No response.');
+    })
+    .catch(function(){
+      typing.remove();
+      addMsg('bot', 'Something went wrong. Try again.');
+    })
+    .finally(function(){ send.disabled = false; });
+  }
+})();
+</script>
+<!-- FIN GOMBRO CHAT WIDGET -->
+
 </body>
 </html>
