@@ -218,11 +218,21 @@ $("beta-form").addEventListener("submit", function(e){
 #gchat-input::placeholder{color:rgba(252,245,229,.2)}
 #gchat-send{background:transparent;border:none;border-left:1px solid rgba(252,245,229,.1);padding:0 16px;color:rgba(252,245,229,.5);cursor:pointer;font-size:1rem}
 #gchat-send:hover{color:#FCF5E5}
+#gchat-avatar{display:flex;flex-direction:column;align-items:center;padding:14px 0 10px;border-bottom:1px solid rgba(252,245,229,.08)}
+#gchat-borges{width:64px;height:64px;object-fit:cover;object-position:top;border-radius:50%;filter:sepia(100%) contrast(1.1);animation:borges-blink 4s ease-in-out infinite}
+#gchat-tagline{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(252,245,229,.35);margin-top:6px}
+#gchat-credit{font-size:.5rem;letter-spacing:.06em;color:rgba(252,245,229,.18);margin-top:3px;font-style:italic}
+@keyframes borges-blink{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.15}52%{opacity:1}}
 </style>
 
 <button id="gchat-btn">💬</button>
 <div id="gchat-panel">
   <div id="gchat-header">Gombro <span id="gchat-close">×</span></div>
+  <div id="gchat-avatar">
+    <img id="gchat-borges" src="media/borges.jpg" alt="Borges"/>
+    <p id="gchat-tagline">I answer your questions.</p>
+    <p id="gchat-credit">photo: Grete Stern, 1951</p>
+  </div>
   <div id="gchat-messages"></div>
   <div id="gchat-input-row">
     <input id="gchat-input" placeholder="Ask about Gombro..." autocomplete="off"/>
