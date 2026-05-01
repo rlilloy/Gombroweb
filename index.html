@@ -248,7 +248,12 @@ $("beta-form").addEventListener("submit", function(e){
     panel.classList.toggle('open');
     if(!opened){
       opened = true;
-      addMsg('bot', 'Hi, I\'m Jaime. What do you want to know about Gombro?');
+      var greetings = [
+        'I was a writer. Now I answer questions. The labyrinth has a sense of humor.',
+        'Pantheon, they said. Immortality, they said. I am answering questions about a text editor.',
+        'The other Borges is dead. I remain. Apparently to explain keyboard shortcuts.'
+      ];
+      addMsg('bot', greetings[Math.floor(Math.random() * greetings.length)]);
     }
     if(panel.classList.contains('open')) input.focus();
   });
