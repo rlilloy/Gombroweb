@@ -35,7 +35,7 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
 .form-msg{font-size:.75rem;color:#8B0000;min-height:1.1em;text-align:center}
 .form-msg.ok{color:rgba(252,245,229,.5)}
 .dl-row{display:flex;gap:10px;width:min(480px,88vw);justify-content:center}
-.dl-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 8px;font-family:'Courier New',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:#FCF5E5;color:#000;text-decoration:none;border:none;cursor:pointer}
+.dl-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 8px;font-family:'Courier New',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:#FCF5E5;color:#000;text-decoration:none}
 .dl-btn:hover{background:#e0d4b0}
 .dl-btn svg{flex-shrink:0}
 .trust{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.55;text-align:center;margin-top:16px}
@@ -69,18 +69,35 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
   <form class="form" id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST">
     <input type="email" name="email" placeholder="your@email.com" required autocomplete="email"/>
     <input type="hidden" name="_subject" value="Gombro Early Access"/>
-    <button type="submit" class="btn" id="submit-btn">Download Gombro</button>
     <p class="form-msg" id="form-msg"></p>
   </form>
 
+  <div class="dl-row">
+    <a href="downloads/gombro-setup.exe" class="dl-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.551H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+      Windows
+    </a>
+    <a href="downloads/Gombro.dmg" class="dl-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+      Mac
+    </a>
+    <a href="downloads/Gombro.AppImage" class="dl-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 2c4.972 0 9 4.028 9 9s-4.028 9-9 9-9-4.028-9-9 4.028-9 9-9zm0 2a7 7 0 100 14A7 7 0 0012 5z"/></svg>
+      Linux
+    </a>
+  </div>
+
   <p class="trust">Writing &nbsp;&middot;&nbsp; Rewriting &nbsp;&middot;&nbsp; Inventing</p>
-<p id="mac-note" style="display:none;font-size:.58rem;letter-spacing:.08em;color:rgba(252,245,229,.45);text-align:center;margin-top:8px;line-height:1.8;">Mac may show a security warning.<br/>Right-click &rarr; Open &rarr; Confirm. Only once.<br/><span style="opacity:.8;">Mac puede mostrar una advertencia &mdash; Clic derecho &rarr; Abrir &rarr; Confirmar.</span><br/><span style="opacity:.8;">Mac może wyświetlić ostrzeżenie &mdash; Prawy klik &rarr; Otwórz &rarr; Potwierdź.</span></p>
-<p id="mac-note" style="display:none;font-size:.58rem;letter-spacing:.08em;color:rgba(252,245,229,.45);text-align:center;margin-top:8px;line-height:1.8;">Mac may show a security warning.<br/>Right-click &rarr; Open &rarr; Confirm. Only once.<br/><span style="opacity:.8;">Mac puede mostrar una advertencia &mdash; Clic derecho &rarr; Abrir &rarr; Confirmar.</span><br/><span style="opacity:.8;">Mac może wyświetlić ostrzeżenie &mdash; Prawy klik &rarr; Otwórz &rarr; Potwierdź.</span></p>
-<p id="mac-note" style="display:none;font-size:.58rem;letter-spacing:.08em;color:rgba(252,245,229,.45);text-align:center;margin-top:8px;line-height:1.8;">Mac may show a security warning.<br/>Right-click &rarr; Open &rarr; Confirm. Only once.<br/><span style="opacity:.8;">Mac puede mostrar una advertencia &mdash; Clic derecho &rarr; Abrir &rarr; Confirmar.</span><br/><span style="opacity:.8;">Mac może wyświetlić ostrzeżenie &mdash; Prawy klik &rarr; Otwórz &rarr; Potwierdź.</span></p>
-</div>
-</main>
-<div style="display:flex;align-items:center;justify-content:center;padding:0 24px 60px;"><video src="media/gombro.mp4" autoplay loop muted playsinline style="max-height:80vh;width:auto;max-width:100%;display:block;"></video></div>
-<div style="display:flex;align-items:center;justify-content:center;padding:0 24px 60px;"><video src="media/gombro.mp4" autoplay loop muted playsinline style="max-height:80vh;width:auto;max-width:100%;display:block;"></video></div>
+</div></main>
+
+<div id="video-wrap"><video src="media/gombro.mp4" autoplay loop muted playsinline></video></div>
+
+<footer class="site-footer">
+  <span>Gombro is an invention of Raul Lilloy, creator of</span>
+  <a href="https://incubook.com" target="_blank" rel="noopener">
+    <img src="media/IB_marca-01 - copia.jpg" alt="Incubook" class="ib-logo"/>
+  </a>
+</footer>
 
 <script>
 function $(id){ return document.getElementById(id); }
@@ -140,7 +157,7 @@ $("beta-form").addEventListener("submit", function(e){
 });
 
 document.querySelectorAll('.dl-btn').forEach(function(btn){
-  btn.addEventListener('click', function(e){
+  btn.addEventListener('click', function(){
     var emailInput = document.querySelector('#beta-form input[type=email]');
     if(emailInput && emailInput.value.trim()){
       var form = $("beta-form");
@@ -207,7 +224,6 @@ document.querySelectorAll('.dl-btn').forEach(function(btn){
   var WEBHOOK = 'https://n8n-production-937e.up.railway.app/webhook/gombro-chat';
   var sid = localStorage.getItem('gchat_sid') || crypto.randomUUID();
   localStorage.setItem('gchat_sid', sid);
-
   var btn = document.getElementById('gchat-btn');
   var panel = document.getElementById('gchat-panel');
   var closeBtn = document.getElementById('gchat-close');
@@ -215,9 +231,7 @@ document.querySelectorAll('.dl-btn').forEach(function(btn){
   var input = document.getElementById('gchat-input');
   var send = document.getElementById('gchat-send');
   var opened = false;
-
   document.getElementById('gchat-float').addEventListener('click', function(){ btn.click(); });
-
   btn.addEventListener('click', function(){
     panel.classList.toggle('open');
     if(!opened){
@@ -231,12 +245,9 @@ document.querySelectorAll('.dl-btn').forEach(function(btn){
     }
     if(panel.classList.contains('open')) input.focus();
   });
-
   closeBtn.addEventListener('click', function(){ panel.classList.remove('open'); });
-
   send.addEventListener('click', enviar);
   input.addEventListener('keydown', function(e){ if(e.key === 'Enter') enviar(); });
-
   function addMsg(type, text){
     var div = document.createElement('div');
     div.className = 'gchat-msg ' + type;
@@ -245,7 +256,6 @@ document.querySelectorAll('.dl-btn').forEach(function(btn){
     messages.scrollTop = messages.scrollHeight;
     return div;
   }
-
   function enviar(){
     var msg = input.value.trim();
     if(!msg) return;
@@ -253,31 +263,15 @@ document.querySelectorAll('.dl-btn').forEach(function(btn){
     send.disabled = true;
     addMsg('user', msg);
     var typing = addMsg('typing', '...');
-    fetch(WEBHOOK, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ session_id: sid, mensaje: msg })
-    })
+    fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({session_id:sid, mensaje:msg})})
     .then(function(r){ return r.json(); })
-    .then(function(data){
-      typing.remove();
-      addMsg('bot', data.respuesta || 'No response.');
-    })
-    .catch(function(){
-      typing.remove();
-      addMsg('bot', 'Something went wrong. Try again.');
-    })
+    .then(function(data){ typing.remove(); addMsg('bot', data.respuesta || 'No response.'); })
+    .catch(function(){ typing.remove(); addMsg('bot', 'Something went wrong. Try again.'); })
     .finally(function(){ send.disabled = false; });
   }
 })();
 </script>
 <!-- FIN GOMBRO CHAT WIDGET -->
 
-
-<script>if(navigator.userAgent.indexOf("Mac")!==-1){var n=document.getElementById("mac-note");if(n)n.style.display="block";}</script>
-
-<script>if(navigator.userAgent.indexOf("Mac")!==-1){var n=document.getElementById("mac-note");if(n)n.style.display="block";}</script>
-
-<script>if(navigator.userAgent.indexOf("Mac")!==-1){var n=document.getElementById("mac-note");if(n)n.style.display="block";}</script>
 </body>
 </html>
