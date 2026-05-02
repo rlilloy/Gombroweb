@@ -47,7 +47,12 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
 .site-footer{text-align:center;padding:20px 24px 60px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(252,245,229,.65);display:flex;flex-direction:column;align-items:center;gap:12px}
 .site-footer a{color:rgba(252,245,229,.5);text-decoration:none}
 .site-footer a:hover{color:#FCF5E5}
-.ib-logo{height:28px;width:auto;filter:brightness(0) invert(1);opacity:.45}
+.ib-logo{height:32px;width:auto;border-radius:4px}
+.post-dl{width:min(480px,88vw);display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:20px;font-family:'Courier New',monospace}
+.post-dl-note{font-size:.58rem;letter-spacing:.08em;color:rgba(252,245,229,.55);text-align:center;line-height:1.8}
+.post-dl-price{font-size:.65rem;letter-spacing:.12em;color:rgba(252,245,229,.7);text-align:center}
+.post-dl-reddit{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 24px;border:1px solid rgba(252,245,229,.25);color:#FCF5E5;text-decoration:none;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;width:100%}
+.post-dl-reddit:hover{border-color:rgba(252,245,229,.6)}
 </style>
 </head>
 <body>
@@ -67,7 +72,7 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
 
   <div class="divider"></div>
 
-  <p class="filter">A writing editor for writing, rewriting and inventing.<br/><span style="font-size:.85em;letter-spacing:.08em">Beta — early access</span></p>
+  <p class="filter">Non-linear editor. Borgian Algebra, Cut-up Burroughs, Schrödinger collapse.<br/><span style="font-size:.85em;letter-spacing:.08em">Beta — 60 days free early access</span></p>
 
   <form class="form" id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST">
     <input type="email" name="email" id="email-input" placeholder="your@email.com" autocomplete="email"/>
@@ -94,9 +99,34 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
   </div>
 
   <p class="trust">Writing &nbsp;&middot;&nbsp; Rewriting &nbsp;&middot;&nbsp; Inventing</p>
+
+  <div class="post-dl">
+    <p class="post-dl-note">Beta — 60 days free &nbsp;&middot;&nbsp; Linux free forever</p>
+    <p class="post-dl-price">USD 500 — lifetime license</p>
+    <a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener" class="post-dl-reddit">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+      🐛 Bugs &amp; Suggestions — r/Gombro
+    </a>
+  </div>
 </div></main>
 
-<div id="video-wrap"><video src="media/gombro.mp4" autoplay loop muted playsinline width="480" height="854" aria-label="Gombro writing editor demo"></video></div>
+<div id="video-wrap"><video id="hero-video" src="media/gombro.mp4" autoplay playsinline width="480" height="854" aria-label="Gombro writing editor demo"></video></div>
+<script>
+(function(){
+  var v = document.getElementById('hero-video');
+  var played = false;
+  v.addEventListener('ended', function(){
+    v.muted = true;
+    v.loop = true;
+    v.play();
+  });
+  v.play().catch(function(){
+    v.muted = true;
+    v.loop = true;
+    v.play();
+  });
+})();
+</script>
 
 <footer class="site-footer">
   <span>Gombro is an invention of Raul Lilloy, creator of</span>
