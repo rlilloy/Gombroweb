@@ -23,11 +23,11 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
 .logo{display:flex;gap:2px}
 .letter{font-size:clamp(2.8rem,8vw,4.5rem);font-weight:700;letter-spacing:.04em;transition:opacity .22s ease}
 .l-0{color:#FCF5E5}.l-1{color:#8B0000}.l-2{color:#a0856b}.l-3{color:#c9b8a8}.l-4{color:#6b2d2d}.l-5{color:#d4c5b0}
-.tagline{font-size:clamp(.75rem,2vw,.9rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(252,245,229,.7);height:1.6em;display:flex;align-items:center}
+.tagline{font-size:clamp(.75rem,2vw,.9rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(252,245,229,.85);height:1.6em;display:flex;align-items:center}
 .tword{transition:opacity .35s ease}
 .tword.fade{opacity:0}
 .divider{width:min(480px,88vw);height:1px;background:rgba(252,245,229,.1);margin:0 auto}
-.filter{font-size:clamp(.78rem,2vw,.9rem);letter-spacing:.06em;color:rgba(252,245,229,.55);text-align:center;line-height:1.8;margin:32px 0;max-width:min(480px,88vw)}
+.filter{font-size:clamp(.78rem,2vw,.9rem);letter-spacing:.06em;color:rgba(252,245,229,.75);text-align:center;line-height:1.8;margin:32px 0;max-width:min(480px,88vw)}
 .form{display:flex;flex-direction:column;gap:12px;width:min(480px,88vw)}
 .form input[type=email]{width:100%;padding:12px 16px;font-family:'Courier New',monospace;font-size:.88rem;border:1px solid rgba(252,245,229,.2);background:#0a0a0a;color:#FCF5E5;outline:none}
 .form input[type=email]:focus{border-color:rgba(252,245,229,.5)}
@@ -44,7 +44,7 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
 .trust{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.55;text-align:center;margin-top:16px}
 #video-wrap{width:min(480px,88vw);margin:0 auto;padding:0 0 60px}
 #video-wrap video{width:100%;display:block}
-.site-footer{text-align:center;padding:20px 24px 60px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(252,245,229,.35);display:flex;flex-direction:column;align-items:center;gap:12px}
+.site-footer{text-align:center;padding:20px 24px 60px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(252,245,229,.65);display:flex;flex-direction:column;align-items:center;gap:12px}
 .site-footer a{color:rgba(252,245,229,.5);text-decoration:none}
 .site-footer a:hover{color:#FCF5E5}
 .ib-logo{height:28px;width:auto;filter:brightness(0) invert(1);opacity:.45}
@@ -67,7 +67,7 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
 
   <div class="divider"></div>
 
-  <p class="filter">A writing editor for writing, rewriting and inventing.<br/><span style="opacity:.75;font-size:.85em;letter-spacing:.08em">Beta — early access</span></p>
+  <p class="filter">A writing editor for writing, rewriting and inventing.<br/><span style="font-size:.85em;letter-spacing:.08em">Beta — early access</span></p>
 
   <form class="form" id="beta-form" action="https://formspree.io/f/mjgjjpwk" method="POST">
     <input type="email" name="email" id="email-input" placeholder="your@email.com" autocomplete="email"/>
@@ -96,12 +96,12 @@ body{background:#000;color:#FCF5E5;min-height:100vh;font-family:'Courier New',mo
   <p class="trust">Writing &nbsp;&middot;&nbsp; Rewriting &nbsp;&middot;&nbsp; Inventing</p>
 </div></main>
 
-<div id="video-wrap"><video src="media/gombro.mp4" autoplay loop muted playsinline></video></div>
+<div id="video-wrap"><video src="media/gombro.mp4" autoplay loop muted playsinline width="480" height="854" aria-label="Gombro writing editor demo"></video></div>
 
 <footer class="site-footer">
   <span>Gombro is an invention of Raul Lilloy, creator of</span>
   <a href="https://incubook.com" target="_blank" rel="noopener">
-    <img src="media/incubook-logo.jpg" alt="Incubook" class="ib-logo"/>
+    <img src="media/incubook-logo.jpg" alt="Incubook" class="ib-logo" width="120" height="28"/>
   </a>
 </footer>
 
