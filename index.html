@@ -120,6 +120,7 @@ main,#video-wrap,footer{position:relative;z-index:1}
   </div>
 
   <p class="trust">Writing &nbsp;&middot;&nbsp; Rewriting &nbsp;&middot;&nbsp; Inventing</p>
+<p id="mac-note" style="display:none;font-size:.58rem;letter-spacing:.08em;color:rgba(252,245,229,.45);text-align:center;margin-top:8px;line-height:1.8;">Mac may show a security warning.<br/>Right-click &rarr; Open &rarr; Confirm. Only once.<br/><span style="opacity:.8;">Mac puede mostrar una advertencia &mdash; Clic derecho &rarr; Abrir &rarr; Confirmar.</span><br/><span style="opacity:.8;">Mac może wyświetlić ostrzeżenie &mdash; Prawy klik &rarr; Otwórz &rarr; Potwierdź.</span></p>
 
   <div class="post-dl">
     <p class="post-dl-note">Beta — 60 days free &nbsp;&middot;&nbsp; Linux free forever</p>
@@ -135,6 +136,7 @@ main,#video-wrap,footer{position:relative;z-index:1}
     </div>
   </div>
 </div></main>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 24px 60px;"><video src="media/gombro.mp4" autoplay loop muted playsinline style="max-height:80vh;width:auto;max-width:100%;display:block;"></video></div>
 
 <div id="video-wrap"><video id="hero-video" src="media/gombro.mp4" autoplay playsinline width="480" height="854" aria-label="Gombro writing editor demo"></video></div>
 <script>
@@ -417,5 +419,7 @@ document.getElementById('fb-form').addEventListener('submit', async function(e){
 })();
 </script>
 
+
+<script>if(navigator.userAgent.indexOf("Mac")!==-1){var n=document.getElementById("mac-note");if(n)n.style.display="block";}</script>
 </body>
 </html>
