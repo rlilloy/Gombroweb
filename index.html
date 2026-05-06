@@ -203,7 +203,7 @@ function startLogo(){
 #gchat-float-img{width:72px;height:72px;object-fit:cover;object-position:top;border-radius:50%;filter:sepia(100%) contrast(1.2);animation:borges-blink 4s ease-in-out infinite,borges-float 3s ease-in-out infinite;box-shadow:0 4px 16px rgba(0,0,0,.8);border:1px solid rgba(252,245,229,.15)}
 #gchat-float-label{font-family:'Courier New',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(252,245,229,.6);margin-top:7px;text-align:center;line-height:1.6}
 @keyframes borges-enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes borges-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes borges-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@media(max-width:600px){#gchat-float{bottom:16px;left:12px;right:auto}#gchat-float-img{width:44px;height:44px}#gchat-float-label{font-size:.5rem}}
 #gchat-btn{position:fixed;bottom:24px;right:24px;width:48px;height:48px;background:#FCF5E5;color:#000;border:none;border-radius:50%;font-size:20px;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.6)}
 #gchat-btn:hover{background:#e0d4b0}
 #gchat-panel{position:fixed;bottom:84px;right:24px;width:300px;background:#0a0a0a;border:1px solid rgba(252,245,229,.15);display:none;flex-direction:column;z-index:9999;font-family:'Courier New',monospace;box-shadow:0 4px 24px rgba(0,0,0,.8)}
