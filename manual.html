@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -297,12 +297,17 @@
   <li><a href="#chapter-12">Import and Export</a></li>
   <li><a href="#chapter-13b">Borgian Algebra</a></li>
   <li><a href="#chapter-13c">The Diary</a></li>
+  <li><a href="#chapter-13d">Schrödinger Mode</a></li>
+  <li><a href="#chapter-13e">Writing Plan</a></li>
+  <li><a href="#chapter-13f">Session Notes and Badges</a></li>
+  <li><a href="#chapter-13g">Hashtag Filtering</a></li>
+  <li><a href="#chapter-13h">Text Scale</a></li>
+  <li><a href="#chapter-13i">Obsidian Notebook</a></li>
+  <li><a href="#chapter-13j">Backup and Recovery</a></li>
   <li><a href="#chapter-14">Recommended Workflow</a></li>
-  <li><a href="#chapter-15">Split Editor</a></li>
-  <li><a href="#chapter-16">The Garden of Forking Paths</a></li>
-  <li><a href="#chapter-17">Games</a></li>
   <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
   <li><a href="#author">About the Author</a></li>
+  <li><a href="#index">Alphabetical Index</a></li>
 </ol>
 </nav>
 
@@ -427,11 +432,8 @@
 │  Reveal in Binder       │
 │  Shuffle (Baraja)       │
 │  Paragraph versions     │
-│  ─────────────────────  │
-│  🌿 Fork from here      │
 └─────────────────────────┘
 </pre>
-<p><strong>🌿 Fork from here</strong> — creates a Sendero (narrative fork) starting from the current paragraph. See Chapter 16.</p>
 
 <h3>Sentence Mode</h3>
 <p>Toggle with <code>sentence mode</code> in the CmdBar. Every <code>.</code> isolates the current sentence — one at a time, the rest disappears. Type, hit period, lock and continue.</p>
@@ -548,8 +550,7 @@
 <table>
   <tr><th>Command</th><th>What it does</th></tr>
   <tr><td><code>help</code> · <code>ayuda</code></td><td>Open the help modal</td></tr>
-  <tr><td><code>language</code> · <code>idioma</code></td><td>Switch interface language (English / Español)</td></tr>
-  <tr><td><code>games</code> · <code>juegos</code></td><td>Open the Rogue minigame</td></tr>
+  <tr><td><code>lang en</code> · <code>lang es</code></td><td>Switch interface language</td></tr>
 </table>
 
 <hr>
@@ -559,10 +560,32 @@
 <p>The Explorer is the left panel — your session list, your binder. Every session in the active project lives here.</p>
 
 <ul>
-  <li><code>[+]</code> — create a new session</li>
+  <li><code>[+]</code> — create a new session (at the end of the list)</li>
   <li><code>[↑]</code> — import a file (.md, .docx, .txt)</li>
   <li>The stats at the bottom show totals for the active project</li>
 </ul>
+
+<h3>Adding a session or paragraph at position</h3>
+<p>Right-click a session or a paragraph in the expanded outline to insert new content <strong>directly below</strong> the clicked item:</p>
+<table>
+  <tr><th>Gesture</th><th>What it does</th></tr>
+  <tr><td>Right-click session → <strong>Add session below</strong></td><td>Creates a new session immediately below that session, ready to rename</td></tr>
+  <tr><td>Right-click paragraph (outline) → <strong>Add paragraph below</strong></td><td>Inserts an empty paragraph below — shows "nuevo párrafo" in the explorer until you type</td></tr>
+</table>
+
+<h3>Reordering paragraphs</h3>
+<p>In the expanded outline you can reorder paragraphs with drag & drop, just like sessions:</p>
+<table>
+  <tr><th>Gesture</th><th>What it does</th></tr>
+  <tr><td>Drag paragraph in outline → drop at new position</td><td>Moves the paragraph, saves to DB and reloads the editor</td></tr>
+</table>
+
+<h3>Navigating to a paragraph</h3>
+<table>
+  <tr><th>Gesture</th><th>What it does</th></tr>
+  <tr><td>Click paragraph in outline</td><td>Cursor jumps to that paragraph in the editor, ready to type</td></tr>
+  <tr><td><code>Enter</code> in the editor</td><td>Creates a new paragraph below the cursor (same as "Add paragraph below")</td></tr>
+</table>
 
 <h3>Project stats</h3>
 <table>
@@ -602,16 +625,6 @@
 </pre>
 
 <p><strong>Move up / Move down</strong> — reorder sessions within the project. The order persists. You can also <strong>drag and drop</strong> sessions directly in the list.</p>
-
-<h3>Explorer panel sections</h3>
-<p>Below the session list, the Explorer shows three optional sections:</p>
-<table>
-  <tr><th>Section</th><th>What it shows</th></tr>
-  <tr><td><strong>🌿 Senderos</strong></td><td>Narrative forks (see Chapter 16)</td></tr>
-  <tr><td><strong>Colecciones</strong></td><td>Saved searches (see Chapter 6)</td></tr>
-  <tr><td><strong>⚛ Schrödinger</strong></td><td>Paragraphs with unresolved quantum text or strikethroughs</td></tr>
-</table>
-<p>Right-click anywhere in the Explorer to show or hide each section individually.</p>
 
 <hr>
 
@@ -857,6 +870,36 @@ compile Don Quixote — First Draft</pre>
   add more variants anytime → right-click block → Add variant
 </pre>
 
+
+<h3>Adding sub-variants</h3>
+<p>You can branch a specific option inside a borgiana block — creating a variant of a variant. This reproduces the tree structure of Borges' manuscripts: each branch can bifurcate into new branches.</p>
+<ol>
+  <li>Right-click on a specific row in the block</li>
+  <li>Choose <strong>Add sub-variant</strong></li>
+  <li>Type the alternative and press <code>Ctrl+Enter</code></li>
+</ol>
+<p>The chosen option becomes a new nested block with two branches — the original and the new one:</p>
+
+<pre>
+  SUB-VARIANT — branching an existing option:
+
+  ┌──────────────────────────┐
+  │ the dog was walking      │  ← right-click → Add sub-variant
+  │ the dog was coming       │
+  └──────────────────────────┘
+              ↓
+  ┌──────────────────────────┐
+  │ ┌────────────────────┐   │
+  │ │ the dog was walking│   │  ← nested sub-block
+  │ │ the dog was trotting│  │
+  │ └────────────────────┘   │
+  │ the dog was coming       │
+  └──────────────────────────┘
+
+  Internal syntax: {the dog was coming|{the dog was walking|the dog was trotting}}
+</pre>
+<p>There is no depth limit — each branch can keep bifurcating.</p>
+
 <h3>Resolving a branch</h3>
 
 <pre>
@@ -941,6 +984,308 @@ compile Don Quixote — First Draft</pre>
 
 <hr>
 
+<h2 id="chapter-13d">Chapter 13d — Schrödinger Mode</h2>
+
+<p>In 1935 Erwin Schrödinger described a cat locked in a box: without opening the box, the cat is simultaneously alive <em>and</em> dead. Only when observed does it collapse into one of the two states.</p>
+
+<p>Gombro's Schrödinger Mode applies that logic to text: some fragments are not yet one thing or the other. They exist on the page — but they haven't been decided.</p>
+
+<h3>What is quantum text?</h3>
+<p>A paragraph is in Schrödinger state when it contains any of these:</p>
+
+<table>
+  <tr><th>Type</th><th>How it looks</th><th>What it means</th></tr>
+  <tr><td><strong>Strikethrough</strong></td><td><s>struck-through text</s></td><td>Marked for possible deletion — not decided yet</td></tr>
+  <tr><td><strong>Borgian variant</strong></td><td><code>{option A|option B}</code></td><td>Text in superposition — two possible futures, uncollapsed</td></tr>
+</table>
+
+<p>The strikethrough says: <em>"this might be too much."</em><br>
+The variant says: <em>"this could be this, or that."</em><br>
+Neither is final. The text remains open.</p>
+
+<h3>How to strikethrough text</h3>
+<p>Select any fragment → right-click → <strong>Strikethrough</strong>. The text stays visible but crossed out.</p>
+
+<pre>
+  ┌───────────────────────────────────────────────────┐
+  │  ...in a place in La Mancha, whose name           │
+  │  ~~I do not care to remember~~, not long ago...   │
+  └───────────────────────────────────────────────────┘
+         ↑ the editor shows visual strikethrough;
+           the ~~ markers are hidden but saved
+</pre>
+
+<p>Then right-click on the struck-through text:</p>
+<pre>
+  ┌──────────────────────┐
+  │  Delete              │  ← removes the fragment entirely
+  │  Edit                │  ← removes strikethrough, text becomes editable
+  └──────────────────────┘
+</pre>
+
+<p><strong>Edit</strong> is the Borgian option: you don't erase the thought, you transform it. Write the replacement, press Enter — the text stays clean with no strikethrough.</p>
+
+<h3>The ⚛ Schrödinger button</h3>
+<p>At the bottom of the Explorer, above the Collections, the Schrödinger button is always visible:</p>
+
+<pre>
+  ┌──────────────────────────────────┐
+  │  session 1                       │
+  │  session 2                       │
+  │  session 3                       │
+  │  ──────────────────────────────  │
+  │  ⚛ Schrödinger           [3]    │  ← yellow badge = pending paragraphs
+  │  ──────────────────────────────  │
+  │  📁 my collection                │
+  └──────────────────────────────────┘
+</pre>
+
+<ul>
+  <li>The <strong>badge</strong> updates automatically when you switch projects or save</li>
+  <li><strong>Click</strong> to see the list of paragraphs in quantum state</li>
+  <li>Click any result to jump directly to it in the editor</li>
+</ul>
+
+<h3>The Schrödinger list</h3>
+<p>Clicking ⚛ shows pending paragraphs grouped by session — same UI as search results:</p>
+
+<pre>
+  ⚛ Schrödinger  [3]              [✕ close]
+  ──────────────────────────────────────────
+  Chapter One
+    ~~I do not care to remember~~, not long...
+  ──────────────────────────────────────────
+  Chapter Two
+    ...there lived a hidalgo {of the lance|with
+    a lance} in the rack...
+  ──────────────────────────────────────────
+  Epilogue
+    ~~This part is redundant~~ · The story...
+</pre>
+
+<h3>Schrödinger and compile</h3>
+<p>When you compile to <code>docx</code> or <code>md</code>, Gombro scans the project. If there are Schrödinger paragraphs, a notice appears before generating the file:</p>
+
+<pre>
+  ⚛  3 paragraphs in Schrödinger state
+     (strikethroughs or unresolved variants)
+</pre>
+
+<p>You can still compile — it is just a reminder. Struck-through text will appear struck through in the docx; uncollapsed Borgian variants will appear in their raw form.</p>
+
+<h3>The full workflow</h3>
+<pre>
+  WRITE              DOUBT              DECIDE
+  ─────              ─────              ──────
+  normal text  →  Strikethrough or  →  ⚛ Schrödinger
+                  Borgian variant         ↓
+                                    click paragraph
+                                          ↓
+                               right-click → Delete
+                                          → Edit
+                                          ↓
+                                    badge reaches 0
+                                          ↓
+                                    compile clean
+</pre>
+
+<blockquote>Borges crossed out but never erased. He kept the discarded text visible — proof that the thought had been there. Schrödinger Mode is exactly that: a space for doubt before decision.</blockquote>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Strikethrough selection</td><td>Select → right-click → <code>Strikethrough</code></td></tr>
+  <tr><td>Delete strikethrough</td><td>Right-click struck text → <code>Delete</code></td></tr>
+  <tr><td>Edit strikethrough</td><td>Right-click struck text → <code>Edit</code> → type → Enter</td></tr>
+  <tr><td>View pending paragraphs</td><td>Click <code>⚛ Schrödinger</code> in the Explorer</td></tr>
+  <tr><td>Keyboard shortcut</td><td><code>Ctrl+Q</code></td></tr>
+  <tr><td>Command</td><td><code>schrodinger</code> in the CmdBar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13e">Chapter 13e — Writing Plan</h2>
+
+<p>The Writing Plan is a dashboard that shows how much you've written — today, this week, and over the past months. It's not a productivity tool. It's a mirror.</p>
+
+<h3>How to open it</h3>
+<p>Type <code>/</code> in the CmdBar and select <strong>Writing plan</strong> (or <strong>Plan de escritura</strong> in Spanish). The panel appears on the right side of the Explorer.</p>
+
+<h3>What it shows</h3>
+<ul>
+  <li><strong>Today</strong> — words written today, with an optional daily goal. Click <code>set</code> to define your goal.</li>
+  <li><strong>This week</strong> — a bar chart of the last 7 days.</li>
+  <li><strong>Weeks</strong> — weekly totals for the past months.</li>
+  <li><strong>Months</strong> — monthly totals.</li>
+</ul>
+
+<h3>The daily goal</h3>
+<p>You can set a daily word goal. Gombro counts every word you write in the active project. When you reach the goal, the bar fills up. There is no alarm, no notification — just a quiet record.</p>
+
+<blockquote>A writing plan is not a deadline. It is a habit made visible.</blockquote>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Open Writing Plan</td><td><code>/plan</code> in the CmdBar</td></tr>
+  <tr><td>Set daily goal</td><td>Click <code>set</code> next to the Goal field</td></tr>
+  <tr><td>Close panel</td><td>Click <code>✕</code> in the panel header</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13f">Chapter 13f — Session Notes and Badges</h2>
+
+<p>Every session in the Explorer can have its own note — a free-form annotation visible at a glance. A small badge (<code>✎</code>) appears on sessions that have notes, so you can tell at a glance which sessions have context attached.</p>
+
+<h3>How to add a note to a session</h3>
+<ol>
+  <li>Right-click the session name in the Explorer.</li>
+  <li>Select <strong>Annotate session</strong>.</li>
+  <li>A small panel opens. Type your note.</li>
+  <li>The note saves automatically.</li>
+</ol>
+
+<p>Notes can also be anchored to specific paragraphs using <code>F4</code> while writing.</p>
+
+<h3>The badge</h3>
+<p>Sessions with at least one note show a <code>✎</code> badge in the Explorer. This lets you mark sessions that need attention, have context, or are works in progress — without opening them.</p>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Add note to session</td><td>Right-click session → <code>Annotate session</code></td></tr>
+  <tr><td>Add note to paragraph</td><td><code>F4</code> while cursor is in the paragraph</td></tr>
+  <tr><td>View all notes</td><td><code>/note list</code> in the CmdBar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13g">Chapter 13g — Hashtag Filtering in the Explorer</h2>
+
+<p>If your project uses hashtags, you can filter the session list by hashtag directly from the Explorer — no need to open the search panel.</p>
+
+<h3>How it works</h3>
+<p>At the bottom of the Explorer, your project hashtags appear as small tags. Click one to show only sessions that contain that hashtag. Click again to remove the filter.</p>
+
+<p>This is useful when a project has many sessions and you want to focus on sessions related to a specific theme, character, or location.</p>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Filter by hashtag</td><td>Click the hashtag tag in the Explorer</td></tr>
+  <tr><td>Remove filter</td><td>Click the active hashtag again</td></tr>
+  <tr><td>Manage hashtags</td><td><code>/tag</code> in the CmdBar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13h">Chapter 13h — Text Scale</h2>
+
+<p>You can adjust the size of the text in the editor without changing the font or the style. This is purely for reading comfort — like the zoom level in a word processor.</p>
+
+<h3>How to change the scale</h3>
+<p>Type <code>/scale</code> (or <code>/escala</code> in Spanish) in the CmdBar. Enter a number between 50 and 300. The number represents a percentage: <code>100</code> is the default size, <code>125</code> makes text 25% larger, <code>80</code> makes it smaller.</p>
+
+<pre>
+  /scale 125    →  larger text (25% above default)
+  /scale 80     →  smaller text (20% below default)
+  /scale 100    →  back to default
+</pre>
+
+<p>The setting is saved automatically and persists when you reopen Gombro.</p>
+
+<blockquote>This does not change the font, the line height, or the style of headings. It only scales the base size — like moving closer or farther from the page.</blockquote>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Change text scale</td><td><code>/scale [50–300]</code> in the CmdBar</td></tr>
+  <tr><td>Reset to default</td><td><code>/scale 100</code></td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13i">Chapter 13i — Obsidian Notebook</h2>
+
+<p>Obsidian is a note-taking application for writers and thinkers. It stores notes as plain text files (<code>.md</code>) on your computer — no cloud, no subscription required. You can download it for free at <a href="https://obsidian.md" style="color:var(--accent)">obsidian.md</a>.</p>
+
+<p>If you use Obsidian alongside Gombro, the <strong>Obsidian Notebook</strong> lets you bring your Obsidian notes into your writing project automatically.</p>
+
+<h3>How the connection works</h3>
+<p>Obsidian and Gombro both run on your computer. Gombro finds your Obsidian vault automatically — you don't need to configure any paths or settings.</p>
+
+<p>The connection is based on <strong>hashtags</strong>. If your Gombro project is called <em>Kolon</em>, Gombro will look for Obsidian notes that contain <code>#kolon</code>. Each matching note appears in the Obsidian Notebook panel.</p>
+
+<h3>Typical workflow</h3>
+<ol>
+  <li>You're out, reading, thinking. You open Obsidian on your phone or laptop and write a note: <em>"The colonel's uniform touches the ground when he walks. #kolon"</em></li>
+  <li>Back at your desk, you open Gombro and open the Kolon project.</li>
+  <li>A notification appears: <strong>"You have new notes in Obsidian."</strong></li>
+  <li>You type <code>/obsidian</code> in the CmdBar. The Obsidian Notebook opens.</li>
+  <li>You see the note. You copy it into your session. Done.</li>
+</ol>
+
+<h3>The Obsidian Notebook panel</h3>
+<ul>
+  <li>Shows only <strong>new or modified</strong> notes since the last time you checked.</li>
+  <li>Each note has two buttons: <strong>⎘ Copy</strong> (copies content to clipboard, removes from view) and <strong>✕ Dismiss</strong> (marks as read — won't appear again unless the note changes in Obsidian).</li>
+  <li>Click <strong>Actualizar / Refresh</strong> to re-scan the vault.</li>
+</ul>
+
+<h3>Multiple projects</h3>
+<p>The hashtag is derived from the project name automatically. Project <em>Quixote</em> → looks for <code>#quixote</code>. You can use multiple hashtags in a single Obsidian note to send it to multiple projects.</p>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Open Obsidian Notebook</td><td><code>/obsidian</code> in the CmdBar</td></tr>
+  <tr><td>Copy a note</td><td>Click <code>⎘</code> — copies to clipboard, removes from view</td></tr>
+  <tr><td>Dismiss a note</td><td>Click <code>✕</code> — marks as read, won't reappear</td></tr>
+  <tr><td>Refresh</td><td>Click <strong>Actualizar</strong> in the panel</td></tr>
+  <tr><td>Download Obsidian</td><td><a href="https://obsidian.md" style="color:var(--accent)">obsidian.md</a> (free)</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13j">Chapter 13j — Backup and Recovery</h2>
+
+<p>Gombro stores everything in a single SQLite file: <code>gombro.db</code>. Backup means copying that file. Recovery means replacing it with an older copy.</p>
+
+<h3>How it works</h3>
+<p><strong>Automatic backup</strong> — every time you close Gombro, a backup is saved automatically. No configuration needed.</p>
+<p><strong>Manual backup</strong> — type <code>backup</code> in the CmdBar at any time to save a snapshot immediately.</p>
+<p><strong>Recovery</strong> — type <code>recover</code> in the CmdBar to open the backup list. Select any entry and click <strong>Restore selected</strong>.</p>
+
+<h3>Where backups are stored</h3>
+<p>By default, backups go to a folder called <code>backup_gombro</code> next to the database file:</p>
+<pre>%AppData%\gombro\backup_gombro\
+    gombro-2026-04-29_10-00-00.db
+    gombro-2026-04-30_09-15-00.db</pre>
+
+<h3>Changing the backup folder</h3>
+<p>Open the recovery modal (<code>recover</code>) and click <strong>Change...</strong> — a native folder dialog opens. Choose any folder: Dropbox, Google Drive, an external drive. The setting is saved and applies to all subsequent backups, including auto-backups on close. You can change it at any time.</p>
+
+<h3>Backup rotation</h3>
+<p>Gombro keeps the <strong>10 most recent backups</strong>. When a new one is created and the count exceeds 10, the oldest is deleted automatically.</p>
+
+<h3>Restoring a backup</h3>
+<ol>
+  <li>Type <code>recover</code> in the CmdBar.</li>
+  <li>Select a backup from the list.</li>
+  <li>Click <strong>Restore selected</strong>.</li>
+</ol>
+<p>Gombro closes the database, replaces it with the chosen backup, and reloads all data immediately. No restart needed.</p>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Command</th><th>Action</th></tr>
+  <tr><td><code>backup</code></td><td>Save a snapshot now</td></tr>
+  <tr><td><code>recover</code></td><td>Open backup list and restore</td></tr>
+</table>
+
+<hr>
+
 <h2 id="chapter-14">Chapter 14 — Recommended Workflow</h2>
 
 <p>From blank project to exported draft — a suggestion, not a rule.</p>
@@ -966,106 +1311,6 @@ new La Mancha</pre>
 
 <hr>
 
-<h2 id="chapter-15">Chapter 15 — Split Editor</h2>
-
-<p>Gombro lets you split the editor into two independent panels — side by side (horizontal) or stacked (vertical). Each panel can show a different session simultaneously.</p>
-
-<pre>
-  HORIZONTAL SPLIT                    VERTICAL SPLIT
-  ┌────────┬──────────┬──────────┐    ┌────────┬────────────────────┐
-  │EXPLORER│ PANEL 1  │ PANEL 2  │    │EXPLORER│     PANEL 1        │
-  │        │          │          │    │        │                    │
-  │session1│ text...  │ text...  │    │session1│ text...            │
-  │session2│          │          │    │session2├────────────────────┤
-  │session3│  🔓       │   🔒     │    │session3│     PANEL 2        │
-  │        │          │          │    │        │ text...            │
-  └────────┴──────────┴──────────┘    └────────┴────────────────────┘
-</pre>
-
-<h3>How to split</h3>
-<p>The split buttons appear in the editor topbar when a session is open:</p>
-<table>
-  <tr><th>Button</th><th>Action</th></tr>
-  <tr><td><code>▣</code></td><td>Toggle horizontal split (left | right)</td></tr>
-  <tr><td><code>⬒</code></td><td>Toggle vertical split (top | bottom)</td></tr>
-</table>
-<p>When you split, both panels open the same session. Navigate to a different session to display it in the second panel.</p>
-
-<h3>Locking a panel</h3>
-<p>Each panel has its own <code>🔓</code> / <code>🔒</code> button in its header.</p>
-<ul>
-  <li><strong>🔓 Unlocked</strong> — clicking a session in the Explorer changes this panel.</li>
-  <li><strong>🔒 Locked</strong> — this panel stays fixed. Explorer clicks go to the other panel instead.</li>
-</ul>
-<p>Classic use: lock Panel 1 on your outline or reference session, leave Panel 2 unlocked for active writing.</p>
-
-<h3>Resizing panels</h3>
-<p>Hover over the divider between panels — it highlights. Click and drag to resize. Minimum size per panel: 15%. Closing the split resets to 50/50.</p>
-
-<hr>
-
-<h2 id="chapter-16">Chapter 16 — The Garden of Forking Paths</h2>
-
-<p>Named after Borges' story, <strong>Senderos</strong> (Paths) is Gombro's narrative fork system. From any paragraph, you can branch off a parallel universe of your text — without touching the original.</p>
-
-<pre>
-  ORIGINAL PROJECT (the mother path)
-  ────────────────────────────────────────────
-  [session 1] → [session 2] → [session 3*] → [session 4] → ...
-                                    │
-                              right-click →
-                              🌿 Fork from here
-                                    │
-                                    ▼
-                    SENDERO 1 (collection)
-                    ──────────────────────────────
-                    [session 1*] [session 2*] ← frozen
-                                    │
-                              [new session] → ...
-</pre>
-
-<h3>Creating a Sendero</h3>
-<ol>
-  <li>Write in any session until you reach a paragraph where you want to diverge.</li>
-  <li>Right-click on that paragraph → <strong>🌿 Fork from here</strong>.</li>
-  <li>A new Sendero appears in the Explorer under <strong>🌿 Senderos</strong>, named automatically: <em>"from: [first 5 words of the paragraph]"</em>.</li>
-</ol>
-
-<h3>What the Sendero inherits</h3>
-<p>The Sendero receives all sessions up to and including the fork paragraph — <strong>frozen</strong>. The original project continues unchanged and knows nothing about the fork.</p>
-
-<h3>Opening a Sendero</h3>
-<p>Click the Sendero name in the Explorer. The editor opens the origin session truncated at the fork paragraph — everything after that point does not exist in this path. A green banner at the top confirms you are inside a Sendero.</p>
-
-<h3>Writing inside a Sendero</h3>
-<p>Create new sessions normally — they belong exclusively to this Sendero. The original project is never affected.</p>
-
-<h3>Renaming and deleting</h3>
-<p>Right-click a Sendero in the Explorer to rename or delete it. Deleting a Sendero removes only its own sessions — the original project and its sessions are untouched.</p>
-
-<hr>
-
-<h2 id="chapter-17">Chapter 17 — Games</h2>
-
-<p>When you need a break from the blank page — or when creative resistance takes a concrete shape — Gombro includes a Rogue-style text dungeon.</p>
-
-<pre>
-  ┌─────────────────────────────────┐
-  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
-  │  ░ . . . . @ . . # # # # # ░   │
-  │  ░ . . . . . . . # . . . # ░   │
-  │  ░ . . . . . . . # . . . # ░   │
-  │  ░ # # # # # # # # . . . # ░   │
-  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
-  │                                 │
-  │  > go north                     │
-  └─────────────────────────────────┘
-</pre>
-
-<p>Open with <code>games</code> · <code>juegos</code> in the CmdBar. Navigate, explore, get lost. More games may be added in future versions.</p>
-
-<hr>
-
 <h2 id="shortcuts">Keyboard Shortcuts</h2>
 
 <table>
@@ -1075,6 +1320,7 @@ new La Mancha</pre>
   <tr><td><code>Ctrl+F</code></td><td>Open floating search</td></tr>
   <tr><td><code>Ctrl+N</code></td><td>New session (disabled in diary mode)</td></tr>
   <tr><td><code>Ctrl+D</code></td><td>Open today's diary session</td></tr>
+  <tr><td><code>Ctrl+Q</code></td><td>Schrödinger mode — view paragraphs with quantum text</td></tr>
   <tr><td><code>F4</code></td><td>Toggle post-it note for active session</td></tr>
   <tr><td><code>F1</code></td><td>Open Help</td></tr>
   <tr><td><code>Esc</code></td><td>Close CmdBar → close Search → toggle Zen</td></tr>
@@ -1117,42 +1363,43 @@ new La Mancha</pre>
 <section id="index">
 <h2>Alphabetical Index</h2>
 <table class="index-table">
-  <thead><tr><th>Command / Action</th><th>Description</th></tr></thead>
+  <thead><tr><th>Concept / Action</th><th>How</th><th>Chapter</th></tr></thead>
   <tbody>
-    <tr><td><code>: or /</code></td><td>Open command bar (commands, search, compile, new session…)</td></tr>
-    <tr><td><code>Ctrl+D</code></td><td>Open today's diary session (auto-created if it doesn't exist)</td></tr>
-    <tr><td><code>Ctrl+F</code></td><td>Open floating search bar</td></tr>
-    <tr><td><code>Ctrl+N</code></td><td>Create a new session (disabled in diary mode)</td></tr>
-    <tr><td><code>Ctrl+T</code></td><td>Open floating command palette</td></tr>
-    <tr><td><code>Ctrl+click nodes</code></td><td>Select multiple graph nodes — all paragraphs open in editor</td></tr>
-    <tr><td><code>Ctrl+click sessions</code></td><td>Multi-select sessions in Explorer — Delete removes all selected</td></tr>
-    <tr><td><code>diary / diario  ·  Ctrl+D</code></td><td>Open the diary project (always last in Explorer, one session per day)</td></tr>
-    <tr><td><code>compile [name]</code></td><td>Export visible sessions to .docx</td></tr>
-    <tr><td><code>create project &lt;name&gt;</code></td><td>Create a new project</td></tr>
-    <tr><td><code>Explorer → Graph tab → New graph</code></td><td>Paragraph graph: add nodes, connect them, click to open in editor</td></tr>
-    <tr><td><code>Explorer → paragraph row → clock icon</code></td><td>View and restore previous versions of a paragraph</td></tr>
-    <tr><td><code>Explorer → ✂ revelar naipe</code></td><td>After Baraja: reveals the source session in the session list</td></tr>
-    <tr><td><code>F1</code></td><td>Show help</td></tr>
-    <tr><td><code>F4</code></td><td>Toggle post-it note for the active session</td></tr>
-    <tr><td><code>Graph search bar</code></td><td>Type to highlight matching nodes; non-matching nodes dim out</td></tr>
-    <tr><td><code>help / ayuda</code></td><td>Show help (same as F1)</td></tr>
-    <tr><td><code>new [name]</code></td><td>Create a new session</td></tr>
-    <tr><td><code>open / view projects</code></td><td>Show project list</td></tr>
-    <tr><td><code>Right-click → Insert</code></td><td>Insert text as a pending Borgian widget. Confirm via right-click → Confirm.</td></tr>
-    <tr><td><code>Right-click paragraph → # (hashtags)</code></td><td>Add or remove project hashtags</td></tr>
-    <tr><td><code>Right-click paragraph → Baraja</code></td><td>Mix current paragraph with a random one from the project</td></tr>
-    <tr><td><code>Right-click paragraph → Add variant · /paths</code></td><td>Borgian Algebra: create variant branches inline. /paths lists all open branches.</td></tr>
-    <tr><td><code>Right-click paragraph → Reveal in Binder</code></td><td>Scroll to and highlight the active session in the Explorer</td></tr>
-    <tr><td><code>Right-click paragraph → Versions</code></td><td>View and restore previous versions of a paragraph</td></tr>
-    <tr><td><code>Right-click session → Move up / Move down</code></td><td>Reorder sessions within a project. Drag &amp; drop also works.</td></tr>
-    <tr><td><code>Right-click session → Undo shuffle</code></td><td>Restore session to its state before the last shuffle</td></tr>
-    <tr><td><code>search &lt;term&gt;  ·  Ctrl+F</code></td><td>Search across all sessions. Supports AND / OR / NOT operators.</td></tr>
-    <tr><td><code>search &lt;term&gt; in phrases</code></td><td>Search showing individual matching sentences</td></tr>
-    <tr><td><code>Search → + Save as collection</code></td><td>Save a search as a named collection — click it to re-run anytime</td></tr>
-    <tr><td><code>sentence mode</code></td><td>Toggle sentence mode</td></tr>
-    <tr><td><code>shuffle</code></td><td>Reorganize sentences in the active paragraph randomly</td></tr>
-    <tr><td><code>↑ (Explorer header)</code></td><td>Import .md / .docx / .txt — creates a new project from the file</td></tr>
-    <tr><td><code>zen</code></td><td>Distraction-free writing mode</td></tr>
+    <tr><td><a href="#chapter-13j">Backup / Recovery</a></td><td><code>backup</code>  ·  <code>recover</code></td><td>13j</td></tr>
+    <tr><td><a href="#chapter-9">Baraja (cut-up)</a></td><td>Right-click paragraph → Baraja</td><td>9</td></tr>
+    <tr><td><a href="#chapter-13b">Borgian Algebra</a></td><td>Select text → right-click → Add variant  ·  <code>/paths</code></td><td>13b</td></tr>
+    <tr><td><a href="#chapter-13b">Borgian insert</a></td><td>Right-click → Insert</td><td>13b</td></tr>
+    <tr><td><a href="#chapter-4">CmdBar</a></td><td><code>:</code> or <code>/</code></td><td>4</td></tr>
+    <tr><td><a href="#chapter-6">Collections</a></td><td>Search → + Save as collection</td><td>6</td></tr>
+    <tr><td><a href="#chapter-12">Compile / Export</a></td><td><code>compile [name]</code></td><td>12</td></tr>
+    <tr><td><a href="#chapter-2">Create project</a></td><td><code>create project &lt;name&gt;</code></td><td>2</td></tr>
+    <tr><td><a href="#chapter-13c">Diary</a></td><td><code>diary</code>  ·  <code>Ctrl+D</code></td><td>13c</td></tr>
+    <tr><td><a href="#chapter-10">Graph</a></td><td>Explorer → Graph tab → New graph</td><td>10</td></tr>
+    <tr><td><a href="#chapter-10">Graph — multi-select nodes</a></td><td><code>Ctrl+click</code> nodes</td><td>10</td></tr>
+    <tr><td><a href="#chapter-10">Graph — search nodes</a></td><td>Graph search bar</td><td>10</td></tr>
+    <tr><td><a href="#chapter-11">Hashtags</a></td><td>Right-click paragraph → # (hashtags panel)</td><td>11</td></tr>
+    <tr><td><a href="#chapter-13g">Hashtag filter in Explorer</a></td><td>Click hashtag tag in Explorer sidebar</td><td>13g</td></tr>
+    <tr><td><a href="#shortcuts">Help</a></td><td><code>help</code>  ·  <code>F1</code></td><td>—</td></tr>
+    <tr><td><a href="#chapter-12">Import file</a></td><td>↑ (Explorer header) — .md / .docx / .txt</td><td>12</td></tr>
+    <tr><td><a href="#chapter-8">Notes (project)</a></td><td><code>F4</code>  ·  right-click session → Annotate session</td><td>8</td></tr>
+    <tr><td><a href="#chapter-13f">Notes — session badges</a></td><td>Right-click session → Annotate session</td><td>13f</td></tr>
+    <tr><td><a href="#chapter-13i">Obsidian Notebook</a></td><td><code>obsidian</code></td><td>13i</td></tr>
+    <tr><td><a href="#chapter-13e">Writing Plan</a></td><td><code>plan</code></td><td>13e</td></tr>
+    <tr><td><a href="#chapter-7">Paragraph versions</a></td><td>Right-click paragraph → Versions</td><td>7</td></tr>
+    <tr><td><a href="#chapter-5">Projects — list</a></td><td><code>open</code>  ·  <code>view projects</code></td><td>5</td></tr>
+    <tr><td><a href="#chapter-5">Reveal in Explorer</a></td><td>Right-click paragraph → Reveal in Binder</td><td>5</td></tr>
+    <tr><td><a href="#chapter-9">Reveal source (after Baraja)</a></td><td>Explorer → ✂ reveal source</td><td>9</td></tr>
+    <tr><td><a href="#chapter-13h">Scale (text size)</a></td><td><code>scale [50–300]</code></td><td>13h</td></tr>
+    <tr><td><a href="#chapter-13d">Schrödinger mode</a></td><td><code>schrodinger</code>  ·  <code>Ctrl+Q</code></td><td>13d</td></tr>
+    <tr><td><a href="#chapter-6">Search</a></td><td><code>search &lt;term&gt;</code>  ·  <code>Ctrl+F</code></td><td>6</td></tr>
+    <tr><td><a href="#chapter-6">Search in phrases</a></td><td><code>search &lt;term&gt; in phrases</code></td><td>6</td></tr>
+    <tr><td><a href="#chapter-3">Sentence mode</a></td><td><code>sentence mode</code></td><td>3</td></tr>
+    <tr><td><a href="#chapter-5">Sessions — new</a></td><td><code>new [name]</code>  ·  <code>Ctrl+N</code></td><td>5</td></tr>
+    <tr><td><a href="#chapter-5">Sessions — reorder</a></td><td>Right-click → Move up / Move down  ·  Drag &amp; drop</td><td>5</td></tr>
+    <tr><td><a href="#chapter-5">Sessions — multi-select</a></td><td><code>Ctrl+click</code> sessions</td><td>5</td></tr>
+    <tr><td><a href="#chapter-9">Shuffle sentences</a></td><td><code>shuffle</code></td><td>9</td></tr>
+    <tr><td><a href="#chapter-9">Undo shuffle</a></td><td>Right-click session → Undo shuffle</td><td>9</td></tr>
+    <tr><td><a href="#chapter-3">Zen mode</a></td><td><code>zen</code></td><td>3</td></tr>
   </tbody>
 </table>
 </section>

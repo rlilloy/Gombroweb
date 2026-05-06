@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -249,12 +249,17 @@
   <li><a href="#capitulo-12">Importar y exportar</a></li>
   <li><a href="#capitulo-13b">Álgebra Borgiana</a></li>
   <li><a href="#capitulo-13c">El Diario</a></li>
+  <li><a href="#capitulo-13d">Modo Schrödinger</a></li>
+  <li><a href="#capitulo-13e">Plan de escritura</a></li>
+  <li><a href="#capitulo-13f">Notas de sesión y badges</a></li>
+  <li><a href="#capitulo-13g">Filtro por hashtag</a></li>
+  <li><a href="#capitulo-13h">Escala de texto</a></li>
+  <li><a href="#capitulo-13i">Libreta Obsidian</a></li>
+  <li><a href="#capitulo-13j">Respaldo y recuperación</a></li>
   <li><a href="#capitulo-14">Flujo de trabajo recomendado</a></li>
-  <li><a href="#capitulo-15">Editor dividido</a></li>
-  <li><a href="#capitulo-16">El jardín de los senderos</a></li>
-  <li><a href="#capitulo-17">Juegos</a></li>
   <li><a href="#atajos">Atajos de teclado</a></li>
   <li><a href="#autor">Sobre el autor</a></li>
+  <li><a href="#indice">Índice Alfabético</a></li>
 </ol>
 </nav>
 
@@ -372,11 +377,8 @@
 │  Mostrar en Binder      │
 │  Barajar (Baraja)       │
 │  Versiones de párrafo   │
-│  ─────────────────────  │
-│  🌿 Senderear desde aquí│
 └─────────────────────────┘
 </pre>
-<p><strong>🌿 Senderear desde aquí</strong> — crea un Sendero (bifurcación narrativa) a partir del párrafo actual. Ver Capítulo 16.</p>
 
 <h3>Modo frase</h3>
 <p>Activalo con <code>modo frase</code> en la CmdBar. Cada <code>.</code> aísla la frase actual — de a una, el resto desaparece. Escribís, ponés punto, se bloquea y se abre la siguiente.</p>
@@ -493,8 +495,7 @@
 <table>
   <tr><th>Comando</th><th>Qué hace</th></tr>
   <tr><td><code>ayuda</code> · <code>help</code></td><td>Abrir el modal de ayuda</td></tr>
-  <tr><td><code>idioma</code> · <code>language</code></td><td>Cambiar idioma de la interfaz (English / Español)</td></tr>
-  <tr><td><code>juegos</code> · <code>games</code></td><td>Abrir el minijuego Rogue</td></tr>
+  <tr><td><code>lang es</code> · <code>lang en</code></td><td>Cambiar idioma de la interfaz</td></tr>
 </table>
 
 <hr>
@@ -504,10 +505,32 @@
 <p>El Explorador es el panel izquierdo — tu lista de sesiones, tu binder. Cada sesión del proyecto activo vive aquí.</p>
 
 <ul>
-  <li><code>[+]</code> — crear una nueva sesión</li>
+  <li><code>[+]</code> — crear una nueva sesión (al final de la lista)</li>
   <li><code>[↑]</code> — importar un archivo (.md, .docx, .txt)</li>
   <li>Las estadísticas al pie muestran totales del proyecto activo</li>
 </ul>
+
+<h3>Agregar sesión o párrafo en posición</h3>
+<p>Clic derecho en una sesión o en un párrafo del outline expandido para insertar contenido nuevo <strong>exactamente debajo</strong> del elemento clickeado:</p>
+<table>
+  <tr><th>Gesto</th><th>Qué hace</th></tr>
+  <tr><td>Clic derecho en sesión → <strong>Agregar sesión abajo</strong></td><td>Crea una sesión nueva inmediatamente debajo de esa sesión, lista para renombrar</td></tr>
+  <tr><td>Clic derecho en párrafo (outline) → <strong>Agregar párrafo abajo</strong></td><td>Inserta un párrafo vacío debajo del párrafo seleccionado — aparece "nuevo párrafo" en el explorador hasta que escribís</td></tr>
+</table>
+
+<h3>Reordenar párrafos</h3>
+<p>En el outline expandido de una sesión podés reordenar párrafos con drag & drop, igual que las sesiones:</p>
+<table>
+  <tr><th>Gesto</th><th>Qué hace</th></tr>
+  <tr><td>Arrastrar párrafo del outline → soltar en otra posición</td><td>Mueve el párrafo a esa posición, guarda en DB y recarga el editor</td></tr>
+</table>
+
+<h3>Navegar a un párrafo</h3>
+<table>
+  <tr><th>Gesto</th><th>Qué hace</th></tr>
+  <tr><td>Clic en párrafo del outline</td><td>El cursor del editor se posiciona en ese párrafo y titila listo para escribir</td></tr>
+  <tr><td><code>Enter</code> en el editor</td><td>Crea un párrafo nuevo debajo del cursor (equivalente a "Agregar párrafo abajo")</td></tr>
+</table>
 
 <h3>Estadísticas del proyecto</h3>
 <table>
@@ -531,6 +554,8 @@
 <p>Clic derecho sobre cualquier sesión:</p>
 <pre>
 ┌─────────────────────────┐
+│  Agregar sesión abajo   │
+│  ───────────────────    │
 │  Renombrar              │
 │  Duplicar               │
 │  ───────────────────    │
@@ -547,16 +572,6 @@
 </pre>
 
 <p><strong>Subir / Bajar</strong> — reordenar sesiones dentro del proyecto. El orden persiste. También podés <strong>arrastrar y soltar</strong> sesiones directamente en la lista.</p>
-
-<h3>Secciones del panel Explorador</h3>
-<p>Debajo de la lista de sesiones, el Explorador muestra tres secciones opcionales:</p>
-<table>
-  <tr><th>Sección</th><th>Qué muestra</th></tr>
-  <tr><td><strong>🌿 Senderos</strong></td><td>Bifurcaciones narrativas (ver Capítulo 16)</td></tr>
-  <tr><td><strong>Colecciones</strong></td><td>Búsquedas guardadas (ver Capítulo 6)</td></tr>
-  <tr><td><strong>⚛ Schrödinger</strong></td><td>Párrafos con texto cuántico o tachaduras pendientes</td></tr>
-</table>
-<p>Hacé clic derecho en cualquier parte del Explorador para mostrar u ocultar cada sección individualmente.</p>
 
 <hr>
 
@@ -802,6 +817,36 @@ compilar Don Quijote — Primer Borrador</pre>
   agregá más variantes cuando quieras → clic derecho en bloque → Agregar variante
 </pre>
 
+
+<h3>Agregar sub-variantes</h3>
+<p>Podés ramificar una opción dentro de un bloque borgiano — crear una variante de una variante. Así se reproduce la estructura arbórea de los manuscritos de Borges: cada rama puede bifurcarse en nuevas ramas.</p>
+<ol>
+  <li>Clic derecho sobre una fila específica del bloque</li>
+  <li>Elegí <strong>Agregar sub-variante</strong></li>
+  <li>Escribí la alternativa y presioná <code>Ctrl+Enter</code></li>
+</ol>
+<p>La opción elegida se convierte en un nuevo bloque anidado con dos ramas — la original y la nueva:</p>
+
+<pre>
+  SUB-VARIANTE — ramificar una opción existente:
+
+  ┌──────────────────────────┐
+  │ el perro caminaba        │  ← clic derecho → Agregar sub-variante
+  │ el perro venía           │
+  └──────────────────────────┘
+              ↓
+  ┌──────────────────────────┐
+  │ ┌────────────────────┐   │
+  │ │ el perro caminaba  │   │  ← sub-bloque anidado
+  │ │ el perro trotaba   │   │
+  │ └────────────────────┘   │
+  │ el perro venía           │
+  └──────────────────────────┘
+
+  Sintaxis interna: {el perro venía|{el perro caminaba|el perro trotaba}}
+</pre>
+<p>No hay límite de profundidad — cada rama puede seguir bifurcándose.</p>
+
 <h3>Resolver una rama</h3>
 
 <pre>
@@ -885,6 +930,307 @@ compilar Don Quijote — Primer Borrador</pre>
 
 <hr>
 
+<h2 id="capitulo-13d">Capítulo 13d — Modo Schrödinger</h2>
+
+<p>En 1935 Erwin Schrödinger describió un gato encerrado en una caja: sin abrir la caja, el gato está simultáneamente vivo <em>y</em> muerto. Solo al observarlo colapsa en uno de los dos estados.</p>
+
+<p>El Modo Schrödinger de Gombro aplica esa lógica al texto: hay fragmentos que todavía no son ni una cosa ni la otra. Están escritos, pero no decididos.</p>
+
+<h3>¿Qué es texto en estado cuántico?</h3>
+<p>En Gombro, un párrafo está en estado Schrödinger cuando contiene alguno de estos elementos:</p>
+
+<table>
+  <tr><th>Tipo</th><th>Cómo se ve</th><th>Qué significa</th></tr>
+  <tr><td><strong>Tachado</strong></td><td><s>texto tachado</s></td><td>Marcado para posible borrado — todavía no decidiste</td></tr>
+  <tr><td><strong>Variante borgiana</strong></td><td><code>{opción A|opción B}</code></td><td>Texto en superposición — dos futuros posibles sin colapsar</td></tr>
+</table>
+
+<p>El tachado dice: <em>"puede que esto sobre."</em><br>
+La variante dice: <em>"puede que esto sea esto, o aquello."</em><br>
+Ninguno de los dos es definitivo. El texto sigue abierto.</p>
+
+<h3>Cómo tachar texto</h3>
+<p>Seleccioná cualquier fragmento → clic derecho → <strong>Tachar</strong>. El texto queda visible pero cruzado.</p>
+
+<pre>
+  ┌───────────────────────────────────────────────────┐
+  │  ...en un lugar de la Mancha, de cuyo             │
+  │  nombre ~~no quiero acordarme~~, no ha mucho...   │
+  └───────────────────────────────────────────────────┘
+         ↑ en el editor se ve con tachado visual,
+           los ~~ están ocultos pero guardados
+</pre>
+
+<p>Luego, clic derecho sobre el texto tachado:</p>
+<pre>
+  ┌──────────────────────┐
+  │  Borrar              │  ← elimina el fragmento
+  │  Editar              │  ← quita el tachado, editás
+  └──────────────────────┘
+</pre>
+
+<p><strong>Editar</strong> es la opción borgiana: no borrás el pensamiento, lo transformás. Escribís la variante, Enter, y queda limpio sin tachadura.</p>
+
+<h3>El botón ⚛ Schrödinger</h3>
+<p>Al pie del Explorador, sobre las Colecciones, aparece siempre el botón Schrödinger:</p>
+
+<pre>
+  ┌──────────────────────────────────┐
+  │  sesión 1                        │
+  │  sesión 2                        │
+  │  sesión 3                        │
+  │  ──────────────────────────────  │
+  │  ⚛ Schrödinger           [3]    │  ← badge amarillo = párrafos pendientes
+  │  ──────────────────────────────  │
+  │  📁 mi colección                 │
+  └──────────────────────────────────┘
+</pre>
+
+<ul>
+  <li>El <strong>badge</strong> se actualiza automáticamente cuando cambiás de proyecto o guardás</li>
+  <li>Hacé <strong>clic</strong> para ver la lista de párrafos en estado cuántico</li>
+  <li>Hacé clic en cualquier párrafo del resultado para ir directo a él en el editor</li>
+</ul>
+
+<h3>La lista Schrödinger</h3>
+<p>Al hacer clic en ⚛, el panel del Explorador muestra los párrafos pendientes agrupados por sesión — igual que los resultados de búsqueda:</p>
+
+<pre>
+  ⚛ Schrödinger  [3]              [✕ cerrar]
+  ──────────────────────────────────────────
+  Capítulo Uno
+    ~~no quiero acordarme~~, no ha mucho...
+  ──────────────────────────────────────────
+  Capítulo Dos
+    ...vivía un hidalgo {de los de lanza|con
+    lanza} en astillero...
+  ──────────────────────────────────────────
+  Epílogo
+    ~~Esta parte sobra~~ · La historia que...
+</pre>
+
+<h3>Schrödinger y el compilar</h3>
+<p>Cuando compilás a <code>docx</code> o <code>md</code>, Gombro escanea el proyecto. Si hay párrafos en estado Schrödinger, aparece un aviso antes de generar el archivo:</p>
+
+<pre>
+  ⚛  3 párrafos en estado Schrödinger
+     (tachaduras o variantes sin resolver)
+</pre>
+
+<p>Podés compilar igual — es solo un recordatorio. El texto tachado saldrá tachado en el docx; las variantes borgianas sin colapsar aparecerán en su forma cruda.</p>
+
+<h3>El flujo completo</h3>
+<pre>
+  ESCRIBÍS           DUDÁS              DECIDÍS
+  ────────           ─────              ───────
+  texto normal  →  Tachar o Variante  →  ⚛ Schrödinger
+                                           ↓
+                                      clic en párrafo
+                                           ↓
+                                   clic derecho → Borrar
+                                               → Editar
+                                           ↓
+                                      badge llega a 0
+                                           ↓
+                                      compilar limpio
+</pre>
+
+<blockquote>Borges tachaba pero no borraba. Dejaba visible lo descartado, como una prueba de que el pensamiento había estado ahí. El Modo Schrödinger es eso: un espacio para la duda antes de la decisión.</blockquote>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Tachar selección</td><td>Seleccioná → clic derecho → <code>Tachar</code></td></tr>
+  <tr><td>Borrar tachado</td><td>Clic derecho sobre tachado → <code>Borrar</code></td></tr>
+  <tr><td>Editar tachado</td><td>Clic derecho sobre tachado → <code>Editar</code> → escribís → Enter</td></tr>
+  <tr><td>Ver párrafos pendientes</td><td>Clic en <code>⚛ Schrödinger</code> en el Explorador</td></tr>
+  <tr><td>Comando directo</td><td><code>schrodinger</code> en la CmdBar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13e">Capítulo 13e — Plan de escritura</h2>
+
+<p>El Plan de escritura es un panel que muestra cuánto escribiste — hoy, esta semana, y en los meses anteriores. No es una herramienta de productividad. Es un espejo.</p>
+
+<h3>Cómo abrirlo</h3>
+<p>Escribí <code>/</code> en la CmdBar y seleccioná <strong>Plan de escritura</strong>. El panel aparece a la derecha del Explorador.</p>
+
+<h3>Qué muestra</h3>
+<ul>
+  <li><strong>Hoy</strong> — palabras escritas hoy, con un objetivo diario opcional. Hacé clic en <code>set</code> para definir tu meta.</li>
+  <li><strong>Esta semana</strong> — gráfico de barras de los últimos 7 días.</li>
+  <li><strong>Semanas</strong> — totales semanales de los meses anteriores.</li>
+  <li><strong>Meses</strong> — totales mensuales.</li>
+</ul>
+
+<h3>El objetivo diario</h3>
+<p>Podés definir una meta de palabras por día. Gombro cuenta todo lo que escribís en el proyecto activo. Cuando alcanzás la meta, la barra se llena. Sin alarmas, sin notificaciones — solo un registro silencioso.</p>
+
+<blockquote>Un plan de escritura no es un plazo. Es un hábito hecho visible.</blockquote>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Abrir Plan de escritura</td><td><code>/plan</code> en la CmdBar</td></tr>
+  <tr><td>Definir objetivo diario</td><td>Clic en <code>set</code> junto al campo Objetivo</td></tr>
+  <tr><td>Cerrar el panel</td><td>Clic en <code>✕</code> en el encabezado del panel</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13f">Capítulo 13f — Notas de sesión y badges</h2>
+
+<p>Cada sesión del Explorador puede tener su propia nota — una anotación libre visible de un vistazo. Un badge (<code>✎</code>) aparece en las sesiones que tienen notas, para saber de un vistazo cuáles tienen contexto.</p>
+
+<h3>Cómo agregar una nota a una sesión</h3>
+<ol>
+  <li>Hacé clic derecho en el nombre de la sesión en el Explorador.</li>
+  <li>Seleccioná <strong>Anotar sesión</strong>.</li>
+  <li>Se abre un pequeño panel. Escribís tu nota.</li>
+  <li>La nota se guarda sola.</li>
+</ol>
+
+<p>Las notas también se pueden anclar a párrafos específicos usando <code>F4</code> mientras escribís.</p>
+
+<h3>El badge</h3>
+<p>Las sesiones con al menos una nota muestran un badge <code>✎</code> en el Explorador. Sirve para marcar sesiones que necesitan atención, tienen contexto, o están en progreso — sin tener que abrirlas.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Agregar nota a sesión</td><td>Clic derecho en sesión → <code>Anotar sesión</code></td></tr>
+  <tr><td>Agregar nota a párrafo</td><td><code>F4</code> con el cursor en el párrafo</td></tr>
+  <tr><td>Ver todas las notas</td><td><code>/nota ver</code> en la CmdBar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13g">Capítulo 13g — Filtro por hashtag en el Explorador</h2>
+
+<p>Si tu proyecto usa hashtags, podés filtrar la lista de sesiones por hashtag directamente desde el Explorador — sin abrir el panel de búsqueda.</p>
+
+<h3>Cómo funciona</h3>
+<p>En la parte inferior del Explorador, los hashtags del proyecto aparecen como etiquetas pequeñas. Hacé clic en una para mostrar solo las sesiones que contienen ese hashtag. Hacé clic de nuevo para quitar el filtro.</p>
+
+<p>Es útil cuando un proyecto tiene muchas sesiones y querés enfocarte en las que corresponden a un personaje, lugar o tema específico.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Filtrar por hashtag</td><td>Clic en la etiqueta de hashtag en el Explorador</td></tr>
+  <tr><td>Quitar el filtro</td><td>Clic de nuevo en el hashtag activo</td></tr>
+  <tr><td>Gestionar hashtags</td><td><code>/tag</code> en la CmdBar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13h">Capítulo 13h — Escala de texto</h2>
+
+<p>Podés ajustar el tamaño del texto en el editor sin cambiar la tipografía ni el estilo. Es solo para comodidad de lectura — como el nivel de zoom en un procesador de texto.</p>
+
+<h3>Cómo cambiar la escala</h3>
+<p>Escribí <code>/escala</code> (o <code>/scale</code>) en la CmdBar. Ingresá un número entre 50 y 300. El número representa un porcentaje: <code>100</code> es el tamaño por defecto, <code>125</code> agranda el texto un 25%, <code>80</code> lo achica.</p>
+
+<pre>
+  /escala 125   →  texto más grande (25% sobre el defecto)
+  /escala 80    →  texto más chico (20% bajo el defecto)
+  /escala 100   →  vuelve al tamaño original
+</pre>
+
+<p>La configuración se guarda automáticamente y persiste cuando volvés a abrir Gombro.</p>
+
+<blockquote>Esto no cambia la tipografía, el interlineado ni el estilo de los títulos. Solo escala el tamaño base — como acercar o alejar la página.</blockquote>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Cambiar escala de texto</td><td><code>/escala [50–300]</code> en la CmdBar</td></tr>
+  <tr><td>Volver al tamaño original</td><td><code>/escala 100</code></td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13i">Capítulo 13i — Libreta Obsidian</h2>
+
+<p>Obsidian es una aplicación de notas para escritores y pensadores. Guarda las notas como archivos de texto plano (<code>.md</code>) en tu computadora — sin nube, sin suscripción. Podés descargarlo gratis en <a href="https://obsidian.md" style="color:var(--accent)">obsidian.md</a>.</p>
+
+<p>Si usás Obsidian junto con Gombro, la <strong>Libreta Obsidian</strong> te permite traer tus notas de Obsidian a tu proyecto de escritura en forma automática.</p>
+
+<h3>Cómo funciona la conexión</h3>
+<p>Obsidian y Gombro corren en tu computadora. Gombro encuentra tu vault de Obsidian automáticamente — no hace falta configurar rutas ni ajustes.</p>
+
+<p>La conexión se basa en <strong>hashtags</strong>. Si tu proyecto en Gombro se llama <em>Kolon</em>, Gombro va a buscar las notas de Obsidian que contengan <code>#kolon</code>. Cada nota que coincida aparece en la Libreta Obsidian.</p>
+
+<h3>Flujo típico</h3>
+<ol>
+  <li>Estás afuera, leyendo, pensando. Abrís Obsidian en el celular o la notebook y escribís: <em>"El uniforme del coronel roza el suelo cuando camina. #kolon"</em></li>
+  <li>De vuelta en tu escritorio, abrís Gombro y abrís el proyecto Kolon.</li>
+  <li>Aparece una notificación: <strong>"Tenés notas nuevas en Obsidian."</strong></li>
+  <li>Escribís <code>/obsidian</code> en la CmdBar. Se abre la Libreta Obsidian.</li>
+  <li>Ves la nota. La copiás a tu sesión. Listo.</li>
+</ol>
+
+<h3>El panel Libreta Obsidian</h3>
+<ul>
+  <li>Muestra solo las notas <strong>nuevas o modificadas</strong> desde la última vez que las revisaste.</li>
+  <li>Cada nota tiene dos botones: <strong>⎘ Copiar</strong> (copia el contenido al portapapeles y la saca de la vista) y <strong>✕ Borrar</strong> (marca como leída — no vuelve a aparecer salvo que la notes cambie en Obsidian).</li>
+  <li>Hacé clic en <strong>Actualizar</strong> para volver a escanear el vault.</li>
+</ul>
+
+<h3>Múltiples proyectos</h3>
+<p>El hashtag se deriva del nombre del proyecto en forma automática. Proyecto <em>Quixote</em> → busca <code>#quixote</code>. Podés usar múltiples hashtags en una misma nota de Obsidian para enviarla a varios proyectos.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Abrir Libreta Obsidian</td><td><code>/obsidian</code> en la CmdBar</td></tr>
+  <tr><td>Copiar una nota</td><td>Clic en <code>⎘</code> — copia al portapapeles, sale de la vista</td></tr>
+  <tr><td>Descartar una nota</td><td>Clic en <code>✕</code> — marca como leída, no vuelve a aparecer</td></tr>
+  <tr><td>Actualizar</td><td>Clic en <strong>Actualizar</strong> en el panel</td></tr>
+  <tr><td>Descargar Obsidian</td><td><a href="https://obsidian.md" style="color:var(--accent)">obsidian.md</a> (gratis)</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13j">Capítulo 13j — Respaldo y recuperación</h2>
+
+<p>Gombro guarda todo en un único archivo SQLite: <code>gombro.db</code>. Un respaldo es simplemente una copia de ese archivo. Recuperar es reemplazarlo por una copia anterior.</p>
+
+<h3>Cómo funciona</h3>
+<p><strong>Respaldo automático</strong> — cada vez que cerrás Gombro, se guarda un backup automáticamente. No requiere configuración.</p>
+<p><strong>Respaldo manual</strong> — escribí <code>respaldo</code> en la CmdBar en cualquier momento para guardar un snapshot inmediato.</p>
+<p><strong>Recuperación</strong> — escribí <code>recuperar</code> en la CmdBar para abrir la lista de backups. Seleccioná uno y hacé clic en <strong>Restaurar seleccionado</strong>.</p>
+
+<h3>Dónde se guardan</h3>
+<p>Por defecto, los backups van a una carpeta llamada <code>backup_gombro</code> junto al archivo de base de datos:</p>
+<pre>%AppData%\gombro\backup_gombro\
+    gombro-2026-04-29_10-00-00.db
+    gombro-2026-04-30_09-15-00.db</pre>
+
+<h3>Cambiar la carpeta</h3>
+<p>Abrí el modal de recuperación (<code>recuperar</code>) y hacé clic en <strong>Cambiar...</strong> — se abre un diálogo nativo para elegir carpeta. Podés elegir cualquier carpeta: Dropbox, Google Drive, un disco externo. El ajuste se guarda y se aplica a todos los backups posteriores, incluidos los automáticos al cerrar. Podés cambiarlo en cualquier momento.</p>
+
+<h3>Rotación de backups</h3>
+<p>Gombro conserva los <strong>10 backups más recientes</strong>. Cuando se crea uno nuevo y se supera ese límite, el más viejo se elimina automáticamente.</p>
+
+<h3>Restaurar un backup</h3>
+<ol>
+  <li>Escribí <code>recuperar</code> en la CmdBar.</li>
+  <li>Seleccioná un backup de la lista.</li>
+  <li>Hacé clic en <strong>Restaurar seleccionado</strong>.</li>
+</ol>
+<p>Gombro cierra la base de datos, la reemplaza con el backup elegido y recarga todo de inmediato. No hace falta reiniciar.</p>
+
+<h3>Referencia de comandos</h3>
+<table>
+  <tr><th>Comando</th><th>Acción</th></tr>
+  <tr><td><code>respaldo</code></td><td>Guardar un snapshot ahora</td></tr>
+  <tr><td><code>recuperar</code></td><td>Abrir lista de backups y restaurar</td></tr>
+</table>
+
+<hr>
+
 <h2 id="capitulo-14">Capítulo 14 — Flujo de trabajo recomendado</h2>
 
 <p>De proyecto en blanco a borrador exportado — una sugerencia, no una regla.</p>
@@ -910,105 +1256,6 @@ nuevo La Mancha</pre>
 
 <hr>
 
-<h2 id="capitulo-15">Capítulo 15 — Editor dividido</h2>
-
-<p>Gombro permite dividir el editor en dos paneles independientes — lado a lado (horizontal) o apilados (vertical). Cada panel puede mostrar una sesión diferente al mismo tiempo.</p>
-
-<pre>
-  DIVISIÓN HORIZONTAL                 DIVISIÓN VERTICAL
-  ┌────────┬──────────┬──────────┐    ┌────────┬────────────────────┐
-  │EXPLOR. │ PANEL 1  │ PANEL 2  │    │EXPLOR. │     PANEL 1        │
-  │        │          │          │    │        │                    │
-  │sesión1 │ texto... │ texto... │    │sesión1 │ texto...           │
-  │sesión2 │          │          │    │sesión2 ├────────────────────┤
-  │sesión3 │   🔓      │    🔒    │    │sesión3 │     PANEL 2        │
-  │        │          │          │    │        │ texto...           │
-  └────────┴──────────┴──────────┘    └────────┴────────────────────┘
-</pre>
-
-<h3>Cómo dividir</h3>
-<p>Los botones de división aparecen en el topbar del editor cuando hay una sesión abierta:</p>
-<table>
-  <tr><th>Botón</th><th>Acción</th></tr>
-  <tr><td><code>▣</code></td><td>División horizontal (izquierda | derecha)</td></tr>
-  <tr><td><code>⬒</code></td><td>División vertical (arriba | abajo)</td></tr>
-</table>
-<p>Al dividir, ambos paneles muestran la misma sesión. Navegá a otra sesión en el Explorador para mostrarla en el segundo panel.</p>
-
-<h3>Fijar un panel</h3>
-<p>Cada panel tiene su propio botón <code>🔓</code> / <code>🔒</code> en su encabezado.</p>
-<ul>
-  <li><strong>🔓 Libre</strong> — al hacer clic en una sesión del Explorador, este panel cambia.</li>
-  <li><strong>🔒 Fijado</strong> — este panel permanece fijo. Los clics del Explorador van al otro panel.</li>
-</ul>
-<p>Uso clásico: fijás el Panel 1 en tu esquema o sesión de referencia, dejás el Panel 2 libre para escritura activa.</p>
-
-<h3>Redimensionar paneles</h3>
-<p>Pasá el mouse sobre el divisor entre paneles — se resalta. Hacé clic y arrastrá para redimensionar. Tamaño mínimo por panel: 15%. Al cerrar la división vuelve a 50/50.</p>
-
-<hr>
-
-<h2 id="capitulo-16">Capítulo 16 — El jardín de los senderos</h2>
-
-<p>Nombrado en homenaje al cuento de Borges, los <strong>Senderos</strong> son el sistema de bifurcación narrativa de Gombro. Desde cualquier párrafo podés crear un universo paralelo de tu texto — sin tocar el original.</p>
-
-<pre>
-  PROYECTO ORIGINAL (el camino de la madre)
-  ────────────────────────────────────────────────────────
-  [sesión 1] → [sesión 2] → [sesión 3*] → [sesión 4] → ...
-                                  │
-                          clic derecho →
-                          🌿 Senderear desde aquí
-                                  │
-                                  ▼
-                  SENDERO 1 (colección)
-                  ─────────────────────────────
-                  [sesión 1*] [sesión 2*] ← congeladas
-                                  │
-                          [nueva sesión] → ...
-</pre>
-
-<h3>Crear un Sendero</h3>
-<ol>
-  <li>Escribí en cualquier sesión hasta llegar al párrafo donde querés bifurcar.</li>
-  <li>Clic derecho sobre ese párrafo → <strong>🌿 Senderear desde aquí</strong>.</li>
-  <li>Aparece un Sendero nuevo en el Explorador bajo <strong>🌿 Senderos</strong>, con nombre automático: <em>"vengo de: [primeras 5 palabras del párrafo]"</em>.</li>
-</ol>
-
-<h3>Qué hereda el Sendero</h3>
-<p>El Sendero recibe todas las sesiones hasta el párrafo de bifurcación — <strong>congeladas</strong>. El proyecto original sigue sin cambios y no sabe nada del sendero.</p>
-
-<h3>Abrir un Sendero</h3>
-<p>Hacé clic en el nombre del Sendero en el Explorador. El editor abre la sesión de origen truncada en el párrafo de bifurcación — todo lo que viene después no existe en este sendero. Un banner verde en la parte superior confirma que estás dentro de un Sendero.</p>
-
-<h3>Escribir dentro de un Sendero</h3>
-<p>Creá nuevas sesiones normalmente — pertenecen exclusivamente a este Sendero. El proyecto original nunca se ve afectado.</p>
-
-<h3>Renombrar y eliminar</h3>
-<p>Clic derecho sobre un Sendero en el Explorador para renombrarlo o eliminarlo. Eliminar un Sendero borra solo sus sesiones propias — el proyecto original y sus sesiones quedan intactos.</p>
-
-<hr>
-
-<h2 id="capitulo-17">Capítulo 17 — Juegos</h2>
-
-<p>Cuando necesitás un descanso de la página en blanco — o cuando la resistencia creativa toma forma concreta — Gombro incluye un calabozo de texto estilo Rogue.</p>
-
-<pre>
-  ┌─────────────────────────────────┐
-  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
-  │  ░ . . . . @ . . # # # # # ░   │
-  │  ░ . . . . . . . # . . . # ░   │
-  │  ░ # # # # # # # # . . . # ░   │
-  │  ░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
-  │                                 │
-  │  > ir norte                     │
-  └─────────────────────────────────┘
-</pre>
-
-<p>Abrilo con <code>juegos</code> · <code>games</code> en la CmdBar. Navegá, explorá, perdete. En versiones futuras pueden agregarse más juegos.</p>
-
-<hr>
-
 <h2 id="atajos">Atajos de teclado</h2>
 
 <table>
@@ -1018,6 +1265,7 @@ nuevo La Mancha</pre>
   <tr><td><code>Ctrl+F</code></td><td>Abrir búsqueda flotante</td></tr>
   <tr><td><code>Ctrl+N</code></td><td>Nueva sesión (deshabilitado en modo diario)</td></tr>
   <tr><td><code>Ctrl+D</code></td><td>Abrir la sesión del diario de hoy</td></tr>
+  <tr><td><code>Ctrl+Q</code></td><td>Modo Schrödinger — ver párrafos con texto cuántico</td></tr>
   <tr><td><code>F4</code></td><td>Alternar post-it de nota para la sesión activa</td></tr>
   <tr><td><code>F1</code></td><td>Abrir ayuda</td></tr>
   <tr><td><code>Esc</code></td><td>Cerrar CmdBar → cerrar búsqueda → activar Zen</td></tr>
@@ -1060,42 +1308,48 @@ nuevo La Mancha</pre>
 <section id="indice">
 <h2>Índice Alfabético</h2>
 <table class="index-table">
-  <thead><tr><th>Comando / Acción</th><th>Descripción</th></tr></thead>
+  <thead><tr><th>Concepto / Acción</th><th>Cómo</th><th>Capítulo</th></tr></thead>
   <tbody>
-    <tr><td><code>: o /</code></td><td>Abre la barra de comandos (comandos, búsqueda, compilar, nueva sesión…)</td></tr>
-    <tr><td><code>Ctrl+D</code></td><td>Abre la sesión del diario de hoy (se crea sola si no existe)</td></tr>
-    <tr><td><code>Ctrl+F</code></td><td>Abrir búsqueda flotante</td></tr>
-    <tr><td><code>Ctrl+N</code></td><td>Crear nueva sesión (deshabilitado en modo diario)</td></tr>
-    <tr><td><code>Ctrl+T</code></td><td>Abrir paleta de comandos flotante</td></tr>
-    <tr><td><code>Ctrl+clic en sesiones</code></td><td>Multi-seleccionar sesiones en el Explorador — Delete elimina todas las seleccionadas</td></tr>
-    <tr><td><code>diario / diary  ·  Ctrl+D</code></td><td>Abrir el proyecto diario (siempre al fondo del Explorador, una sesión por día)</td></tr>
-    <tr><td><code>Ctrl+clic en nodos</code></td><td>Selección múltiple de nodos del grafo — todos los párrafos se abren en el editor</td></tr>
-    <tr><td><code>compilar [nombre]</code></td><td>Exporta las sesiones visibles a .docx</td></tr>
-    <tr><td><code>crear proyecto &lt;nombre&gt;</code></td><td>Crear un nuevo proyecto</td></tr>
-    <tr><td><code>Explorer → pestaña Grafo → Nuevo grafo</code></td><td>Grafo de párrafos: agregá nodos, conectalos, hacé clic para abrir en el editor</td></tr>
-    <tr><td><code>Explorer → fila de párrafo → ícono reloj</code></td><td>Ver y restaurar versiones anteriores de un párrafo</td></tr>
-    <tr><td><code>Explorer → ✂ revelar naipe</code></td><td>Después del Baraja: revela la sesión origen en la lista</td></tr>
-    <tr><td><code>F1</code></td><td>Mostrar ayuda</td></tr>
-    <tr><td><code>F4</code></td><td>Abrir/cerrar post-it de nota de la sesión activa</td></tr>
-    <tr><td><code>Barra de búsqueda del grafo</code></td><td>Escribí para resaltar nodos coincidentes; los demás se atenúan</td></tr>
-    <tr><td><code>ayuda / help</code></td><td>Mostrar ayuda (igual que F1)</td></tr>
-    <tr><td><code>nuevo [nombre]</code></td><td>Crear una nueva sesión</td></tr>
-    <tr><td><code>abrir / ver proyectos</code></td><td>Mostrar lista de proyectos</td></tr>
-    <tr><td><code>Clic derecho → Insertar</code></td><td>Insertar texto como widget borgiano pendiente. Confirmar con clic derecho → Confirmar.</td></tr>
-    <tr><td><code>Clic derecho en párrafo → # (hashtags)</code></td><td>Agregar o quitar hashtags del proyecto</td></tr>
-    <tr><td><code>Clic derecho en párrafo → Baraja</code></td><td>Mezcla el párrafo actual con uno aleatorio del proyecto</td></tr>
-    <tr><td><code>Seleccionar texto → clic derecho → Agregar variante · /senderos</code></td><td>Álgebra Borgiana: crear ramas de variantes en línea. /senderos lista todas las ramas abiertas.</td></tr>
-    <tr><td><code>Clic derecho en párrafo → Revelar en Binder</code></td><td>Desplaza y resalta la sesión activa en el Explorer</td></tr>
-    <tr><td><code>Clic derecho en párrafo → Versiones</code></td><td>Ver y restaurar versiones anteriores de un párrafo</td></tr>
-    <tr><td><code>Clic derecho en sesión → Mover arriba / abajo</code></td><td>Reordenar sesiones. También funciona con arrastrar y soltar.</td></tr>
-    <tr><td><code>Clic derecho en sesión → Deshacer mezcla</code></td><td>Restaura la sesión al estado anterior al último shuffle</td></tr>
-    <tr><td><code>buscar &lt;termino&gt;  ·  Ctrl+F</code></td><td>Busca en todas las sesiones. Soporta operadores AND / OR / NOT.</td></tr>
-    <tr><td><code>buscar &lt;termino&gt; en frases</code></td><td>Búsqueda mostrando frases individuales que coinciden</td></tr>
-    <tr><td><code>Búsqueda → + Guardar como colección</code></td><td>Guarda una búsqueda como colección nombrada — hacé clic para re-ejecutarla</td></tr>
-    <tr><td><code>modo frase</code></td><td>Activar/desactivar modo frase</td></tr>
-    <tr><td><code>abarajar</code></td><td>Reorganiza aleatoriamente las frases del párrafo activo</td></tr>
-    <tr><td><code>↑ (cabecera del Explorer)</code></td><td>Importar .md / .docx / .txt — crea un nuevo proyecto desde el archivo</td></tr>
-    <tr><td><code>zen</code></td><td>Modo escritura sin distracciones</td></tr>
+    <tr><td><a href="#capitulo-9">Abarajar (mezclar frases)</a></td><td><code>abarajar</code></td><td>9</td></tr>
+    <tr><td><a href="#capitulo-13j">Backup / Recuperación</a></td><td><code>respaldo</code>  ·  <code>recuperar</code></td><td>13j</td></tr>
+    <tr><td><a href="#capitulo-13b">Álgebra Borgiana</a></td><td>Seleccioná texto → clic derecho → Agregar variante  ·  <code>/senderos</code></td><td>13b</td></tr>
+    <tr><td><a href="#capitulo-4">Ayuda</a></td><td><code>ayuda</code>  ·  <code>F1</code></td><td>—</td></tr>
+    <tr><td><a href="#capitulo-9">Baraja (cut-up)</a></td><td>Clic derecho en párrafo → Baraja</td><td>9</td></tr>
+    <tr><td><a href="#capitulo-13b">Borgiano — insertar</a></td><td>Clic derecho → Insertar</td><td>13b</td></tr>
+    <tr><td><a href="#capitulo-6">Búsqueda</a></td><td><code>buscar &lt;termino&gt;</code>  ·  <code>Ctrl+F</code></td><td>6</td></tr>
+    <tr><td><a href="#capitulo-6">Búsqueda en frases</a></td><td><code>buscar &lt;termino&gt; en frases</code></td><td>6</td></tr>
+    <tr><td><a href="#capitulo-4">CmdBar</a></td><td><code>:</code> o <code>/</code></td><td>4</td></tr>
+    <tr><td><a href="#capitulo-6">Colecciones</a></td><td>Búsqueda → + Guardar como colección</td><td>6</td></tr>
+    <tr><td><a href="#capitulo-12">Compilar / Exportar</a></td><td><code>compilar [nombre]</code></td><td>12</td></tr>
+    <tr><td><a href="#capitulo-2">Crear proyecto</a></td><td><code>crear proyecto &lt;nombre&gt;</code></td><td>2</td></tr>
+    <tr><td><a href="#capitulo-13c">Diario</a></td><td><code>diario</code>  ·  <code>Ctrl+D</code></td><td>13c</td></tr>
+    <tr><td><a href="#capitulo-13h">Escala de texto</a></td><td><code>escala [50–300]</code></td><td>13h</td></tr>
+    <tr><td><a href="#capitulo-5">Explorador</a></td><td>Panel izquierdo — sesiones, proyectos, grafo</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-10">Grafo</a></td><td>Explorador → pestaña Grafo → Nuevo grafo</td><td>10</td></tr>
+    <tr><td><a href="#capitulo-10">Grafo — multi-selección</a></td><td><code>Ctrl+clic</code> en nodos</td><td>10</td></tr>
+    <tr><td><a href="#capitulo-10">Grafo — búsqueda</a></td><td>Barra de búsqueda del grafo</td><td>10</td></tr>
+    <tr><td><a href="#capitulo-11">Hashtags</a></td><td>Clic derecho en párrafo → # (panel de hashtags)</td><td>11</td></tr>
+    <tr><td><a href="#capitulo-13g">Hashtag — filtro en Explorador</a></td><td>Clic en etiqueta de hashtag en el Explorador</td><td>13g</td></tr>
+    <tr><td><a href="#capitulo-12">Importar archivo</a></td><td>↑ (cabecera del Explorador) — .md / .docx / .txt</td><td>12</td></tr>
+    <tr><td><a href="#capitulo-13i">Libreta Obsidian</a></td><td><code>obsidian</code></td><td>13i</td></tr>
+    <tr><td><a href="#capitulo-3">Modo frase</a></td><td><code>modo frase</code></td><td>3</td></tr>
+    <tr><td><a href="#capitulo-13d">Modo Schrödinger</a></td><td><code>schrodinger</code>  ·  <code>Ctrl+Q</code></td><td>13d</td></tr>
+    <tr><td><a href="#capitulo-3">Modo zen</a></td><td><code>zen</code></td><td>3</td></tr>
+    <tr><td><a href="#capitulo-8">Notas (proyecto)</a></td><td><code>F4</code>  ·  clic derecho sesión → Anotar sesión</td><td>8</td></tr>
+    <tr><td><a href="#capitulo-13f">Notas — badges de sesión</a></td><td>Clic derecho sesión → Anotar sesión</td><td>13f</td></tr>
+    <tr><td><a href="#capitulo-13e">Plan de escritura</a></td><td><code>plan</code></td><td>13e</td></tr>
+    <tr><td><a href="#capitulo-7">Párrafo — versiones</a></td><td>Clic derecho en párrafo → Versiones</td><td>7</td></tr>
+    <tr><td><a href="#capitulo-5">Proyectos — lista</a></td><td><code>abrir</code>  ·  <code>ver proyectos</code></td><td>5</td></tr>
+    <tr><td><a href="#capitulo-9">Revelar origen (tras Baraja)</a></td><td>Explorador → ✂ revelar naipe</td><td>9</td></tr>
+    <tr><td><a href="#capitulo-5">Revelar sesión en Explorador</a></td><td>Clic derecho en párrafo → Revelar en Binder</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Sesiones — nueva</a></td><td><code>nuevo [nombre]</code>  ·  <code>Ctrl+N</code></td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Sesiones — nueva abajo</a></td><td>Clic derecho sesión → Agregar sesión abajo</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Sesiones — reordenar</a></td><td>Clic derecho → Mover arriba / abajo  ·  Arrastrar y soltar</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Sesiones — multi-selección</a></td><td><code>Ctrl+clic</code> en sesiones</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Párrafos — agregar abajo</a></td><td>Clic derecho párrafo (outline) → Agregar párrafo abajo  ·  <code>Enter</code></td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Párrafos — reordenar</a></td><td>Arrastrar párrafo en el outline y soltar</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-5">Párrafos — navegar</a></td><td>Clic en párrafo del outline → cursor titila en el editor</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-9">Deshacer mezcla</a></td><td>Clic derecho sesión → Deshacer mezcla</td><td>9</td></tr>
   </tbody>
 </table>
 </section>
