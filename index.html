@@ -227,7 +227,7 @@ function startLogo(){
 #gchat-borges{width:64px;height:64px;object-fit:cover;object-position:top;border-radius:50%;filter:sepia(100%) contrast(1.1);animation:borges-blink 4s ease-in-out infinite}
 #gchat-tagline{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(252,245,229,.35);margin-top:6px}
 #gchat-credit{font-size:.5rem;letter-spacing:.06em;color:rgba(252,245,229,.18);margin-top:3px;font-style:italic}
-@keyframes borges-blink{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.15}52%{opacity:1}}
+@keyframes borges-blink{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.15}52%{opacity:1}}@media(max-width:600px){#gchat-panel{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;border-radius:0;border:none;display:none;flex-direction:column}#gchat-panel.open{display:flex}#gchat-messages{flex:1;height:auto;min-height:0}#gchat-input-row{padding-bottom:env(safe-area-inset-bottom,0)}}
 </style>
 
 <div id="gchat-float">
