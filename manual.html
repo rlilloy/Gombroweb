@@ -803,7 +803,7 @@
 <h3>Exporting</h3>
 <pre>compile
 compile Don Quixote — First Draft</pre>
-<p>All visible sessions, in Explorer order, exported as a single <code>.docx</code> file to <code>Documents/gombro/{projectName}/</code>.</p>
+<p>All visible sessions, in Explorer order, exported as a single <code>.docx</code> file to <code>Documents/gombro/{projectName}/</code>. Project <strong>paths (senderos)</strong> are automatically included at the end, each with its name as a heading.</p>
 
 <hr>
 
@@ -1282,6 +1282,37 @@ Neither is final. The text remains open.</p>
   <tr><th>Command</th><th>Action</th></tr>
   <tr><td><code>backup</code></td><td>Save a snapshot now</td></tr>
   <tr><td><code>recover</code></td><td>Open backup list and restore</td></tr>
+</table>
+
+<hr>
+
+<h2 id="chapter-13k">Chapter 13k — Paths (Narrative Labyrinths)</h2>
+
+<p>A <strong>Path</strong> (Sendero) is a fork. From any paragraph you can open an alternative route — a version of the story that splits at that exact point and continues on its own. Think of it as a garden of forking paths: the text branches, it does not replace.</p>
+
+<h3>Creating a path</h3>
+<p>Right-click on the paragraph where you want to fork and choose <strong>🌿 Senderear desde aquí</strong>. Gombro creates the path and registers it in the Explorer panel under the <strong>SENDEROS</strong> section.</p>
+<p>The path name is generated automatically: <code>Ses: [session name] — párrafo: [first words]</code>. You can rename it by right-clicking in the Explorer.</p>
+
+<h3>Opening a path</h3>
+<p>Click on the path in the Explorer. It opens as its own session — with the inherited content up to the fork point — ready for you to write forward. What you write in the path does not touch the original session.</p>
+
+<h3>The origin banner</h3>
+<p>When a path is open, a green bar appears at the top of the editor:</p>
+<pre>🌿 Ses: Story 1 — párrafo: it was a winter's day...</pre>
+<p>That text is <strong>clickable</strong>: clicking it takes you back to the origin session at the fork point.</p>
+
+<h3>Paths and compile</h3>
+<p>When you compile the project (<code>compile</code> or <code>compile .md</code>), paths are automatically included at the end of the document, each with its name as a heading. No extra steps needed.</p>
+
+<h3>Reference</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Create a path</td><td>Right-click on paragraph → <strong>🌿 Senderear desde aquí</strong></td></tr>
+  <tr><td>Open a path</td><td>Click the path in the Explorer</td></tr>
+  <tr><td>Return to origin</td><td>Click the green banner at the top of the editor</td></tr>
+  <tr><td>Rename</td><td>Right-click the path → Rename</td></tr>
+  <tr><td>Delete</td><td>Right-click the path → Delete path</td></tr>
 </table>
 
 <hr>

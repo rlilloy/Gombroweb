@@ -747,7 +747,7 @@
 <h3>Exportar</h3>
 <pre>compilar
 compilar Don Quijote — Primer Borrador</pre>
-<p>Todas las sesiones visibles, en el orden del Explorador, exportadas como un único archivo <code>.docx</code> en <code>Documents/gombro/{nombreProyecto}/</code>.</p>
+<p>Todas las sesiones visibles, en el orden del Explorador, exportadas como un único archivo <code>.docx</code> en <code>Documents/gombro/{nombreProyecto}/</code>. Los <strong>senderos</strong> del proyecto se incluyen automáticamente al final, cada uno con su nombre como título.</p>
 
 <hr>
 
@@ -1227,6 +1227,37 @@ Ninguno de los dos es definitivo. El texto sigue abierto.</p>
   <tr><th>Comando</th><th>Acción</th></tr>
   <tr><td><code>respaldo</code></td><td>Guardar un snapshot ahora</td></tr>
   <tr><td><code>recuperar</code></td><td>Abrir lista de backups y restaurar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13k">Capítulo 13k — Senderos (Laberintos narrativos)</h2>
+
+<p>Un <strong>Sendero</strong> es una bifurcación. Desde cualquier párrafo podés abrir un camino alternativo — una versión de la historia que se separa en ese punto exacto y sigue su propio rumbo. La imagen es la de un jardín con senderos: el texto se bifurca, no se reemplaza.</p>
+
+<h3>Crear un sendero</h3>
+<p>Hacé clic derecho en el párrafo donde querés bifurcar y elegí <strong>🌿 Senderear desde aquí</strong>. Gombro crea el sendero y lo registra en el panel Explorer bajo la sección <strong>SENDEROS</strong>.</p>
+<p>El nombre del sendero se genera automáticamente: <code>Ses: [nombre de sesión] — párrafo: [primeras palabras]</code>. Podés renombrarlo con clic derecho en el Explorer.</p>
+
+<h3>Abrir un sendero</h3>
+<p>Hacé clic en el sendero en el Explorer. Se abre como una sesión propia — con el contenido heredado hasta el punto de bifurcación — lista para que escribas hacia adelante. Lo que escribas en el sendero no toca la sesión original.</p>
+
+<h3>El banner de origen</h3>
+<p>Cuando un sendero está abierto, aparece una barra verde arriba del editor:</p>
+<pre>🌿 Ses: Historia 1 — párrafo: era un día de invierno...</pre>
+<p>Ese texto es <strong>clickeable</strong>: al hacer clic volvés a la sesión de origen en el punto de bifurcación.</p>
+
+<h3>Senderos y el compilar</h3>
+<p>Al compilar el proyecto (<code>compilar</code> o <code>compilar .md</code>), los senderos se incluyen automáticamente al final del documento, cada uno con su nombre como título. No necesitás hacer nada extra.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Crear sendero</td><td>Clic derecho en párrafo → <strong>🌿 Senderear desde aquí</strong></td></tr>
+  <tr><td>Abrir sendero</td><td>Clic en el sendero en el Explorer</td></tr>
+  <tr><td>Volver al origen</td><td>Clic en el banner verde arriba del editor</td></tr>
+  <tr><td>Renombrar</td><td>Clic derecho en el sendero → Renombrar</td></tr>
+  <tr><td>Eliminar</td><td>Clic derecho en el sendero → Eliminar sendero</td></tr>
 </table>
 
 <hr>
