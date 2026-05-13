@@ -147,6 +147,64 @@ main,#video-wrap,footer{position:relative;z-index:1}
 })();
 </script>
 
+<div id="borges-carousel" style="width:min(480px,88vw);margin:0 auto;padding:40px 0 20px">
+  <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,245,229,.35);margin-bottom:20px;text-align:center">Borges knows Gombro</div>
+  <div id="bc-card" style="border:1px solid rgba(252,245,229,.1);padding:24px 28px;min-height:140px;position:relative;opacity:1;transition:opacity .4s ease">
+    <div id="bc-q" style="font-size:.72rem;letter-spacing:.06em;color:rgba(252,245,229,.35);margin-bottom:12px"></div>
+    <div id="bc-a" style="font-size:.82rem;line-height:1.7;color:#FCF5E5;font-style:italic"></div>
+    <div style="text-align:right;margin-top:16px;font-size:.65rem;letter-spacing:.1em;color:#8B0000">— Borges</div>
+  </div>
+  <div id="bc-dots" style="display:flex;justify-content:center;gap:6px;margin-top:14px"></div>
+</div>
+
+<script>
+(function(){
+  var QA = [
+    {q:'What is Gombro?', a:'"No AI. No cloud. No invisible hand steering your sentences toward the probable. It is entirely at the service of the writer\'s flow."'},
+    {q:'What is the Shuffle (Baraja)?', a:'"Baraja takes a paragraph you wrote and mixes it with a random one from elsewhere in the project. A cut-up collision. Everything that emerges is from your own writing."'},
+    {q:'What is the Borgian Algebra?', a:'"Inspired by how Borges corrected his manuscripts: not by erasing, but by branching. Multiple alternatives coexist in the text until you decide."'},
+    {q:'Does Gombro have AI?', a:'"No. Gombro contains no AI of any kind. The invention is entirely yours. This is a deliberate choice — not a limitation."'},
+    {q:'What is Schrödinger Mode?', a:'"Some text is neither one thing nor another — it has not been decided. Schrödinger Mode marks those paragraphs. The ⚛ button shows how many are in quantum state."'},
+    {q:'What is a Path (Sendero)?', a:'"A bifurcation. From any paragraph you can open an alternative road — a version of the story that splits at that exact point. The image is a garden with paths."'},
+    {q:'What is Zen Mode?', a:'"Maximum focus, minimum distraction. No panels, no chrome, only the word."'},
+    {q:'What is the philosophy of Gombro?', a:'"Writing should be an act of discovery, not production. Every feature serves one purpose: to keep the text alive and open as long as possible."'}
+  ];
+
+  var cur = 0;
+  var card = document.getElementById('bc-card');
+  var qEl = document.getElementById('bc-q');
+  var aEl = document.getElementById('bc-a');
+  var dots = document.getElementById('bc-dots');
+
+  // build dots
+  QA.forEach(function(_, i){
+    var d = document.createElement('span');
+    d.style.cssText = 'width:5px;height:5px;border-radius:50%;background:rgba(252,245,229,'+(i===0?'.6':'.2')+');display:inline-block;transition:background .3s';
+    dots.appendChild(d);
+  });
+
+  function render(i){
+    qEl.textContent = 'Q: ' + QA[i].q;
+    aEl.textContent = QA[i].a;
+    Array.from(dots.children).forEach(function(d, j){
+      d.style.background = 'rgba(252,245,229,'+(j===i?'.6':'.2')+')';
+    });
+  }
+
+  function next(){
+    card.style.opacity = '0';
+    setTimeout(function(){
+      cur = (cur + 1) % QA.length;
+      render(cur);
+      card.style.opacity = '1';
+    }, 400);
+  }
+
+  render(0);
+  setInterval(next, 5000);
+})();
+</script>
+
 <footer class="site-footer">
   <span>Gombro is an invention of Raul Lilloy, creator of</span>
   <a href="https://incubook.com" target="_blank" rel="noopener">
