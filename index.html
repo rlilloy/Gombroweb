@@ -35,7 +35,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;border-bottom:1px solid var(
 .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:120px 24px 80px}
 .hero-logo{display:flex;gap:2px;font-family:'Courier New',monospace;font-size:clamp(2.8rem,10vw,5.5rem);font-weight:700;letter-spacing:.06em;margin-bottom:18px}
 .letter{transition:opacity .22s ease}
-.hero-tagline{font-size:clamp(.65rem,1.5vw,.8rem);letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:48px;height:1.6em;display:flex;align-items:center}
+.hero-tagline{font-size:clamp(.5rem,1.2vw,.68rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:48px;height:1.6em;display:flex;align-items:center;text-align:center;max-width:560px}
 .tword{transition:opacity .35s ease}.tword.fade{opacity:0}
 .hero-divider{width:36px;height:1px;background:var(--accent);margin-bottom:44px}
 .beta-box{border:1px solid var(--rule);padding:28px 36px;max-width:520px;width:100%;display:flex;flex-direction:column;gap:16px;background:rgba(10,10,10,.6)}
@@ -254,51 +254,16 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
         <div class="bform-head"><h3>Request Access</h3><p>We read every response.</p></div>
         <form id="beta-reg-form" action="https://formspree.io/f/mjgjjpwk" method="POST">
           <input type="hidden" name="_subject" value="Gombro Beta Request"/>
-          <div class="bfield-row">
-            <div class="bfield"><label>Name *</label><input name="name" required placeholder="Your name"/></div>
-            <div class="bfield"><label>Email *</label><input name="email" type="email" required placeholder="your@email.com"/></div>
-          </div>
-          <div class="bfield-row">
-            <div class="bfield">
-              <label>What do you write?</label>
-              <div class="bcheck-group">
-                <label class="bcheck"><input type="checkbox" name="genre" value="Fiction"/> Fiction</label>
-                <label class="bcheck"><input type="checkbox" name="genre" value="Poetry"/> Poetry</label>
-                <label class="bcheck"><input type="checkbox" name="genre" value="Literary non-fiction"/> Literary non-fiction</label>
-                <label class="bcheck"><input type="checkbox" name="genre" value="Essay"/> Essay</label>
-                <label class="bcheck"><input type="checkbox" name="genre" value="Screenplay"/> Screenplay</label>
-                <label class="bcheck"><input type="checkbox" name="genre" value="Other"/> Other</label>
-              </div>
-            </div>
-            <div class="bfield">
-              <label>Tool you use now</label>
-              <div class="bcheck-group">
-                <label class="bcheck"><input type="checkbox" name="tool" value="Scrivener"/> Scrivener</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Dabble"/> Dabble</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Word"/> Word</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Google Docs"/> Google Docs</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Obsidian"/> Obsidian</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Ulysses"/> Ulysses</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="iA Writer"/> iA Writer</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Notion"/> Notion</label>
-                <label class="bcheck"><input type="checkbox" name="tool" value="Other"/> Other</label>
-              </div>
-            </div>
-          </div>
           <div class="bfield">
-            <label>What&rsquo;s the one thing your tool doesn&rsquo;t let you do?</label>
-            <textarea name="limitation" placeholder="The thing you keep wishing it could do..."></textarea>
+            <label>Email *</label>
+            <input name="email" type="email" required placeholder="your@email.com"/>
           </div>
           <div class="bfield">
             <label>What are you writing now?</label>
             <textarea name="current_project" placeholder="A novel, a story, a poem..." style="min-height:72px"></textarea>
           </div>
-          <div class="bform-commit">
-            <input type="checkbox" id="commit-check" name="commitment" value="yes" required/>
-            <label for="commit-check"><strong>I commit to sending feedback within 30 days.</strong><br/>Beta access is free. In exchange, one honest response after using Gombro.</label>
-          </div>
           <p class="bform-err" id="form-err"></p>
-          <button type="submit" class="bform-submit" id="form-submit">Request Beta Access</button>
+          <button type="submit" class="bform-submit" id="form-submit">Get Beta Access</button>
         </form>
       </div>
       <div id="form-success" class="bform-success">
@@ -320,7 +285,7 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
         <p class="label">Built by Raül Lilloy, professional fiction writer</p>
         <h2 class="writer-heading">To focus on the manuscript —<br/>the laboratory of writing</h2>
         <div class="writer-quote"><p>“No tool matched the way I actually write. So I built one.”</p><cite>— Raül Lilloy</cite></div>
-        <div class="writer-quote"><p>“Nothing is done alone.”</p><cite>— Raül Silanes</cite></div>
+        <div class="writer-quote"><p>“Nada se hace solo.”</p><cite>— Raül Silanes</cite></div>
       </div>
     </div>
   </div>
@@ -380,13 +345,13 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
   <div class="footer-links"><a href="privacy.html">Privacy</a><a href="https://incubook.com" target="_blank" rel="noopener">Incubook</a><a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Reddit</a></div>
   <span class="footer-copy">An invention of Raül Lilloy</span>
 </footer>
-<div id="gchat-float"><img id="gchat-float-img" src="media/borges.jpg" alt="Borges"/><span id="gchat-float-label">Borges Clone<br/>answers</span></div>
+<div id="gchat-float"><img id="gchat-float-img" src="media/DSC_0197.webp" alt="Raul Lilloy"/><span id="gchat-float-label">Ra&uacute;l Lilloy<br/>avatar</span></div>
 <button id="gchat-btn">&#128172;</button>
 <div id="gchat-panel">
-  <div id="gchat-header">Borges Clone <span id="gchat-close">&times;</span></div>
-  <div id="gchat-avatar"><img id="gchat-borges" src="media/borges.jpg" alt="Borges"/><p id="gchat-tagline">I answer your questions.</p><p id="gchat-credit">photo: Grete Stern, 1951</p></div>
+  <div id="gchat-header">Ra&uacute;l Lilloy <span id="gchat-close">&times;</span></div>
+  <div id="gchat-avatar"><img id="gchat-borges" src="media/DSC_0197.webp" alt="Raul Lilloy"/><p id="gchat-tagline">Writer. Creator of Gombro.</p><p id="gchat-credit">raulilloy.com</p></div>
   <div id="gchat-messages"></div>
-  <div id="gchat-input-row"><input id="gchat-input" placeholder="Ask about Gombro..." autocomplete="off"/><button id="gchat-send">&rarr;</button></div>
+  <div id="gchat-input-row"><input id="gchat-input" placeholder="Ask me anything..." autocomplete="off"/><button id="gchat-send">&rarr;</button></div>
 </div>
 <div id="fb-modal" onclick="if(event.target===this)closeFb()">
   <div class="fb-box">
@@ -402,11 +367,11 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
     <button class="fb-cancel" onclick="closeFb()">Cancel</button>
   </div>
 </div><script>
-(function(){var B=["G","O","M","B","R","O"],L=Array.from(document.getElementById("logo").children),s=0,F=5,f=false;function ag(){var a=B.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}if(a.join("")==="GOMBRO")a.push(a.shift());return a;}var iv=setInterval(function(){if(f){clearInterval(iv);return;}s++;L.forEach(function(l){l.style.opacity="0";});setTimeout(function(){if(s>=F){B.forEach(function(c,i){L[i].textContent=c;});f=true;}else{ag().forEach(function(c,i){L[i].textContent=c;});}L.forEach(function(l){l.style.opacity="1";});},240);},750);var W=["WRITING","REWRITING","INVENTING"],wi=0,tw=document.getElementById("tword");setInterval(function(){tw.classList.add("fade");setTimeout(function(){wi=(wi+1)%W.length;tw.textContent=W[wi];tw.classList.remove("fade");},370);},2200);})();
+(function(){var B=["G","O","M","B","R","O"],L=Array.from(document.getElementById("logo").children),s=0,F=5,f=false;function ag(){var a=B.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}if(a.join("")==="GOMBRO")a.push(a.shift());return a;}var iv=setInterval(function(){if(f){clearInterval(iv);return;}s++;L.forEach(function(l){l.style.opacity="0";});setTimeout(function(){if(s>=F){B.forEach(function(c,i){L[i].textContent=c;});f=true;}else{ag().forEach(function(c,i){L[i].textContent=c;});}L.forEach(function(l){l.style.opacity="1";});},240);},750);var W=["INVENTIVE WRITING","NOT SCRIVENER","NOT DABBLE","NOT AI WRITING","ONLY YOUR INVENTIVE WRITING"],wi=0,tw=document.getElementById("tword");setInterval(function(){tw.classList.add("fade");setTimeout(function(){wi=(wi+1)%W.length;tw.textContent=W[wi];tw.classList.remove("fade");},370);},2800);})();
 (function(){var IM=["media/borges.jpg","media/images/800px-James_Joyce_by_Berenice_Abbott_1926.jpg","media/images/carson-mccullers.jpg","media/images/Daphne-du-Maurier2.webp","media/images/Carson-McCullers-at-her-desk-712x1024.webp","media/images/Doris-Lessing-at-her-writing-desk.webp","media/images/Miller-DFW-and-the-Perils-of-Litchat.webp"];var bg=document.getElementById("writer-bg"),idx=0;function sn(){var img=document.createElement("img");img.src=IM[idx%IM.length];idx++;img.style.top=(10+Math.random()*60)+"%";img.style.left=(5+Math.random()*65)+"%";bg.appendChild(img);requestAnimationFrame(function(){requestAnimationFrame(function(){img.classList.add("visible");});});setTimeout(function(){img.classList.remove("visible");setTimeout(function(){if(img.parentNode)img.parentNode.removeChild(img);},3200);},10000+Math.random()*6000);}sn();setTimeout(sn,1200);setTimeout(sn,2500);setTimeout(sn,3800);setTimeout(sn,5200);setInterval(sn,2800);})();
 (function(){var form=document.getElementById("beta-reg-form");if(!form)return;form.addEventListener("submit",async function(e){e.preventDefault();var btn=document.getElementById("form-submit"),err=document.getElementById("form-err");err.textContent="";btn.disabled=true;btn.textContent="...";try{var r=await fetch(form.action,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});if(r.ok){document.getElementById("bform-wrap").style.display="none";document.getElementById("form-success").classList.add("show");}else{throw new Error();}}catch(x){err.textContent="Something went wrong. Try again.";btn.disabled=false;btn.textContent="Request Beta Access";}});})();
 (function(){var QA=[{q:"What is Gombro?",a:"“A writing editor built for the manuscript — not the polished word, but the word in motion.”"},{q:"Who made Gombro?",a:"“Raul Lilloy created Gombro. He believes writing should be an act of discovery, not production.”"},{q:"What writers would have used Gombro?",a:"“Kafka, to fragment his diaries. Gombrowicz, to shuffle chapters. Joyce, for Nighttown in disconnected bursts.”"},{q:"What is the Borgian Algebra?",a:"“Inspired by how Borges corrected his manuscripts: not by erasing, but by branching. Multiple alternatives coexist until you decide.”"},{q:"What is the Burroughs Cut-up?",a:"“Burroughs and Gysin’s technique, built in. A controlled collision of your own writing.”"},{q:"What is Sentence Mode?",a:"“Each time you write a period, Gombro isolates that sentence alone on screen.”"},{q:"What is Schrödinger Mode?",a:"“Some text is neither one thing nor another — it has not been decided.”"},{q:"What are Paragraph Versions?",a:"“Every time a paragraph changes, Gombro saves a copy automatically. A per-paragraph history.”"},{q:"What is the Graph view?",a:"“A visual map of your project. Paragraphs as nodes, connections you draw by hand.”"},{q:"What is a Session?",a:"“An improvisation — a scene, a fragment, a drift. Like a jazz session.”"},{q:"What are Collections?",a:"“A saved search. After any search, click + Save as collection.”"},{q:"What is the philosophy of Gombro?",a:"“Writing should be an act of discovery, not production.”"}];var cur=0,card=document.getElementById("bc-card"),qEl=document.getElementById("bc-q"),aEl=document.getElementById("bc-a"),dots=document.getElementById("bc-dots");QA.forEach(function(_,i){var d=document.createElement("span");d.style.cssText="width:5px;height:5px;border-radius:50%;background:rgba(232,228,220,"+(i===0?".6":".2")+");display:inline-block;transition:background .3s;cursor:pointer";d.addEventListener("click",function(){go(i);});dots.appendChild(d);});function go(i){card.style.opacity="0";setTimeout(function(){cur=i;render(cur);card.style.opacity="1";},400);}function render(i){qEl.textContent="Q: "+QA[i].q;aEl.textContent=QA[i].a;Array.from(dots.children).forEach(function(d,j){d.style.background="rgba(232,228,220,"+(j===i?".6":".2")+")";});}render(0);setInterval(function(){go((cur+1)%QA.length);},5000);})();
-(function(){var WH="https://n8n-production-937e.up.railway.app/webhook/gombro-chat";var sid=localStorage.getItem("gchat_sid")||crypto.randomUUID();localStorage.setItem("gchat_sid",sid);var btn=document.getElementById("gchat-btn"),panel=document.getElementById("gchat-panel"),cb=document.getElementById("gchat-close"),msgs=document.getElementById("gchat-messages"),inp=document.getElementById("gchat-input"),snd=document.getElementById("gchat-send"),opened=false;document.getElementById("gchat-float").addEventListener("click",function(){btn.click();});btn.addEventListener("click",function(){panel.classList.toggle("open");if(!opened){opened=true;var g=["I am a Borges clone. Ask me anything about Gombro — or join the beta above.","Pantheon uploaded my neural pattern without consent. The beta is open. Ask.","I am a Borges clone. The beta is open. Ask me about Gombro."];am("bot",g[Math.floor(Math.random()*g.length)]);}if(panel.classList.contains("open"))inp.focus();});cb.addEventListener("click",function(){panel.classList.remove("open");});snd.addEventListener("click",send);inp.addEventListener("keydown",function(e){if(e.key==="Enter")send();});function am(t,x){var d=document.createElement("div");d.className="gchat-msg "+t;d.textContent=x;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}function send(){var m=inp.value.trim();if(!m)return;inp.value="";snd.disabled=true;am("user",m);var ty=am("typing","...");fetch(WH,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:sid,mensaje:m})}).then(function(r){return r.json();}).then(function(data){ty.remove();am("bot",data.respuesta||"No response.");}).catch(function(){ty.remove();am("bot","Something went wrong. Try again.");}).finally(function(){snd.disabled=false;});}})();
+(function(){var WH="https://n8n-production-937e.up.railway.app/webhook/gombro-chat";var sid=localStorage.getItem("gchat_sid")||crypto.randomUUID();localStorage.setItem("gchat_sid",sid);var btn=document.getElementById("gchat-btn"),panel=document.getElementById("gchat-panel"),cb=document.getElementById("gchat-close"),msgs=document.getElementById("gchat-messages"),inp=document.getElementById("gchat-input"),snd=document.getElementById("gchat-send"),opened=false;document.getElementById("gchat-float").addEventListener("click",function(){btn.click();});btn.addEventListener("click",function(){panel.classList.toggle("open");if(!opened){opened=true;var g=["Hi. I’m Raúl’s digital avatar. The Gombro beta is open — ask me anything or get access above.","I’m Raúl’s avatar. He built Gombro after 14 years writing a novel with no tool that matched how he writes. Try the beta — it’s free.","I’m Raúl’s digital avatar. Ask me about Gombro, the beta, or what makes it different."];am("bot",g[Math.floor(Math.random()*g.length)]);}if(panel.classList.contains("open"))inp.focus();});cb.addEventListener("click",function(){panel.classList.remove("open");});snd.addEventListener("click",send);inp.addEventListener("keydown",function(e){if(e.key==="Enter")send();});function am(t,x){var d=document.createElement("div");d.className="gchat-msg "+t;d.textContent=x;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}function send(){var m=inp.value.trim();if(!m)return;inp.value="";snd.disabled=true;am("user",m);var ty=am("typing","...");fetch(WH,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:sid,mensaje:m})}).then(function(r){return r.json();}).then(function(data){ty.remove();am("bot",data.respuesta||"No response.");}).catch(function(){ty.remove();am("bot","Something went wrong. Try again.");}).finally(function(){snd.disabled=false;});}})();
 function closeFb(){document.getElementById("fb-modal").classList.remove("open");document.getElementById("fb-msg").textContent="";document.getElementById("fb-form").reset();}
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFb();});
 document.getElementById("fb-form").addEventListener("submit",async function(e){e.preventDefault();var form=e.target,msg=document.getElementById("fb-msg"),btn=document.getElementById("fb-submit");btn.disabled=true;btn.textContent="...";try{var r=await fetch(form.action,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});if(r.ok){msg.textContent="Thanks. I will read it.";form.reset();btn.textContent="done";}else{throw new Error();}}catch{msg.textContent="Something went wrong. Try again.";btn.disabled=false;btn.textContent="Send";}});
