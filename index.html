@@ -179,7 +179,7 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
 .bform-quote{padding:18px 0 18px 20px;border-left:2px solid var(--accent)}
 .bform-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:.98rem;line-height:1.8;color:var(--text)}
 .bform-quote cite{display:block;margin-top:10px;font-style:normal;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.bform-meta{display:flex;flex-direction:column;gap:8px}
+.bform-meta{display:flex;flex-direction:column;gap:8px}.bform-meta-mobile{display:none}@media(max-width:860px){.bform-meta-desktop{display:none}.bform-meta-mobile{display:flex;flex-direction:row;gap:16px;flex-wrap:wrap;margin-bottom:16px}}
 .bform-meta-item{display:flex;align-items:center;gap:12px;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .bform-dot{width:4px;height:4px;background:var(--accent);flex-shrink:0}
 .bform-right{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
@@ -225,7 +225,7 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
       <a href="#writer">Writer</a>
       <a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Community</a>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('beta-form').scrollIntoView({behavior:'smooth'})">Join Beta</button>
+    <button class="nav-cta" onclick="(window.innerWidth<=860?document.getElementById('bform-wrap'):document.getElementById('beta-form')).scrollIntoView({behavior:'smooth',block:'start'})">Join Beta</button>
   </div>
 </nav>
 <section id="hero">
@@ -242,7 +242,7 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
       <p class="beta-prize">&starf; Testers who contribute feedback or detect bugs get 6 months of Gombro &mdash; free. </p>
       <a href="#mission" class="beta-features-link">See features &darr;</a>
         <div class="beta-ctas">
-        <button class="beta-btn" onclick="document.getElementById('beta-form').scrollIntoView({behavior:'smooth'})">Request Beta Access &darr;</button>
+        <button class="beta-btn" onclick="(window.innerWidth<=860?document.getElementById('bform-wrap'):document.getElementById('beta-form')).scrollIntoView({behavior:'smooth',block:'start'})">Request Beta Access &darr;</button>
         <p class="beta-ms-notice"><svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 21 21'><rect x='1' y='1' width='9' height='9' fill='#f25022'/><rect x='11' y='1' width='9' height='9' fill='#7fba00'/><rect x='1' y='11' width='9' height='9' fill='#00a4ef'/><rect x='11' y='11' width='9' height='9' fill='#ffb900'/></svg> Available on Microsoft Store</p>
       </div>
     </div>
@@ -261,7 +261,7 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
       <p class="bform-tagline">Gombro is the art of reinventing your manuscript.</p>
       <p class="bform-invite">I&rsquo;m inviting you to test the Gombro beta for 60 days.</p>
       <p class="bform-prize">&starf; Testers who contribute feedback or detect bugs get 6 months of Gombro &mdash; free. </p>
-      <div class="bform-meta">
+      <div class="bform-meta bform-meta-desktop">
         <div class="bform-meta-item"><div class="bform-dot"></div>Limited spots</div>
         <div class="bform-meta-item"><div class="bform-dot"></div>Windows 10 / 11</div>
         <div class="bform-meta-item"><div class="bform-dot"></div>60 days free</div>
@@ -269,6 +269,11 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
     </div>
     <div class="bform-right">
       <div id="bform-wrap">
+        <div class="bform-meta bform-meta-mobile">
+          <div class="bform-meta-item"><div class="bform-dot"></div>Limited spots</div>
+          <div class="bform-meta-item"><div class="bform-dot"></div>Windows 10 / 11</div>
+          <div class="bform-meta-item"><div class="bform-dot"></div>60 days free</div>
+        </div>
         <div class="bform-head"><h3>Request Access</h3><p>We read every response.</p></div>
         <form id="beta-reg-form" action="https://n8n-production-937e.up.railway.app/webhook/gombro-beta" method="POST">
           <input type="hidden" name="_subject" value="Gombro Beta Request"/>
