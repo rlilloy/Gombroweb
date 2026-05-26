@@ -6,8 +6,9 @@
 <title>Gombro — Escribir · Reescribir · Inventar</title>
 <meta name="description" content="Gombro es un editor de manuscritos para escribir, reescribir e inventar literariamente."/>
 <meta property="og:title" content="Gombro — Escribir · Reescribir · Inventar">
-<meta property="og:url" content="https://gombro.com">
+<meta property="og:url" content="https://gombro.com/index-es.html">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://gombro.com/index-es.html"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
@@ -161,6 +162,16 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
 .tut-video iframe{width:100%;height:100%;border:none}
 .tut-link{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .tut-link:hover{color:var(--text)}
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
+.dl-col{padding:52px 24px;text-align:center;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;gap:18px}
+.dl-col:last-child{border-right:none}
+.dl-col-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em;color:var(--text)}
+.dl-col-btn{display:inline-block;padding:13px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;background:var(--accent);color:var(--text);text-decoration:none;transition:background .18s;width:100%;max-width:190px;text-align:center}
+.dl-col-btn:hover{background:#a00000}
+.dl-col-ver{font-size:.6rem;font-weight:500;letter-spacing:.1em;color:var(--text)}
+.dl-col-req{font-size:.54rem;color:var(--muted);margin-top:3px;line-height:1.6}
+.dl-col-req a{color:var(--muted);text-decoration:none;transition:color .2s}.dl-col-req a:hover{color:var(--text)}
+@media(max-width:680px){.dl-grid{grid-template-columns:1fr}.dl-col{border-right:none;border-bottom:1px solid var(--rule)}.dl-col:last-child{border-bottom:none}}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -194,45 +205,47 @@ fbq('track', 'PageView');
     <div class="beta-box">
       <p style="font-size:.82rem;line-height:1.75;color:var(--text);margin-bottom:6px">Gombro es el arte de reinventar tu manuscrito.</p>
       <a href="#mission" style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none">Ver características &darr;</a>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
-        <button style="display:flex;align-items:center;justify-content:center;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;background:var(--text);color:var(--bg);border:none;cursor:pointer;transition:background .18s;width:100%" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar &darr;</button>
-        <p style="display:flex;align-items:center;gap:6px;justify-content:center;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px;opacity:.7"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg> Disponible en Microsoft Store</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+        <a href="https://www.paypal.com/ncp/payment/BBQ83J34UPETS" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;background:var(--text);color:var(--bg);text-decoration:none;transition:background .18s;width:100%">Comprar &rarr; &nbsp;<span style="opacity:.55;font-size:.7rem">$100.00 USD</span></a>
+        <button style="display:flex;align-items:center;justify-content:center;padding:14px 28px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--muted);border:1px solid var(--dim);cursor:pointer;transition:border-color .2s,color .2s;width:100%" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar prueba gratuita &darr;</button>
+        <p style="text-align:center;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.55">60 días de prueba gratuita &middot; Windows &middot; Mac &middot; Linux</p>
+        <p style="display:flex;align-items:center;gap:6px;justify-content:center;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:.7"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg> Disponible en Microsoft Store</p>
       </div>
     </div>
     </div>
     </div>
   </div>
 </section>
-<section id="download">
-  <div class="bform-page">
-    <div class="bform-left">
-      <p class="bform-eyebrow">Disponible ahora</p>
-      <h2 class="bform-heading">El manuscrito<br/>empieza aquí</h2>
-      <div class="bform-divider"></div>
-      <div class="bform-quote">
-        <p>&ldquo;Ninguna herramienta se adaptaba a la forma en que escribo. Entonces construí una.&rdquo;</p>
-        <cite>&mdash; Ra&uacute;l Lilloy, escritor y creador de Gombro</cite>
+<section id="download" style="padding:80px 0;border-bottom:1px solid var(--rule)">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 52px">
+      <p class="label">60 días de prueba gratuita</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:.04em;margin-top:10px">Prueba gratuita</h2>
+      <p style="font-size:.78rem;line-height:1.9;color:var(--muted);margin-top:16px">Si no tenés licencia, Gombro funciona en modo de prueba. La prueba es exactamente igual a la versión completa, pero deja de funcionar después de 60 días de uso. (Si lo usás todos los días, dura dos meses; si lo usás dos días a la semana, dura siete meses.)</p>
+    </div>
+    <div class="dl-grid">
+      <div class="dl-col">
+        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="rgba(232,228,220,.45)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <p class="dl-col-name">macOS</p>
+        <a href="https://github.com/rlilloy/Gombroweb/raw/master/downloads/Gombro.dmg" class="dl-col-btn" download>Descargar</a>
+        <div><p class="dl-col-ver">Gombro v1.0.0</p><p class="dl-col-req">Requiere macOS 10.13+</p></div>
       </div>
-      <div class="bform-meta bform-meta-desktop">
-        <div class="bform-meta-item"><div class="bform-dot"></div>Windows &middot; Mac &middot; Linux</div>
-        <div class="bform-meta-item"><div class="bform-dot"></div>v1.0.0</div>
-        <div class="bform-meta-item"><div class="bform-dot"></div>Prueba gratuita incluida</div>
+      <div class="dl-col">
+        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 21 21" fill="rgba(232,228,220,.45)"><rect x="1" y="1" width="9" height="9"/><rect x="11" y="1" width="9" height="9"/><rect x="1" y="11" width="9" height="9"/><rect x="11" y="11" width="9" height="9"/></svg>
+        <p class="dl-col-name">Windows</p>
+        <a href="https://github.com/rlilloy/Gombroweb/raw/master/downloads/gombro-setup.exe" class="dl-col-btn" download>Descargar</a>
+        <a href="https://apps.microsoft.com/detail/9p0nv0jv79kt?hl" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 0;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--dim);color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;width:100%;max-width:190px"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>Microsoft Store &nearr;</a>
+        <div><p class="dl-col-ver">Gombro v1.0.0</p><p class="dl-col-req">64-bit &middot; Windows 10+</p></div>
+      </div>
+      <div class="dl-col">
+        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="rgba(232,228,220,.45)"><path d="M20.581 19.049c-.55-.446-.336-1.431-.907-1.917.553-3.365-.997-6.331-2.845-8.232C15.274 7.255 13.546 6 12.003 6c-1.547 0-3.273 1.255-4.826 2.9-1.85 1.9-3.39 4.865-2.84 8.232-.57.486-.36 1.471-.91 1.917-.55.446-1.427.481-1.427 1.437C2 22.4 3.6 23 4.003 23c.401 0 1.143-.561 2.002-1 .86-.439 2.257-1 3.998-1 .035 0 .067.001.1.001.033 0 .065-.001.1-.001 1.743 0 3.141.561 4 1 .86.439 1.6 1 2.001 1 .4 0 2-.6 2-2.514 0-.956-.877-.991-1.623-1.437zM12 4c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"/></svg>
+        <p class="dl-col-name">Linux</p>
+        <a href="https://github.com/rlilloy/Gombroweb/raw/master/downloads/Gombro.AppImage" class="dl-col-btn" download>Descargar</a>
+        <div><p class="dl-col-ver">Gombro v1.0.0</p><p class="dl-col-req">AppImage &middot; x86_64</p></div>
       </div>
     </div>
-    <div class="bform-right">
-      <div class="bform-meta bform-meta-mobile">
-        <div class="bform-meta-item"><div class="bform-dot"></div>Windows &middot; Mac &middot; Linux</div>
-        <div class="bform-meta-item"><div class="bform-dot"></div>v1.0.0</div>
-      </div>
-      <div class="dl-wrap">
-        <a href="https://github.com/rlilloy/Gombroweb/raw/master/downloads/gombro-setup.exe" class="dl-btn-main" download>&#8853; Windows .exe</a>
-        <a href="https://github.com/rlilloy/Gombroweb/raw/master/downloads/Gombro.dmg" class="dl-btn-main" download style="margin-top:8px">&#8853; Mac .dmg</a>
-        <a href="https://github.com/rlilloy/Gombroweb/raw/master/downloads/Gombro.AppImage" class="dl-btn-main" download style="margin-top:8px">&#8853; Linux .AppImage</a>
-        <div class="dl-secondary">
-          <a href="https://apps.microsoft.com/detail/9p0nv0jv79kt?hl" target="_blank" rel="noopener" class="dl-btn-alt"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>&nbsp;Microsoft Store &nearr;</a>
-          <a href="https://github.com/rlilloy/Gombro_writing/releases/latest" target="_blank" rel="noopener" class="dl-btn-alt">GitHub Releases &nearr;</a>
-        </div>
-      </div>
+    <div style="display:flex;justify-content:center;margin-top:24px">
+      <a href="https://github.com/rlilloy/Gombro_writing/releases/latest" target="_blank" rel="noopener" style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s">GitHub Releases &nearr;</a>
     </div>
   </div>
 </section>
