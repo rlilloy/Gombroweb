@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gombro — Manual</title>
 <link rel="canonical" href="https://gombro.com/manual-es.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
   :root {
     --bg: #1a1a1a;
@@ -35,9 +37,9 @@
 
   .header {
     text-align: center;
-    padding: 3rem 0 2rem;
+    padding: 0.5rem 0 0.75rem;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 3rem;
+    margin-bottom: 0.75rem;
   }
 
   .header pre {
@@ -62,8 +64,8 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 3rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .toc h2 {
@@ -71,17 +73,20 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--muted);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-family: 'Courier New', monospace;
   }
 
   .toc ol {
     padding-left: 1.5rem;
+    columns: 2;
+    column-gap: 2rem;
   }
 
   .toc li {
-    margin: 0.25rem 0;
-    font-size: 0.95rem;
+    margin: 0.05rem 0;
+    font-size: 0.85rem;
+    line-height: 1.25;
   }
 
   .toc a {
@@ -196,6 +201,20 @@
     margin-top: 0.5rem;
   }
 
+  .pdf-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.2rem 0.6rem;
+  }
+  .pdf-link:hover { border-color: var(--accent); }
+
   .back-top {
     position: fixed;
     bottom: 2rem;
@@ -215,22 +234,159 @@
     border-color: var(--accent);
     text-decoration: none;
   }
+
+  /* --- Nav y footer de gombro.com --- */
+  body { padding-top: 54px; }
+
+  .site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    border-bottom: 1px solid rgba(232,228,220,.08);
+    background: rgba(10,10,10,.94);
+    backdrop-filter: blur(10px);
+  }
+
+  .site-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 48px;
+  }
+
+  .site-nav-logo {
+    display: flex;
+    gap: 1px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-decoration: none;
+  }
+  .site-nav-logo .l-0 { color: #FCF5E5; }
+  .site-nav-logo .l-1 { color: #8B0000; }
+  .site-nav-logo .l-2 { color: #a0856b; }
+  .site-nav-logo .l-3 { color: #c9b8a8; }
+  .site-nav-logo .l-4 { color: #6b2d2d; }
+  .site-nav-logo .l-5 { color: #d4c5b0; }
+
+  .site-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .site-nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,.52);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .site-nav-links a:hover { color: #e8e4dc; }
+
+  .site-nav-lang {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,.52);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .site-nav-lang:hover { color: #e8e4dc; }
+
+  @media (max-width: 760px) {
+    .site-nav-links { display: none; }
+    .site-nav-inner { padding: 15px 20px; }
+  }
+
+  .site-footer {
+    margin-top: 4rem;
+    padding: 36px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid rgba(232,228,220,.15);
+    background: #111;
+  }
+  .site-footer-logo {
+    display: flex;
+    gap: 1px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+  .site-footer-logo .l-0 { color: #FCF5E5; }
+  .site-footer-logo .l-1 { color: #8B0000; }
+  .site-footer-logo .l-2 { color: #a0856b; }
+  .site-footer-logo .l-3 { color: #c9b8a8; }
+  .site-footer-logo .l-4 { color: #6b2d2d; }
+  .site-footer-logo .l-5 { color: #d4c5b0; }
+  .site-footer-links {
+    display: flex;
+    gap: 24px;
+  }
+  .site-footer-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .55rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,.52);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .site-footer-links a:hover { color: #e8e4dc; }
+  .site-footer-copy {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .52rem;
+    letter-spacing: .1em;
+    color: rgba(232,228,220,.52);
+  }
+
+  .header-logo {
+    display: inline-flex;
+    gap: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1.6rem, 8vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+  .header-logo .l-0 { color: #FCF5E5; }
+  .header-logo .l-1 { color: #8B0000; }
+  .header-logo .l-2 { color: #a0856b; }
+  .header-logo .l-3 { color: #c9b8a8; }
+  .header-logo .l-4 { color: #6b2d2d; }
+  .header-logo .l-5 { color: #d4c5b0; }
+
+  @media print {
+    .site-nav, .site-footer, .back-top, .pdf-link { display: none; }
+    body { padding-top: 0; }
+  }
 </style>
 </head>
 <body>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index-es.html" class="site-nav-logo"><span class="l-0">G</span><span class="l-1">O</span><span class="l-2">M</span><span class="l-3">B</span><span class="l-4">R</span><span class="l-5">O</span></a>
+    <div class="site-nav-links">
+      <a href="index-es.html#mission">Características</a>
+      <a href="manual-es.html">Tutorial</a>
+      <a href="index-es.html#writer">Escritor</a>
+      <a href="https://community.gombro.com/" target="_blank" rel="noopener">Comunidad</a>
+    </div>
+    <a href="manual.html" class="site-nav-lang">EN &rsaquo;</a>
+  </div>
+</nav>
 <div class="container">
 
 <div class="header" id="top">
-<pre>
-  ██████╗  ██████╗ ███╗   ███╗██████╗ ██████╗  ██████╗
- ██╔════╝ ██╔═══██╗████╗ ████║██╔══██╗██╔══██╗██╔═══██╗
- ██║  ███╗██║   ██║██╔████╔██║██████╔╝██████╔╝██║   ██║
- ██║   ██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══██╗██║   ██║
- ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝██║  ██║╚██████╔╝
-  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
-</pre>
-<div class="tagline">inventando palabras</div>
-<div class="version">v0.8.1-beta</div>
+<div class="header-logo"><span class="l-0">G</span><span class="l-1">O</span><span class="l-2">M</span><span class="l-3">B</span><span class="l-4">R</span><span class="l-5">O</span></div>
+<div class="version">v1.4.0</div>
+<a class="pdf-link" href="downloads/gombro-manual-es.pdf" target="_blank" rel="noopener">⭳ Descargar PDF</a>
 </div>
 
 <nav class="toc">
@@ -258,6 +414,12 @@
   <li><a href="#capitulo-13i">Libreta Obsidian</a></li>
   <li><a href="#capitulo-13j">Respaldo y recuperación</a></li>
   <li><a href="#capitulo-13k">Senderos (Laberintos narrativos)</a></li>
+  <li><a href="#capitulo-13l">Marcas de Duda</a></li>
+  <li><a href="#capitulo-13m">Tablas</a></li>
+  <li><a href="#capitulo-13n">Resumen extractivo</a></li>
+  <li><a href="#capitulo-13o">Modo Kerouac</a></li>
+  <li><a href="#capitulo-13p">Insertar imagen</a></li>
+  <li><a href="#capitulo-13q">Compilar Modal</a></li>
   <li><a href="#capitulo-14">Flujo de trabajo recomendado</a></li>
   <li><a href="#atajos">Atajos de teclado</a></li>
   <li><a href="#autor">Sobre el autor</a></li>
@@ -728,6 +890,75 @@
   <li>Mantené <code>Ctrl</code> y hacé clic en varios nodos para abrirlos juntos</li>
 </ul>
 
+<h3>Grafo de sesiones del proyecto ★</h3>
+<p>Además del grafo manual de párrafos, la pestaña <strong>GRAPH</strong> del Explorador carga automáticamente todas las sesiones del proyecto como nodos dispuestos en espiral. El tamaño de cada nodo refleja la cantidad de párrafos de esa sesión.</p>
+
+<h3>Cómo leer el grafo</h3>
+<pre>
+  GRAFO DE SESIONES — Quixote:
+
+[Cap.1]──[Cap.2]──[Cap.3]
+      /                         \
+  [Prólogo]                   [Cap.4]
+      \                         /
+       [Epílogo]──[Cap.8]──[Cap.5]
+
+Nodo grande  = sesión con muchos párrafos
+Nodo pequeño = sesión corta
+Líneas       = orden de las sesiones en el proyecto
+</pre>
+<ul>
+  <li>Clic en un nodo → abre esa sesión en el Editor</li>
+  <li>Hover → muestra el nombre completo de la sesión</li>
+</ul>
+
+<h3>Filtro por palabras clave</h3>
+<p>La barra de búsqueda del grafo sirve para encontrar sesiones por contenido:</p>
+<ol>
+  <li>Escribí una palabra en la barra → <code>Enter</code> o clic en <strong>+</strong></li>
+  <li>La palabra se guarda como chip en el panel de keywords</li>
+  <li>Las sesiones que contienen esa palabra se destacan al doble de tamaño</li>
+  <li>Las que no coinciden se atenúan</li>
+  <li>Al volver a abrir el grafo, las keywords se activan automáticamente</li>
+</ol>
+<pre>
+  FILTRO "nordo":
+
+◆ nordo          ← nodo keyword (diamante rojo)
+      / \
+  ●[Cap.3] ●[Cap.7]    ← sesiones con "nordo" (grandes, amarillas)
+  ·[Cap.1] ·[Cap.5]    ← sesiones sin "nordo" (atenuadas, pequeñas)
+</pre>
+
+<h3>Órbita de párrafos</h3>
+<p>Con keywords activas, hacé clic en una sesión destacada para ver qué párrafos específicos contienen la palabra:</p>
+<ul>
+  <li>Los párrafos que coinciden aparecen como nodos pequeños alrededor de la sesión</li>
+  <li>Clic en un párrafo → abre el editor en ese punto exacto</li>
+  <li>Los párrafos en amarillo son los que coinciden con la keyword</li>
+</ul>
+
+<h3>Operadores de búsqueda</h3>
+<table>
+  <tr><th>Expresión</th><th>Resultado</th></tr>
+  <tr><td><code>pedro</code></td><td>sesiones con "pedro"</td></tr>
+  <tr><td><code>pedro Y susana</code></td><td>sesiones con ambas palabras</td></tr>
+  <tr><td><code>pedro O susana</code></td><td>sesiones con cualquiera</td></tr>
+</table>
+
+<h3>Controles del grafo</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Abrir el grafo</td><td>Explorador → pestaña <strong>GRAPH</strong></td></tr>
+  <tr><td>Agregar keyword</td><td>Escribí en la barra → <code>Enter</code> o <strong>+</strong></td></tr>
+  <tr><td>Activar/desactivar keyword</td><td>Clic en el chip</td></tr>
+  <tr><td>Eliminar keyword</td><td>Clic en <strong>×</strong> del chip</td></tr>
+  <tr><td>Abrir sesión</td><td>Clic en el nodo</td></tr>
+  <tr><td>Zoom</td><td>Rueda del mouse</td></tr>
+  <tr><td>Ajustar vista</td><td>Botón <strong>⊡</strong></td></tr>
+  <tr><td>Cerrar grafo</td><td>Botón <strong>✕</strong> o <code>Escape</code></td></tr>
+</table>
+
 <hr>
 
 <h2 id="capitulo-11">Capítulo 11 — Hashtags</h2>
@@ -1053,30 +1284,108 @@ Ninguno de los dos es definitivo. El texto sigue abierto.</p>
 
 <h2 id="capitulo-13e">Capítulo 13e — Plan de escritura</h2>
 
-<p>El Plan de escritura es un panel que muestra cuánto escribiste — hoy, esta semana, y en los meses anteriores. No es una herramienta de productividad. Es un espejo.</p>
+<p>El Plan de escritura es un modal que te ayuda a planificar una etapa del manuscrito (un borrador, una revisión) en términos de <strong>horas de dedicación por día</strong>, y muestra cuánto llevás escrito frente a lo planeado. No es una herramienta de productividad estricta. Es un espejo con fecha de cierre.</p>
 
 <h3>Cómo abrirlo</h3>
-<p>Escribí <code>/</code> en la CmdBar y seleccioná <strong>Plan de escritura</strong>. El panel aparece a la derecha del Explorador.</p>
+<p>Presioná <code>Ctrl+Shift+P</code>, o escribí <code>/plan</code> en la CmdBar y presioná <code>Enter</code>. Ambos abren el mismo modal, centrado sobre el editor. Cerralo con <code>✕</code>, con <code>Esc</code>, o tocando fuera del modal.</p>
 
-<h3>Qué muestra</h3>
+<h3>Configurar el plan (primera vez)</h3>
+<p>Si el proyecto activo no tiene un plan, el modal abre directamente en el formulario de configuración:</p>
+<pre>
+┌──────────────────────────────────────────────────┐
+│  Plan de escritura — Horas                    ✕   │
+├──────────────────────────────────────────────────┤
+│  1. OBJETIVO DEL PLAN                             │
+│  ┌──────────────────────────────────────────┐    │
+│  │ Segundo borrador▾                         │    │
+│  └──────────────────────────────────────────┘    │
+│   sugerencias: Primer borrador · Segundo          │
+│   borrador · Manuscrito final · Revisión final    │
+│                                                    │
+│   Fecha de cierre                                 │
+│  ┌──────────────────────────────────────────┐    │
+│  │ 2026-08-01                                │    │
+│  └──────────────────────────────────────────┘    │
+│   Te quedan: 52 días                              │
+│                                                    │
+│  2. HORAS DE DEDICACIÓN POR DÍA                   │
+│  ┌──────────────────────────────────────────┐    │
+│  │ 2                                         │    │
+│  └──────────────────────────────────────────┘    │
+│   Eso son 14.0h por semana · 104.0h en total      │
+│   hasta el cierre                                 │
+│                                                    │
+│                    [Cancelar]   [Guardar plan]    │
+└──────────────────────────────────────────────────┘
+</pre>
 <ul>
-  <li><strong>Hoy</strong> — palabras escritas hoy, con un objetivo diario opcional. Hacé clic en <code>set</code> para definir tu meta.</li>
-  <li><strong>Esta semana</strong> — gráfico de barras de los últimos 7 días.</li>
-  <li><strong>Semanas</strong> — totales semanales de los meses anteriores.</li>
-  <li><strong>Meses</strong> — totales mensuales.</li>
+  <li><strong>Objetivo</strong> — un nombre libre para esta etapa (con sugerencias rápidas: <em>Primer borrador</em>, <em>Segundo borrador</em>, <em>Manuscrito final</em>, <em>Revisión final</em>).</li>
+  <li><strong>Fecha de cierre</strong> — el día en que querés tener esta etapa terminada.</li>
+  <li><strong>Horas de dedicación por día</strong> — cuánto tiempo planeás escribir cada día. Gombro calcula automáticamente el total semanal y el total hasta el cierre.</li>
 </ul>
 
-<h3>El objetivo diario</h3>
-<p>Podés definir una meta de palabras por día. Gombro cuenta todo lo que escribís en el proyecto activo. Cuando alcanzás la meta, la barra se llena. Sin alarmas, sin notificaciones — solo un registro silencioso.</p>
+<h3>El tablero (dashboard)</h3>
+<p>Una vez configurado, el modal abre directamente en el tablero:</p>
+<pre>
+┌──────────────────────────────────────────────────┐
+│  Plan de escritura — Horas                    ✕   │
+├──────────────────────────────────────────────────┤
+│  Segundo borrador                                 │
+│  Cierre: 2026-08-01 · Te quedan: 52 días          │
+│  Dedicación: 2h/día                               │
+│                                                    │
+│  HOY     1.5h / 2.0h        ▓▓▓▓░                 │
+│  SEMANA  8.0h / 14.0h       ▓▓▓░░                 │
+│                                                    │
+│  ACUMULADO (h)                                    │
+│   40│      ░░░▓▓▓▓███████████                    │
+│     │░░░░░░░░░░░░░░░░░░░░░░░░                    │
+│     └────────────────────────                    │
+│  planeado ░   realizado █                         │
+│  ────────────────────────────────────────────    │
+│  Total acumulado: 96.5h                           │
+│  Palabras totales: 18.420                         │
+│                                                    │
+│           [Reset]  [Cerrar]   [Modificar plan]    │
+└──────────────────────────────────────────────────┘
+</pre>
+<ul>
+  <li><strong>HOY / SEMANA</strong> — horas escritas hoy y en la semana actual, frente a la meta calculada según tu dedicación diaria. La barra se llena a medida que avanzás.</li>
+  <li><strong>ACUMULADO (h)</strong> — gráfico con dos series: <em>planeado</em> (░, la línea recta de tu dedicación diaria multiplicada por los días transcurridos) y <em>realizado</em> (█, lo que efectivamente escribiste). Si la barra realizada va por delante de la planeada, vas adelantado.</li>
+  <li><strong>Total acumulado</strong> — la suma de <strong>todas</strong> las horas registradas en el proyecto desde siempre, sin importar cuántos planes configuraste. Este número nunca se reinicia.</li>
+  <li><strong>Palabras totales</strong> — el conteo de palabras actual de todo el proyecto, igual que en el Explorador. Es solo informativo: el plan se mide en horas, no hay una meta de palabras.</li>
+</ul>
 
-<blockquote>Un plan de escritura no es un plazo. Es un hábito hecho visible.</blockquote>
+<h3>Indicador en el Explorador</h3>
+<p>Mientras el modal está cerrado, la línea de estadísticas del proyecto en el Explorador muestra un indicador <code>±Xh</code>: la diferencia entre lo planeado y lo realizado hasta hoy.</p>
+<pre>
+┌───────────────────────────────────┐
+│ Mi novela                ☰ ↑ 📓    │
+│ +1.4h · 12 días · 18420 palabras   │
+│                          + Session │
+└───────────────────────────────────┘
+</pre>
+<ul>
+  <li><code>+1.4h</code> → vas 1.4 horas <strong>adelantado</strong> respecto del plan.</li>
+  <li><code>-2.0h</code> → vas 2 horas <strong>atrasado</strong>.</li>
+</ul>
+<p>Si el panel del Explorador se angosta y no entra todo en una línea, la línea de estadísticas pasa a su propia fila para no superponerse con los botones de la cabecera.</p>
+
+<h3>Modificar y reiniciar el plan</h3>
+<p><strong>Modificar plan</strong> — abre de nuevo el formulario de configuración con los datos actuales cargados. Podés cambiar el objetivo, la fecha de cierre o la dedicación diaria sin perder el progreso: el gráfico de "ACUMULADO" sigue contando desde el mismo punto de partida.</p>
+<p><strong>Reset</strong> — borra la configuración del plan actual (objetivo, fecha de cierre, dedicación) y vuelve al formulario de configuración, como si fuera la primera vez. <strong>El historial de horas escritas no se borra</strong>: queda guardado y sigue sumando al "Total acumulado". Es la forma de cerrar una etapa (ej: "Segundo borrador") y empezar la siguiente desde cero, sin perder el registro de lo ya hecho.</p>
+
+<blockquote>Un plan de escritura no es un plazo. Es un hábito hecho visible — y un historial que no se pierde al pasar de etapa.</blockquote>
 
 <h3>Referencia</h3>
 <table>
   <tr><th>Acción</th><th>Cómo</th></tr>
-  <tr><td>Abrir Plan de escritura</td><td><code>/plan</code> en la CmdBar</td></tr>
-  <tr><td>Definir objetivo diario</td><td>Clic en <code>set</code> junto al campo Objetivo</td></tr>
-  <tr><td>Cerrar el panel</td><td>Clic en <code>✕</code> en el encabezado del panel</td></tr>
+  <tr><td>Abrir Plan de escritura</td><td><code>Ctrl+Shift+P</code>, o <code>/plan</code> en la CmdBar</td></tr>
+  <tr><td>Configurar plan (primera vez)</td><td>Completar objetivo, fecha de cierre y horas/día, luego "Guardar plan"</td></tr>
+  <tr><td>Modificar plan existente</td><td>Botón "Modificar plan" en el tablero</td></tr>
+  <tr><td>Reiniciar plan (nueva etapa)</td><td>Botón "Reset" en el tablero</td></tr>
+  <tr><td>Cerrar el modal</td><td>Botón "Cerrar", <code>✕</code>, <code>Esc</code>, o clic fuera del modal</td></tr>
+  <tr><td>Ver avance sin abrir el modal</td><td>Indicador <code>±Xh</code> en la línea de stats del Explorador</td></tr>
 </table>
 
 <hr>
@@ -1264,6 +1573,355 @@ Ninguno de los dos es definitivo. El texto sigue abierto.</p>
 
 <hr>
 
+<h2 id="capitulo-13l">Capítulo 13l — Marcas de Duda</h2>
+
+<p>Una <strong>Marca de Duda</strong> es una señal visual que dejás sobre una palabra o frase cuando no estás seguro de ella — pero tampoco querés borrarla. El texto queda subrayado con un color de acento, visible pero sin interrumpir la lectura.</p>
+
+<p>Es diferente al tachado Schrödinger: el tachado dice <em>"esto puede sobrar"</em>, la duda dice <em>"esto puede necesitar revisión"</em>.</p>
+
+<pre>
+  Frisaba la edad de nuestro hidalgo con los
+  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+  cincuenta años; era de complexión recia.
+       ↑
+   texto marcado con Duda (subrayado de acento)
+</pre>
+
+<h3>Cómo marcar texto con duda</h3>
+<ol>
+  <li>Seleccioná la palabra o frase</li>
+  <li>Clic derecho → <strong>Duda</strong></li>
+</ol>
+<p>El texto aparece subrayado con el color de acento del editor.</p>
+
+<h3>Cómo confirmar (quitar la duda)</h3>
+<ol>
+  <li>Clic derecho sobre el texto marcado</li>
+  <li>Elegí <strong>Confirmar (quitar duda)</strong></li>
+</ol>
+<p>El texto queda limpio — sin la marca, sin modificar el contenido.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Marcar como duda</td><td>Seleccioná → clic derecho → <strong>Duda</strong></td></tr>
+  <tr><td>Confirmar (quitar duda)</td><td>Clic derecho sobre texto marcado → <strong>Confirmar (quitar duda)</strong></td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13m">Capítulo 13m — Tablas</h2>
+
+<p>Gombro permite crear y editar tablas directamente en el editor. Las tablas se muestran como un widget visual — no como texto plano — y se pueden editar celda por celda.</p>
+
+<h3>Crear una tabla</h3>
+<p>Presioná <code>Ctrl+Shift+T</code>. Se abre un panel donde elegís la cantidad de filas y columnas. Gombro inserta la tabla en el cursor.</p>
+
+<h3>Editar una tabla</h3>
+<pre>
+┌────────────┬──────────────┬──────────┐
+│ Personaje  │ Rol          │ Estado   │ ←┐
+├────────────┼──────────────┼──────────┤  │ encabezado
+│ Alonso     │ protagonista │ activo   │  │ (on/off)
+│ Sancho     │ escudero     │ activo   │  │
+│ Dulcinea   │ ausente      │ —        │  │
+└────────────┴──────────────┴──────────┘
+              ↕ arrastrar borde de columna para redimensionar
+</pre>
+<p>Hacé <strong>clic</strong> sobre la tabla para abrir el editor de celdas. Podés:</p>
+<ul>
+  <li>Editar el contenido de cada celda</li>
+  <li>Agregar o quitar filas y columnas</li>
+  <li>Activar o desactivar la fila de encabezado</li>
+</ul>
+
+<h3>Tablas importadas</h3>
+<p>Al importar un archivo <code>.md</code> que contiene tablas en formato <code>| col | col |</code>, Gombro las convierte automáticamente al formato nativo <code>::tabla</code> — quedan editables igual que las creadas dentro de Gombro.</p>
+
+<h3>Al compilar</h3>
+<table>
+  <tr><th>Formato</th><th>Resultado</th></tr>
+  <tr><td><strong><code>.docx</code></strong></td><td>Tabla con bordes y encabezado en negrita, embebida en el documento</td></tr>
+  <tr><td><strong><code>.md</code></strong></td><td>Tabla en formato GFM estándar, legible en cualquier visor Markdown</td></tr>
+</table>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Crear tabla</td><td><code>Ctrl+Shift+T</code></td></tr>
+  <tr><td>Editar tabla</td><td>Clic sobre la tabla</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13n">Capítulo 13n — Resumen extractivo</h2>
+
+<p>El resumen extractivo de Gombro no inventa texto. Selecciona frases originales del capítulo — las que mejor representan el conjunto — y las muestra en orden narrativo. Es un espejo, no una síntesis.</p>
+
+<p>No usa IA generativa. No reescribe. No resume "en sus propias palabras". Toma tus frases y las agrupa.</p>
+
+<h3>Vista proyecto — el libro de un vistazo</h3>
+<p>Hacé clic en el botón <strong>◈</strong> en el Explorador (junto a SESSIONS y GRAPH):</p>
+<pre>
+  EXPLORADOR — activar la vista resumen:
+
+┌──────────────────────────────────────┐
+│  Novela Kolon                        │
+│  ──────────────────────────────────  │
+│  SESSIONS     GRAPH     ◈            │  ← clic en ◈
+│  ──────────────────────────────────  │
+│  1. Contenido                        │
+│  2. AÑO 3492: RETORNO                │
+│  3. Orejas de Algodón                │
+│  4. Humo                             │
+│  5. Al Castillo                      │
+└──────────────────────────────────────┘
+</pre>
+<p>El editor muestra todas las sesiones resumidas al 20%, cada una con su título, en orden narrativo.</p>
+<p>La vista se genera automáticamente al activar ◈. Al cerrar volvés exactamente donde estabas.</p>
+
+<h3>Resumen de una sesión individual</h3>
+<p>Para resumir una sesión abierta, usá <code>/resumir</code> en la CmdBar o el menú contextual. Se abre el panel flotante de resumen:</p>
+<pre>
+  PANEL DE RESUMEN — sesión individual:
+
+┌────────────────────────────────────────────────────┐
+│  Resumen al 20% — sesión                    [✕]    │
+├────────────────────────────────────────────────────┤
+│  52 palabras de 211 · 4 frases de 18 · ES          │
+│                                                    │
+│  Un humo vaporoso y fosforescente rodeaba las      │
+│  casas de la ciudad. … Mercedes se había deslizado │
+│  hasta la puerta. … —Imperceptible, como un        │
+│  fantasma cansado. … Llegaron a la habitación,     │
+│  las tinieblas retrocedieron ante el candil.       │
+│                                                    │
+├────────────────────────────────────────────────────┤
+│  [Clásico]  [TextRank]  [10%] [20%] [30%] [50%]   │
+│                         [Copiar]                   │
+└────────────────────────────────────────────────────┘
+</pre>
+
+<h3>Los dos algoritmos</h3>
+<table>
+  <tr><th></th><th>Clásico</th><th>TextRank</th></tr>
+  <tr><td>Cómo</td><td><em>Palabras clave más frecuentes</em></td><td><em>Frases más representativas</em></td></tr>
+  <tr><td>Bueno para</td><td>Capítulos con términos repetidos</td><td>Capítulos con vocabulario variado</td></tr>
+  <tr><td>Velocidad</td><td>Instantáneo</td><td>Un poco más lento</td></tr>
+</table>
+
+<h3>Hashtags como señales</h3>
+<p>Los hashtags del proyecto (<code>#palabra</code>) actúan como boost words — las frases que los contienen suben en el ranking y tienen más chances de quedar en el resumen.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Vista proyecto (todas las sesiones)</td><td>Clic en <strong>◈</strong> en el Explorador</td></tr>
+  <tr><td>Cerrar vista proyecto</td><td>Clic en <strong>◈</strong> de nuevo</td></tr>
+  <tr><td>Abrir sesión desde la vista</td><td>Clic en el bloque de resumen</td></tr>
+  <tr><td>Resumen de sesión individual</td><td><code>/resumir</code> en la CmdBar</td></tr>
+  <tr><td>Cambiar porcentaje</td><td>Botones 10% / 20% / 30% / 50%</td></tr>
+  <tr><td>Cambiar algoritmo</td><td>Botones Clásico / TextRank</td></tr>
+  <tr><td>Copiar resumen</td><td>Botón Copiar</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13o">Capítulo 13o — Modo Kerouac</h2>
+
+<p>En 1951, Jack Kerouac pegó hojas de papel formando un rollo continuo de 36 metros para poder escribir <em>En el camino</em> sin interrupciones — sin cambiar páginas, sin cortes, sin perder el flujo. Escribió la primera versión en tres semanas.</p>
+
+<p>El Modo Kerouac de Gombro replica esa idea: junta todas las sesiones del proyecto en un único documento continuo, scrolleable de principio a fin.</p>
+
+<h3>Cómo activarlo</h3>
+<p><strong>Opción A — Menú del Explorador:</strong> Hacé clic en <strong>≡</strong> en el Explorador → <strong>Modo Kerouac</strong></p>
+<p><strong>Opción B — Atajo de teclado:</strong> <code>Ctrl+K</code></p>
+<p>Para salir: el mismo menú → <strong>Salir de Kerouac</strong>, o <code>Ctrl+K</code> de nuevo.</p>
+
+<h3>Qué hace</h3>
+<ul>
+  <li>El editor carga todas las sesiones del proyecto concatenadas, en el orden del Explorador</li>
+  <li>Cada sesión tiene un encabezado visual que la identifica</li>
+  <li>El texto es <strong>completamente editable</strong> — los cambios se guardan automáticamente por sesión</li>
+  <li>El Explorador sincroniza en tiempo real con el cursor: al mover el cursor a una sesión, el Explorador resalta esa sesión y muestra sus párrafos en el acordeón</li>
+</ul>
+
+<pre>
+  MODO KEROUAC — todo el libro de una vez:
+
+┌────────────────────────────────────────────────────┐
+│  CAPÍTULO UNO                                      │
+│  En un lugar de la Mancha, de cuyo nombre no       │
+│  quiero acordarme, no ha mucho que vivía...        │
+│                                                    │
+│  CAPÍTULO DOS                                      │
+│  Frisaba la edad de nuestro hidalgo con los        │
+│  cincuenta años; era de complexión recia...        │
+│                                                    │
+│  CAPÍTULO TRES                                     │
+│  ...                                               │
+└────────────────────────────────────────────────────┘
+</pre>
+
+<h3>Sync con el Explorador</h3>
+<p>Mientras estás en Modo Kerouac:</p>
+<ul>
+  <li>Al mover el cursor a una sesión → el Explorador scrollea y abre el acordeón de esa sesión</li>
+  <li>Al hacer clic en una sesión del Explorador → el editor scrollea a esa sesión</li>
+  <li>Al hacer clic en un párrafo del Explorador → el editor scrollea a ese párrafo exacto</li>
+</ul>
+
+<pre>
+  SYNC BIDIRECCIONAL:
+
+cursor en Capítulo Dos             Explorador
+  ───────────────────────            ──────────
+  CAPÍTULO UNO          →            ▶ Capítulo Uno
+  ...                                ▼ Capítulo Dos  ← abierto
+                                       · párrafo 1
+  CAPÍTULO DOS  ← cursor             · párrafo 2  ← destacado
+  Frisaba...                         ▶ Capítulo Tres
+</pre>
+
+<h3>Guardar en Modo Kerouac</h3>
+<p>Los cambios se guardan automáticamente cada pocos segundos. Al salir del Modo Kerouac, Gombro detecta en qué sesión estaba el cursor y la abre normalmente.</p>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Activar Modo Kerouac</td><td><code>Ctrl+K</code> · menú <strong>≡</strong> → Modo Kerouac</td></tr>
+  <tr><td>Salir del Modo Kerouac</td><td><code>Ctrl+K</code> · menú <strong>≡</strong> → Salir de Kerouac</td></tr>
+  <tr><td>Navegar desde Explorador</td><td>Clic en sesión o párrafo del acordeón</td></tr>
+  <tr><td>Guardar</td><td>Automático — sin acción necesaria</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13p">Capítulo 13p — Insertar imagen</h2>
+
+<p>Podés insertar imágenes directamente en el editor. La imagen se copia automáticamente a la carpeta del proyecto y se muestra renderizada inline — no como un enlace, sino como la imagen real.</p>
+
+<h3>Cómo insertar</h3>
+<p>Posicioná el cursor donde querés la imagen y presioná <code>Ctrl+I</code>. Se abre el selector de archivos del sistema. Elegí la imagen (<code>.jpg</code>, <code>.jpeg</code>, <code>.png</code>, <code>.gif</code>, <code>.webp</code>, <code>.svg</code>).</p>
+<p>La imagen se copia a <code>AppData\gombro\{proyecto}\images\</code> y aparece centrada en el editor al 60% del ancho.</p>
+
+<h3>Cambiar el tamaño</h3>
+<p>Hacé <strong>clic</strong> sobre la imagen para ciclar entre tres tamaños:</p>
+<table>
+  <tr><th>Tamaño</th><th>Ancho</th></tr>
+  <tr><td>S</td><td>25% del área de texto</td></tr>
+  <tr><td>M</td><td>60% del área de texto (por defecto)</td></tr>
+  <tr><td>L</td><td>100% del área de texto</td></tr>
+</table>
+<p>El tooltip muestra <em>"Clic para ampliar"</em> o <em>"Clic para reducir"</em> según el tamaño actual. El tamaño elegido se guarda con el documento.</p>
+
+<h3>Al compilar</h3>
+<ul>
+  <li><strong><code>.md</code></strong> — la carpeta <code>images/</code> se copia al lado del archivo generado.</li>
+  <li><strong><code>.docx</code></strong> — las imágenes se embeben directamente en el documento Word.</li>
+  <li><strong><code>.html</code></strong> — las imágenes se convierten a base64 y quedan embebidas en el archivo. El <code>.html</code> es completamente autocontenido.</li>
+</ul>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Insertar imagen</td><td><code>Ctrl+I</code> → elegir archivo</td></tr>
+  <tr><td>Cambiar tamaño</td><td>Clic en la imagen (cicla S → M → L → S)</td></tr>
+</table>
+
+<hr>
+
+<h2 id="capitulo-13q">Capítulo 13q — Compilar Modal</h2>
+
+<p>El modal de compilar reemplaza la exportación directa de <code>/compilar</code>. En vez de generar el archivo de inmediato, abre un panel donde elegís exactamente qué partes incluir y en qué formato.</p>
+
+<pre>
+  MODAL DE COMPILAR:
+
+┌─────────────────────────────────────┐
+│  Compilar proyecto          [✕]     │
+├─────────────────────────────────────┤
+│  Partes a incluir                   │
+│  ☑ El proyecto (todas las sesiones) │
+│  ☐ Colecciones                      │
+│  ☑ Senderos                         │
+│  ☐ Diccionario                      │
+│  ☐ Diario                           │
+│  ☐ Atrapasueños                     │
+├─────────────────────────────────────┤
+│  Formato                            │
+│  ◉ Word (.docx)                     │
+│  ○ Markdown (.md)                   │
+│  ○ HTML (.html)                     │
+├─────────────────────────────────────┤
+│           [Compilar]                │
+└─────────────────────────────────────┘
+</pre>
+
+<h3>Partes disponibles</h3>
+<table>
+  <tr><th>Sección</th><th>Qué incluye</th></tr>
+  <tr><td><strong>El proyecto</strong></td><td>Todas las sesiones visibles en el orden del Explorador</td></tr>
+  <tr><td><strong>Colecciones</strong></td><td>Las búsquedas guardadas del proyecto</td></tr>
+  <tr><td><strong>Senderos</strong></td><td>Los laberintos narrativos del proyecto (bifurcaciones)</td></tr>
+  <tr><td><strong>Diccionario</strong></td><td>El diccionario vivo de #tags del proyecto</td></tr>
+  <tr><td><strong>Diario</strong></td><td>Todas las entradas del Diario personal</td></tr>
+  <tr><td><strong>Atrapasueños</strong></td><td>Todas las entradas del cuaderno de sueños</td></tr>
+</table>
+<p>Cada sección aparece separada por un salto de página en el <code>.docx</code>, con su propio título.</p>
+
+<h3>Formato</h3>
+<table>
+  <tr><th>Formato</th><th>Resultado</th></tr>
+  <tr><td><strong>Word (.docx)</strong></td><td>Un único archivo <code>.docx</code> — hipervínculos clicables, <code>++ancla++</code> como negrita+subrayado</td></tr>
+  <tr><td><strong>Markdown (.md)</strong></td><td>Archivo <code>.md</code> + carpeta <code>images/</code> al lado</td></tr>
+  <tr><td><strong>HTML (.html)</strong></td><td>Documento autocontenido — imágenes en base64, sin dependencias externas</td></tr>
+</table>
+
+<h3>Exportación HTML</h3>
+<p>El HTML generado es un archivo único que funciona sin servidor ni internet:</p>
+<ul>
+  <li><strong>Sidebar</strong> — tabla de contenidos lateral con las sesiones del proyecto</li>
+  <li><strong>Hover popup</strong> — al pasar el cursor sobre un link interno (<code>[texto](#ancla)</code>), aparece una ventana con la vista previa del destino</li>
+  <li><strong>Links internos</strong> — <code>[texto](#ancla)</code> navega con scroll suave al destino</li>
+  <li><strong>Links externos</strong> — <code>[texto](https://…)</code> abre en nueva pestaña con indicador ↗</li>
+  <li><strong>Resaltado</strong> — <code>==texto==</code> se renderiza como <code>&lt;mark&gt;</code> (fondo amarillo)</li>
+  <li><strong>Anclas</strong> — <code>++texto++</code> genera un marcador navegable con <code>id</code> propio</li>
+  <li><strong>Imágenes</strong> — embebidas en base64 directamente en el HTML</li>
+  <li><strong>Tema oscuro</strong> — diseño editorial de fondo oscuro</li>
+</ul>
+
+<h3>Referencia</h3>
+<table>
+  <tr><th>Acción</th><th>Cómo</th></tr>
+  <tr><td>Abrir el modal</td><td><code>compilar</code> en la CmdBar · <code>/compilar</code></td></tr>
+  <tr><td>Compilar</td><td><code>Enter</code> o botón <strong>Compilar</strong></td></tr>
+  <tr><td>Cerrar sin compilar</td><td><code>Esc</code></td></tr>
+</table>
+
+<h3>Dónde se guardan los archivos</h3>
+<p>Por defecto, Gombro abre el diálogo de guardar en <code>Documentos\Gombro</code>. Podés elegir cualquier otra carpeta desde ese diálogo.</p>
+
+<h3>Windows bloquea el guardado en Documentos</h3>
+<p>Windows tiene una función de seguridad llamada <strong>Acceso controlado a carpetas</strong> que protege <code>Documentos</code>, <code>Imágenes</code> y otras carpetas de escritura no autorizada. Si al compilar aparece un error de acceso, hay dos opciones:</p>
+<p><strong>Opción A — Instalar Gombro desde Microsoft Store (recomendado)</strong></p>
+<p>Las apps instaladas desde la Tienda de Windows tienen permisos automáticos para escribir en <code>Documentos</code>. No requiere ninguna configuración adicional.</p>
+<p>→ <a href="https://apps.microsoft.com/detail/9P0NV0JV79KT" style="color:var(--accent)">Gombro en Microsoft Store</a></p>
+<p><strong>Opción B — Permitir Gombro manualmente</strong></p>
+<p>Si instalaste Gombro desde el sitio web:</p>
+<ol>
+  <li>Abrí <strong>Seguridad de Windows</strong> (desde el menú inicio o el ícono del escudo en la barra de tareas)</li>
+  <li>Andá a <strong>Protección contra virus y amenazas</strong></li>
+  <li>Bajá hasta <strong>Protección de ransomware</strong> → clic en <strong>Administrar protección de ransomware</strong></li>
+  <li>Activá <strong>Acceso controlado a carpetas</strong> si no está activo</li>
+  <li>Hacé clic en <strong>Permitir una aplicación a través del Acceso controlado a carpetas</strong></li>
+  <li>Hacé clic en <strong>+ Agregar una aplicación permitida</strong> → <strong>Aplicaciones bloqueadas recientemente</strong> o <strong>Examinar todas las aplicaciones</strong></li>
+  <li>Navegá hasta <code>C:\Users\[tu usuario]\AppData\Local\gombro-gui\gombro-gui.exe</code> y seleccionalo</li>
+</ol>
+<p>Gombro podrá guardar en <code>Documentos</code> sin restricciones.</p>
+
+<hr>
+
 <h2 id="capitulo-14">Capítulo 14 — Flujo de trabajo recomendado</h2>
 
 <p>De proyecto en blanco a borrador exportado — una sugerencia, no una regla.</p>
@@ -1316,25 +1974,20 @@ nuevo La Mancha</pre>
 
 <p><strong>Raúl Lilloy</strong> es el creador de Gombro. Cree que escribir debe ser un acto de descubrimiento, no de producción. Construyó la herramienta que quería usar — sin nube, sin IA, sin agenda.</p>
 
-<pre>
-        .-------.
-       /  o   o  \
-      |     ^     |
-      |   \___/   |
-       \  -----  /
-        '-.___..-'
-       /|         |\
-      / |  RAÚL   | \
-     /  |  LILLOY |  \
-    /   '---------'   \
-        |  ☕  💻  |
-        |   Gombro  |
-        |  v0.0.5β  |
-        '~~~~~~~~~~~'
-
-  "Escribir es... no sé.
-   Por eso escribo."
-</pre>
+<div style="display:flex; gap:1.5rem; align-items:flex-start; flex-wrap:wrap; margin:1.5rem 0;">
+  <img src="media/DSC_0206.jpg" alt="Raúl Lilloy" style="width:180px; height:auto; border-radius:4px; border:1px solid var(--border);">
+  <div style="flex:1; min-width:240px;">
+    <p><strong>Raúl Lilloy</strong></p>
+    <p>Publiqué unos 20 libros: novela, no ficción, académico, cuentos y ensayo. Dos licenciaturas. Dos posgrados.</p>
+    <p>
+      Licenciado en Ciencias Políticas por la Universidad Nacional de Cuyo y la Complutense de Madrid.<br>
+      Posgrado en Urbanismo, Universidad Politécnica de Szczecin, Polonia.<br>
+      Posgrado en Educación, Universidad de Almería, España.<br>
+      Director para Argentina de la Editorial Bubok, 2013-2018.<br>
+      Director cursos de Escritura Creativa Incubook.
+    </p>
+  </div>
+</div>
 
 </div>
 
@@ -1354,31 +2007,38 @@ nuevo La Mancha</pre>
     <tr><td><a href="#capitulo-4">CmdBar</a></td><td><code>:</code> o <code>/</code></td><td>4</td></tr>
     <tr><td><a href="#capitulo-6">Colecciones</a></td><td>Búsqueda → + Guardar como colección</td><td>6</td></tr>
     <tr><td><a href="#capitulo-12">Compilar / Exportar</a></td><td><code>compilar [nombre]</code></td><td>12</td></tr>
+    <tr><td><a href="#capitulo-13q">Compilar Modal (avanzado)</a></td><td><code>compilar</code> en la CmdBar</td><td>13q</td></tr>
     <tr><td><a href="#capitulo-2">Crear proyecto</a></td><td><code>crear proyecto &lt;nombre&gt;</code></td><td>2</td></tr>
     <tr><td><a href="#capitulo-13c">Diario</a></td><td><code>diario</code>  ·  <code>Ctrl+D</code></td><td>13c</td></tr>
+    <tr><td><a href="#capitulo-13l">Duda — marcar texto</a></td><td>Seleccioná → clic derecho → Duda</td><td>13l</td></tr>
     <tr><td><a href="#capitulo-13h">Escala de texto</a></td><td><code>escala [50–300]</code></td><td>13h</td></tr>
     <tr><td><a href="#capitulo-5">Explorador</a></td><td>Panel izquierdo — sesiones, proyectos, grafo</td><td>5</td></tr>
     <tr><td><a href="#capitulo-10">Grafo</a></td><td>Explorador → pestaña Grafo → Nuevo grafo</td><td>10</td></tr>
     <tr><td><a href="#capitulo-10">Grafo — multi-selección</a></td><td><code>Ctrl+clic</code> en nodos</td><td>10</td></tr>
     <tr><td><a href="#capitulo-10">Grafo — búsqueda</a></td><td>Barra de búsqueda del grafo</td><td>10</td></tr>
+    <tr><td><a href="#capitulo-10">Grafo — filtro por palabra clave</a></td><td>Barra de búsqueda del grafo de sesiones (GRAPH)</td><td>10</td></tr>
     <tr><td><a href="#capitulo-11">Hashtags</a></td><td>Clic derecho en párrafo → # (panel de hashtags)</td><td>11</td></tr>
     <tr><td><a href="#capitulo-13g">Hashtag — filtro en Explorador</a></td><td>Clic en etiqueta de hashtag en el Explorador</td><td>13g</td></tr>
+    <tr><td><a href="#capitulo-13p">Imagen — insertar</a></td><td><code>Ctrl+I</code></td><td>13p</td></tr>
     <tr><td><a href="#capitulo-12">Importar archivo</a></td><td>↑ (cabecera del Explorador) — .md / .docx / .txt</td><td>12</td></tr>
+    <tr><td><a href="#capitulo-13o">Kerouac — modo continuo</a></td><td><code>Ctrl+K</code></td><td>13o</td></tr>
     <tr><td><a href="#capitulo-13i">Libreta Obsidian</a></td><td><code>obsidian</code></td><td>13i</td></tr>
     <tr><td><a href="#capitulo-3">Modo frase</a></td><td><code>modo frase</code></td><td>3</td></tr>
     <tr><td><a href="#capitulo-13d">Modo Schrödinger</a></td><td><code>schrodinger</code>  ·  <code>Ctrl+Q</code></td><td>13d</td></tr>
     <tr><td><a href="#capitulo-3">Modo zen</a></td><td><code>zen</code></td><td>3</td></tr>
     <tr><td><a href="#capitulo-8">Notas (proyecto)</a></td><td><code>F4</code>  ·  clic derecho sesión → Anotar sesión</td><td>8</td></tr>
     <tr><td><a href="#capitulo-13f">Notas — badges de sesión</a></td><td>Clic derecho sesión → Anotar sesión</td><td>13f</td></tr>
-    <tr><td><a href="#capitulo-13e">Plan de escritura</a></td><td><code>plan</code></td><td>13e</td></tr>
+    <tr><td><a href="#capitulo-13e">Plan de escritura</a></td><td><code>Ctrl+Shift+P</code>  ·  <code>plan</code></td><td>13e</td></tr>
     <tr><td><a href="#capitulo-7">Párrafo — versiones</a></td><td>Clic derecho en párrafo → Versiones</td><td>7</td></tr>
     <tr><td><a href="#capitulo-5">Proyectos — lista</a></td><td><code>abrir</code>  ·  <code>ver proyectos</code></td><td>5</td></tr>
+    <tr><td><a href="#capitulo-13n">Resumen extractivo</a></td><td><code>/resumir</code>  ·  botón ◈ en el Explorador</td><td>13n</td></tr>
     <tr><td><a href="#capitulo-9">Revelar origen (tras Baraja)</a></td><td>Explorador → ✂ revelar naipe</td><td>9</td></tr>
     <tr><td><a href="#capitulo-5">Revelar sesión en Explorador</a></td><td>Clic derecho en párrafo → Revelar en Binder</td><td>5</td></tr>
     <tr><td><a href="#capitulo-5">Sesiones — nueva</a></td><td><code>nuevo [nombre]</code>  ·  <code>Ctrl+N</code></td><td>5</td></tr>
     <tr><td><a href="#capitulo-5">Sesiones — nueva abajo</a></td><td>Clic derecho sesión → Agregar sesión abajo</td><td>5</td></tr>
     <tr><td><a href="#capitulo-5">Sesiones — reordenar</a></td><td>Clic derecho → Mover arriba / abajo  ·  Arrastrar y soltar</td><td>5</td></tr>
     <tr><td><a href="#capitulo-5">Sesiones — multi-selección</a></td><td><code>Ctrl+clic</code> en sesiones</td><td>5</td></tr>
+    <tr><td><a href="#capitulo-13m">Tablas — crear y editar</a></td><td><code>Ctrl+Shift+T</code></td><td>13m</td></tr>
     <tr><td><a href="#capitulo-5">Párrafos — agregar abajo</a></td><td>Clic derecho párrafo (outline) → Agregar párrafo abajo  ·  <code>Enter</code></td><td>5</td></tr>
     <tr><td><a href="#capitulo-5">Párrafos — reordenar</a></td><td>Arrastrar párrafo en el outline y soltar</td><td>5</td></tr>
     <tr><td><a href="#capitulo-5">Párrafos — navegar</a></td><td>Clic en párrafo del outline → cursor titila en el editor</td><td>5</td></tr>
@@ -1396,6 +2056,12 @@ nuevo La Mancha</pre>
 </style>
 
 <a class="back-top" href="#top">↑ arriba</a>
+
+<footer class="site-footer">
+  <div class="site-footer-logo"><span class="l-0">G</span><span class="l-1">O</span><span class="l-2">M</span><span class="l-3">B</span><span class="l-4">R</span><span class="l-5">O</span></div>
+  <div class="site-footer-links"><a href="privacy.html">Privacy</a><a href="https://incubook.com" target="_blank" rel="noopener">Incubook</a><a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Reddit</a></div>
+  <span class="site-footer-copy">Una invención de Raül Lilloy</span>
+</footer>
 
 </body>
 </html>
