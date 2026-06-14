@@ -114,6 +114,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;border-bottom:1px solid var(
 .feature-img{width:100%;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--rule)}
 .feature-img img{width:100%;height:100%;object-fit:cover;filter:sepia(100%) contrast(1.2) contrast(1.1);opacity:.85;transition:opacity .3s}
 .feature-img:hover img{opacity:1}
+.feature-img.real img{filter:none;opacity:1}
+video.tut-video{display:block;width:100%;background:#000}
 @media(max-width:900px){.feature-grid{grid-template-columns:1fr;gap:40px}.feature-grid.flip{direction:ltr}}
 #borges-carousel{padding:80px 0;border-bottom:1px solid var(--rule)}
 .bc-inner{max-width:680px;margin:0 auto;padding:0 24px}
@@ -205,7 +207,7 @@ fbq('track', 'PageView');
     <div class="nav-links">
       <a href="#mission">Características</a>
       <a href="manual-es.html">Tutorial</a><a href="#writer">Escritor</a>
-      <a href="https://community.gombro.com/" target="_blank" rel="noopener">Comunidad</a>
+      <a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Comunidad</a>
     </div>
     <a href="index.html" class="nav-lang" style="font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s">EN &rsaquo;</a>
     <button class="nav-cta" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar</button>
@@ -217,7 +219,7 @@ fbq('track', 'PageView');
   <a href="#mission" onclick="document.getElementById('nav-mobile-es').classList.remove('open')">Características</a>
   <a href="manual-es.html">Tutorial</a>
   <a href="#writer" onclick="document.getElementById('nav-mobile-es').classList.remove('open')">Escritor</a>
-  <a href="https://community.gombro.com/" target="_blank" rel="noopener">Comunidad</a>
+  <a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Comunidad</a>
   <button class="nav-mobile-cta" onclick="document.getElementById('nav-mobile-es').classList.remove('open');document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar</button>
   <a href="index.html" style="font-size:.52rem;letter-spacing:.18em;margin-top:8px">EN &rsaquo;</a>
 </div>
@@ -283,14 +285,9 @@ fbq('track', 'PageView');
       <p class="label">Tutorial</p>
       <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:.04em;margin-top:10px">Mira Gombro en acción</h2>
     </div>
-    <a href="https://youtu.be/57eSRgHQjhQ" target="_blank" rel="noopener" class="tut-video" style="display:block;position:relative;cursor:pointer;text-decoration:none">
-      <img src="https://img.youtube.com/vi/57eSRgHQjhQ/maxresdefault.jpg" alt="Gombro Tutorial" style="width:100%;height:100%;object-fit:cover;filter:sepia(20%) contrast(1.1);opacity:.9"/>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-        <div style="width:72px;height:72px;background:rgba(139,0,0,.85);border-radius:50%;display:flex;align-items:center;justify-content:center">
-          <div style="width:0;height:0;border-style:solid;border-width:14px 0 14px 28px;border-color:transparent transparent transparent #FCF5E5;margin-left:6px"></div>
-        </div>
-      </div>
-    </a>
+    <video class="tut-video" controls preload="metadata" poster="media/trailer-poster-es.png">
+      <source src="media/aleph-trailer-es.mp4" type="video/mp4"/>
+    </video>
     <a href="https://youtu.be/57eSRgHQjhQ" target="_blank" rel="noopener" class="tut-link">&rarr; Ver más en YouTube &nearr;</a>
   </div>
 </section>
@@ -324,11 +321,11 @@ fbq('track', 'PageView');
 </section><div id="features">
 <section class="feature"><div class="container"><div class="feature-grid">
   <div class="feature-text"><div class="feature-num">01</div><p class="feature-lbl">Borgian Algebra</p><h3 class="feature-h">Escribe con<br/>alternativas abiertas</h3><p class="feature-p">Ramificación de variantes en línea — inspirada en cómo Borges corregía sus manuscritos: no borrando, sino manteniendo múltiples posibilidades vivas en la página al mismo tiempo.</p><p class="feature-p">Right-click to resolve. Or never. Some sentences shouldn’t be decided.</p><div class="feature-tags"><span class="tag">Ramificación en línea</span><span class="tag">Subvariantes anidadas</span><span class="tag">Tachado visible</span></div></div>
-  <div class="feature-img"><img src="stitch_gombro_writing_machine_website/a_dark_high_contrast_monochromatic_black_and_white_close_up_of_a_vintage/screen.png" alt="Borgian Algebra"/></div>
+  <div class="feature-img real"><img src="media/feat-algebra.png" alt="Borgian Algebra"/></div>
 </div></div></section>
 <section class="feature"><div class="container"><div class="feature-grid flip">
   <div class="feature-text"><div class="feature-num">02</div><p class="feature-lbl">Burroughs Cut-up</p><h3 class="feature-h">Cut-up<br/>automatizado</h3><p class="feature-p">Burroughs and Gysin’s cut-up technique, built in. Splices a random paragraph from your own project into the current one — a controlled collision. Every source marked. Every shuffle undoable.</p><p class="feature-p">Úsalo cuando un párrafo se atasca, cuando la lógica es el enemigo.</p><div class="feature-tags"><span class="tag">Cut-up / mezcla</span><span class="tag">Fuente marcada</span><span class="tag">Reversible</span></div></div>
-  <div class="feature-img"><img src="stitch_gombro_writing_machine_website/a_dark_high_contrast_monochromatic_black_and_white_image_showing_a_page_of_text/screen.png" alt="Burroughs Cut-up"/></div>
+  <div class="feature-img real"><img src="media/feat-cutup.png" alt="Burroughs Cut-up"/></div>
 </div></div></section>
 <section class="feature"><div class="container"><div class="feature-grid">
   <div class="feature-text"><div class="feature-num">03</div><p class="feature-lbl">Modo Frase</p><h3 class="feature-h">Una frase.<br/>El resto desaparece.</h3><p class="feature-p">Foco radical a nivel de frase. Cada vez que escribes un punto, Gombro aísla esa frase sola en pantalla. El resto del texto desaparece.</p><p class="feature-p">Así pensaba Hemingway en las frases. Una verdad a la vez.</p><div class="feature-tags"><span class="tag">Aislamiento de frase</span><span class="tag">Cero distracción</span></div></div>
@@ -344,11 +341,11 @@ fbq('track', 'PageView');
 </div></div></section>
 <section class="feature"><div class="container"><div class="feature-grid flip">
   <div class="feature-text"><div class="feature-num">06</div><p class="feature-lbl">Vista de grafo</p><h3 class="feature-h">Un mapa de<br/>tu manuscrito</h3><p class="feature-p">Grafo visual de párrafos como nodos. Dibuja conexiones manualmente. Mira cómo está estructurado tu proyecto — no cómo creías que estaba. La selección múltiple abre todos los párrafos elegidos a la vez.</p><div class="feature-tags"><span class="tag">Grafo de nodos</span><span class="tag">Conexiones manuales</span><span class="tag">Multi-select</span></div></div>
-  <div class="feature-img"><img src="stitch_gombro_writing_machine_website/a_dark_high_contrast_monochromatic_black_and_white_top_down_view_of_a_complex/screen.png" alt="Graph View"/></div>
+  <div class="feature-img real"><img src="media/feat-graph.png" alt="Graph View"/></div>
 </div></div></section>
 <section class="feature"><div class="container"><div class="feature-grid">
   <div class="feature-text"><div class="feature-num">07</div><p class="feature-lbl">Sesiones</p><h3 class="feature-h">Improvisación,<br/>no documentos</h3><p class="feature-p">Cada sesión de escritura es una improvisación — una escena, un fragmento, una deriva. Título generado automáticamente con las primeras cinco palabras. Fecha registrada. Guardada en silencio. Como una sesión de jazz: abres el instrumento, tocas, paras.</p><p class="feature-p">Lo que dejaste es un registro de sesión: crudo, vivo, recuperable.</p><div class="feature-tags"><span class="tag">Título automático</span><span class="tag">Fecha registrada</span><span class="tag">Caminos y bifurcaciones</span></div></div>
-  <div class="feature-img"><img src="stitch_gombro_writing_machine_website/a_dark_high_contrast_monochromatic_black_and_white_macro_shot_of_a_single/screen.png" alt="Sessions"/></div>
+  <div class="feature-img real"><img src="media/feat-sessions.png" alt="Sessions"/></div>
 </div></div></section>
 <section class="feature"><div class="container"><div class="feature-grid flip">
   <div class="feature-text"><div class="feature-num">08</div><p class="feature-lbl">Colecciones</p><h3 class="feature-h">Búsquedas guardadas.<br/>Siempre actualizadas.</h3><p class="feature-p">Una colección guarda la consulta, no los resultados. Cada vez que la abres, se ejecuta de nuevo — nunca caduca. Tus personajes, motivos, hashtags: siempre localizables, siempre actualizados.</p><div class="feature-tags"><span class="tag">Consultas dinámicas</span><span class="tag">Búsqueda por hashtag</span><span class="tag">A nivel de frase</span></div></div>
