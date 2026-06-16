@@ -385,7 +385,7 @@
 
 <div class="header" id="top">
 <div class="header-logo"><span class="l-0">G</span><span class="l-1">O</span><span class="l-2">M</span><span class="l-3">B</span><span class="l-4">R</span><span class="l-5">O</span></div>
-<div class="version">v1.5.0</div>
+<div class="version">v1.5.2</div>
 <a class="pdf-link" href="downloads/gombro-manual-es.pdf" target="_blank" rel="noopener">⭳ Descargar PDF</a>
 </div>
 
@@ -858,55 +858,12 @@
 
 <h2 id="capitulo-10">Capítulo 10 — Vista de Grafo</h2>
 
-<p>Un mapa visual de tu proyecto. Párrafos como nodos, conexiones que dibujás a mano. En el Explorador, hacé clic en la pestaña <strong>Grafo</strong>.</p>
+<p>Tu proyecto completo de un vistazo: todas las sesiones como nodos dispuestos en espiral, que podés filtrar por palabra clave para ver dónde vive cada tema. En el Explorador, hacé clic en la pestaña <strong>GRAPH</strong>.</p>
 
-<pre>
-  VISTA DE GRAFO — El Proceso · Objetos y personas:
+<img src="media/cap18-grafo.png" alt="Grafo — el proyecto completo en espiral con los chips #kolón y #mercedes activos" style="width:100%; max-width:880px; height:auto; border:1px solid var(--border); border-radius:4px;">
 
-                   [Cap.1 · El Arresto]
-                    /       |        \
-              Josef K.   la puerta  los guardianes
-                /           |             \
-       [Cap.3 · Tribunal] [Cap.2 · K.]──[Cap.7 · Abogado]
-            |    \          |               |
-         Josef K. la sala  Leni          Josef K.
-            |        \      |               |
-    [Cap.5 · Flagelador] \ [Cap.4 · Leni]  [Cap.8 · Mercader]
-                          \    \               /
-                       el látigo Leni────Josef K.
-                              \      \       /
-                           [Cap.9 · Sacerdote]
-                                   |
-                            [Cap.10 · La Muerte]
+<p>Gombro carga automáticamente todas las sesiones del proyecto como nodos en espiral. Cada nodo es una sesión: <strong>más grande = más párrafos</strong>; las líneas las unen en su orden dentro del proyecto. La barra superior muestra el total — por ejemplo <em>"75 sesiones · clic para abrir · hover para ver el nombre"</em>.</p>
 
-  clic en un nodo → abre el párrafo en el Editor
-  Ctrl+clic en varios → los abre todos juntos
-</pre>
-
-<ul>
-  <li>Hacé clic en <strong>+ Nuevo grafo</strong> para crear uno (podés tener varios por proyecto)</li>
-  <li>Agregá nodos desde tus sesiones</li>
-  <li>Clic en un nodo y luego en otro para conectarlos</li>
-  <li>Mantené <code>Ctrl</code> y hacé clic en varios nodos para abrirlos juntos</li>
-</ul>
-
-<h3>Grafo de sesiones del proyecto ★</h3>
-<p>Además del grafo manual de párrafos, la pestaña <strong>GRAPH</strong> del Explorador carga automáticamente todas las sesiones del proyecto como nodos dispuestos en espiral. El tamaño de cada nodo refleja la cantidad de párrafos de esa sesión.</p>
-
-<h3>Cómo leer el grafo</h3>
-<pre>
-  GRAFO DE SESIONES — Quixote:
-
-[Cap.1]──[Cap.2]──[Cap.3]
-      /                         \
-  [Prólogo]                   [Cap.4]
-      \                         /
-       [Epílogo]──[Cap.8]──[Cap.5]
-
-Nodo grande  = sesión con muchos párrafos
-Nodo pequeño = sesión corta
-Líneas       = orden de las sesiones en el proyecto
-</pre>
 <ul>
   <li>Clic en un nodo → abre esa sesión en el Editor</li>
   <li>Hover → muestra el nombre completo de la sesión</li>
@@ -917,34 +874,49 @@ Líneas       = orden de las sesiones en el proyecto
 <ol>
   <li>Escribí una palabra en la barra → <code>Enter</code> o clic en <strong>+</strong></li>
   <li>La palabra se guarda como chip en el panel de keywords</li>
-  <li>Las sesiones que contienen esa palabra se destacan al doble de tamaño</li>
+  <li>Las sesiones que contienen esa palabra se destacan: crecen al doble de tamaño y se pintan con el <strong>color</strong> asignado a esa keyword</li>
   <li>Las que no coinciden se atenúan</li>
   <li>Al volver a abrir el grafo, las keywords se activan automáticamente</li>
 </ol>
-<pre>
-  FILTRO "nordo":
 
-◆ nordo          ← nodo keyword (diamante rojo)
-      / \
-  ●[Cap.3] ●[Cap.7]    ← sesiones con "nordo" (grandes, amarillas)
-  ·[Cap.1] ·[Cap.5]    ← sesiones sin "nordo" (atenuadas, pequeñas)
+<h3>Colores y mitades: varias palabras clave a la vez</h3>
+<p>Cuando activás <strong>más de una</strong> palabra clave, cada una recibe un color fijo (la primera <strong>roja</strong>, la segunda <strong>dorada/ámbar</strong>, la tercera verde, y así). Ese color aparece tanto en el diamante de la keyword (al centro) como en las esferas que la contienen:</p>
+<ul>
+  <li>Una sesión que menciona <strong>una sola</strong> keyword → esfera del <strong>color pleno</strong> de esa keyword.</li>
+  <li>Una sesión que menciona <strong>dos</strong> → esfera partida <strong>mitad y mitad</strong> con los dos colores, como un gráfico de torta.</li>
+  <li>Tres o más → la esfera se reparte en porciones iguales, una por keyword.</li>
+</ul>
+<p>En la imagen de arriba, <strong>#kolón</strong> aparece en <strong>rojo</strong> y <strong>#mercedes</strong> en <strong>dorado</strong>; las sesiones que mencionan a los dos se ven partidas <strong>mitad y mitad</strong>.</p>
+
+<h3>Combinar palabras clave: Y / O</h3>
+<p>A la izquierda de los chips hay un botón que alterna entre <strong>O</strong> (cualquiera) e <strong>Y</strong> (todas). Se aplica solo a las keywords <strong>activas</strong>:</p>
+<ul>
+  <li><strong>O</strong> (por defecto): se destacan las sesiones que contienen <strong>cualquiera</strong> de las keywords activas.</li>
+  <li><strong>Y</strong>: se destacan <strong>solo</strong> las sesiones que contienen <strong>todas</strong> las keywords activas — dónde los temas <strong>se cruzan</strong> en la misma sesión.</li>
+</ul>
+<pre>
+  ┌───┐
+  │ O │  ●kolón ×   ●mercedes ×   ○kristóbal ×    ← O: cualquiera de las activas
+  └───┘                                               (kristóbal está desactivada)
+
+  ┌───┐
+  │ Y │  ●kolón ×   ●mercedes ×                    ← Y: SOLO donde están las dos
+  └───┘                                               (dónde se cruzan en la sesión)
 </pre>
+<p>Si tenés muchas palabras, activá o desactivá los chips con un clic: el botón Y/O combina únicamente las que estén activas.</p>
 
 <h3>Órbita de párrafos</h3>
+<img src="media/cap18-grafo-orbita.png" alt="Una sesión expandida en su órbita de párrafos junto al editor" style="width:100%; max-width:880px; height:auto; border:1px solid var(--border); border-radius:4px;">
 <p>Con keywords activas, hacé clic en una sesión destacada para ver qué párrafos específicos contienen la palabra:</p>
 <ul>
   <li>Los párrafos que coinciden aparecen como nodos pequeños alrededor de la sesión</li>
   <li>Clic en un párrafo → abre el editor en ese punto exacto</li>
-  <li>Los párrafos en amarillo son los que coinciden con la keyword</li>
+  <li>Cada párrafo coincidente se pinta con el color de su keyword (y mitad/mitad si contiene dos), igual que las sesiones</li>
 </ul>
 
-<h3>Operadores de búsqueda</h3>
-<table>
-  <tr><th>Expresión</th><th>Resultado</th></tr>
-  <tr><td><code>pedro</code></td><td>sesiones con "pedro"</td></tr>
-  <tr><td><code>pedro Y susana</code></td><td>sesiones con ambas palabras</td></tr>
-  <tr><td><code>pedro O susana</code></td><td>sesiones con cualquiera</td></tr>
-</table>
+<h3>Subrayado en el Editor</h3>
+<p>Cuando hacés clic en una esfera o en un párrafo del grafo, Gombro abre esa sesión en el Editor y <strong>subraya todas las palabras clave activas</strong> dentro del texto (no solo una), para que las ubiques de inmediato.</p>
+<img src="media/cap18-grafo-editor.png" alt="Al abrir desde el grafo, la sesión se abre en el punto y las keywords quedan subrayadas" style="width:100%; max-width:880px; height:auto; border:1px solid var(--border); border-radius:4px;">
 
 <h3>Controles del grafo</h3>
 <table>
@@ -952,6 +924,7 @@ Líneas       = orden de las sesiones en el proyecto
   <tr><td>Abrir el grafo</td><td>Explorador → pestaña <strong>GRAPH</strong></td></tr>
   <tr><td>Agregar keyword</td><td>Escribí en la barra → <code>Enter</code> o <strong>+</strong></td></tr>
   <tr><td>Activar/desactivar keyword</td><td>Clic en el chip</td></tr>
+  <tr><td>Combinar keywords (Y / O)</td><td>Botón <strong>O/Y</strong> a la izquierda de los chips</td></tr>
   <tr><td>Eliminar keyword</td><td>Clic en <strong>×</strong> del chip</td></tr>
   <tr><td>Abrir sesión</td><td>Clic en el nodo</td></tr>
   <tr><td>Zoom</td><td>Rueda del mouse</td></tr>

@@ -292,7 +292,7 @@
   ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
 </pre>
 <div class="tagline">inventing words</div>
-<div class="version">v1.5.0</div>
+<div class="version">v1.5.2</div>
 <a class="pdf-link" href="downloads/gombro-manual-en.pdf" target="_blank" rel="noopener">⭳ Download PDF</a>
 </div>
 
@@ -766,38 +766,79 @@
 
 <h2 id="chapter-10">Chapter 10 — Graph View</h2>
 
-<p>A visual map of your project. Paragraphs as nodes, connections you draw manually. In the Explorer, click the <strong>Graph</strong> tab.</p>
+<p>Your whole project at a glance: every session as a node arranged in a spiral, which you can filter by keyword to see where each theme lives. In the Explorer, click the <strong>GRAPH</strong> tab.</p>
 
-<pre>
-  GRAPH VIEW — The Process · Objects & People:
+<img src="media/cap18-grafo.png" alt="Graph — the whole project as a spiral with the #kolón and #mercedes chips active" style="width:100%; max-width:880px; height:auto; border:1px solid var(--border); border-radius:4px;">
 
-                   [Ch.1 · The Arrest]
-                    /       |        \
-              Josef K.   the door   the warders
-                /           |             \
-       [Ch.3 · Court]  [Ch.2 · K.]──[Ch.7 · Lawyer]
-            |    \          |               |
-         Josef K. the room  Leni         Josef K.
-            |        \      |               |
-    [Ch.5 · Flogger]  \ [Ch.4 · Leni]  [Ch.8 · Merchant]
-                       \    \               /
-                     the whip Leni────Josef K.
-                          \      \       /
-                        [Ch.9 · Priest]
-                               |
-                         [Ch.10 · Death]
-
-  click any node → opens paragraph in Editor
-  Ctrl+click multiple → opens all together
-</pre>
+<p>Gombro automatically loads every session in the project as a node in a spiral. Each node is a session: <strong>bigger = more paragraphs</strong>; the lines link them in their project order. The top bar shows the total — for example <em>"75 sessions · click to open · hover to see the name"</em>.</p>
 
 <ul>
-  <li>Click <strong>+ New graph</strong> to create one (you can have multiple per project)</li>
-  <li>Add nodes from your sessions</li>
-  <li>Click one node then another to connect them</li>
-  <li>Click any node to open that paragraph in the Editor</li>
-  <li>Hold <code>Ctrl</code> and click multiple nodes to open them together</li>
+  <li>Click a node → opens that session in the Editor</li>
+  <li>Hover → shows the full session name</li>
 </ul>
+
+<h3>Filter by keyword</h3>
+<p>The graph's search bar finds sessions by content:</p>
+<ol>
+  <li>Type a word in the bar → <code>Enter</code> or click <strong>+</strong></li>
+  <li>The word is saved as a chip in the keyword panel</li>
+  <li>Sessions that contain the word stand out: they grow to double size and take the <strong>color</strong> assigned to that keyword</li>
+  <li>Sessions that don't match are dimmed</li>
+  <li>Next time you open the graph, the keywords activate automatically</li>
+</ol>
+
+<h3>Colors and halves: several keywords at once</h3>
+<p>When you activate <strong>more than one</strong> keyword, each gets a fixed color (the first <strong>red</strong>, the second <strong>gold/amber</strong>, the third green, and so on). That color shows both on the keyword's diamond (at the center) and on the spheres that contain it:</p>
+<ul>
+  <li>A session that mentions <strong>only one</strong> keyword → sphere in that keyword's <strong>solid color</strong>.</li>
+  <li>A session that mentions <strong>two</strong> → sphere split <strong>half and half</strong> with both colors, like a pie chart.</li>
+  <li>Three or more → the sphere is divided into equal slices, one per keyword.</li>
+</ul>
+<p>In the image above, <strong>#kolón</strong> appears in <strong>red</strong> and <strong>#mercedes</strong> in <strong>gold</strong>; sessions that mention both are split <strong>half and half</strong>.</p>
+
+<h3>Combine keywords: AND / OR</h3>
+<p>To the left of the chips there is a button that toggles between <strong>O</strong> (OR — any) and <strong>Y</strong> (AND — all). It applies only to the <strong>active</strong> keywords:</p>
+<ul>
+  <li><strong>O</strong> (OR, default): highlights sessions that contain <strong>any</strong> of the active keywords.</li>
+  <li><strong>Y</strong> (AND): highlights <strong>only</strong> sessions that contain <strong>all</strong> active keywords — where the themes <strong>cross</strong> within the same session.</li>
+</ul>
+<pre>
+  ┌───┐
+  │ O │  ●kolón ×   ●mercedes ×   ○kristóbal ×    ← OR: any of the active ones
+  └───┘                                               (kristóbal is turned off)
+
+  ┌───┐
+  │ Y │  ●kolón ×   ●mercedes ×                    ← AND: only where BOTH appear
+  └───┘                                               (where they cross in a session)
+</pre>
+<p>If you have many words, toggle the chips on/off with a click: the AND/OR button combines only the active ones.</p>
+
+<h3>Paragraph orbit</h3>
+<img src="media/cap18-grafo-orbita.png" alt="A session expanded into its paragraph orbit next to the editor" style="width:100%; max-width:880px; height:auto; border:1px solid var(--border); border-radius:4px;">
+<p>With keywords active, click a highlighted session to see which specific paragraphs contain the word:</p>
+<ul>
+  <li>Matching paragraphs appear as small nodes around the session</li>
+  <li>Click a paragraph → opens the editor at that exact point</li>
+  <li>Each matching paragraph takes its keyword's color (and half/half if it contains two), just like the sessions</li>
+</ul>
+
+<h3>Highlighting in the Editor</h3>
+<p>When you click a sphere or a paragraph in the graph, Gombro opens that session in the Editor and <strong>highlights every active keyword</strong> in the text (not just one), so you can spot them instantly.</p>
+<img src="media/cap18-grafo-editor.png" alt="Opening from the graph: the session opens at the point and the keywords are highlighted in the text" style="width:100%; max-width:880px; height:auto; border:1px solid var(--border); border-radius:4px;">
+
+<h3>Graph controls</h3>
+<table>
+  <tr><th>Action</th><th>How</th></tr>
+  <tr><td>Open the graph</td><td>Explorer → <strong>GRAPH</strong> tab</td></tr>
+  <tr><td>Add keyword</td><td>Type in the bar → <code>Enter</code> or <strong>+</strong></td></tr>
+  <tr><td>Toggle keyword on/off</td><td>Click the chip</td></tr>
+  <tr><td>Combine keywords (AND / OR)</td><td><strong>O/Y</strong> button to the left of the chips</td></tr>
+  <tr><td>Remove keyword</td><td>Click <strong>×</strong> on the chip</td></tr>
+  <tr><td>Open session</td><td>Click the node</td></tr>
+  <tr><td>Zoom</td><td>Mouse wheel</td></tr>
+  <tr><td>Fit view</td><td><strong>⊡</strong> button</td></tr>
+  <tr><td>Close graph</td><td><strong>✕</strong> button or <code>Escape</code></td></tr>
+</table>
 
 <hr>
 
