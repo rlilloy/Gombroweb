@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;border-bottom:1px solid var(
 .nav-mobile a:hover{color:var(--text)}
 .nav-mobile-close{position:absolute;top:18px;right:24px;background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1}
 .nav-mobile-cta{padding:12px 28px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;background:var(--text);color:var(--bg);border:none;cursor:pointer;margin-top:8px}
-@media(max-width:768px){.nav-links{display:none}.nav-inner{padding:14px 24px}.nav-hamburger{display:flex}.nav-cta{display:none}}
+@media(max-width:768px){.nav-links{display:none}.nav-inner{padding:14px 18px;gap:10px}.nav-hamburger{display:flex}.nav-cta{display:block;font-size:.46rem;line-height:1.3;padding:6px 10px;letter-spacing:.1em;text-align:center}}
 #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;border-bottom:1px solid var(--rule)}
 .hero-bg{position:absolute;inset:0;z-index:0;background-image:url('media/1500x900.jpg');background-size:cover;background-position:center 30%;filter:sepia(100%) contrast(1.2) contrast(1.1);opacity:.16}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,10,10,.55) 0%,rgba(10,10,10,.35) 40%,rgba(10,10,10,.88) 100%)}
@@ -218,7 +218,7 @@ fbq('track', 'PageView');
       <a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Comunidad</a>
     </div>
     <a href="index.html" class="nav-lang" style="font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s">EN &rsaquo;</a>
-    <button class="nav-cta" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar</button>
+    <button class="nav-cta" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Escritura Gombro<br>Descargar</button>
     <button class="nav-hamburger" onclick="document.getElementById('nav-mobile-es').classList.add('open')" aria-label="Menú"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -228,7 +228,7 @@ fbq('track', 'PageView');
   <a href="manual-es.html">Tutorial</a>
   <a href="#writer" onclick="document.getElementById('nav-mobile-es').classList.remove('open')">Escritor</a>
   <a href="https://www.reddit.com/r/Gombro" target="_blank" rel="noopener">Comunidad</a>
-  <button class="nav-mobile-cta" onclick="document.getElementById('nav-mobile-es').classList.remove('open');document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar</button>
+  <button class="nav-mobile-cta" onclick="document.getElementById('nav-mobile-es').classList.remove('open');document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Escritura Gombro<br>Descargar</button>
   <a href="index.html" style="font-size:.52rem;letter-spacing:.18em;margin-top:8px">EN &rsaquo;</a>
 </div>
 <section id="hero">
@@ -281,7 +281,8 @@ fbq('track', 'PageView');
         <div><p class="dl-col-ver">Gombro v1.5.1</p><p class="dl-col-req">AppImage &middot; x86_64</p></div>
       </div>
     </div>
-    <div style="display:flex;justify-content:center;margin-top:24px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:32px">
+      <a href="downloads/gombro-manual-es.pdf" download style="display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--dim);color:var(--text);text-decoration:none;transition:border-color .2s,color .2s"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar Manual de escritura Gombro (PDF)</a>
       <a href="https://github.com/rlilloy/Gombroweb/tree/master/downloads" target="_blank" rel="noopener" style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s">GitHub Releases &nearr;</a>
     </div>
   </div>
