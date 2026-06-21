@@ -194,6 +194,23 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
 .dl-col-req{font-size:.54rem;color:var(--muted);margin-top:3px;line-height:1.6}
 .dl-col-req a{color:var(--muted);text-decoration:none;transition:color .2s}.dl-col-req a:hover{color:var(--text)}
 @media(max-width:680px){.dl-grid{grid-template-columns:1fr}.dl-col{border-right:none;border-bottom:1px solid var(--rule)}.dl-col:last-child{border-bottom:none}}
+@media(max-width:768px){
+  .container{padding:0 22px}
+  .hero-tagline{font-size:.78rem}
+  .beta-box p[style*="font-size:.82rem"]{font-size:.98rem!important;line-height:1.85!important}
+  .mission-head p{font-size:.92rem;line-height:1.95}
+  .mission-lbl{font-size:.62rem}
+  .feature-p{font-size:.94rem;line-height:1.95}
+  .feature-lbl{font-size:.66rem}
+  .tag{font-size:.6rem}
+  .writer-quote p{font-size:1.02rem}
+  .writer-badge-l{font-size:.56rem}
+  #download p[style*="font-size:.78rem"]{font-size:.92rem!important;line-height:1.95!important}
+  #bc-a{font-size:1rem}
+  #bc-q{font-size:.82rem}
+  .dl-col-req{font-size:.62rem}
+  .footer-links a{font-size:.62rem}
+}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -206,7 +223,7 @@ fbq('track', 'PageView');
 </head>
 <body>
 <section id="intro-video">
-  <video id="intro-vid" autoplay muted playsinline poster="media/trailer-poster-es.png" data-desktop="media/aleph-trailer-es.mp4" data-mobile="media/aleph-trailer-vertical-es.mp4"></video>
+  <video id="intro-vid" autoplay muted playsinline poster="media/trailer-poster-es.png" data-poster-desktop="media/trailer-poster-es.png" data-poster-mobile="media/trailer-poster-vertical-es.png" data-desktop="media/aleph-trailer-es.mp4" data-mobile="media/aleph-trailer-vertical-es.mp4"></video>
   <a href="#hero" class="intro-scroll">Scroll &darr;</a>
 </section>
 <nav>
@@ -387,7 +404,7 @@ fbq('track', 'PageView');
   </div>
 </div><script>
 (function(){var B=["G","O","M","B","R","O"],L=Array.from(document.getElementById("logo").children),s=0,F=5,f=false;function ag(){var a=B.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}if(a.join("")==="GOMBRO")a.push(a.shift());return a;}var iv=setInterval(function(){if(f){clearInterval(iv);return;}s++;L.forEach(function(l){l.style.opacity="0";});setTimeout(function(){if(s>=F){B.forEach(function(c,i){L[i].textContent=c;});f=true;}else{ag().forEach(function(c,i){L[i].textContent=c;});}L.forEach(function(l){l.style.opacity="1";});},240);},750);})();
-(function(){var vid=document.getElementById("intro-vid");if(vid){vid.src=(window.innerWidth<=768?vid.dataset.mobile:vid.dataset.desktop);vid.load();vid.play().catch(function(){});vid.addEventListener("ended",function(){var hero=document.getElementById("hero");if(hero){hero.scrollIntoView({behavior:"smooth",block:"start"})}})}})();
+(function(){var vid=document.getElementById("intro-vid");if(vid){var mob=window.innerWidth<=768;vid.poster=(mob?vid.dataset.posterMobile:vid.dataset.posterDesktop);vid.src=(mob?vid.dataset.mobile:vid.dataset.desktop);vid.load();vid.play().catch(function(){});vid.addEventListener("ended",function(){var hero=document.getElementById("hero");if(hero){hero.scrollIntoView({behavior:"smooth",block:"start"})}})}})();
 (function(){var P=["Escribe tu novela","Corrige tu novela","Estructura tu novela"],pi=0,tw=document.getElementById("tword");setInterval(function(){tw.classList.add("fade");setTimeout(function(){pi=(pi+1)%P.length;tw.textContent=P[pi];tw.classList.remove("fade");},370);},3200);})();
 (function(){var IM=["media/borges.jpg","media/images/800px-James_Joyce_by_Berenice_Abbott_1926.jpg","media/images/carson-mccullers.jpg","media/images/Daphne-du-Maurier2.webp","media/images/Carson-McCullers-at-her-desk-712x1024.webp","media/images/Doris-Lessing-at-her-writing-desk.webp","media/images/Miller-DFW-and-the-Perils-of-Litchat.webp"];var bg=document.getElementById("writer-bg"),idx=0;function sn(){var img=document.createElement("img");img.src=IM[idx%IM.length];idx++;img.style.top=(10+Math.random()*60)+"%";img.style.left=(5+Math.random()*65)+"%";bg.appendChild(img);requestAnimationFrame(function(){requestAnimationFrame(function(){img.classList.add("visible");});});setTimeout(function(){img.classList.remove("visible");setTimeout(function(){if(img.parentNode)img.parentNode.removeChild(img);},3200);},10000+Math.random()*6000);}sn();setTimeout(sn,1200);setTimeout(sn,2500);setTimeout(sn,3800);setTimeout(sn,5200);setInterval(sn,2800);})();
 (function(){var QA=[{q:"What is Gombro?",a:"“A writing editor built for the manuscript — not the polished word, but the word in motion.”"},{q:"Who made Gombro?",a:"“Raul Lilloy created Gombro. He believes writing should be an act of discovery, not production.”"},{q:"What writers would have used Gombro?",a:"“Kafka, to fragment his diaries. Gombrowicz, to shuffle chapters. Joyce, for Nighttown in disconnected bursts.”"},{q:"What is the Borgian Algebra?",a:"“Inspired by how Borges corrected his manuscripts: not by erasing, but by branching. Multiple alternatives coexist until you decide.”"},{q:"What is the Burroughs Cut-up?",a:"“Burroughs and Gysin’s technique, built in. A controlled collision of your own writing.”"},{q:"What is Sentence Mode?",a:"“Each time you write a period, Gombro isolates that sentence alone on screen.”"},{q:"What is Schrödinger Mode?",a:"“Some text is neither one thing nor another — it has not been decided.”"},{q:"What are Paragraph Versions?",a:"“Every time a paragraph changes, Gombro saves a copy automatically. A per-paragraph history.”"},{q:"What is the Graph view?",a:"“A visual map of your project. Paragraphs as nodes, connections you draw by hand.”"},{q:"What is a Session?",a:"“An improvisation — a scene, a fragment, a drift. Like a jazz session.”"},{q:"What are Collections?",a:"“A saved search. After any search, click + Save as collection.”"},{q:"What is the philosophy of Gombro?",a:"“Writing should be an act of discovery, not production.”"}];var cur=0,card=document.getElementById("bc-card"),qEl=document.getElementById("bc-q"),aEl=document.getElementById("bc-a"),dots=document.getElementById("bc-dots");QA.forEach(function(_,i){var d=document.createElement("span");d.style.cssText="width:5px;height:5px;border-radius:50%;background:rgba(232,228,220,"+(i===0?".6":".2")+");display:inline-block;transition:background .3s;cursor:pointer";d.addEventListener("click",function(){go(i);});dots.appendChild(d);});function go(i){card.style.opacity="0";setTimeout(function(){cur=i;render(cur);card.style.opacity="1";},400);}function render(i){qEl.textContent="Q: "+QA[i].q;aEl.textContent=QA[i].a;Array.from(dots.children).forEach(function(d,j){d.style.background="rgba(232,228,220,"+(j===i?".6":".2")+")";});}render(0);setInterval(function(){go((cur+1)%QA.length);},5000);})();
