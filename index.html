@@ -223,9 +223,10 @@ fbq('track', 'PageView');
 </head>
 <body>
 <section id="intro-video">
-  <video id="intro-vid" autoplay muted playsinline poster="media/trailer-poster.png" data-poster-desktop="media/trailer-poster.png" data-poster-mobile="media/trailer-poster-vertical.png" data-desktop="media/aleph-trailer.mp4" data-mobile="media/aleph-trailer-vertical.mp4"></video>
+  <video id="intro-vid" autoplay muted playsinline data-poster-desktop="media/trailer-poster.png" data-poster-mobile="media/trailer-poster-vertical.png" data-desktop="media/aleph-trailer.mp4" data-mobile="media/aleph-trailer-vertical.mp4"></video>
   <a href="#hero" class="intro-scroll">Scroll &darr;</a>
 </section>
+<script>(function(){var v=document.getElementById("intro-vid");if(v){v.poster=(window.innerWidth<=768?v.dataset.posterMobile:v.dataset.posterDesktop);}})();</script>
 <nav>
   <div class="nav-inner">
     <a href="/" style="text-decoration:none"><div class="nav-logo"><span class="l-0">G</span><span class="l-1">O</span><span class="l-2">M</span><span class="l-3">B</span><span class="l-4">R</span><span class="l-5">O</span></div></a>
