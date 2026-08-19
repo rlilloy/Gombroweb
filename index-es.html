@@ -26,10 +26,6 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .container{max-width:1160px;margin:0 auto;padding:0 48px}
 .label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;border-bottom:1px solid var(--rule);background:rgba(10,10,10,.94);backdrop-filter:blur(10px)}
-#intro-video{position:relative;width:100vw;background:#000;z-index:1;line-height:0}
-#intro-video video{display:block;width:100%;height:auto;background:#000}
-#intro-video .intro-scroll{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:2;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;animation:introBob 1.8s ease-in-out infinite}
-@keyframes introBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:15px 48px}
 .nav-logo{display:flex;gap:1px;font-family:'Courier New',monospace;font-size:1.4rem;font-weight:700;letter-spacing:.06em}
 .l-0{color:#FCF5E5}.l-1{color:#8B0000}.l-2{color:#a0856b}.l-3{color:#c9b8a8}.l-4{color:#6b2d2d}.l-5{color:#d4c5b0}
@@ -188,8 +184,6 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
 .dl-col-req a{color:var(--muted);text-decoration:none;transition:color .2s}.dl-col-req a:hover{color:var(--text)}
 @media(max-width:680px){.dl-grid{grid-template-columns:1fr}.dl-col{border-right:none;border-bottom:1px solid var(--rule)}.dl-col:last-child{border-bottom:none}}
 @media(max-width:768px){
-  #intro-video{height:100vh;height:100svh}
-  #intro-video video{width:100%;height:100%;object-fit:cover}
   .container{padding:0 22px}
   .hero-tagline{font-size:.78rem}
   .beta-box p[style*="font-size:.82rem"]{font-size:.98rem!important;line-height:1.85!important}
@@ -217,11 +211,6 @@ fbq('track', 'PageView');
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-<section id="intro-video">
-  <video id="intro-vid" autoplay muted playsinline data-poster-desktop="media/trailer-poster-es.png" data-poster-mobile="media/poster-mobile-es.png" data-desktop="media/aleph-trailer-es.mp4" data-mobile="media/aleph-trailer-mobile-es.mp4"></video>
-  <a href="#hero" class="intro-scroll">Scroll &darr;</a>
-</section>
-<script>window.__gombroMobile=matchMedia("(max-width:768px), (orientation:portrait) and (pointer:coarse)").matches;(function(){var v=document.getElementById("intro-vid");if(v)v.poster=(window.__gombroMobile?v.dataset.posterMobile:v.dataset.posterDesktop);})();</script>
 <nav>
   <div class="nav-inner">
     <a href="/index-es.html" style="text-decoration:none"><div class="nav-logo"><span class="l-0">G</span><span class="l-1">O</span><span class="l-2">M</span><span class="l-3">B</span><span class="l-4">R</span><span class="l-5">O</span></div></a>
@@ -398,7 +387,6 @@ fbq('track', 'PageView');
   </div>
 </div><script>
 (function(){var B=["G","O","M","B","R","O"],L=Array.from(document.getElementById("logo").children),s=0,F=5,f=false;function ag(){var a=B.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}if(a.join("")==="GOMBRO")a.push(a.shift());return a;}var iv=setInterval(function(){if(f){clearInterval(iv);return;}s++;L.forEach(function(l){l.style.opacity="0";});setTimeout(function(){if(s>=F){B.forEach(function(c,i){L[i].textContent=c;});f=true;}else{ag().forEach(function(c,i){L[i].textContent=c;});}L.forEach(function(l){l.style.opacity="1";});},240);},750);})();
-(function(){var vid=document.getElementById("intro-vid");if(vid){var mob=window.__gombroMobile;vid.poster=(mob?vid.dataset.posterMobile:vid.dataset.posterDesktop);vid.src=(mob?vid.dataset.mobile:vid.dataset.desktop);vid.load();vid.play().catch(function(){});vid.addEventListener("ended",function(){var hero=document.getElementById("hero");if(hero){hero.scrollIntoView({behavior:"smooth",block:"start"})}})}})();
 (function(){var P=["Escribe tu novela","Corrige tu novela","Estructura tu novela"],pi=0,tw=document.getElementById("tword");setInterval(function(){tw.classList.add("fade");setTimeout(function(){pi=(pi+1)%P.length;tw.textContent=P[pi];tw.classList.remove("fade");},370);},3200);})();
 (function(){var IM=["media/borges.jpg","media/images/800px-James_Joyce_by_Berenice_Abbott_1926.jpg","media/images/carson-mccullers.jpg","media/images/Daphne-du-Maurier2.webp","media/images/Carson-McCullers-at-her-desk-712x1024.webp","media/images/Doris-Lessing-at-her-writing-desk.webp","media/images/Miller-DFW-and-the-Perils-of-Litchat.webp"];var bg=document.getElementById("writer-bg"),idx=0;function sn(){var img=document.createElement("img");img.src=IM[idx%IM.length];idx++;img.style.top=(10+Math.random()*60)+"%";img.style.left=(5+Math.random()*65)+"%";bg.appendChild(img);requestAnimationFrame(function(){requestAnimationFrame(function(){img.classList.add("visible");});});setTimeout(function(){img.classList.remove("visible");setTimeout(function(){if(img.parentNode)img.parentNode.removeChild(img);},3200);},10000+Math.random()*6000);}sn();setTimeout(sn,1200);setTimeout(sn,2500);setTimeout(sn,3800);setTimeout(sn,5200);setInterval(sn,2800);})();
 (function(){var QA=[{q:"¿Qué es Gombro?",a:"“Un editor de escritura hecho para el manuscrito — no la palabra pulida, sino la palabra en movimiento.”"},{q:"¿Quién hizo Gombro?",a:"“Raül Lilloy creó Gombro. Cree que escribir debería ser un acto de descubrimiento, no de producción.”"},{q:"¿Qué escritores habrían usado Gombro?",a:"“Kafka, para fragmentar sus diarios. Gombrowicz, para barajar capítulos. Joyce, para Nighttown en ráfagas inconexas.”"},{q:"¿Qué es el Álgebra Borgiana?",a:"“Inspirada en cómo Borges corregía sus manuscritos: no borrando, sino ramificando. Múltiples alternativas coexisten hasta que decides.”"},{q:"¿Qué es el Cut-up de Burroughs?",a:"“La técnica de Burroughs y Gysin, integrada. Una colisión controlada de tu propia escritura.”"},{q:"¿Qué es el Modo Frase?",a:"“Cada vez que escribes un punto, Gombro aísla esa frase sola en pantalla.”"},{q:"¿Qué es el Modo Schrödinger?",a:"“Hay texto que no es ni una cosa ni la otra — todavía no se ha decidido.”"},{q:"¿Qué son las Versiones de Párrafo?",a:"“Cada vez que un párrafo cambia, Gombro guarda una copia automáticamente. Un historial por párrafo.”"},{q:"¿Qué es la vista de Grafo?",a:"“Un mapa visual de tu proyecto. Párrafos como nodos, conexiones que dibujas a mano.”"},{q:"¿Qué es una Sesión?",a:"“Una improvisación — una escena, un fragmento, una deriva. Como una sesión de jazz.”"},{q:"¿Qué son las Colecciones?",a:"“Una búsqueda guardada. Tras cualquier búsqueda, haz clic en + Guardar como colección.”"},{q:"¿Cuál es la filosofía de Gombro?",a:"“Escribir debería ser un acto de descubrimiento, no de producción.”"}];var cur=0,card=document.getElementById("bc-card"),qEl=document.getElementById("bc-q"),aEl=document.getElementById("bc-a"),dots=document.getElementById("bc-dots");QA.forEach(function(_,i){var d=document.createElement("span");d.style.cssText="width:5px;height:5px;border-radius:50%;background:rgba(232,228,220,"+(i===0?".6":".2")+");display:inline-block;transition:background .3s;cursor:pointer";d.addEventListener("click",function(){go(i);});dots.appendChild(d);});function go(i){card.style.opacity="0";setTimeout(function(){cur=i;render(cur);card.style.opacity="1";},400);}function render(i){qEl.textContent="Q: "+QA[i].q;aEl.textContent=QA[i].a;Array.from(dots.children).forEach(function(d,j){d.style.background="rgba(232,228,220,"+(j===i?".6":".2")+")";});}render(0);setInterval(function(){go((cur+1)%QA.length);},5000);})();
