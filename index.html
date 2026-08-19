@@ -173,6 +173,7 @@ footer{padding:36px 48px;display:flex;flex-direction:column;align-items:center;g
 .tut-video iframe{width:100%;height:100%;border:none}
 .tut-link{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .tut-link:hover{color:var(--text)}
+@media(max-width:768px){.tut-inner{padding:0;gap:22px}.tut-head{padding:0 24px}.tut-link{padding:0 24px}.tut-video{aspect-ratio:9/16;border-left:none;border-right:none}}
 .dl-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
 .dl-col{padding:52px 24px;text-align:center;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;gap:18px}
 .dl-col:last-child{border-right:none}
@@ -294,9 +295,8 @@ fbq('track', 'PageView');
       <p class="label">Tutorial</p>
       <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:.04em;margin-top:10px">See Gombro in action</h2>
     </div>
-    <video class="tut-video" controls preload="metadata" poster="media/trailer-poster.png">
-      <source src="media/aleph-trailer.mp4" type="video/mp4"/>
-    </video>
+    <video class="tut-video" controls playsinline preload="metadata" poster="media/trailer-poster.png"
+           src="media/aleph-trailer.mp4" data-mobile="media/aleph-trailer-mobile.mp4" data-poster-mobile="media/poster-mobile.png"></video>
     <a href="https://youtu.be/57eSRgHQjhQ" target="_blank" rel="noopener" class="tut-link">&rarr; Watch more on YouTube &nearr;</a>
   </div>
 </section>
@@ -394,5 +394,6 @@ function closeFb(){document.getElementById("fb-modal").classList.remove("open");
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFb();});
 document.getElementById("fb-form").addEventListener("submit",async function(e){e.preventDefault();var form=e.target,msg=document.getElementById("fb-msg"),btn=document.getElementById("fb-submit");btn.disabled=true;btn.textContent="...";try{var r=await fetch(form.action,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});if(r.ok){msg.textContent="Thanks. I will read it.";form.reset();btn.textContent="done";}else{throw new Error();}}catch{msg.textContent="Something went wrong. Try again.";btn.disabled=false;btn.textContent="Send";}});
 </script>
+<script>(function(){var v=document.querySelector(".tut-video");if(!v||!v.dataset.mobile)return;if(matchMedia("(max-width:768px)").matches){v.src=v.dataset.mobile;v.poster=v.dataset.posterMobile;v.load();}})();</script>
 </body>
 </html>
