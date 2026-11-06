@@ -3,11 +3,50 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gombro.com/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-06</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://gombro.com/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gombro.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/index-es.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gombro.com/" />
+  </url>
+  <url>
+    <loc>https://gombro.com/index-es.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gombro.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/index-es.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gombro.com/" />
+  </url>
+  <url>
+    <loc>https://gombro.com/manual.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gombro.com/manual.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/manual-es.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gombro.com/manual.html" />
+  </url>
+  <url>
+    <loc>https://gombro.com/manual-es.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gombro.com/manual.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/manual-es.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gombro.com/manual.html" />
+  </url>
+  <url>
+    <loc>https://gombro.com/scrivener-alternative.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gombro.com/scrivener-alternative.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/alternativa-scrivener.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gombro.com/scrivener-alternative.html" />
+  </url>
+  <url>
+    <loc>https://gombro.com/alternativa-scrivener.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gombro.com/scrivener-alternative.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gombro.com/alternativa-scrivener.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gombro.com/scrivener-alternative.html" />
   </url>
 </urlset>
