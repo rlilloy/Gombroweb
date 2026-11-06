@@ -11,9 +11,9 @@
 </script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Gombro — Escribe, corrige y estructura tu novela</title>
-<meta name="description" content="Gombro es un editor gratuito y privado para escribir, corregir y estructurar tu novela. Sin IA y sin nube: todo queda en tu computadora."/>
-<meta property="og:title" content="Gombro — Escribe, corrige y estructura tu novela">
+<title>Gombro — Escribe tu novela sin IA</title>
+<meta name="description" content="Libera la creatividad en tu novela sin usar IA. Software de escritura creativa para organizar, revisar y estructurar novelas, sin nube."/>
+<meta property="og:title" content="Gombro — Escribe tu novela sin IA">
 <meta property="og:url" content="https://gombro.com/index-es.html">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://gombro.com/index-es.html"/>
@@ -239,10 +239,10 @@ fbq('track', 'PageView');
   <div id="writer-bg" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-logo" id="logo"><span class="letter l-0">G</span><span class="letter l-1">O</span><span class="letter l-2">M</span><span class="letter l-3">B</span><span class="letter l-4">R</span><span class="letter l-5">O</span></div>
-    <div class="hero-tagline"><span class="tword" id="tword">Escribe tu novela</span></div>
+    <div class="hero-tagline"><span class="tword" id="tword">Sin plástico IA</span></div>
     <div class="hero-divider"></div>
     <div class="beta-box">
-      <p style="font-size:.82rem;line-height:1.75;color:var(--text);margin-bottom:6px">Gombro es tu herramienta para escribir, corregir y estructurar tu novela.</p>
+      <p style="font-size:.82rem;line-height:1.75;color:var(--text);margin-bottom:6px">Escritura humana para inventar tu novela, sin la prosa robótica y solemne de la IA.</p>
       <a href="#mission" style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none">Ver características &darr;</a>
       <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
         <button style="display:flex;align-items:center;justify-content:center;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;background:var(--text);color:var(--bg);border:none;cursor:pointer;transition:background .18s;width:100%" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth',block:'start'})">Descargar &darr;</button>
@@ -317,7 +317,7 @@ fbq('track', 'PageView');
 </section>
 <section id="mission">
   <div class="container">
-    <div class="mission-head"><p class="label">Para qué está hecho Gombro</p><h2>Hecho para el manuscrito</h2><p>El único entorno de escritura que trata el párrafo como unidad fundamental — y tu manuscrito como un organismo vivo y no lineal.</p></div>
+    <div class="mission-head"><p class="label">Para qué está hecho Gombro</p><h2>Hecho para el manuscrito</h2><p>Gombro es un software de escritura creativa para organizar, revisar y estructurar novelas y obras complejas. Funciona en tu computadora, sin nube y sin inteligencia artificial que autocomplete tus textos.</p><p>El único entorno de escritura que trata el párrafo como unidad fundamental — y tu manuscrito como un organismo vivo y no lineal.</p><p>¿Venís de Scrivener? Una opción gratuita para seguir escribiendo tu novela, sin plástico IA.</p></div>
     <div class="mission-grid">
       <div class="mission-item"><span class="mission-icon">¶</span><span class="mission-lbl">Historial<br/>por párrafo</span></div>
       <div class="mission-item"><span class="mission-icon">⊕</span><span class="mission-lbl">Borgian<br/>Algebra</span></div>
@@ -386,7 +386,6 @@ fbq('track', 'PageView');
   </div>
 </div><script>
 (function(){var B=["G","O","M","B","R","O"],L=Array.from(document.getElementById("logo").children),s=0,F=5,f=false;function ag(){var a=B.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}if(a.join("")==="GOMBRO")a.push(a.shift());return a;}var iv=setInterval(function(){if(f){clearInterval(iv);return;}s++;L.forEach(function(l){l.style.opacity="0";});setTimeout(function(){if(s>=F){B.forEach(function(c,i){L[i].textContent=c;});f=true;}else{ag().forEach(function(c,i){L[i].textContent=c;});}L.forEach(function(l){l.style.opacity="1";});},240);},750);})();
-(function(){var P=["Escribe tu novela","Corrige tu novela","Estructura tu novela"],pi=0,tw=document.getElementById("tword");setInterval(function(){tw.classList.add("fade");setTimeout(function(){pi=(pi+1)%P.length;tw.textContent=P[pi];tw.classList.remove("fade");},370);},3200);})();
 (function(){var IM=["media/borges.jpg","media/images/800px-James_Joyce_by_Berenice_Abbott_1926.jpg","media/images/carson-mccullers.jpg","media/images/Daphne-du-Maurier2.webp","media/images/Carson-McCullers-at-her-desk-712x1024.webp","media/images/Doris-Lessing-at-her-writing-desk.webp","media/images/Miller-DFW-and-the-Perils-of-Litchat.webp"];var bg=document.getElementById("writer-bg"),idx=0;function sn(){var img=document.createElement("img");img.src=IM[idx%IM.length];idx++;img.style.top=(10+Math.random()*60)+"%";img.style.left=(5+Math.random()*65)+"%";bg.appendChild(img);requestAnimationFrame(function(){requestAnimationFrame(function(){img.classList.add("visible");});});setTimeout(function(){img.classList.remove("visible");setTimeout(function(){if(img.parentNode)img.parentNode.removeChild(img);},3200);},10000+Math.random()*6000);}sn();setTimeout(sn,1200);setTimeout(sn,2500);setTimeout(sn,3800);setTimeout(sn,5200);setInterval(sn,2800);})();
 (function(){var QA=[{q:"¿Qué es Gombro?",a:"“Un editor de escritura hecho para el manuscrito — no la palabra pulida, sino la palabra en movimiento.”"},{q:"¿Quién hizo Gombro?",a:"“Raül Lilloy creó Gombro. Cree que escribir debería ser un acto de descubrimiento, no de producción.”"},{q:"¿Qué escritores habrían usado Gombro?",a:"“Kafka, para fragmentar sus diarios. Gombrowicz, para barajar capítulos. Joyce, para Nighttown en ráfagas inconexas.”"},{q:"¿Qué es el Álgebra Borgiana?",a:"“Inspirada en cómo Borges corregía sus manuscritos: no borrando, sino ramificando. Múltiples alternativas coexisten hasta que decides.”"},{q:"¿Qué es el Cut-up de Burroughs?",a:"“La técnica de Burroughs y Gysin, integrada. Una colisión controlada de tu propia escritura.”"},{q:"¿Qué es el Modo Frase?",a:"“Cada vez que escribes un punto, Gombro aísla esa frase sola en pantalla.”"},{q:"¿Qué es el Modo Schrödinger?",a:"“Hay texto que no es ni una cosa ni la otra — todavía no se ha decidido.”"},{q:"¿Qué son las Versiones de Párrafo?",a:"“Cada vez que un párrafo cambia, Gombro guarda una copia automáticamente. Un historial por párrafo.”"},{q:"¿Qué es la vista de Grafo?",a:"“Un mapa visual de tu proyecto. Párrafos como nodos, conexiones que dibujas a mano.”"},{q:"¿Qué es una Sesión?",a:"“Una improvisación — una escena, un fragmento, una deriva. Como una sesión de jazz.”"},{q:"¿Qué son las Colecciones?",a:"“Una búsqueda guardada. Tras cualquier búsqueda, haz clic en + Guardar como colección.”"},{q:"¿Cuál es la filosofía de Gombro?",a:"“Escribir debería ser un acto de descubrimiento, no de producción.”"}];var cur=0,card=document.getElementById("bc-card"),qEl=document.getElementById("bc-q"),aEl=document.getElementById("bc-a"),dots=document.getElementById("bc-dots");QA.forEach(function(_,i){var d=document.createElement("span");d.style.cssText="width:5px;height:5px;border-radius:50%;background:rgba(232,228,220,"+(i===0?".6":".2")+");display:inline-block;transition:background .3s;cursor:pointer";d.addEventListener("click",function(){go(i);});dots.appendChild(d);});function go(i){card.style.opacity="0";setTimeout(function(){cur=i;render(cur);card.style.opacity="1";},400);}function render(i){qEl.textContent="Q: "+QA[i].q;aEl.textContent=QA[i].a;Array.from(dots.children).forEach(function(d,j){d.style.background="rgba(232,228,220,"+(j===i?".6":".2")+")";});}render(0);setInterval(function(){go((cur+1)%QA.length);},5000);})();
 function closeFb(){document.getElementById("fb-modal").classList.remove("open");document.getElementById("fb-msg").textContent="";document.getElementById("fb-form").reset();}
